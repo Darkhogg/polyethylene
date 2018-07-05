@@ -1,7 +1,7 @@
-function collectSync (seq, max) {
+function collectSync (iter, max) {
   let num = 0;
   const arr = [];
-  for (const elem of seq) {
+  for (const elem of iter) {
     arr.push(elem);
     if (++num >= max) {
       break;
@@ -10,10 +10,10 @@ function collectSync (seq, max) {
   return arr;
 }
 
-async function collectAsync (seq, max) {
+async function collectAsync (iter, max) {
   let num = 0;
   const arr = [];
-  for await (const elem of seq) {
+  for await (const elem of iter) {
     arr.push(elem);
     if (++num >= max) {
       break;

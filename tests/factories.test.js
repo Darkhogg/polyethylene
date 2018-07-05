@@ -1,4 +1,4 @@
-const Seq = require('..');
+const Poly = require('..');
 
 const {expect} = require('chai');
 
@@ -8,9 +8,9 @@ describe('Factory Methods', function () {
   describe('.from', function () {
     it('should return an iterable if given an iterable', () => {
       const obj = {[Symbol.iterator](){}};
-      const seq = Seq.from(obj);
+      const iter = Poly.from(obj);
 
-      expect(seq[Symbol.iterator]).to.exist;
+      expect(iter[Symbol.iterator]).to.exist;
     });
 
     it('should return an iterable that produces the correct values', () => {
@@ -18,16 +18,16 @@ describe('Factory Methods', function () {
       const obj = {
         * [Symbol.iterator] () {yield * values;}
       };
-      const seq = Seq.from(obj);
+      const iter = Poly.from(obj);
 
-      expect(collectSync(seq)).to.deep.equal(values);
+      expect(collectSync(iter)).to.deep.equal(values);
     });
 
     it('should return an async iterable if given an async iterable', () => {
       const obj = {[Symbol.asyncIterator](){}};
-      const seq = Seq.from(obj);
+      const iter = Poly.from(obj);
 
-      expect(seq[Symbol.asyncIterator]).to.exist;
+      expect(iter[Symbol.asyncIterator]).to.exist;
     });
 
     it('should return an async iterable that produces the correct values', async () => {
@@ -35,13 +35,13 @@ describe('Factory Methods', function () {
       const obj = {
         * [Symbol.asyncIterator] () {yield * values;}
       };
-      const seq = Seq.from(obj);
+      const iter = Poly.from(obj);
 
-      expect(await collectAsync(seq)).to.deep.equal(values);
+      expect(await collectAsync(iter)).to.deep.equal(values);
     });
 
     it('should throw if not given an iterable', () => {
-      expect(() => Seq.from(0)).to.throw();
+      expect(() => Poly.from(0)).to.throw();
     });
 
     it('should throw if given an object that is both iterable and async iterable', () => {
@@ -49,7 +49,21 @@ describe('Factory Methods', function () {
         [Symbol.iterator] () {},
         [Symbol.asyncIterator] () {},
       };
-      expect(() => Seq.from(badObj)).to.throw();
+      expect(() => Poly.from(badObj)).to.throw();
+    });
+
+    it('should not add overhead if passed a known SyncIterable', () => {
+      const origIter = Poly.from([]);
+      const iter = Poly.from(origIter);
+
+      expect(iter).to.equal(origIter);
+    });
+
+    it('should not add overhead if passed a known AsyncIterable', () => {
+      const origIter = Poly.from([]).async();
+      const iter = Poly.from(origIter);
+
+      expect(iter).to.equal(origIter);
     });
   });
 
@@ -59,7 +73,7 @@ describe('Factory Methods', function () {
     describe(`.${funcName}`, () => {
       function checkFor (obj) {
         const expected = Object[funcName](obj);
-        const actual = collectSync(Seq[funcName](obj));
+        const actual = collectSync(Poly[funcName](obj));
 
         expect(actual).to.deep.equal(expected);
       }
@@ -89,32 +103,32 @@ describe('Factory Methods', function () {
 
   describe('.range', () => {
     it('should work if only upper bound is specified', () => {
-      const seq = Seq.range(3);
-      expect(collectSync(seq)).to.deep.equal([0, 1, 2]);
+      const iter = Poly.range(3);
+      expect(collectSync(iter)).to.deep.equal([0, 1, 2]);
     });
 
     it('should work if lower and upper bound are specified', () => {
-      const seq = Seq.range(1, 5);
-      expect(collectSync(seq)).to.deep.equal([1, 2, 3, 4]);
+      const iter = Poly.range(1, 5);
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4]);
     });
 
     it('should work ok with a positive step different than 1', () => {
-      const seq = Seq.range(1, 9, 2);
-      expect(collectSync(seq)).to.deep.equal([1, 3, 5, 7]);
+      const iter = Poly.range(1, 9, 2);
+      expect(collectSync(iter)).to.deep.equal([1, 3, 5, 7]);
     });
 
     it('should work ok with a step of -1', () => {
-      const seq = Seq.range(5, 0, -1);
-      expect(collectSync(seq)).to.deep.equal([5, 4, 3, 2, 1]);
+      const iter = Poly.range(5, 0, -1);
+      expect(collectSync(iter)).to.deep.equal([5, 4, 3, 2, 1]);
     });
 
     it('should work ok with a negative step different than -1', () => {
-      const seq = Seq.range(6, 0, -2);
-      expect(collectSync(seq)).to.deep.equal([6, 4, 2]);
+      const iter = Poly.range(6, 0, -2);
+      expect(collectSync(iter)).to.deep.equal([6, 4, 2]);
     });
 
     it('should throw if 0 as step', () => {
-      expect(() => Seq.range(0, 0, 0)).to.throw();
+      expect(() => Poly.range(0, 0, 0)).to.throw();
     });
   });
 
@@ -122,26 +136,26 @@ describe('Factory Methods', function () {
     it('should yield the given value multiple times', () => {
       const value = 42;
 
-      const seq = Seq.repeat(value);
+      const iter = Poly.repeat(value);
       const expected = Array(100).fill(value);
 
-      expect(collectSync(seq, expected.length)).to.deep.equal(expected);
+      expect(collectSync(iter, expected.length)).to.deep.equal(expected);
     });
   });
 
   describe('.iterate', () => {
     it('should sync yield the result of the passed function for sync functions', () => {
-      const seq = Seq.iterate((last) => (last || 0) + 1);
+      const iter = Poly.iterate((last) => (last || 0) + 1);
       const expected = [1, 2, 3, 4, 5, 6, 7, 8]
 
-      expect(collectSync(seq, expected.length)).to.deep.equal(expected);
+      expect(collectSync(iter, expected.length)).to.deep.equal(expected);
     });
 
     it('should async yield the result of the passed function for async functions', async () => {
-      const seq = Seq.iterate(async (last) => (last || 0) + 1);
+      const iter = Poly.iterate(async (last) => (last || 0) + 1);
       const expected = [1, 2, 3, 4, 5, 6, 7, 8]
 
-      expect(await collectAsync(seq, expected.length)).to.deep.equal(expected);
+      expect(await collectAsync(iter, expected.length)).to.deep.equal(expected);
     });
   });
 });

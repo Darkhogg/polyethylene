@@ -1,8 +1,8 @@
 {
-  "name": "functier",
+  "name": "polyethylene",
   "version": "0.1.0",
-  "description": "Functional programming for Iterators and AsyncIterators",
-  "author": "Daniel Escoz <darkhogg+npm.functier@gmail.com>",
+  "description": "Functional programming for iterables and async iterables",
+  "author": "Daniel Escoz <darkhogg+npm.polyethylene@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
   "directories": {

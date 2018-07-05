@@ -4,6 +4,10 @@
   "description": "Functional programming for iterables and async iterables",
   "author": "Daniel Escoz <darkhogg+npm.polyethylene@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/Darkhogg/polyethylene"
+  },
   "main": "lib/index.js",
   "directories": {
     "lib": "lib",

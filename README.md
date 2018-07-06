@@ -4,9 +4,11 @@ Polyethylene is a wrapping layer around iterators and async iterators that lets 
 functional operators in a similar way you do with arrays but without the memory overhead.
 
 
-## Example
+## Examples
 
 ```javascript
+const Poly = require('polyethylene');
+
 // Print the first 10 tweets of each user
 await Poly.from(findUsers())
   .map(user => Poly.from(findUserTweets(user)).take(10))
@@ -28,6 +30,24 @@ Creates a new `Iterable` from the given argument, which might be:
   - an `asyncIterator`, in which case an `AsyncIterable` is returned.
   - a `function` that returns an `iterator` (e.g., a generator) in which case a `SyncIterable` is returned.
   - a `function` that returns an `asyncIterator` (e.g., an async generator) in which case a `SyncIterable` is returned.
+
+#### `.transform(transformerFunction)`
+
+Creates a new `AsyncIterable` by waiting for the user to call a series of callbacks passed to the `transformerFunction`.
+
+The passed `transformerFunction` will receive an object with the following keys:
+
+  - `value`: Call this function with any object to make the iterable yield it.
+  - `error`: Call this function with any error to make the iterable throw it.
+  - `done`: Call this function to make the iterable end.
+
+Call order is respected and values are buffered, so errors and finishing are triggered after all
+previous `value`s have been yielded.  If you call any of the functions after either `error` or
+`done` are called, it will be ignored.
+
+This function is intended to be used in situations where creating an iterable via generators is
+impossible, such as when the iteration comes from an `EventEmitter`, but using `from` is still
+preferred otherwise.
 
 
 #### `.range([from = 0,] to [, step = 1])`

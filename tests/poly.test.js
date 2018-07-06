@@ -37,7 +37,7 @@ describe('Factory Methods', function () {
       };
       const iter = Poly.from(obj);
 
-      expect(await collectAsync(iter)).to.deep.equal(values);
+      await expect(collectAsync(iter)).to.eventually.deep.equal(values);
     });
 
     it('should throw if not given an iterable', () => {
@@ -155,7 +155,124 @@ describe('Factory Methods', function () {
       const iter = Poly.iterate(async (last) => (last || 0) + 1);
       const expected = [1, 2, 3, 4, 5, 6, 7, 8]
 
-      expect(await collectAsync(iter, expected.length)).to.deep.equal(expected);
+      expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
+    });
+  });
+
+  describe('.transform', () => {
+    function fromTimeouts (spec) {
+      return Poly.transform(({value, error, done}) => {
+        for (const [obj, ms] of spec) {
+          const func = (obj === undefined) ? done
+            : (obj instanceof Error) ? error.bind(null, obj)
+            : value.bind(null, obj);
+
+          if (ms > 0) {
+            setTimeout(func, ms);
+          } else {
+            func();
+          }
+        }
+      });
+    }
+
+    it('should work for fully sync iterations', async () => {
+      const iter = fromTimeouts([
+        ['a', 0],
+        ['b', 0],
+        [undefined, 0],
+        ['X', 0],
+      ]);
+
+      const expected = ['a', 'b'];
+      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
+    });
+
+    it('should work for fully sync iteration errors', async () => {
+      const iter = fromTimeouts([
+        [new Error(), 0],
+        ['X', 0],
+      ]);
+
+      await expect(collectAsync(iter, 8)).to.be.rejected;
+    });
+
+    it('should work for sync empty iterations', async () => {
+      const iter = fromTimeouts([
+        [undefined, 0],
+        ['X', 0],
+        [new Error(), 0],
+      ]);
+
+      const expected = [];
+      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
+    });
+
+    it('should work for semi-async iterations', async () => {
+      const iter = fromTimeouts([
+        ['a', 0],
+        ['b', 0],
+        ['c', 10],
+        ['d', 10],
+        ['e', 20],
+        ['f', 20],
+        [undefined, 30],
+        ['X', 35],
+      ]);
+
+      const expected = ['a', 'b', 'c', 'd', 'e', 'f'];
+      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
+    });
+
+    it('should work for semi-async iteration errors', async () => {
+      const iter = fromTimeouts([
+        ['a', 0],
+        ['b', 0],
+        [new Error(), 10],
+        [undefined, 20],
+        ['X', 30],
+      ]);
+
+      await expect(collectAsync(iter, 8)).to.be.rejected;
+    });
+
+    it('should work for async iterations', async () => {
+      const iter = fromTimeouts([
+        ['a', 0],
+        ['b', 5],
+        ['c', 10],
+        ['d', 15],
+        ['e', 20],
+        ['f', 25],
+        [undefined, 30],
+        ['X', 35],
+      ]);
+
+      const expected = ['a', 'b', 'c', 'd', 'e', 'f'];
+      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
+    });
+
+    it('should work for async iteration errors', async () => {
+      const iter = fromTimeouts([
+        ['a', 0],
+        ['b', 5],
+        [new Error(), 10],
+        [undefined, 20],
+        ['X', 30],
+      ]);
+
+      await expect(collectAsync(iter, 8)).to.be.rejected;
+    });
+
+    it('should work for async empty iterations', async () => {
+      const iter = fromTimeouts([
+        [undefined, 5],
+        ['X', 10],
+        [new Error(), 15],
+      ]);
+
+      const expected = [];
+      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
     });
   });
 });

@@ -160,7 +160,7 @@ describe('Sync Iterable', function () {
 
 
   describe('#map', function () {
-    it('should yield elements correctly transformed', () => {
+    it('should yield elements correctly mapped', () => {
       const iter = Poly.from([1, 2, 3]).map(n => n * n);
       expect(collectSync(iter)).to.deep.equal([1, 4, 9]);
     });

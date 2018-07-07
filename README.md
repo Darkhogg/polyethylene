@@ -9,11 +9,11 @@ functional operators in a similar way you do with arrays but without the memory 
 ```javascript
 const Poly = require('polyethylene');
 
-// Print the first 10 tweets of each user
+// Print the first 10 posts of each user
 await Poly.from(findUsers())
-  .map(user => Poly.from(findUserTweets(user)).take(10))
+  .map(user => Poly.from(findUserPosts(user)).take(10))
   .flatten()
-  .forEach(tweet => console.log(tweet));
+  .forEach(post => console.log(post));
 ```
 
 ## Usage
@@ -31,11 +31,11 @@ Creates a new `Iterable` from the given argument, which might be:
   - a `function` that returns an `iterator` (e.g., a generator) in which case a `SyncIterable` is returned.
   - a `function` that returns an `asyncIterator` (e.g., an async generator) in which case a `SyncIterable` is returned.
 
-#### `.transform(transformerFunction)`
+#### `.assemble(assemblerFunction)`
 
-Creates a new `AsyncIterable` by waiting for the user to call a series of callbacks passed to the `transformerFunction`.
+Creates a new `AsyncIterable` by waiting for the user to call a series of callbacks passed to the `assemblerFunction`.
 
-The passed `transformerFunction` will receive an object with the following keys:
+The passed `assemblerFunction` will receive an object with the following keys:
 
   - `value`: Call this function with any object to make the iterable yield it.
   - `error`: Call this function with any error to make the iterable throw it.

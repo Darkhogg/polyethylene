@@ -159,9 +159,9 @@ describe('Factory Methods', function () {
     });
   });
 
-  describe('.transform', () => {
+  describe('.assemble', () => {
     function fromTimeouts (spec) {
-      return Poly.transform(({value, error, done}) => {
+      return Poly.assemble(({value, error, done}) => {
         for (const [obj, ms] of spec) {
           const func = (obj === undefined) ? done
             : (obj instanceof Error) ? error.bind(null, obj)

@@ -164,7 +164,7 @@ describe('Async Iterable', function () {
 
 
   describe('#map', function () {
-    it('should yield elements correctly transformed', async () => {
+    it('should yield elements correctly mapped', async () => {
       const iter = Poly.from([1, 2, 3]).async().map(n => n * n);
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 4, 9]);
     });

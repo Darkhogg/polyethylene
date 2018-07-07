@@ -20,16 +20,18 @@ await Poly.from(findUsers())
 
 ### Factory Methods
 
-All of these functions are in the `Poly` object top-level, and will return a `Iterable` object.
+All of these functions are in the `Poly` object top-level, and will return an `Iterable` object.
+
 
 #### `.from(iterable|asyncIterable|generator|asyncGenerator)`
 
 Creates a new `Iterable` from the given argument, which might be:
 
-  - an `iterator`, in which case a `SyncIterable` is returned.
-  - an `asyncIterator`, in which case an `AsyncIterable` is returned.
-  - a `function` that returns an `iterator` (e.g., a generator) in which case a `SyncIterable` is returned.
-  - a `function` that returns an `asyncIterator` (e.g., an async generator) in which case a `SyncIterable` is returned.
+  - an `iterable`, in which case a `SyncIterable` is returned.
+  - an `asyncIterable`, in which case an `AsyncIterable` is returned.
+  - a `function` that returns an `iterable` (e.g., a generator) in which case a `SyncIterable` is returned.
+  - a `function` that returns an `asyncIterable` (e.g., an async generator) in which case a `SyncIterable` is returned.
+
 
 #### `.assemble(assemblerFunction)`
 
@@ -48,6 +50,20 @@ previous `value`s have been yielded.  If you call any of the functions after eit
 This function is intended to be used in situations where creating an iterable via generators is
 impossible, such as when the iteration comes from an `EventEmitter`, but using `from` is still
 preferred otherwise.
+
+As an example, here is how you would assemble an `Iterable` from a stream (note however that
+streams are already async iterables, so this is not needed):
+
+```
+const Poly = require('polyethylene');
+
+const iter = Poly.assemble(({value, error, done}) => {
+  const stream = process.stdin; // or any other stream
+  stream.on('data', value);
+  stream.on('error', error);
+  stream.on('end', done);
+});
+```
 
 
 #### `.range([from = 0,] to [, step = 1])`
@@ -69,6 +85,7 @@ This is intended to work the same way as `range` works in Python; any deviation 
 #### `.repeat(value)`
 
 Creates a new `SyncIterable` that will infinitely yield the given `value`.
+
 
 #### `.iterate(function[, options = {}])`
 
@@ -212,3 +229,15 @@ Concatenates all elements in a string with `glue` between them.
 
 Iterates over all elements without doing anything.
 This ensures any side effects of previous stages are executed and, in `AsyncIterables`, the full iteration can be `await`ed.
+
+
+## Planned Features
+
+The following are a few planned features I intend to add in the future, in no particular order:
+
+- A `tee`/`fork` method that, from a single iterator, returns N iterators that get the same
+  elements or errors in the same order.
+- The possibility of prefetching promises before yielding or running processing functions, so
+  as soon as the next element is requested, it has already been fetched.
+- The possibility of running processing functions in parallel as long as elements are coming
+  fast enough.

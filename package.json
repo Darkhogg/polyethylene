@@ -1,6 +1,6 @@
 {
   "name": "polyethylene",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Functional programming for iterables and async iterables",
   "author": "Daniel Escoz <darkhogg+npm.polyethylene@gmail.com>",
   "license": "MIT",

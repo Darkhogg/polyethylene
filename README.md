@@ -1,7 +1,8 @@
 # Polyethylene
 
 Polyethylene is a wrapping layer around iterators and async iterators that lets you chain
-functional operators in a similar way you do with arrays but without the memory overhead.
+functional operators in a similar way you do with arrays but without the memory overhead or having
+to wait for an aasynchronous iteration to end.
 
 
 ## Examples
@@ -16,11 +17,13 @@ await Poly.from(findUsers())
   .forEach(post => console.log(post));
 ```
 
+
 ## Usage
 
 ### Factory Methods
 
-All of these functions are in the `Poly` object top-level, and will return an `Iterable` object.
+All of these functions are in the `Poly` object top-level obtained by requiring `polyethilene`, and
+will return an `Iterable` object.
 
 
 #### `.from(iterable|asyncIterable|generator|asyncGenerator)`
@@ -29,8 +32,8 @@ Creates a new `Iterable` from the given argument, which might be:
 
   - an `iterable`, in which case a `SyncIterable` is returned.
   - an `asyncIterable`, in which case an `AsyncIterable` is returned.
-  - a `function` that returns an `iterable` (e.g., a generator) in which case a `SyncIterable` is returned.
-  - a `function` that returns an `asyncIterable` (e.g., an async generator) in which case a `SyncIterable` is returned.
+  - a `function` that returns an `iterable` (e.g., a generator function) in which case a `SyncIterable` is returned.
+  - a `function` that returns an `asyncIterable` (e.g., an async generator function) in which case a `SyncIterable` is returned.
 
 
 #### `.assemble(assemblerFunction)`
@@ -43,15 +46,15 @@ The passed `assemblerFunction` will receive an object with the following keys:
   - `error`: Call this function with any error to make the iterable throw it.
   - `done`: Call this function to make the iterable end.
 
-Call order is respected and values are buffered, so errors and finishing are triggered after all
-previous `value`s have been yielded.  If you call any of the functions after either `error` or
-`done` are called, it will be ignored.
+Call order is respected and values are buffered if produced faster than consumed, so `error`s and
+`done` are triggered after all previous `value`s have been yielded.  If you call any of the
+functions after either `error` or `done` are called, it will be ignored.
 
 This function is intended to be used in situations where creating an iterable via generators is
 impossible, such as when the iteration comes from an `EventEmitter`, but using `from` is still
 preferred otherwise.
 
-As an example, here is how you would assemble an `Iterable` from a stream (note however that
+As an example, here is how you would assemble an `Iterable` from a stream (note however that Node
 streams are already async iterables, so this is not needed):
 
 ```
@@ -79,7 +82,8 @@ Poly.range(5, 0, -1) // yields 5, 4, 3, 2, 1
 Poly.range(0, 1, 0.2) // yields 0, 0.2, 0.4, 0.6, 0.8 (with precission errors)
 ```
 
-This is intended to work the same way as `range` works in Python; any deviation from it should be reported as a bug.
+This is intended to work the same way as `range` works in Python; any deviation from it should be
+reported as a bug.
 
 
 #### `.repeat(value)`
@@ -103,9 +107,11 @@ The passed `function` will be called with the result of the last call and no bou
 
 Yields the same elements as `Object.values(object)` but without creating an array in the process.
 
+
 #### `.keys(object)`
 
 Yields the same elements as `Object.keys(object)` but without creating an array in the process.
+
 
 #### `.entries(object)`
 
@@ -115,15 +121,16 @@ Yields the same elements as `Object.entries(object)` but without creating an arr
 
 ### Transform Operators
 
-These functions transform a sequence in some way, and they all return a `Iterable` object of the same type as the original, unless stated otherwise.
-For `AsyncIterables`, all the functions received as an argument can return promises, and will be awaited.
+These functions transform a sequence in some way, and they all return a `Iterable` object of the
+same type as the original, unless stated otherwise.  For `AsyncIterables`, all the functions
+received as an argument can return promises, and will be awaited.
 
 
 #### `#async()`
 
 Returns an `AsyncIterable` that will yield the same elements as this one.
-This has no effect on async sequences, and it's intended as a way of converting a sync sequence created by any of the
-factory methods to an async sequence, so async functions are available in the pipeline.
+This has no effect on async sequences, it's intended as a way of converting a sync sequence created
+by any of the factory methods to an async sequence so async functions are available in the pipeline.
 
 
 #### `#drop(num = 0)`
@@ -168,24 +175,27 @@ If `func` is not a function, an exception is thrown.
 
 #### `#map(func = ID)`
 
-Yields the results of applying `func(elem)` to all elements.
+Yields the results of applying `func(elem)` to each element.
 If `func` is not a function, an exception is thrown.
 
 #### `#flatMap(func = ID)`
 
 Yields from the results of applying `func(elem)` to all elements, that is, performs a `yield *` on
+a call to `func` with each element.
 If `func` is not a function, an exception is thrown.
+If `func` returns a value that is not iterable via `yield *`, an exception is thrown.
 
 
 ### Leaf Operators
 
-These functions process the sequence in some way and return a single result.
-`SyncIterable`s will return immediately, while `AsyncIterable`s will return a promise, but act equivalently otherwise.
+These functions process the iterable in some way and return a single result.
+`SyncIterable`s will return immediately, while `AsyncIterable`s will return a promise, but will act
+equivalently otherwise.
 
 
 #### `#toArray()`
 
-Returns an array containing all elements of this sequence in the order they would have been yielded.
+Returns an array containing all elements of this iterable in the order they would have been yielded.
 
 
 #### `#find(func)`
@@ -196,23 +206,26 @@ Returns the first element for which `func(elem)` is truthy.  If the function alw
 
 #### `#includes(obj)`
 
-Returns whether `obj` is found as an element of this sequence.
+Returns whether `obj` is found as an element of this iterable.
 
 
 #### `#some(func = ID)`
 
 Returns `true` if at least for one element `func(elem)` is truthy, `false` otherwise.
+`func` will not be called afterwards.
 
 
 #### `#every(func = ID)`
 
 Returns `false` if at least for one element, `func(elem)` is falsy, `true` otherwise.
+`func` will not be called afterwards.
 
 
 #### `#reduce(func[, init])`
 
-Calls `func(accumulator, elem)` for every element (except the first if `init` is not passed) `elem` with the previous result of the call as `accumulator`.
-`init` will be used as the first `accumulator`; if not passed, the first element is used instead.
+Calls `func(accumulator, elem)` for every element (except the first if `init` is not passed) `elem`
+with the previous result of the call as `accumulator`.  `init` will be used as the first
+`accumulator`; if not passed, the first element is used instead.
 
 
 #### `#forEach(func)`
@@ -228,7 +241,8 @@ Concatenates all elements in a string with `glue` between them.
 #### `#drain()`
 
 Iterates over all elements without doing anything.
-This ensures any side effects of previous stages are executed and, in `AsyncIterables`, the full iteration can be `await`ed.
+This ensures any side effects of previous stages are executed and, in `AsyncIterables`, the full
+iteration can be `await`ed.
 
 
 ## Planned Features
@@ -237,7 +251,7 @@ The following are a few planned features I intend to add in the future, in no pa
 
 - A `tee`/`fork` method that, from a single iterator, returns N iterators that get the same
   elements or errors in the same order.
-- The possibility of prefetching promises before yielding or running processing functions, so
+- The possibility of *prefetching* promises before yielding or running processing functions, so
   as soon as the next element is requested, it has already been fetched.
 - The possibility of running processing functions in parallel as long as elements are coming
   fast enough.

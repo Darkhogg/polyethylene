@@ -1,4 +1,4 @@
-# Polyethylene
+# Polyethylene [![npm version](https://badge.fury.io/js/polyethylene.svg)](https://badge.fury.io/js/polyethylene)
 
 Polyethylene is a wrapping layer around iterators and async iterators that lets you chain
 functional operators in a similar way you do with arrays but without the memory overhead or having

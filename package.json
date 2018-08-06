@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/Darkhogg/polyethylene"
+    "url": "https://github.com/Darkhogg/polyethylene"
   },
   "main": "lib/poly.js",
   "directories": {

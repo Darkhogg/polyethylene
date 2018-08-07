@@ -4,7 +4,7 @@ const {expect} = require('chai');
 
 const {collectSync, collectAsync} = require('./_utils');
 
-describe('Factory Methods', function () {
+describe('Poly', function () {
   describe('.from', function () {
     it('should return an iterable if given an iterable', () => {
       const obj = {[Symbol.iterator](){}};
@@ -65,6 +65,13 @@ describe('Factory Methods', function () {
 
       expect(iter).to.equal(origIter);
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([], opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
   /* we check all three functions at the same time by checing the work the same
@@ -95,6 +102,13 @@ describe('Factory Methods', function () {
         Child.prototype = {foo: 1}
 
         checkFor(new Child());
+      });
+
+      it('should preserve the options object', () => {
+        const opts = {opt: 1};
+        const iter = Poly[funcName]({}, opts)
+
+        expect(iter.options).to.deep.equal(opts);
       });
     });
   }
@@ -130,6 +144,13 @@ describe('Factory Methods', function () {
     it('should throw if 0 as step', () => {
       expect(() => Poly.range(0, 0, 0)).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.range(0, 0, 1, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
   describe('.repeat', () => {
@@ -140,6 +161,13 @@ describe('Factory Methods', function () {
       const expected = Array(100).fill(value);
 
       expect(collectSync(iter, expected.length)).to.deep.equal(expected);
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.repeat(null, opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 
@@ -156,6 +184,13 @@ describe('Factory Methods', function () {
       const expected = [1, 2, 3, 4, 5, 6, 7, 8]
 
       expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.iterate(() => null, null, opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 
@@ -273,6 +308,13 @@ describe('Factory Methods', function () {
 
       const expected = [];
       await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.assemble(({done}) => done(), opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 });

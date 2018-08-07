@@ -21,6 +21,13 @@ describe('Sync Iterable', function () {
 
       expect(await collectAsync(asyncIter)).to.deep.equal(await collectAsync(origIter));
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).async(opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -47,6 +54,13 @@ describe('Sync Iterable', function () {
     it('should throw if passed a negative number', () => {
       expect(() => Poly.from([]).drop(-1)).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).drop(0, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -72,6 +86,13 @@ describe('Sync Iterable', function () {
 
     it('should throw if passed a negative number', () => {
       expect(() => Poly.from([]).take(-1)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).take(0, opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 
@@ -106,6 +127,13 @@ describe('Sync Iterable', function () {
     it('should throw if passed argument is not a function', () => {
       expect(() => Poly.from([]).dropWhile('foo')).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).dropWhile(() => false, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -139,6 +167,13 @@ describe('Sync Iterable', function () {
     it('should throw if passed argument is not a function', () => {
       expect(() => Poly.from([]).takeWhile('foo')).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).takeWhile(() => true, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -155,6 +190,13 @@ describe('Sync Iterable', function () {
 
     it('should throw if passed argument is not a function', () => {
       expect(() => Poly.from([]).filter('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).filter(() => false, opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 
@@ -173,6 +215,13 @@ describe('Sync Iterable', function () {
     it('should throw if passed argument is not a function', () => {
       expect(() => Poly.from([]).map('foo')).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).map(() => null, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -189,6 +238,13 @@ describe('Sync Iterable', function () {
 
     it('should throw if passed argument is not a function', () => {
       expect(() => Poly.from([]).flatMap('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).flatten(opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 

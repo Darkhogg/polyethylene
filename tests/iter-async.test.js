@@ -25,6 +25,13 @@ describe('Async Iterable', function () {
 
       await expect(collectAsync(asyncIter)).to.eventually.deep.equal(await collectAsync(origIter));
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).async(opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -51,6 +58,13 @@ describe('Async Iterable', function () {
     it('should throw if passed a negative number', async () => {
       expect(() => Poly.from([]).async().drop(-1)).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).drop(0, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -76,6 +90,13 @@ describe('Async Iterable', function () {
 
     it('should throw if passed a negative number', async () => {
       expect(() => Poly.from([]).async().take(-1)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).take(0, opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 
@@ -110,6 +131,13 @@ describe('Async Iterable', function () {
     it('should throw if passed argument is not a function', async () => {
       expect(() => Poly.from([]).async().dropWhile('foo')).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).dropWhile(() => false, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -143,6 +171,13 @@ describe('Async Iterable', function () {
     it('should throw if passed argument is not a function', async () => {
       expect(() => Poly.from([]).async().takeWhile('foo')).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).takeWhile(() => true, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
@@ -159,6 +194,13 @@ describe('Async Iterable', function () {
 
     it('should throw if passed argument is not a function', async () => {
       expect(() => Poly.from([]).async().filter('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).filter(() => true, opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 
@@ -177,11 +219,17 @@ describe('Async Iterable', function () {
     it('should throw if passed argument is not a function', async () => {
       expect(() => Poly.from([]).async().map('foo')).to.throw();
     });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).map(() => null, opts);
+
+      expect(iter.options).to.deep.equal(opts);
+    });
   });
 
 
   describe('#flatten', function () {
-
     it('should correctly yield elements from iterable elements', async () => {
       const iter = Poly.from([
         Poly.range(1).async(),
@@ -198,6 +246,13 @@ describe('Async Iterable', function () {
 
     it('should throw if passed argument is not a function', async () => {
       expect(() => Poly.from([]).async().flatMap('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).flatten(opts);
+
+      expect(iter.options).to.deep.equal(opts);
     });
   });
 

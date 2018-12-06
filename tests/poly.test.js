@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-expressions */
 const Poly = require('..');
 
 const {expect} = require('chai');
 
 const {collectSync, collectAsync} = require('./_utils');
 
-describe('Poly', function () {
-  describe('.from', function () {
+describe('Poly', () => {
+  describe('.from', () => {
     it('should return an iterable if given an iterable', () => {
-      const obj = {[Symbol.iterator](){}};
+      const obj = {[Symbol.iterator] () {}};
       const iter = Poly.from(obj);
 
       expect(iter[Symbol.iterator]).to.exist;
@@ -16,7 +17,9 @@ describe('Poly', function () {
     it('should return an iterable that produces the correct values', () => {
       const values = [1, 3, 3, 7];
       const obj = {
-        * [Symbol.iterator] () {yield * values;}
+        * [Symbol.iterator] () {
+          yield * values;
+        },
       };
       const iter = Poly.from(obj);
 
@@ -24,7 +27,7 @@ describe('Poly', function () {
     });
 
     it('should return an async iterable if given an async iterable', () => {
-      const obj = {[Symbol.asyncIterator](){}};
+      const obj = {[Symbol.asyncIterator] () {}};
       const iter = Poly.from(obj);
 
       expect(iter[Symbol.asyncIterator]).to.exist;
@@ -33,7 +36,9 @@ describe('Poly', function () {
     it('should return an async iterable that produces the correct values', async () => {
       const values = [1, 3, 3, 7];
       const obj = {
-        * [Symbol.asyncIterator] () {yield * values;}
+        * [Symbol.asyncIterator] () {
+          yield * values;
+        },
       };
       const iter = Poly.from(obj);
 
@@ -70,12 +75,14 @@ describe('Poly', function () {
       const opts = {opt: 1};
       const iter = Poly.from([], opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
-  /* we check all three functions at the same time by checing the work the same
-   * as their Object counterparts */
+  /*
+   * we check all three functions at the same time by checing the work the same
+   * as their Object counterparts
+   */
   for (const funcName of ['keys', 'values', 'entries']) {
     describe(`.${funcName}`, () => {
       function checkFor (obj) {
@@ -98,21 +105,20 @@ describe('Poly', function () {
       });
 
       it('should work for objects with inherited properties', () => {
-        const Child = function () {};
-        Child.prototype = {foo: 1}
+        class Child {}
+        Child.prototype = {foo: 1};
 
         checkFor(new Child());
       });
 
       it('should preserve the options object', () => {
         const opts = {opt: 1};
-        const iter = Poly[funcName]({}, opts)
+        const iter = Poly[funcName]({}, opts);
 
-        expect(iter.options).to.deep.equal(opts);
+        expect(iter.options.opt).to.equal(opts.opt);
       });
     });
   }
-
 
 
   describe('.range', () => {
@@ -149,7 +155,7 @@ describe('Poly', function () {
       const opts = {opt: 1};
       const iter = Poly.range(0, 0, 1, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
@@ -167,21 +173,21 @@ describe('Poly', function () {
       const opts = {opt: 1};
       const iter = Poly.repeat(null, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
   describe('.iterate', () => {
     it('should sync yield the result of the passed function for sync functions', () => {
       const iter = Poly.iterate((last) => (last || 0) + 1);
-      const expected = [1, 2, 3, 4, 5, 6, 7, 8]
+      const expected = [1, 2, 3, 4, 5, 6, 7, 8];
 
       expect(collectSync(iter, expected.length)).to.deep.equal(expected);
     });
 
     it('should async yield the result of the passed function for async functions', async () => {
       const iter = Poly.iterate(async (last) => (last || 0) + 1);
-      const expected = [1, 2, 3, 4, 5, 6, 7, 8]
+      const expected = [1, 2, 3, 4, 5, 6, 7, 8];
 
       expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected);
     });
@@ -190,7 +196,7 @@ describe('Poly', function () {
       const opts = {opt: 1};
       const iter = Poly.iterate(() => null, null, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
@@ -200,7 +206,7 @@ describe('Poly', function () {
         for (const [obj, ms] of spec) {
           const func = (obj === undefined) ? done
             : (obj instanceof Error) ? error.bind(null, obj)
-            : value.bind(null, obj);
+              : value.bind(null, obj);
 
           if (ms > 0) {
             setTimeout(func, ms);
@@ -314,7 +320,7 @@ describe('Poly', function () {
       const opts = {opt: 1};
       const iter = Poly.assemble(({done}) => done(), opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 });

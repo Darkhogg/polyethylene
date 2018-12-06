@@ -1,0 +1,6 @@
+{
+  "extends": "@darkhogg",
+  "env": {
+    "mocha": true
+  }
+}

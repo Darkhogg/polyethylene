@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 const Poly = require('..');
 
 const chai = require('chai');
@@ -8,8 +9,8 @@ const {expect} = chai;
 
 const {collectAsync} = require('./_utils');
 
-describe('Async Iterable', function () {
-  describe('#async', function () {
+describe('Async Iterable', () => {
+  describe('#async', () => {
     it('should return an async iterable', () => {
       const iter = Poly.from(async function * () {}).async();
 
@@ -18,7 +19,9 @@ describe('Async Iterable', function () {
     });
 
     it('should yield the same elements as the original', async () => {
-      const gen = async function * () { yield * [1, 2, 3]; };
+      async function * gen () {
+        yield * [1, 2, 3];
+      }
 
       const origIter = Poly.from(gen);
       const asyncIter = Poly.from(gen).async();
@@ -30,12 +33,12 @@ describe('Async Iterable', function () {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).async(opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
 
-  describe('#drop', function () {
+  describe('#drop', () => {
     it('should correctly drop the first few elements', async () => {
       const iter = Poly.from([1, 2, 3, 4, 5]).async().drop(3);
       await expect(collectAsync(iter)).to.eventually.deep.equal([4, 5]);
@@ -63,12 +66,12 @@ describe('Async Iterable', function () {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).drop(0, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
 
-  describe('#take', function () {
+  describe('#take', () => {
     it('should correctly take the first few elements', async () => {
       const iter = Poly.from([1, 2, 3, 4, 5]).async().take(3);
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
@@ -96,19 +99,19 @@ describe('Async Iterable', function () {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).take(0, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
 
-  describe('#dropWhile', function () {
+  describe('#dropWhile', () => {
     it('should correctly drop as long as the passed function returns true', async () => {
-      const iter = Poly.from([1, 2, 3, 4, 5]).async().dropWhile(async n => n != 3);
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().dropWhile(async (n) => n !== 3);
       await expect(collectAsync(iter)).to.eventually.deep.equal([3, 4, 5]);
     });
 
     it('should correctly stop calling the passed function after the first false', async () => {
-      const iter = Poly.from([1, 2, 3, 4, 5]).async().dropWhile(async n => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().dropWhile(async (n) => {
         if (n > 1) {
           expect.fail('called after first');
         }
@@ -119,7 +122,7 @@ describe('Async Iterable', function () {
     });
 
     it('should correctly yield nothing if the passed function never returns false', async () => {
-      const iter = Poly.from([1, 2, 3, 4, 5]).async().dropWhile(async n => true);
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().dropWhile(async (n) => true);
       await expect(collectAsync(iter)).to.eventually.deep.equal([]);
     });
 
@@ -136,19 +139,19 @@ describe('Async Iterable', function () {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).dropWhile(() => false, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
 
-  describe('#takeWhile', function () {
+  describe('#takeWhile', () => {
     it('should correctly take as long as the passed function returns true', async () => {
-      const iter = Poly.from([1, 2, 3, 4, 5]).async().takeWhile(async n => n != 3);
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().takeWhile(async (n) => n !== 3);
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2]);
     });
 
     it('should correctly stop calling the passed function after the first false', async () => {
-      const iter = Poly.from([1, 2, 3, 4, 5]).async().takeWhile(async n => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().takeWhile(async (n) => {
         if (n > 1) {
           expect.fail('called after first');
         }
@@ -159,7 +162,7 @@ describe('Async Iterable', function () {
     });
 
     it('should correctly yield everything if the passed function never returns false', async () => {
-      const iter = Poly.from([1, 2, 3]).async().takeWhile(async n => true);
+      const iter = Poly.from([1, 2, 3]).async().takeWhile(async (n) => true);
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
     });
 
@@ -176,14 +179,14 @@ describe('Async Iterable', function () {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).takeWhile(() => true, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
 
-  describe('#filter', function () {
+  describe('#filter', () => {
     it('should only yield elements for which passed function returns true', async () => {
-      const iter = Poly.from([1, 2, 3, 4, 5, 6, 7]).async().filter(n => n % 3 == 1);
+      const iter = Poly.from([1, 2, 3, 4, 5, 6, 7]).async().filter((n) => n % 3 === 1);
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 4, 7]);
     });
 
@@ -200,14 +203,14 @@ describe('Async Iterable', function () {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).filter(() => true, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
 
-  describe('#map', function () {
+  describe('#map', () => {
     it('should yield elements correctly mapped', async () => {
-      const iter = Poly.from([1, 2, 3]).async().map(n => n * n);
+      const iter = Poly.from([1, 2, 3]).async().map((n) => n * n);
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 4, 9]);
     });
 
@@ -224,23 +227,55 @@ describe('Async Iterable', function () {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).map(() => null, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
 
-  describe('#flatten', function () {
-    it('should correctly yield elements from iterable elements', async () => {
-      const iter = Poly.from([
-        Poly.range(1).async(),
-        Poly.range(2).async(),
-        Poly.range(3).async(),
-      ]).async().flatten();
-      await expect(collectAsync(iter)).to.eventually.deep.equal([0, 0, 1, 0, 1, 2]);
+  const FLAT_METHODS = ['flatten', 'flat'];
+  FLAT_METHODS.forEach((name) => {
+    describe(`#${name}`, () => {
+      it('should correctly yield elements from iterable elements', async () => {
+        const iter = Poly.from([
+          Poly.range(1).async(),
+          Poly.range(2).async(),
+          Poly.range(3).async(),
+        ]).async()[name]();
+        await expect(collectAsync(iter)).to.eventually.deep.equal([0, 0, 1, 0, 1, 2]);
+      });
+
+      it('should be rejected if an element is not iterable', async () => {
+        const iter = Poly.from([0]).async()[name]();
+        await expect(collectAsync(iter)).to.be.rejected;
+      });
+
+      it('should throw if passed argument is not a function', async () => {
+        expect(() => Poly.from([]).async().flatMap('foo')).to.throw();
+      });
+
+      it('should preserve the options object', () => {
+        const opts = {opt: 1};
+        const iter = Poly.from(async function * () {})[name](opts);
+
+        expect(iter.options.opt).to.equal(opts.opt);
+      });
+    });
+  });
+
+
+  describe('#flatMap', () => {
+    it('should yield elements correctly mapped', async () => {
+      const iter = Poly.from([1, 2, 3]).async().flatMap((n) => Array(n).fill().map((_, i) => (10 * n) + i));
+      await expect(collectAsync(iter)).to.eventually.deep.equal([10, 20, 21, 30, 31, 32]);
     });
 
-    it('should be rejected if an element is not iterable', async () => {
-      const iter = Poly.from([0]).async().flatten();
+    it('should correctly use implicit identity function if function is not passed', async () => {
+      const iter = Poly.from([[1, 2], [3, 4, 5]]).async().flatMap();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('should throw if a mapped element is not iterable', async () => {
+      const iter = Poly.from([0]).async().flatMap();
       await expect(collectAsync(iter)).to.be.rejected;
     });
 
@@ -248,16 +283,77 @@ describe('Async Iterable', function () {
       expect(() => Poly.from([]).async().flatMap('foo')).to.throw();
     });
 
-    it('should preserve the options object', () => {
+    it('should preserve the options object', async () => {
       const opts = {opt: 1};
-      const iter = Poly.from(async function * () {}).flatten(opts);
+      const iter = Poly.from([]).async().flatMap(() => null, opts);
 
-      expect(iter.options).to.deep.equal(opts);
+      expect(iter.options.opt).to.equal(opts.opt);
     });
   });
 
 
-  describe('#toArray', function () {
+  describe('#group', () => {
+    it('should yield elements correctly grouped if amount is a divisor', async () => {
+      const iter = Poly.from([1, 2, 3, 4, 5, 6]).async().group(2);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([[1, 2], [3, 4], [5, 6]]);
+    });
+
+    it('should yield last elements correctly grouped if amount is not a divisor', async () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().group(2);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([[1, 2], [3, 4], [5]]);
+    });
+
+    it('should yield nothing if original iterable was empty', async () => {
+      const iter = Poly.from([]).async().group(2);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([]);
+    });
+
+    it('should throw if not passed an integer', () => {
+      expect(() => Poly.from([]).async().group('foo')).to.throw();
+    });
+
+    it('should throw if passed zero', () => {
+      expect(() => Poly.from([]).async().group(0)).to.throw();
+    });
+
+    it('should throw if passed a negative number', () => {
+      expect(() => Poly.from([]).async().group(-1)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).async().group(1, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#groupWhile', () => {
+    it('should yield elements correctly grouped', async () => {
+      const iter = Poly.range(0, 10).async().groupWhile((elem) => elem % 4 !== 0 && elem % 5 !== 0);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([[0, 1, 2, 3], [4], [5, 6, 7], [8, 9]]);
+    });
+
+    it('should yield nothing if original iterable was empty', async () => {
+      const iter = Poly.from([]).async().groupWhile();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([]);
+    });
+
+    it('should throw if not passed a function', async () => {
+      expect(() => Poly.from([]).async().groupWhile('foo')).to.throw();
+    });
+
+    it('should preserve the options object', async () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).async().groupWhile(() => true, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#toArray', () => {
     it('should return all elements as an array', async () => {
       const iter = Poly.range(3).async();
       await expect(iter.toArray()).to.eventually.deep.equal([0, 1, 2]);
@@ -270,15 +366,15 @@ describe('Async Iterable', function () {
   });
 
 
-  describe('#find', function () {
+  describe('#find', () => {
     it('should correctly return first element for which passed function is true', async () => {
       const iter = Poly.range(15).async();
-      await expect(iter.find(async n => n % 6 == 5)).to.eventually.equal(5);
+      await expect(iter.find(async (n) => n % 6 === 5)).to.eventually.equal(5);
     });
 
     it('should correctly return undefined if passed function never returns true', async () => {
       const iter = Poly.range(15).async();
-      await expect(iter.find(async n => false)).to.eventually.not.exist;
+      await expect(iter.find(async (n) => false)).to.eventually.not.exist;
     });
 
     it('should correctly use implicit boolean conversion if function is not passed', async () => {
@@ -287,8 +383,8 @@ describe('Async Iterable', function () {
     });
 
     it('should work for infinite iterables for which the passed function returns true', async () => {
-      const iter = Poly.iterate(n => (n || 0) + 1).async();
-      await expect(iter.find(async n => n % 15 == 0)).to.eventually.equal(15);
+      const iter = Poly.iterate((n) => (n || 0) + 1).async();
+      await expect(iter.find(async (n) => n % 15 === 0)).to.eventually.equal(15);
     });
 
     it('should throw if passed argument is not a function', async () => {
@@ -297,7 +393,7 @@ describe('Async Iterable', function () {
   });
 
 
-  describe('#includes', function () {
+  describe('#includes', () => {
     it('should correctly return true if element is included', async () => {
       const iter = Poly.range(15).async();
       await expect(iter.includes(7)).to.eventually.be.ok;
@@ -314,21 +410,21 @@ describe('Async Iterable', function () {
     });
 
     it('should work for infinite iterables that contain the element', async () => {
-      const iter = Poly.iterate(n => (n || 0) + 1).async();
+      const iter = Poly.iterate((n) => (n || 0) + 1).async();
       await expect(iter.includes(42)).to.eventually.be.ok;
     });
   });
 
 
-  describe('#some', function () {
+  describe('#some', () => {
     it('should correctly return true if passed function returns true at any point', async () => {
       const iter = Poly.range(42).async();
-      await expect(iter.some(n => n == 13)).to.eventually.be.ok;
+      await expect(iter.some((n) => n === 13)).to.eventually.be.ok;
     });
 
     it('should correctly return false if passed function always return false', async () => {
       const iter = Poly.range(42).async();
-      await expect(iter.some(n => false)).to.eventually.not.be.ok;
+      await expect(iter.some((n) => false)).to.eventually.not.be.ok;
     });
 
     it('should correctly use implicit boolean conversion if function is not passed', async () => {
@@ -337,8 +433,8 @@ describe('Async Iterable', function () {
     });
 
     it('should work for infinite iterables for which the passed function returns true', async () => {
-      const iter = Poly.iterate(n => (n || 0) + 1).async();
-      await expect(iter.some(n => n == 42)).to.eventually.be.ok;
+      const iter = Poly.iterate((n) => (n || 0) + 1).async();
+      await expect(iter.some((n) => n === 42)).to.eventually.be.ok;
     });
 
     it('should throw if passed argument is not a function', async () => {
@@ -347,15 +443,15 @@ describe('Async Iterable', function () {
   });
 
 
-  describe('#every', function () {
+  describe('#every', () => {
     it('should correctly return true if passed function always returns true', async () => {
       const iter = Poly.range(42).async();
-      await expect(iter.every(n => true)).to.eventually.be.ok;
+      await expect(iter.every((n) => true)).to.eventually.be.ok;
     });
 
     it('should correctly return false if passed function return false at any point', async () => {
       const iter = Poly.range(42).async();
-      await expect(iter.every(n => n != 13)).to.eventually.not.be.ok;
+      await expect(iter.every((n) => n !== 13)).to.eventually.not.be.ok;
     });
 
     it('should correctly use implicit boolean conversion if function is not passed', async () => {
@@ -364,8 +460,8 @@ describe('Async Iterable', function () {
     });
 
     it('should work for infinite iterables for which the passed function returns false', async () => {
-      const iter = Poly.iterate(n => (n || 0) + 1).async();
-      await expect(iter.every(n => n != 42)).to.eventually.not.be.ok;
+      const iter = Poly.iterate((n) => (n || 0) + 1).async();
+      await expect(iter.every((n) => n !== 42)).to.eventually.not.be.ok;
     });
 
     it('should throw if passed argument is not a function', async () => {
@@ -374,7 +470,7 @@ describe('Async Iterable', function () {
   });
 
 
-  describe('#reduce', function () {
+  describe('#reduce', () => {
     it('should correctly accumulate the result of the given function', async () => {
       const iter = Poly.from([1, 2, 3, 4]).async();
       await expect(iter.reduce((a, b) => a + b)).to.eventually.equal(10);
@@ -396,10 +492,10 @@ describe('Async Iterable', function () {
   });
 
 
-  describe('#forEach', function () {
+  describe('#forEach', () => {
     it('should call the passed function once per element', async () => {
       const called = [];
-      await Poly.from([1, 2, 3]).async().forEach(async n => called.push(n));
+      await Poly.from([1, 2, 3]).async().forEach(async (n) => called.push(n));
 
       expect(called).to.deep.equal([1, 2, 3]);
     });
@@ -410,7 +506,7 @@ describe('Async Iterable', function () {
   });
 
 
-  describe('#join', function () {
+  describe('#join', () => {
     it('should correctly join the elements using the given glue', async () => {
       const iter = Poly.from([1, 2, null, 3]).async();
       await expect(iter.join('|')).to.eventually.equal('1|2||3');
@@ -423,7 +519,7 @@ describe('Async Iterable', function () {
   });
 
 
-  describe('#drain', function () {
+  describe('#drain', () => {
     it('should drain the iterable', async () => {
       let called = false;
       const iter = Poly.from(async function * () {

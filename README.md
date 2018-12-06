@@ -13,12 +13,31 @@ const Poly = require('polyethylene');
 // Print the first 10 posts of each user
 await Poly.from(findUsers())
   .map(user => Poly.from(findUserPosts(user)).take(10))
-  .flatten()
+  .flat()
   .forEach(post => console.log(post));
 ```
 
 
 ## Usage
+
+### Options
+
+Most methods accept an `options` object as the end of the arguments.
+Apart from any method-specific options, all async methods will accept the following options:
+
+- `preload`, `pl`: If set to `true`, the first element will be requested immediately without waiting for the iteration to start.
+  This will likely not be useful most of the time, as the time between first creating the iterable and iterating it is typically
+  negligible, but can be useful on situations where the iterable can sit unused for a few milliseconds.
+  Using this option means that the first element will *always* be requested even if the iteration never starts, so be mindful
+  of using it if the action of obtaining the element has other side-effects.
+
+- `prefetch`, `pf`: If set to `true`, elements are requested before yielding the previous one.
+  By doing so, the next element is obtained while the following stages in the iterable pipeline are being executed.
+  This options should be used on stages that are slow, such as network calls, 
+  Using this option means that some elements are requested even if they are *never* iterated, and beware that multiple prefetches
+  on the same pipeline can increase the amount of elements that go unused, so be mindful of using it if the action of obtaining
+  the element has other side-effects.
+
 
 ### Factory Methods
 
@@ -26,7 +45,7 @@ All of these functions are in the `Poly` object top-level obtained by requiring 
 will return an `Iterable` object.
 
 
-#### `.from(iterable|asyncIterable|generator|asyncGenerator)`
+#### `Poly.from(iterable|asyncIterable|generator|asyncGenerator[, options])`
 
 Creates a new `Iterable` from the given argument, which might be:
 
@@ -36,7 +55,7 @@ Creates a new `Iterable` from the given argument, which might be:
   - a `function` that returns an `asyncIterable` (e.g., an async generator function) in which case a `SyncIterable` is returned.
 
 
-#### `.assemble(assemblerFunction)`
+#### `Poly.assemble(assemblerFunction[, options])`
 
 Creates a new `AsyncIterable` by waiting for the user to call a series of callbacks passed to the `assemblerFunction`.
 
@@ -69,7 +88,7 @@ const iter = Poly.assemble(({value, error, done}) => {
 ```
 
 
-#### `.range([from = 0,] to [, step = 1])`
+#### `Poly.range([from = 0,] to [, step = 1])`
 
 Creates a new `SyncIterable` that will yield numbers `[from..to)` with a given `step`.
 If `step` is negative, yields `(to..from]` instead, in reverse order.
@@ -86,12 +105,12 @@ This is intended to work the same way as `range` works in Python; any deviation 
 reported as a bug.
 
 
-#### `.repeat(value)`
+#### `Poly.repeat(value)`
 
 Creates a new `SyncIterable` that will infinitely yield the given `value`.
 
 
-#### `.iterate(function[, options = {}])`
+#### `Poly.iterate(function[, options = {}])`
 
 Creates a new `Iterable` that yields the result of continuously calling the given `function`.
 The resulting sequence will be a `SyncIterable` or an `AsyncIterable` depending on whether the function returns Promises or not:
@@ -103,17 +122,17 @@ The resulting sequence will be a `SyncIterable` or an `AsyncIterable` depending 
 The passed `function` will be called with the result of the last call and no bound `this`.
 
 
-#### `.values(object)`
+#### `Poly.values(object)`
 
 Yields the same elements as `Object.values(object)` but without creating an array in the process.
 
 
-#### `.keys(object)`
+#### `Poly.keys(object)`
 
 Yields the same elements as `Object.keys(object)` but without creating an array in the process.
 
 
-#### `.entries(object)`
+#### `Poly.entries(object)`
 
 Yields the same elements as `Object.entries(object)` but without creating an array in the process.
 
@@ -121,9 +140,9 @@ Yields the same elements as `Object.entries(object)` but without creating an arr
 
 ### Transform Operators
 
-These functions transform a sequence in some way, and they all return a `Iterable` object of the
+These functions transform a sequence in some way, and they all return an `Iterable` object of the
 same type as the original, unless stated otherwise.  For `AsyncIterables`, all the functions
-received as an argument can return promises, and will be awaited.
+received as an arguments can return promises, and will be awaited.
 
 
 #### `#async()`
@@ -171,19 +190,63 @@ Yields elements until `func` returns a falsy value, not including the one for wh
 #### `#filter(func = ID)`
 
 Yields all elements for which `func(elem)` returns true.
-If `func` is not a function, an exception is thrown.
+
+- If `func` is not a function, an exception is thrown.
+
 
 #### `#map(func = ID)`
 
 Yields the results of applying `func(elem)` to each element.
-If `func` is not a function, an exception is thrown.
+
+- If `func` is not a function, an exception is thrown.
+
+
+#### `#flat()` / `#flatten()`
+
+Yields from each of the elements, that is, performs a `yield *` on each element.
+
+- If `func` returns a value that is not iterable via `yield *`, an exception is thrown.
+
 
 #### `#flatMap(func = ID)`
 
 Yields from the results of applying `func(elem)` to all elements, that is, performs a `yield *` on
 a call to `func` with each element.
-If `func` is not a function, an exception is thrown.
-If `func` returns a value that is not iterable via `yield *`, an exception is thrown.
+
+- If `func` is not a function, an exception is thrown.
+- If `func` returns a value that is not iterable via `yield *`, an exception is thrown.
+
+
+#### `#group(num = 1)`
+
+Collects the elements in arrays of size `num` and yields them.
+
+- If the original iterable is empty, the resulting one also is.
+- The last yielded group might have less than `num` elements.
+- The resulting iterable will *never* include empty groups.
+- If `num` is not a positive integer, an exception is thrown.
+
+
+#### `#groupWhile(func = ID)`
+
+Collects the elements in groups determined by the result of calling `func` on the elements.
+
+`func` is called with three arguments:
+- `elem`: the element to be selected for the current group
+- `lastElem`: the last element included in the current group
+- `firstElem`: the first element included in the current group
+
+The return value of that call determines what to do with the element so that:
+- if it returns `true`, the element is included in the current group
+- if it returns `false`, the element is not included in the current group, and it becomes the first element of the next group
+
+Note that the first element will always be the start of a group, and thus `func` will never be called for it.
+Groups cannot be empty
+
+- If the original iterable is empty, the resulting one also is.
+- The resulting iterable will *never* include empty groups.
+- If `num` is not a positive integer, an exception is thrown.
+
 
 
 ### Leaf Operators
@@ -211,8 +274,8 @@ Returns whether `obj` is found as an element of this iterable.
 
 #### `#some(func = ID)`
 
-Returns `true` if at least for one element `func(elem)` is truthy, `false` otherwise.
-`func` will not be called afterwards.
+Returns `true` if `func(elem)` is truthy at least for one element, `false` otherwise.
+`func` will not be called after it returns truthy..
 
 
 #### `#every(func = ID)`
@@ -223,7 +286,7 @@ Returns `false` if at least for one element, `func(elem)` is falsy, `true` other
 
 #### `#reduce(func[, init])`
 
-Calls `func(accumulator, elem)` for every element (except the first if `init` is not passed) `elem`
+Calls `func(accumulator, elem)` for every element (except the first one if `init` is not passed)
 with the previous result of the call as `accumulator`.  `init` will be used as the first
 `accumulator`; if not passed, the first element is used instead.
 
@@ -251,7 +314,5 @@ The following are a few planned features I intend to add in the future, in no pa
 
 - A `tee`/`fork` method that, from a single iterator, returns N iterators that get the same
   elements or errors in the same order.
-- The possibility of *prefetching* promises before yielding or running processing functions, so
-  as soon as the next element is requested, it has already been fetched.
 - The possibility of running processing functions in parallel as long as elements are coming
   fast enough.

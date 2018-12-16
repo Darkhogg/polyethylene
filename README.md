@@ -1,9 +1,17 @@
-# Polyethylene [![npm version](https://badge.fury.io/js/polyethylene.svg)](https://badge.fury.io/js/polyethylene) [![Build Status](https://travis-ci.org/Darkhogg/polyethylene.svg?branch=master)](https://travis-ci.org/Darkhogg/polyethylene)
+# Polyethylene
 
 Polyethylene is a wrapping layer around iterators and async iterators that lets you chain
 functional operators in a similar way you do with arrays but without the memory overhead or having
-to wait for an aasynchronous iteration to end.
+to wait for an asynchronous iteration to end.
 
+[![npm version](
+https://img.shields.io/npm/v/npm.svg
+)](https://www.npmjs.com/package/polyethylene)
+[![Build Status](
+https://img.shields.io/travis/Darkhogg/polyethylene.svg
+)](https://travis-ci.org/Darkhogg/polyethylene)
+[![Test Coverage](https://img.shields.io/codeclimate/coverage/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
 
 ## Examples
 

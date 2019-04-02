@@ -49,7 +49,7 @@ Apart from any method-specific options, all async methods will accept the follow
 
 ### Factory Methods
 
-All of these functions are in the `Poly` object top-level obtained by requiring `polyethilene`, and
+All of these functions are in the `Poly` object top-level obtained by requiring `polyethylene`, and
 will return an `Iterable` object.
 
 

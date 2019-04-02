@@ -5,7 +5,7 @@ functional operators in a similar way you do with arrays but without the memory 
 to wait for an asynchronous iteration to end.
 
 [![npm version](
-https://img.shields.io/npm/v/npm.svg
+https://img.shields.io/npm/v/polyethylene.svg
 )](https://www.npmjs.com/package/polyethylene)
 [![Build Status](
 https://img.shields.io/travis/Darkhogg/polyethylene.svg

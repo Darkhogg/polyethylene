@@ -101,7 +101,7 @@ describe('Poly', () => {
       });
 
       it('should work for objects with symbols', () => {
-        checkFor({[Symbol('test')]: 0});
+        checkFor({[Symbol('test')]: 0, 'test': 1});
       });
 
       it('should work for objects with inherited properties', () => {
@@ -109,6 +109,14 @@ describe('Poly', () => {
         Child.prototype = {foo: 1};
 
         checkFor(new Child());
+      });
+
+      it('should work with non-enumerable properties', () => {
+        const obj = {'one': 1};
+        Object.defineProperty(obj, 'two', {value: 2, enumerable: true});
+        Object.defineProperty(obj, 'three', {value: 3, enumerable: false});
+
+        checkFor(obj);
       });
 
       it('should preserve the options object', () => {

@@ -234,12 +234,12 @@ describe('Async Iterable', () => {
 
   describe('#tap', () => {
     it('should yield elements of original iteration', async () => {
-      const iter = Poly.from([1, 2, 3]).tap((n) => n * n);
+      const iter = Poly.from([1, 2, 3]).async().tap((n) => n * n);
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
     });
 
     it('should work and do nothing if no function is passed', async () => {
-      const iter = Poly.from([1, 2, 3]).tap();
+      const iter = Poly.from([1, 2, 3]).async().tap();
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
     });
 

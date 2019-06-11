@@ -227,6 +227,31 @@ describe('Sync Iterable', () => {
     });
   });
 
+
+  describe('#tap', () => {
+    it('should yield elements of original iteration', () => {
+      const iter = Poly.from([1, 2, 3]).tap((n) => n * n);
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3]);
+    });
+
+    it('should work and do nothing if no function is passed', () => {
+      const iter = Poly.from([1, 2, 3]).tap();
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3]);
+    });
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.from([]).tap('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).tap(() => null, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
   const FLAT_METHODS = ['flatten', 'flat'];
   FLAT_METHODS.forEach((name) => {
     describe(`#${name}`, () => {

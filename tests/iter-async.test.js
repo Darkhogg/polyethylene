@@ -219,13 +219,37 @@ describe('Async Iterable', () => {
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
     });
 
-    it('should throw if passed argument is not a function', async () => {
+    it('should throw if passed argument is not a function', () => {
       expect(() => Poly.from([]).async().map('foo')).to.throw();
     });
 
     it('should preserve the options object', () => {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).map(() => null, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#tap', () => {
+    it('should yield elements of original iteration', async () => {
+      const iter = Poly.from([1, 2, 3]).tap((n) => n * n);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
+    });
+
+    it('should work and do nothing if no function is passed', async () => {
+      const iter = Poly.from([1, 2, 3]).tap();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
+    });
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.from([]).async().tap('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).tap(() => null, opts);
 
       expect(iter.options.opt).to.equal(opts.opt);
     });

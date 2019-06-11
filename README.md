@@ -209,6 +209,13 @@ Yields the results of applying `func(elem)` to each element.
 - If `func` is not a function, an exception is thrown.
 
 
+#### `tap(func = ID)`
+
+Runs `func(elem)` to each element without modifying the iteration.
+
+- If `func` is not a function, an exception is thrown.
+
+
 #### `#flat()` / `#flatten()`
 
 Yields from each of the elements, that is, performs a `yield *` on each element.

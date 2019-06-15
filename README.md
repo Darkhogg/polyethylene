@@ -178,6 +178,31 @@ Yield only the first `num` elements of the sequence.
 - If `num` is negative or not a number, an exception is thrown.
 
 
+#### `#dropLast(num = 0)`
+
+Skips the last `num` elements of the sequence.
+
+- If the sequence yields less than `num` elements, no elements are yielded.
+- If `num` is 0 or missing, this is a no-op.
+- If `num` is negative or not a number, an exception is thrown.
+
+> **Note**: This operation uses a buffer of `num` elements, and delays yielding
+of elements until that buffer is full.
+
+
+#### `#takeLast(num = 0)`
+
+Yield only the last `num` elements of the sequence.
+
+- If the sequence yields less than `num` elements, all elements are yielded.
+- If `num` is 0 or missing, the sequence will yield nothing.
+- If `num` is negative or not a number, an exception is thrown.
+
+> **Note**: This operation uses a buffer of `num` elements, and delays yielding
+of elements *until the iteration has finished*, so this is not available on
+infinite iterations.
+
+
 #### `#dropWhile(func = ID)`
 
 Skips elements until `func` returns a falsy value, not including the one for which it does.

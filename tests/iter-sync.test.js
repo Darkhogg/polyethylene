@@ -67,6 +67,39 @@ describe('Sync Iterable', () => {
   });
 
 
+  describe('#dropLast', () => {
+    it('should correctly drop the last few elements', () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).dropLast(3);
+      expect(collectSync(iter)).to.deep.equal([1, 2]);
+    });
+
+    it('should correctly drop nothing if not passed anything', () => {
+      const iter = Poly.from([1, 2]).dropLast();
+      expect(collectSync(iter)).to.deep.equal([1, 2]);
+    });
+
+    it('should correctly drop everything if not enough elements', () => {
+      const iter = Poly.from([1, 2]).dropLast(3);
+      expect(collectSync(iter)).to.deep.equal([]);
+    });
+
+    it('should throw if not passed an integer', () => {
+      expect(() => Poly.from([]).dropLast('foo')).to.throw();
+    });
+
+    it('should throw if passed a negative number', () => {
+      expect(() => Poly.from([]).dropLast(-1)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).dropLast(0, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
   describe('#take', () => {
     it('should correctly take the first few elements', () => {
       const iter = Poly.from([1, 2, 3, 4, 5]).take(3);
@@ -94,6 +127,39 @@ describe('Sync Iterable', () => {
     it('should preserve the options object', () => {
       const opts = {opt: 1};
       const iter = Poly.from([]).take(0, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#takeLast', () => {
+    it('should correctly take the last few elements', () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).takeLast(3);
+      expect(collectSync(iter)).to.deep.equal([3, 4, 5]);
+    });
+
+    it('should correctly take nothing if not passed anything', () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).takeLast();
+      expect(collectSync(iter)).to.deep.equal([]);
+    });
+
+    it('should correctly take everything if not enough elements', () => {
+      const iter = Poly.from([1, 2]).takeLast(3);
+      expect(collectSync(iter)).to.deep.equal([1, 2]);
+    });
+
+    it('should throw if not passed an integer', () => {
+      expect(() => Poly.from([]).takeLast('foo')).to.throw();
+    });
+
+    it('should throw if passed a negative number', () => {
+      expect(() => Poly.from([]).takeLast(-1)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).takeLast(0, opts);
 
       expect(iter.options.opt).to.equal(opts.opt);
     });

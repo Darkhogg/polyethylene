@@ -71,6 +71,39 @@ describe('Async Iterable', () => {
   });
 
 
+  describe('#dropLast', () => {
+    it('should correctly drop the last few elements', async () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().dropLast(3);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2]);
+    });
+
+    it('should correctly drop nothing if not passed anything', async () => {
+      const iter = Poly.from([1, 2]).async().dropLast();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2]);
+    });
+
+    it('should correctly drop everything if not enough elements', async () => {
+      const iter = Poly.from([1, 2]).async().dropLast(3);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([]);
+    });
+
+    it('should throw if not passed an integer', async () => {
+      expect(() => Poly.from([]).async().dropLast('foo')).to.throw();
+    });
+
+    it('should throw if passed a negative number', async () => {
+      expect(() => Poly.from([]).async().dropLast(-1)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).dropLast(0, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
   describe('#take', () => {
     it('should correctly take the first few elements', async () => {
       const iter = Poly.from([1, 2, 3, 4, 5]).async().take(3);
@@ -98,6 +131,39 @@ describe('Async Iterable', () => {
     it('should preserve the options object', () => {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).take(0, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#takeLast', () => {
+    it('should correctly take the last few elements', async () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().takeLast(3);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([3, 4, 5]);
+    });
+
+    it('should correctly take nothing if not passed anything', async () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().takeLast();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([]);
+    });
+
+    it('should correctly take everything if not enough elements', async () => {
+      const iter = Poly.from([1, 2]).async().takeLast(3);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2]);
+    });
+
+    it('should throw if not passed an integer', async () => {
+      expect(() => Poly.from([]).async().takeLast('foo')).to.throw();
+    });
+
+    it('should throw if passed a negative number', async () => {
+      expect(() => Poly.from([]).async().takeLast(-1)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from(async function * () {}).takeLast(0, opts);
 
       expect(iter.options.opt).to.equal(opts.opt);
     });

@@ -250,6 +250,71 @@ describe('Async Iterable', () => {
   });
 
 
+  describe('#slice', () => {
+    async function testSlice (start, end) {
+      for (const n of [5, 7, 9, 12, 15, 20]) {
+        const array = Array(n).fill().map((_, i) => i);
+
+        const slicedArray = array.slice(start, end);
+        const iter = Poly.from(array).async().slice(start, end);
+        await expect(collectAsync(iter)).to.eventually.deep.equal(slicedArray);
+      }
+    }
+
+    it('should work correctly when start > 0 and end > 0', async () => {
+      await testSlice(0, 1);
+      await testSlice(1, 4);
+      await testSlice(3, 10);
+      await testSlice(5, 1);
+    });
+
+    it('should work correctly when start < 0 and end > 0', async () => {
+      await testSlice(-1, 0);
+      await testSlice(-10, 10);
+      await testSlice(-5, 5);
+      await testSlice(-8, 1);
+      await testSlice(-6, 100);
+    });
+
+    it('should work correctly when start > 0 and end < 0', async () => {
+      await testSlice(0, -1);
+      await testSlice(0, -50);
+      await testSlice(10, -5);
+      await testSlice(3, -2);
+      await testSlice(1, -5);
+    });
+
+    it('should work correctly when start < 0 and end < 0', async () => {
+      await testSlice(-1, -1);
+      await testSlice(-5, -1);
+      await testSlice(-10, -5);
+      await testSlice(-5, -10);
+      await testSlice(-100, -1);
+    });
+
+    it('should throw if first argument is not an integer', () => {
+      expect(() => Poly.from([]).slice(0.5, 0)).to.throw();
+      expect(() => Poly.from([]).slice('foo', 0)).to.throw();
+      expect(() => Poly.from([]).slice(null, 0)).to.throw();
+      expect(() => Poly.from([]).slice()).to.throw();
+    });
+
+    it('should throw if second argument is not an integer', () => {
+      expect(() => Poly.from([]).slice(0, 0.5)).to.throw();
+      expect(() => Poly.from([]).slice(0, 'bar')).to.throw();
+      expect(() => Poly.from([]).slice(0, null)).to.throw();
+      expect(() => Poly.from([]).slice(0)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).slice(0, 0, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
   describe('#filter', () => {
     it('should only yield elements for which passed function returns true', async () => {
       const iter = Poly.from([1, 2, 3, 4, 5, 6, 7]).async().filter((n) => n % 3 === 1);

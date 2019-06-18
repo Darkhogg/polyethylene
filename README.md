@@ -187,7 +187,7 @@ Skips the last `num` elements of the sequence.
 - If `num` is negative or not a number, an exception is thrown.
 
 > **Note**: This operation uses a buffer of `num` elements, and delays yielding
-of elements until that buffer is full.
+> of elements until that buffer is full.
 
 
 #### `#takeLast(num = 0)`
@@ -199,8 +199,8 @@ Yield only the last `num` elements of the sequence.
 - If `num` is negative or not a number, an exception is thrown.
 
 > **Note**: This operation uses a buffer of `num` elements, and delays yielding
-of elements *until the iteration has finished*, so this is not available on
-infinite iterations.
+> of elements *until the iteration has finished*, so this is not available on
+> infinite iterations.
 
 
 #### `#dropWhile(func = ID)`
@@ -219,6 +219,23 @@ Yields elements until `func` returns a falsy value, not including the one for wh
 - The function `func` will be called with each element as argument until it returns a falsy value.
 - The function will not be called again after the first falsy value is returned.
 - If `func` is not a function, an exception is thrown.
+
+
+#### `#slice(start, end)`
+
+Yields the elements that are between positions `start` (inclusive) and `end` (exclusive).
+If `start` or `end` are negative, they refer to positions before the end, instead of from the start.
+
+This operation is intended to reflect the same resultd as `Array#slice` would, any deviations (other than the fact
+this method doesn't allow for missing arguments) is to be considered a bug.
+
+- If `start` is negative or not an integer, an exception is thrown.
+- If `end` is negative or not an integer, an exception is thrown.
+
+> **Note**: This operation works similar to `takeLast` and `dropLast` when its
+> arguments are negative, and the warining given on those methods apply here,
+> both the ones about buffering *and* yielding delays.
+
 
 #### `#filter(func = ID)`
 

@@ -34,6 +34,50 @@ describe('Sync Iterable', () => {
   });
 
 
+  describe('#concat', () => {
+    it('should yield elements in appropriate order', () => {
+      function * concatIter () {
+        yield 4;
+        yield 5;
+        yield 6;
+      }
+      const iter = Poly.from([1, 2, 3]).concat(concatIter());
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+    });
+
+    it('should work for arrays', () => {
+      const iter = Poly.from([1, 2, 3]).concat([4, 5, 6]);
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+    });
+
+    it('should work for other SyncIterables', () => {
+      const iter = Poly.from([1, 2, 3]).concat(Poly.range(4, 7));
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+    });
+
+    it('should work for empty iterations', () => {
+      const iter = Poly.from([1, 2, 3]).concat([]);
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3]);
+    });
+
+    it('should work when chained multiple times', () => {
+      const iter = Poly.from([1, 2]).concat([3]).concat([]).concat([4, 5]);
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('should throw if not passed an iterable', () => {
+      expect(() => Poly.from([]).concat(1)).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).concat([], opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
   describe('#drop', () => {
     it('should correctly drop the first few elements', () => {
       const iter = Poly.from([1, 2, 3, 4, 5]).drop(3);

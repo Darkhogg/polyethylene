@@ -160,13 +160,22 @@ This has no effect on async sequences, it's intended as a way of converting a sy
 by any of the factory methods to an async sequence so async functions are available in the pipeline.
 
 
-#### `#concat(iterable)`
+#### `#append(iterable)` / `#concat(iterable)`
 
 Yields all of the elements that `iterable` yields after the elements of this iterable have been yielded.
 
 - If the `iterable` is not an actual iterable, an exception is thrown
   - For `SyncIterables`, an exception is thrown if `iterable` is not *sync* iterable
-- If this iterable is infinite, no elements of the passed iterable will be yielded, as this will never end
+- If the original iterable is infinite, no elements of the passed `iterable` will be yielded, as this will never end
+
+
+#### `#prepend(iterable)`
+
+Yields all of the elements that `iterable` yields before the elements of this iterable have been yielded.
+
+- If the `iterable` is not an actual iterable, an exception is thrown
+  - For `SyncIterables`, an exception is thrown if `iterable` is not *sync* iterable
+- If the passed `iterable` is infinite, no elements of the original will be yielded, as it will never end
 
 
 #### `#drop(num = 0)`

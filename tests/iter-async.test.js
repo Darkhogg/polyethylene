@@ -38,44 +38,91 @@ describe('Async Iterable', () => {
   });
 
 
-  describe('#concat', () => {
+  const APPEND_METHODS = ['append', 'concat'];
+  APPEND_METHODS.forEach((method) => {
+    describe(`#${method}`, () => {
+      it('should yield elements in appropriate order', async () => {
+        async function * appendIter () {
+          yield 4;
+          yield 5;
+          yield 6;
+        }
+        const iter = Poly.from([1, 2, 3]).async()[method](appendIter());
+        await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5, 6]);
+      });
+
+      it('should work for arrays', async () => {
+        const iter = Poly.from([1, 2, 3]).async()[method]([4, 5, 6]);
+        await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5, 6]);
+      });
+
+      it('should work for other AsyncIterables', async () => {
+        const iter = Poly.from([1, 2, 3]).async()[method](Poly.range(4, 7).async());
+        await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5, 6]);
+      });
+
+      it('should work for empty iterations', async () => {
+        const iter = Poly.from([1, 2, 3]).async()[method]([]);
+        await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
+      });
+
+      it('should work when chained multiple times', async () => {
+        const iter = Poly.from([1, 2]).async()[method]([3])[method]([])[method]([4, 5]);
+        await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5]);
+      });
+
+      it('should throw if not passed an iterable', () => {
+        expect(() => Poly.from([]).async()[method](1)).to.throw();
+      });
+
+      it('should preserve the options object', () => {
+        const opts = {opt: 1};
+        const iter = Poly.from([]).async()[method]([], opts);
+
+        expect(iter.options.opt).to.equal(opts.opt);
+      });
+    });
+  });
+
+
+  describe('#prepend', () => {
     it('should yield elements in appropriate order', async () => {
-      async function * concatIter () {
+      async function * prependIter () {
         yield 4;
         yield 5;
         yield 6;
       }
-      const iter = Poly.from([1, 2, 3]).async().concat(concatIter());
-      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5, 6]);
+      const iter = Poly.from([1, 2, 3]).async().prepend(prependIter());
+      await expect(collectAsync(iter)).to.eventually.deep.equal([4, 5, 6, 1, 2, 3]);
     });
 
     it('should work for arrays', async () => {
-      const iter = Poly.from([1, 2, 3]).async().concat([4, 5, 6]);
-      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5, 6]);
+      const iter = Poly.from([1, 2, 3]).async().prepend([4, 5, 6]);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([4, 5, 6, 1, 2, 3]);
     });
 
     it('should work for other AsyncIterables', async () => {
-      const iter = Poly.from([1, 2, 3]).async().concat(Poly.range(4, 7).async());
-      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5, 6]);
+      const iter = Poly.from([1, 2, 3]).async().prepend(Poly.range(4, 7).async());
+      await expect(collectAsync(iter)).to.eventually.deep.equal([4, 5, 6, 1, 2, 3]);
     });
 
     it('should work for empty iterations', async () => {
-      const iter = Poly.from([1, 2, 3]).async().concat([]);
+      const iter = Poly.from([1, 2, 3]).async().prepend([]);
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3]);
     });
 
     it('should work when chained multiple times', async () => {
-      const iter = Poly.from([1, 2]).async().concat([3]).concat([]).concat([4, 5]);
-      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5]);
+      const iter = Poly.from([1, 2]).async().prepend([3]).prepend([]).prepend([4, 5]);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([4, 5, 3, 1, 2]);
     });
 
     it('should throw if not passed an iterable', () => {
-      expect(() => Poly.from([]).async().concat(1)).to.throw();
+      expect(() => Poly.from([]).async().prepend(1)).to.throw();
     });
 
     it('should preserve the options object', () => {
       const opts = {opt: 1};
-      const iter = Poly.from([]).async().concat([], opts);
+      const iter = Poly.from([]).async().prepend([], opts);
 
       expect(iter.options.opt).to.equal(opts.opt);
     });

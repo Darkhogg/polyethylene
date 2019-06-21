@@ -34,49 +34,94 @@ describe('Sync Iterable', () => {
   });
 
 
-  describe('#concat', () => {
+  const APPEND_METHODS = ['concat', 'append'];
+  APPEND_METHODS.forEach((method) => {
+    describe(`#${method}`, () => {
+      it('should yield elements in appropriate order', () => {
+        function * appendIter () {
+          yield 4;
+          yield 5;
+          yield 6;
+        }
+        const iter = Poly.from([1, 2, 3])[method](appendIter());
+        expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+      });
+
+      it('should work for arrays', () => {
+        const iter = Poly.from([1, 2, 3])[method]([4, 5, 6]);
+        expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+      });
+
+      it('should work for other SyncIterables', () => {
+        const iter = Poly.from([1, 2, 3])[method](Poly.range(4, 7));
+        expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+      });
+
+      it('should work for empty iterations', () => {
+        const iter = Poly.from([1, 2, 3])[method]([]);
+        expect(collectSync(iter)).to.deep.equal([1, 2, 3]);
+      });
+
+      it('should work when chained multiple times', () => {
+        const iter = Poly.from([1, 2])[method]([3])[method]([])[method]([4, 5]);
+        expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5]);
+      });
+
+      it('should throw if not passed an iterable', () => {
+        expect(() => Poly.from([])[method](1)).to.throw();
+      });
+
+      it('should preserve the options object', () => {
+        const opts = {opt: 1};
+        const iter = Poly.from([]).concat([], opts);
+
+        expect(iter.options.opt).to.equal(opts.opt);
+      });
+    });
+  });
+
+  describe('#prepend', () => {
     it('should yield elements in appropriate order', () => {
-      function * concatIter () {
+      function * prependIter () {
         yield 4;
         yield 5;
         yield 6;
       }
-      const iter = Poly.from([1, 2, 3]).concat(concatIter());
-      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+      const iter = Poly.from([1, 2, 3]).prepend(prependIter());
+      expect(collectSync(iter)).to.deep.equal([4, 5, 6, 1, 2, 3]);
     });
 
     it('should work for arrays', () => {
-      const iter = Poly.from([1, 2, 3]).concat([4, 5, 6]);
-      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+      const iter = Poly.from([1, 2, 3]).prepend([4, 5, 6]);
+      expect(collectSync(iter)).to.deep.equal([4, 5, 6, 1, 2, 3]);
     });
 
     it('should work for other SyncIterables', () => {
-      const iter = Poly.from([1, 2, 3]).concat(Poly.range(4, 7));
-      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5, 6]);
+      const iter = Poly.from([1, 2, 3]).prepend(Poly.range(4, 7));
+      expect(collectSync(iter)).to.deep.equal([4, 5, 6, 1, 2, 3]);
     });
 
     it('should work for empty iterations', () => {
-      const iter = Poly.from([1, 2, 3]).concat([]);
+      const iter = Poly.from([1, 2, 3]).prepend([]);
       expect(collectSync(iter)).to.deep.equal([1, 2, 3]);
     });
 
     it('should work when chained multiple times', () => {
-      const iter = Poly.from([1, 2]).concat([3]).concat([]).concat([4, 5]);
-      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5]);
+      const iter = Poly.from([1, 2]).prepend([3]).prepend([]).prepend([4, 5]);
+      expect(collectSync(iter)).to.deep.equal([4, 5, 3, 1, 2]);
     });
 
     it('should throw if not passed an iterable', () => {
-      expect(() => Poly.from([]).concat(1)).to.throw();
+      expect(() => Poly.from([]).prepend(1)).to.throw();
     });
 
     it('should preserve the options object', () => {
       const opts = {opt: 1};
-      const iter = Poly.from([]).concat([], opts);
+      const iter = Poly.from([]).prepend([], opts);
 
       expect(iter.options.opt).to.equal(opts.opt);
     });
   });
-
 
   describe('#drop', () => {
     it('should correctly drop the first few elements', () => {

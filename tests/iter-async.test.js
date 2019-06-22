@@ -599,6 +599,115 @@ describe('Async Iterable', () => {
   });
 
 
+  describe('#unique', () => {
+    it('should work for empty iterations', async () => {
+      const iter = Poly.from([]).async().unique();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([]);
+    });
+
+    it('should work for all different elements', async () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().unique();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('should work for some same elements', async () => {
+      const iter = Poly.from([1, 1, 2, 1, 2, 3, 1, 2, 3, 4, 1, 2, 3, 4, 5]).async().unique();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('should work when passed a function that is always different', async () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().unique((x) => x * 3);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('should work when passed a function that is sometimes the same', async () => {
+      const iter = Poly.from([0, 1, 2, 3, 4, 5]).async().unique((x) => Math.floor(x / 2));
+      await expect(collectAsync(iter)).to.eventually.deep.equal([0, 2, 4]);
+    });
+
+    it('should work when passed a function that is always the same', async () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).async().unique((x) => 0);
+      await expect(collectAsync(iter)).to.eventually.deep.equal([1]);
+    });
+
+    it('should throw if not passed a function', () => {
+      expect(() => Poly.from([]).async().unique('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).async().unique(undefined, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#reverse', () => {
+    it('should work for empty iterations', async () => {
+      const iter = Poly.from([]).async().reverse();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([]);
+    });
+
+    it('should work for small iterations', async () => {
+      const iter = Poly.from([1, 2, 3]).async().reverse();
+      await expect(collectAsync(iter)).to.eventually.deep.equal([3, 2, 1]);
+    });
+
+    it('should work for long iterations', async () => {
+      const iter = Poly.range(1000).async().reverse();
+      await expect(collectAsync(iter)).to.eventually.deep.equal(Poly.range(999, -1, -1).toArray());
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).async().reverse(opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#sort', () => {
+    const CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    function randStr (n = 16) {
+      return Array(n).fill().map(() => CHARS[Math.floor(Math.random() * CHARS.length)]);
+    }
+
+    async function checkSort (arr, func) {
+      const iter = Poly.from(arr).async().sort(func);
+      await expect(collectAsync(iter)).to.eventually.deep.equal(arr.slice().sort(func));
+    }
+
+    it('should work for empty iterations', async () => {
+      await checkSort([]);
+    });
+
+    it('should work for small iterations', async () => {
+      await checkSort(Array(10).fill().map(() => randStr));
+    });
+
+    it('should work for long iterations', async () => {
+      await checkSort(Array(1000).fill().map(() => randStr));
+    });
+
+    it('should work when given a comparator function', async () => {
+      await checkSort([5, 2, 8, 4], (a, b) => a < b ? +1 : (a > b) ? -1 : 0);
+    });
+
+    it('should throw if not passed a function', () => {
+      expect(() => Poly.from([]).async().sort('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).async().sort(undefined, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
   describe('#toArray', () => {
     it('should return all elements as an array', async () => {
       const iter = Poly.range(3).async();

@@ -123,6 +123,7 @@ describe('Sync Iterable', () => {
     });
   });
 
+
   describe('#drop', () => {
     it('should correctly drop the first few elements', () => {
       const iter = Poly.from([1, 2, 3, 4, 5]).drop(3);
@@ -589,6 +590,115 @@ describe('Sync Iterable', () => {
   });
 
 
+  describe('#unique', () => {
+    it('should work for empty iterations', () => {
+      const iter = Poly.from([]).unique();
+      expect(collectSync(iter)).to.deep.equal([]);
+    });
+
+    it('should work for all different elements', () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).unique();
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('should work for some same elements', () => {
+      const iter = Poly.from([1, 1, 2, 1, 2, 3, 1, 2, 3, 4, 1, 2, 3, 4, 5]).unique();
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('should work when passed a function that is always different', () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).unique((x) => x * 3);
+      expect(collectSync(iter)).to.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('should work when passed a function that is sometimes the same', () => {
+      const iter = Poly.from([0, 1, 2, 3, 4, 5]).unique((x) => Math.floor(x / 2));
+      expect(collectSync(iter)).to.deep.equal([0, 2, 4]);
+    });
+
+    it('should work when passed a function that is always the same', () => {
+      const iter = Poly.from([1, 2, 3, 4, 5]).unique((x) => 0);
+      expect(collectSync(iter)).to.deep.equal([1]);
+    });
+
+    it('should throw if not passed a function', () => {
+      expect(() => Poly.from([]).unique('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).unique(undefined, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#reverse', () => {
+    it('should work for empty iterations', () => {
+      const iter = Poly.from([]).reverse();
+      expect(collectSync(iter)).to.deep.equal([]);
+    });
+
+    it('should work for small iterations', () => {
+      const iter = Poly.from([1, 2, 3]).reverse();
+      expect(collectSync(iter)).to.deep.equal([3, 2, 1]);
+    });
+
+    it('should work for long iterations', () => {
+      const iter = Poly.range(1000).reverse();
+      expect(collectSync(iter)).to.deep.equal(Poly.range(999, -1, -1).toArray());
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).reverse(opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
+  describe('#sort', () => {
+    const CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    function randStr (n = 16) {
+      return Array(n).fill().map(() => CHARS[Math.floor(Math.random() * CHARS.length)]);
+    }
+
+    function checkSort (arr, func) {
+      const iter = Poly.from(arr).sort(func);
+      expect(collectSync(iter)).to.deep.equal(arr.slice().sort(func));
+    }
+
+    it('should work for empty iterations', () => {
+      checkSort([]);
+    });
+
+    it('should work for small iterations', () => {
+      checkSort(Array(10).fill().map(() => randStr));
+    });
+
+    it('should work for long iterations', () => {
+      checkSort(Array(1000).fill().map(() => randStr));
+    });
+
+    it('should work when given a comparator function', () => {
+      checkSort([5, 2, 8, 4], (a, b) => a < b ? +1 : (a > b) ? -1 : 0);
+    });
+
+    it('should throw if not passed a function', () => {
+      expect(() => Poly.from([]).sort('foo')).to.throw();
+    });
+
+    it('should preserve the options object', () => {
+      const opts = {opt: 1};
+      const iter = Poly.from([]).sort(undefined, opts);
+
+      expect(iter.options.opt).to.equal(opts.opt);
+    });
+  });
+
+
   describe('#toArray', () => {
     it('should return all elements as an array', () => {
       const iter = Poly.range(3);
@@ -753,6 +863,7 @@ describe('Sync Iterable', () => {
       expect(iter.join()).to.equal('1,2,,3');
     });
   });
+
 
   describe('#drain', () => {
     it('should drain the iterable', () => {

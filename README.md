@@ -28,6 +28,11 @@ await Poly.from(findUsers())
 
 ## Usage
 
+> Note: In the following documentation, the following default values for functions are sometime defined:
+>
+>   - `ID`: The identity function, meaning it will return its argument, that is: `x => x`
+>   - `CMP`: Standard comparison function, that is: `(a, b) => (a < b) ? -1 : (a > b) ? +1 : 0`
+
 ### Options
 
 Most methods accept an `options` object as the end of the arguments.
@@ -153,14 +158,14 @@ same type as the original, unless stated otherwise.  For `AsyncIterables`, all t
 received as an arguments can return promises, and will be awaited.
 
 
-#### `#async()`
+#### `.async()`
 
 Returns an `AsyncIterable` that will yield the same elements as this one.
 This has no effect on async sequences, it's intended as a way of converting a sync sequence created
 by any of the factory methods to an async sequence so async functions are available in the pipeline.
 
 
-#### `#append(iterable)` / `#concat(iterable)`
+#### `.append(iterable)` / `.concat(iterable)`
 
 Yields all of the elements that `iterable` yields after the elements of this iterable have been yielded.
 
@@ -169,7 +174,7 @@ Yields all of the elements that `iterable` yields after the elements of this ite
 - If the original iterable is infinite, no elements of the passed `iterable` will be yielded, as this will never end
 
 
-#### `#prepend(iterable)`
+#### `.prepend(iterable)`
 
 Yields all of the elements that `iterable` yields before the elements of this iterable have been yielded.
 
@@ -178,7 +183,7 @@ Yields all of the elements that `iterable` yields before the elements of this it
 - If the passed `iterable` is infinite, no elements of the original will be yielded, as it will never end
 
 
-#### `#drop(num = 0)`
+#### `.drop(num = 0)`
 
 Skips the first `num` elements of the sequence.
 
@@ -187,7 +192,7 @@ Skips the first `num` elements of the sequence.
 - If `num` is negative or not a number, an exception is thrown.
 
 
-#### `#take(num = 0)`
+#### `.take(num = 0)`
 
 Yield only the first `num` elements of the sequence.
 
@@ -196,7 +201,7 @@ Yield only the first `num` elements of the sequence.
 - If `num` is negative or not a number, an exception is thrown.
 
 
-#### `#dropLast(num = 0)`
+#### `.dropLast(num = 0)`
 
 Skips the last `num` elements of the sequence.
 
@@ -208,7 +213,7 @@ Skips the last `num` elements of the sequence.
 > of elements until that buffer is full.
 
 
-#### `#takeLast(num = 0)`
+#### `.takeLast(num = 0)`
 
 Yield only the last `num` elements of the sequence.
 
@@ -221,7 +226,7 @@ Yield only the last `num` elements of the sequence.
 > infinite iterations.
 
 
-#### `#dropWhile(func = ID)`
+#### `.dropWhile(func = ID)`
 
 Skips elements until `func` returns a falsy value, not including the one for which it does.
 
@@ -230,7 +235,7 @@ Skips elements until `func` returns a falsy value, not including the one for whi
 - If `func` is not a function, an exception is thrown.
 
 
-#### `#takeWhile(func = ID)`
+#### `.takeWhile(func = ID)`
 
 Yields elements until `func` returns a falsy value, not including the one for which it does.
 
@@ -239,7 +244,7 @@ Yields elements until `func` returns a falsy value, not including the one for wh
 - If `func` is not a function, an exception is thrown.
 
 
-#### `#slice(start, end)`
+#### `.slice(start, end)`
 
 Yields the elements that are between positions `start` (inclusive) and `end` (exclusive).
 If `start` or `end` are negative, they refer to positions before the end, instead of from the start.
@@ -255,14 +260,14 @@ this method doesn't allow for missing arguments) is to be considered a bug.
 > both the ones about buffering *and* yielding delays.
 
 
-#### `#filter(func = ID)`
+#### `.filter(func = ID)`
 
 Yields all elements for which `func(elem)` returns true.
 
 - If `func` is not a function, an exception is thrown.
 
 
-#### `#map(func = ID)`
+#### `.map(func = ID)`
 
 Yields the results of applying `func(elem)` to each element.
 
@@ -276,14 +281,14 @@ Runs `func(elem)` to each element without modifying the iteration.
 - If `func` is not a function, an exception is thrown.
 
 
-#### `#flat()` / `#flatten()`
+#### `.flat()` / `.flatten()`
 
 Yields from each of the elements, that is, performs a `yield *` on each element.
 
 - If `func` returns a value that is not iterable via `yield *`, an exception is thrown.
 
 
-#### `#flatMap(func = ID)`
+#### `.flatMap(func = ID)`
 
 Yields from the results of applying `func(elem)` to all elements, that is, performs a `yield *` on
 a call to `func` with each element.
@@ -292,7 +297,7 @@ a call to `func` with each element.
 - If `func` returns a value that is not iterable via `yield *`, an exception is thrown.
 
 
-#### `#group(num = 1)`
+#### `.group(num = 1)`
 
 Collects the elements in arrays of size `num` and yields them.
 
@@ -302,7 +307,7 @@ Collects the elements in arrays of size `num` and yields them.
 - If `num` is not a positive integer, an exception is thrown.
 
 
-#### `#groupWhile(func = ID)`
+#### `.groupWhile(func = ID)`
 
 Collects the elements in groups determined by the result of calling `func` on the elements.
 
@@ -323,6 +328,36 @@ Groups cannot be empty
 - If `num` is not a positive integer, an exception is thrown.
 
 
+#### `.unique(key = ID)`
+
+Yield only elements for which the result of applying `func(elem)` has not been seen before.
+
+- If `func` is not a function, an exception is thrown.
+
+
+#### `.reverse()`
+
+Yields the elements of this iteration in reverse.
+
+- No elements will be yielded until the iteration ends.
+  - Therefore, an infinite iteration won't start yielding ever
+
+> **Note**: This operation needs to buffer *all* elements, be careful when
+> using it on potentially very large iterations
+
+
+#### `.sort(comparator = CMP)`
+
+Yields the elements in ascending order as compared by the given `comparator`.
+
+- No elements will be yielded until the iteration ends.
+  - Therefore, an infinite iteration won't start yielding ever
+- The default comparison function will compare numbers properly, meaning that this
+  method is inconsistent with `Arrar.prototype.sort` when no argument is given.
+
+> **Note**: This operation needs to buffer *all* elements, be careful when
+> using it on potentially very large iterations
+
 
 ### Leaf Operators
 
@@ -331,52 +366,52 @@ These functions process the iterable in some way and return a single result.
 equivalently otherwise.
 
 
-#### `#toArray()`
+#### `.toArray()`
 
 Returns an array containing all elements of this iterable in the order they would have been yielded.
 
 
-#### `#find(func)`
+#### `.find(func)`
 
 Returns the first element for which `func(elem)` is truthy.  If the function always returns falsy,
 `undefined` will be returned.
 
 
-#### `#includes(obj)`
+#### `.includes(obj)`
 
 Returns whether `obj` is found as an element of this iterable.
 
 
-#### `#some(func = ID)`
+#### `.some(func = ID)`
 
 Returns `true` if `func(elem)` is truthy at least for one element, `false` otherwise.
 `func` will not be called after it returns truthy..
 
 
-#### `#every(func = ID)`
+#### `.every(func = ID)`
 
 Returns `false` if at least for one element, `func(elem)` is falsy, `true` otherwise.
 `func` will not be called afterwards.
 
 
-#### `#reduce(func[, init])`
+#### `.reduce(func[, init])`
 
 Calls `func(accumulator, elem)` for every element (except the first one if `init` is not passed)
 with the previous result of the call as `accumulator`.  `init` will be used as the first
 `accumulator`; if not passed, the first element is used instead.
 
 
-#### `#forEach(func)`
+#### `.forEach(func)`
 
 Calls `func(elem)` for every element `elem`.
 
 
-#### `#join(glue = ',')`
+#### `.join(glue = ',')`
 
 Concatenates all elements in a string with `glue` between them.
 
 
-#### `#drain()`
+#### `.drain()`
 
 Iterates over all elements without doing anything.
 This ensures any side effects of previous stages are executed and, in `AsyncIterables`, the full

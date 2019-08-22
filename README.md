@@ -12,6 +12,7 @@ https://img.shields.io/travis/Darkhogg/polyethylene.svg
 )](https://travis-ci.org/Darkhogg/polyethylene)
 [![Test Coverage](https://img.shields.io/codeclimate/coverage/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene?ref=badge_shield)
 
 ## Examples
 
@@ -426,3 +427,7 @@ The following are a few planned features I intend to add in the future, in no pa
   elements or errors in the same order.
 - The possibility of running processing functions in parallel as long as elements are coming
   fast enough.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene?ref=badge_large)

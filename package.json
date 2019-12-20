@@ -18,7 +18,7 @@
     "preversion": "npm test"
   },
   "devDependencies": {
-    "@darkhogg/eslint-config": "^1.0.2",
+    "@darkhogg/eslint-config": "^1.0.3",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "eslint": "^5.16.0",

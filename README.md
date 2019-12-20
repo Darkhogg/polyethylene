@@ -372,6 +372,12 @@ equivalently otherwise.
 Returns an array containing all elements of this iterable in the order they would have been yielded.
 
 
+#### `.toObject()`
+
+Returns an object composed of the entries yielded by this iterable, as `Object.fromEntries` would have done if called
+with them.
+
+
 #### `.find(func)`
 
 Returns the first element for which `func(elem)` is truthy.  If the function always returns falsy,

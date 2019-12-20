@@ -26,14 +26,15 @@ describe('Async Iterable', () => {
       const origIter = Poly.from(gen);
       const asyncIter = Poly.from(gen).async();
 
-      await expect(collectAsync(asyncIter)).to.eventually.deep.equal(await collectAsync(origIter));
+      // NOTE: the "eventually" version of this fails for some reason
+      expect(await collectAsync(asyncIter)).to.deep.equal(await collectAsync(origIter));
     });
 
     it('should preserve the options object', () => {
       const opts = {opt: 1};
       const iter = Poly.from(async function * () {}).async(opts);
 
-      expect(iter.options.opt).to.equal(opts.opt);
+      expect(iter.options.opt).to.deep.equal(opts.opt);
     });
   });
 
@@ -717,6 +718,21 @@ describe('Async Iterable', () => {
     it('should return empty array if no elements', async () => {
       const iter = Poly.range(0).async();
       await expect(iter.toArray()).to.eventually.deep.equal([]);
+    });
+  });
+
+
+  describe('#toObject', () => {
+    const asciiA = 'a'.charCodeAt(0);
+
+    it('should return all elements as an object', async () => {
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n]).async();
+      await expect(iter.toObject()).to.eventually.deep.equal({a: 0, b: 1, c: 2});
+    });
+
+    it('should return empty object if no elements', async () => {
+      const iter = Poly.range(0).async();
+      await expect(iter.toObject()).to.eventually.deep.equal({});
     });
   });
 

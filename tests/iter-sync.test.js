@@ -712,6 +712,21 @@ describe('Sync Iterable', () => {
   });
 
 
+  describe('#toObject', () => {
+    const asciiA = 'a'.charCodeAt(0);
+
+    it('should return all elements as an object', () => {
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n]);
+      expect(iter.toObject()).to.deep.equal({a: 0, b: 1, c: 2});
+    });
+
+    it('should return empty object if no elements', () => {
+      const iter = Poly.range(0);
+      expect(iter.toObject()).to.deep.equal({});
+    });
+  });
+
+
   describe('#find', () => {
     it('should correctly return first element for which passed function is true', () => {
       const iter = Poly.range(15);

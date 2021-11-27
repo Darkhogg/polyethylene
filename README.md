@@ -14,10 +14,23 @@ https://img.shields.io/travis/Darkhogg/polyethylene.svg
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene?ref=badge_shield)
 
-## Examples
+
+## 2.0 Changes
+
+  - **Breaking Changes**
+    - Move to ESModules and remove support for CommonJS
+    - Remove `options` object altogether (replaced with `preload()` and `prefetch()` methods)
+    - Remove `#async()` from async iterators -- things are more explicit now and type
+    - Remove default arguments for most methods that accept a function as a parameter (`#unique` and `#sort` preserve their defaults)
+  - **New Features**
+    - Port codebase to TypeScript, and add type definition files
+    - Add `#preload()` and `#prefetch()` methods to async iterables
+    - Add `#toMap()` leaf method to both sync and async iterables
+
+## Example
 
 ```javascript
-const Poly = require('polyethylene');
+import Poly from 'polyethylene';
 
 // Print the first 10 posts of each user
 await Poly.from(findUsers())
@@ -27,36 +40,19 @@ await Poly.from(findUsers())
 ```
 
 
+
 ## Usage
 
-> Note: In the following documentation, the following default values for functions are sometime defined:
+> Note: In the following documentation, the following default values for functions are sometimes used:
 >
 >   - `ID`: The identity function, meaning it will return its argument, that is: `x => x`
 >   - `CMP`: Standard comparison function, that is: `(a, b) => (a < b) ? -1 : (a > b) ? +1 : 0`
 
-### Options
-
-Most methods accept an `options` object as the end of the arguments.
-Apart from any method-specific options, all async methods will accept the following options:
-
-- `preload`, `pl`: If set to `true`, the first element will be requested immediately without waiting for the iteration to start.
-  This will likely not be useful most of the time, as the time between first creating the iterable and iterating it is typically
-  negligible, but can be useful on situations where the iterable can sit unused for a few milliseconds.
-  Using this option means that the first element will *always* be requested even if the iteration never starts, so be mindful
-  of using it if the action of obtaining the element has other side-effects.
-
-- `prefetch`, `pf`: If set to `true`, elements are requested before yielding the previous one.
-  By doing so, the next element is obtained while the following stages in the iterable pipeline are being executed.
-  This options should be used on stages that are slow, such as network calls, 
-  Using this option means that some elements are requested even if they are *never* iterated, and beware that multiple prefetches
-  on the same pipeline can increase the amount of elements that go unused, so be mindful of using it if the action of obtaining
-  the element has other side-effects.
-
 
 ### Factory Methods
 
-All of these functions are in the `Poly` object top-level obtained by requiring `polyethylene`, and
-will return an `Iterable` object.
+All of these functions are in the `Poly` default export obtained by importing `polyethylene`, and
+will return a `SyncIterableIterable` or `AsyncIterable` object.
 
 
 #### `Poly.from(iterable|asyncIterable|generator|asyncGenerator[, options])`
@@ -87,11 +83,11 @@ This function is intended to be used in situations where creating an iterable vi
 impossible, such as when the iteration comes from an `EventEmitter`, but using `from` is still
 preferred otherwise.
 
-As an example, here is how you would assemble an `Iterable` from a stream (note however that Node
-streams are already async iterables, so this is not needed):
+As an example, here is how you would assemble an `AsyncIterable` from a stream (note however that Node
+streams are already async iterables, so this is not *really* needed):
 
 ```
-const Poly = require('polyethylene');
+import Poly from 'polyethylene';
 
 const iter = Poly.assemble(({value, error, done}) => {
   const stream = process.stdin; // or any other stream

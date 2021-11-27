@@ -1,6 +1,15 @@
 {
-  "extends": "@darkhogg",
+  "extends": ["@darkhogg"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "env": {
     "mocha": true
+  },
+  "rules": {
+    "no-redeclare": ["off"],
+    "@typescript-eslint/no-redeclare": ["error"]
   }
 }

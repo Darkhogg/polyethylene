@@ -1,0 +1,57 @@
+export function identity<T> (x : T) : T {
+  return x
+}
+
+export async function asyncIdentity<T> (x: T) : Promise<T> {
+  return x
+}
+
+export function comparator<T> (a : T, b : T) : -1 | 0 | 1 {
+  return (a < b) ? -1 : (a > b) ? +1 : 0
+}
+
+export const asserts = {
+  isFunction (arg : any, name = 'argument') : arg is Function {
+    if (typeof arg !== 'function') {
+      throw new Error(`${name} should be a function`)
+    }
+    return true
+  },
+
+  isInteger (arg : any, name = 'argument') : arg is number {
+    if (!Number.isInteger(arg)) {
+      throw new Error(`${name} should be an integer`)
+    }
+    return true
+  },
+
+  isPositiveInteger (arg : any, name = 'argument') : arg is number {
+    if (!Number.isInteger(arg) || arg as any <= 0) {
+      throw new Error(`${name} should be a positive integer`)
+    }
+    return true
+  },
+
+  isNonNegativeInteger (arg : any, name = 'argument') : arg is number {
+    if (!Number.isInteger(arg) || arg as any < 0) {
+      throw new Error(`${name} should be a non-negative integer`)
+    }
+    return true
+  },
+
+  isSyncIterable (arg : any, name = 'argument') : arg is Iterable<any> {
+    const iteratorMethod = (arg as any)[Symbol.iterator]
+    if (typeof iteratorMethod !== 'function') {
+      throw new Error(`${name} should be sync iterable`)
+    }
+    return true
+  },
+
+  isAsyncIterable (arg : any, name = 'argument') : arg is AsyncIterable<any> {
+    const iteratorMethod = arg[Symbol.asyncIterator] || arg[Symbol.iterator]
+    if (typeof iteratorMethod !== 'function') {
+      throw new Error(`${name} should be async iterable`)
+    }
+    return true
+  },
+}

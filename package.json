@@ -1,6 +1,6 @@
 {
   "name": "polyethylene",
-  "version": "1.5.1",
+  "version": "2.0.0-1",
   "description": "Functional programming for iterables and async iterables",
   "author": "Daniel Escoz <darkhogg+npm.polyethylene@gmail.com>",
   "license": "MIT",
@@ -8,21 +8,32 @@
     "type": "git",
     "url": "https://github.com/Darkhogg/polyethylene"
   },
-  "main": "lib/poly.js",
-  "directories": {
-    "lib": "lib",
-    "test": "tests"
+  "main": "dist/poly.js",
+  "type": "module",
+  "exports": {
+    ".": "./dist/lib/main.js"
   },
+  "typings": "dist/poly.d.js",
   "scripts": {
-    "test": "nyc --exclude tests --reporter lcov --reporter=text -- mocha tests/*.test.js",
-    "preversion": "npm test"
+    "build": "tsc",
+    "test": "nr -s build && mocha dist/tests/*.test.js",
+    "preversion": "nr test",
+    "prepublish": "nr -s build"
   },
   "devDependencies": {
-    "@darkhogg/eslint-config": "^1.0.3",
-    "chai": "^4.2.0",
+    "@antfu/ni": "^0.10.1",
+    "@darkhogg/eslint-config": "^1.1.2",
+    "@types/chai": "^4.2.22",
+    "@types/chai-as-promised": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^5.16.0",
-    "mocha": "^8.3.2",
-    "nyc": "^14.1.1"
+    "eslint": "^7.32.0",
+    "mocha": "^9.1.3",
+    "nyc": "^15.1.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
   }
 }

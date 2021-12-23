@@ -31,7 +31,7 @@ export async function * prefetchGen<T> (iterable : AsyncIterable<T>) : AsyncIter
 export function preloadGen<T> (iterable : AsyncIterable<T>) : AsyncIterable<T> {
   const it = iterable[Symbol.asyncIterator]()
 
-  const firstProm : Promise<IteratorResult<T, any>> = it.next()
+  const firstProm = it.next()
   let firstDone = false
 
   return {

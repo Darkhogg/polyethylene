@@ -19,13 +19,16 @@ https://img.shields.io/travis/Darkhogg/polyethylene.svg
 
   - **Breaking Changes**
     - Move to ESModules and remove support for CommonJS
-    - Remove `options` object altogether (replaced with `preload()` and `prefetch()` methods)
-    - Remove `#async()` from async iterators -- things are more explicit now and type
-    - Remove default arguments for most methods that accept a function as a parameter (`#unique` and `#sort` preserve their defaults)
+    - Split `Poly.from` into `Poly.syncFrom` and `Poly.asyncFrom`
+    - Split `Poly.iterate` into `Poly.syncIterate` and `Poly.asyncIterate`
+    - Remove `options` object altogether (replaced with `preload` and `prefetch` methods)
+    - Remove `async` from async iterators -- it is uneeded as there are no ambiguous methods anymore
+    - Remove default arguments for most methods that accept a function as a parameter (`unique` and `sort` preserve their defaults)
   - **New Features**
     - Port codebase to TypeScript, and add type definition files
-    - Add `#preload()` and `#prefetch()` methods to async iterables
-    - Add `#toMap()` leaf method to both sync and async iterables
+    - Add `Poly.empty<T>` method to create (typed) empty iterables
+    - Add `preload` and `prefetch` methods to async iterables
+    - Add `toMap` leaf method to both sync and async iterables
 
 ## Example
 
@@ -38,7 +41,6 @@ await Poly.from(findUsers())
   .flat()
   .forEach(post => console.log(post));
 ```
-
 
 
 ## Usage

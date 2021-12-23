@@ -52,10 +52,45 @@ describe('Poly', () => {
       expect(iter[Symbol.asyncIterator]).to.exist
     })
 
-    it('should return an async iterable that produces the correct values', async () => {
+    it('should return an async iterable if given an async iterable factory', () => {
+      async function * gen () {}
+
+      const iter = Poly.asyncFrom(gen)
+      expect(iter[Symbol.asyncIterator]).to.exist
+    })
+
+    it('should return an async iterable if given a sync iterable', () => {
+      const obj = {
+        * [Symbol.iterator] (): Iterator<unknown> {},
+      }
+
+      const iter = Poly.asyncFrom(obj)
+      expect(iter[Symbol.asyncIterator]).to.exist
+    })
+
+    it('should return an async iterable if given a sync iterable factory', () => {
+      function * gen () {}
+
+      const iter = Poly.asyncFrom(gen)
+      expect(iter[Symbol.asyncIterator]).to.exist
+    })
+
+    it('should return an async iterable that produces the correct values if given an async iterable', async () => {
       const values = [1, 3, 3, 7]
       const obj = {
         async * [Symbol.asyncIterator] (): AsyncIterator<number> {
+          yield * values
+        },
+      }
+
+      const iter = Poly.asyncFrom(obj)
+      await expect(collectAsync(iter)).to.eventually.deep.equal(values)
+    })
+
+    it('should return an async iterable that produces the correct values if given a sync iterable', async () => {
+      const values = [1, 3, 3, 7]
+      const obj = {
+        * [Symbol.iterator] (): Iterator<number> {
           yield * values
         },
       }

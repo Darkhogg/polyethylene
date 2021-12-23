@@ -41,10 +41,10 @@ function isAsyncIterable<T> (obj : unknown) : obj is AsyncIterable<T> {
   return typeof obj == 'object' && obj != null && Symbol.asyncIterator in obj
 }
 
-export function asyncFrom<T> (iterable : AsyncIterable<T>) : PolyAsyncIterable<T>
-export function asyncFrom<T> (iterable : AsyncIterableFactory<T>) : PolyAsyncIterable<T>
 
-export function asyncFrom<T> (iterableOrFactory : AsyncIterable<T> | AsyncIterableFactory<T>) : PolyAsyncIterable<T> {
+export function asyncFrom<T> (
+  iterableOrFactory : Iterable<T> | IterableFactory<T> | AsyncIterable<T> | AsyncIterableFactory<T>,
+) : PolyAsyncIterable<T> {
   if (iterableOrFactory instanceof PolyAsyncIterable) {
     return iterableOrFactory
   }
@@ -57,7 +57,11 @@ export function asyncFrom<T> (iterableOrFactory : AsyncIterable<T> | AsyncIterab
     return new PolyAsyncIterable<T>(iterableOrFactory)
   }
 
-  throw Error('argument is not async iterable')
+  if (isSyncIterable<T>(iterableOrFactory)) {
+    return new PolySyncIterable<T>(iterableOrFactory).async()
+  }
+
+  throw Error('argument is not sync or async iterable')
 }
 
 

@@ -386,6 +386,14 @@ describe('Async Iterable', () => {
   })
 
 
+  describe('#filterNotNullish', () => {
+    it('should only yield elements that aren\'t null or undefined', () => {
+      const iter = Poly.syncFrom([0, 1, null, 2, undefined, 3]).async().filterNotNullish()
+      expect(collectAsync(iter)).to.eventually.deep.equal([0, 1, 2, 3])
+    })
+  })
+
+
   describe('#map', () => {
     it('should yield elements correctly mapped', async () => {
       const iter = Poly.syncFrom([1, 2, 3]).async().map((n) => n * n)

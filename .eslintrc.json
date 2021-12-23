@@ -10,6 +10,7 @@
   },
   "rules": {
     "no-redeclare": ["off"],
+    "no-dupe-class-members": ["off"],
     "@typescript-eslint/no-redeclare": ["error"]
   }
 }

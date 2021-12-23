@@ -1,8 +1,9 @@
-import {comparator, asserts, identity} from './utils.js'
+import {comparator, asserts, identity, isNotNullish} from './utils.js'
 import PolyAsyncIterable from './iter-async.js'
 
 
 type IndexedPredicate<T> = (elem : T, index : number) => boolean
+type IndexedNarrowingPredicate<T, U extends T> = (elem: T, index: number) => elem is U
 type IndexedMapping<T, U> = (elem : T, index : number) => U
 type IndexedRunnable<T> = (elem : T, index : number) => void
 type IndexedReducer<T, U> = (acc : U, item : T, index : number) => U
@@ -12,12 +13,12 @@ type UniqueMapping<T> = (elem : T) => unknown
 type Comparator<T> = (elemA : T, elemB : T) => number
 
 
-function * appendGen<T> (iterA : Iterable<T>, iterB : Iterable<T>) : Iterable<T> {
+function * appendGen<T, U> (iterA : Iterable<T>, iterB : Iterable<U>) : Iterable<T | U> {
   yield * iterA
   yield * iterB
 }
 
-function * prependGen<T> (iterA : Iterable<T>, iterB : Iterable<T>) : Iterable<T> {
+function * prependGen<T, U> (iterA : Iterable<T>, iterB : Iterable<U>) : Iterable<T | U> {
   yield * iterB
   yield * iterA
 }
@@ -131,7 +132,13 @@ function * takeWhileGen<T> (iter : Iterable<T>, func : IndexedPredicate<T>) : It
   }
 }
 
-function * filterGen<T> (iter : Iterable<T>, func : IndexedPredicate<T>) : Iterable<T> {
+function filterGen<T, U extends T> (iter : Iterable<T>, func : IndexedNarrowingPredicate<T, U>) : Iterable<U>
+function filterGen<T> (iter : Iterable<T>, func : IndexedPredicate<T>) : Iterable<T>
+
+function * filterGen<T, U extends T> (
+  iter : Iterable<T>,
+  func : IndexedPredicate<T> | IndexedNarrowingPredicate<T, U>,
+) : Iterable<U> {
   let idx = 0
   for (const elem of iter) {
     if (func(elem, idx++)) {
@@ -242,16 +249,16 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     return new PolyAsyncIterable<T>(asyncIterable)
   }
 
-  append (iter : Iterable<T>) : PolySyncIterable<T> {
+  append<U> (iter : Iterable<U>) : PolySyncIterable<T | U> {
     asserts.isSyncIterable(iter)
     return new PolySyncIterable(appendGen(this._iterable, iter))
   }
 
-  concat (iter : Iterable<T>) : PolySyncIterable<T> {
+  concat<U> (iter : Iterable<U>) : PolySyncIterable<T | U> {
     return this.append(iter)
   }
 
-  prepend (iter : Iterable<T>) : PolySyncIterable<T> {
+  prepend<U> (iter : Iterable<U>) : PolySyncIterable<T | U> {
     asserts.isSyncIterable(iter)
     return new PolySyncIterable(prependGen(this._iterable, iter))
   }
@@ -292,9 +299,17 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     return new PolySyncIterable(takeWhileGen(this._iterable, func))
   }
 
-  filter (func : IndexedPredicate<T>) : PolySyncIterable<T> {
+
+  filter<U extends T> (func : IndexedNarrowingPredicate<T, U>) : PolySyncIterable<U>
+  filter (func : IndexedPredicate<T>) : PolySyncIterable<T>
+
+  filter<U extends T> (func : IndexedPredicate<T> | IndexedNarrowingPredicate<T, U>) : PolySyncIterable<T | U> {
     asserts.isFunction(func)
     return new PolySyncIterable(filterGen(this._iterable, func))
+  }
+
+  filterNotNullish () : PolySyncIterable<Exclude<T, null | undefined>> {
+    return this.filter(isNotNullish)
   }
 
   map<U> (func : IndexedMapping<T, U>) : PolySyncIterable<U> {

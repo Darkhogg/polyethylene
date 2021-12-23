@@ -10,6 +10,10 @@ export function comparator<T> (a : T, b : T) : -1 | 0 | 1 {
   return (a < b) ? -1 : (a > b) ? +1 : 0
 }
 
+export function isNotNullish<T> (obj: T): obj is Exclude<T, null | undefined> {
+  return obj != null
+}
+
 export const asserts = {
   isFunction (arg : any, name = 'argument') : arg is Function {
     if (typeof arg !== 'function') {

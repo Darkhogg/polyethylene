@@ -2,50 +2,27 @@ import {comparator, asserts, asyncIdentity, isNotNullish} from './utils.js'
 
 
 type IndexedPredicate<T> = (elem : T, index : number) => boolean | PromiseLike<boolean>
-type IndexedNarrowingPredicate<T, U extends T> = (elem: T, index: number) => elem is U
+type IndexedTypePredicate<T, U extends T> = (elem: T, index: number) => elem is U
 type IndexedMapping<T, U> = (elem : T, index : number) => U | PromiseLike<U>
 type IndexedRunnable<T> = (elem : T, index : number) => void | PromiseLike<void>
 type IndexedReducer<T, U> = (acc : U, item : T, index : number) => U | PromiseLike<U>
 
-type GroupingPredicate<T> = (elem : T, lastElem : T, firstElem : T) => boolean | PromiseLike<boolean>
-type UniqueMapping<T> = (elem : T) => unknown
+type ChunkingPredicate<T> = (elem : T, lastElem : T, firstElem : T) => boolean | PromiseLike<boolean>
 type Comparator<T> = (elemA : T, elemB : T) => number
 
 
-export async function * prefetchGen<T> (iterable : AsyncIterable<T>) : AsyncIterable<T> {
+function prefetchGen<T> (iterable : AsyncIterable<T>) : AsyncIterable<T> {
   const it = iterable[Symbol.asyncIterator]()
-
-  let cont = true
   let prom = it.next()
-  while (cont) {
-    const {value, done} = await prom
-
-    prom = it.next()
-
-    cont = !done
-    if (cont) {
-      yield value
-    }
-  }
-}
-
-export function preloadGen<T> (iterable : AsyncIterable<T>) : AsyncIterable<T> {
-  const it = iterable[Symbol.asyncIterator]()
-
-  const firstProm = it.next()
-  let firstDone = false
 
   return {
-    async * [Symbol.asyncIterator] () {
-      let cont = true
-      while (cont) {
-        const {value, done} = await (firstDone ? it.next() : firstProm)
-        firstDone = true
-
-        cont = !done
-        if (cont) {
-          yield value
-        }
+    [Symbol.asyncIterator] () {
+      return {
+        next () {
+          const oldProm = prom
+          prom = it.next()
+          return oldProm
+        },
       }
     },
   }
@@ -178,12 +155,12 @@ function sliceGen<T> (iter : AsyncIterable<T>, start : number, end : number) : A
   }
 }
 
-function filterGen<T, U extends T> (iter : AsyncIterable<T>, func : IndexedNarrowingPredicate<T, U>) : AsyncIterable<U>
+function filterGen<T, U extends T> (iter : AsyncIterable<T>, func : IndexedTypePredicate<T, U>) : AsyncIterable<U>
 function filterGen<T> (iter : AsyncIterable<T>, func : IndexedPredicate<T>) : AsyncIterable<T>
 
 async function * filterGen<T, U extends T> (
   iter : AsyncIterable<T>,
-  func : IndexedPredicate<T> | IndexedNarrowingPredicate<T, U>,
+  func : IndexedPredicate<T> | IndexedTypePredicate<T, U>,
 ) : AsyncIterable<T | U> {
   let idx = 0
   for await (const elem of iter) {
@@ -214,44 +191,64 @@ async function * flattenGen<T> (iter : AsyncIterable<Iterable<T> | AsyncIterable
   }
 }
 
-async function * groupGen<T> (iter : AsyncIterable<T>, num : number) : AsyncIterable<Array<T>> {
-  let group = []
+async function * chunkGen<T> (iter : AsyncIterable<T>, num : number) : AsyncIterable<Array<T>> {
+  let chunk = []
 
   for await (const elem of iter) {
-    group.push(elem)
-    if (group.length === num) {
-      yield group
-      group = []
+    chunk.push(elem)
+    if (chunk.length === num) {
+      yield chunk
+      chunk = []
     }
   }
 
-  if (group.length) {
-    yield group
+  if (chunk.length) {
+    yield chunk
   }
 }
 
-async function * groupWhileGen<T> (iter : AsyncIterable<T>, func : GroupingPredicate<T>) : AsyncIterable<Array<T>> {
-  let group : Array<T> = []
+async function * chunkWhileGen<T> (iter : AsyncIterable<T>, func : ChunkingPredicate<T>) : AsyncIterable<Array<T>> {
+  let chunk : Array<T> = []
 
   for await (const elem of iter) {
-    if (group.length === 0 || func(elem, group[group.length - 1], group[0])) {
-      group.push(elem)
+    if (chunk.length === 0 || func(elem, chunk[chunk.length - 1], chunk[0])) {
+      chunk.push(elem)
     } else {
-      yield group
-      group = [elem]
+      yield chunk
+      chunk = [elem]
     }
   }
 
-  if (group.length) {
-    yield group
+  if (chunk.length) {
+    yield chunk
   }
 }
 
-async function * uniqueGen<T> (iter : AsyncIterable<T>, func : UniqueMapping<T>) : AsyncIterable<T> {
+async function * groupByGen<K, T> (
+  iter : AsyncIterable<T>,
+  func : IndexedMapping<T, K>,
+) : AsyncIterable<[K, Array<T>]> {
+  const groups: Map<K, Array<T>> = new Map()
+
+  let idx = 0
+  for await (const elem of iter) {
+    const key = await func(elem, idx++)
+
+    const group = groups.get(key) ?? []
+    group.push(elem)
+
+    groups.set(key, group)
+  }
+
+  yield * groups.entries()
+}
+
+async function * uniqueGen<T> (iter : AsyncIterable<T>, func : IndexedMapping<T, unknown>) : AsyncIterable<T> {
   const seen = new Set()
 
+  let idx = 0
   for await (const elem of iter) {
-    const key = await func(elem)
+    const key = await func(elem, idx++)
     if (!seen.has(key)) {
       yield elem
       seen.add(key)
@@ -280,81 +277,148 @@ async function * sortGen<T> (iter : AsyncIterable<T>, func : Comparator<T>) : As
 }
 
 
+/**
+ *
+ *
+ * @public
+ */
 export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
-  _iterable : AsyncIterable<T>
+  #iterable : AsyncIterable<T>
 
+  /** @internal */
   constructor (iterable : AsyncIterable<T>) {
-    this._iterable = iterable
+    this.#iterable = iterable
   }
 
+  /**
+   * Allows this class to work as a regular `AsyncIterable<T>`
+   *
+   * @returns an async iterable that will yield the same elements as the iterable used to create this instance
+   */
   async * [Symbol.asyncIterator] () {
-    yield * this._iterable
+    yield * this.#iterable
   }
 
-  preload () : PolyAsyncIterable<T> {
-    return new PolyAsyncIterable(preloadGen(this._iterable))
-  }
-
+  /**
+   * Return the same iteration, but with its elements requested with anticipation to allow for asynchronous operations
+   * to begin and reduce wait times.
+   *
+   * @remarks
+   * Return a new {@link PolyAsyncIterable} that yields the same elements as `this`.  When yielding an element of
+   * this iterable, the next one will be also requested internally, so that any asynchronous operations are started
+   * before their results are needed.
+   *
+   * Note that after calling this mehtod, more elements than strictly needed might be requested from the previous
+   * iterable, triggering any potential side effects.
+   *
+   * @returns a new {@link PolyAsyncIterable} that prefetched the iterated elementsd
+   */
   prefetch () : PolyAsyncIterable<T> {
-    return new PolyAsyncIterable(prefetchGen(this._iterable))
+    return new PolyAsyncIterable(prefetchGen(this.#iterable))
   }
 
-  append<U> (iter : Iterable<U> | AsyncIterable<U>) : PolyAsyncIterable<T | U> {
-    asserts.isAsyncIterable(iter)
-    return new PolyAsyncIterable(appendGen(this._iterable, iter))
+  /**
+   * Return a new iteration that will iterate over `this`, then over `other`.
+   *
+   * @remarks
+   * Return a new {@link PolyAsyncIterable} that yields the same elements as `this`, then the same elements as `other`.
+   * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the
+   * types of two distinct iterables.
+   *
+   * @typeParam U - Type of the elements to be appended
+   * @param other - Iterable to be appended
+   * @returns a new {@link PolyAsyncIterable} that yields the elements of `this` and then the elements of `other`
+   */
+  append<U> (other : Iterable<U> | AsyncIterable<U>) : PolyAsyncIterable<T | U> {
+    asserts.isSyncOrAsyncIterable(other)
+    return new PolyAsyncIterable(appendGen(this.#iterable, other))
   }
 
-  concat<U> (iter : Iterable<U> | AsyncIterable<U>) : PolyAsyncIterable<T | U> {
-    return this.append(iter)
+  /**
+   * Return a new iteration that will iterate over `this`, then over `other`.
+   *
+   * @remarks
+   * This method is an alias for {@link PolyAsyncIterable.append}.
+   *
+   * @typeParam U - Type of the elements to be appended
+   * @param other - Iterable to be appended
+   * @returns a new {@link PolyAsyncIterable} that yields the elements of `this` and then the elements of `other`
+   */
+  concat<U> (other : Iterable<U> | AsyncIterable<U>) : PolyAsyncIterable<T | U> {
+    return this.append(other)
   }
 
-  prepend<U> (iter : Iterable<U> | AsyncIterable<U>) : PolyAsyncIterable<T | U> {
-    asserts.isAsyncIterable(iter)
-    return new PolyAsyncIterable(prependGen(this._iterable, iter))
+  /**
+   * Return a new iteration that will iterate over `other`, then over `this`.
+   *
+   * @remarks
+   * Return a new {@link PolyAsyncIterable} that yields the same elements as `other`, then the same elements as `this`.
+   * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the
+   * types of two distinct iterables.
+   *
+   * @typeParam U - Type of the elements to be prepended
+   * @param other - Iterable to be prepended
+   * @returns a new {@link PolyAsyncIterable} that yields the elements of `other` and then the elements of `this`
+   */
+  prepend<U> (other : Iterable<U> | AsyncIterable<U>) : PolyAsyncIterable<T | U> {
+    asserts.isSyncOrAsyncIterable(other)
+    return new PolyAsyncIterable(prependGen(this.#iterable, other))
   }
 
-  drop (num : number = 0) : PolyAsyncIterable<T> {
+  /**
+   * Return a new iteration that skips the first `num` elements.
+   */
+  drop (num : number) : PolyAsyncIterable<T> {
     asserts.isNonNegativeInteger(num)
-    return new PolyAsyncIterable(dropGen(this._iterable, num))
+    return new PolyAsyncIterable(dropGen(this.#iterable, num))
   }
 
-  take (num : number = 0) : PolyAsyncIterable<T> {
+  /**
+   * Return a new iteration that iterates only over the first `num` elements.
+   */
+  take (num : number) : PolyAsyncIterable<T> {
     asserts.isNonNegativeInteger(num)
-    return new PolyAsyncIterable(takeGen(this._iterable, num))
+    return new PolyAsyncIterable(takeGen(this.#iterable, num))
   }
 
-  dropLast (num : number = 0) : PolyAsyncIterable<T> {
+  /**
+   * Return a new iteration that skips the last `num` elements.
+   */
+  dropLast (num : number) : PolyAsyncIterable<T> {
     asserts.isNonNegativeInteger(num)
-    return new PolyAsyncIterable(dropLastGen(this._iterable, num))
+    return new PolyAsyncIterable(dropLastGen(this.#iterable, num))
   }
 
-  takeLast (num : number = 0) : PolyAsyncIterable<T> {
+  /**
+   * Return a new iteration that iterates only over the last `num` elements.
+   */
+  takeLast (num : number) : PolyAsyncIterable<T> {
     asserts.isNonNegativeInteger(num)
-    return new PolyAsyncIterable(takeLastGen(this._iterable, num))
+    return new PolyAsyncIterable(takeLastGen(this.#iterable, num))
   }
 
   dropWhile (func : IndexedPredicate<T>) : PolyAsyncIterable<T> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(dropWhileGen(this._iterable, func))
+    return new PolyAsyncIterable(dropWhileGen(this.#iterable, func))
   }
 
   takeWhile (func : IndexedPredicate<T>) : PolyAsyncIterable<T> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(takeWhileGen(this._iterable, func))
+    return new PolyAsyncIterable(takeWhileGen(this.#iterable, func))
   }
 
   slice (start : number, end : number) : PolyAsyncIterable<T> {
     asserts.isInteger(start, 'start')
     asserts.isInteger(end, 'end')
-    return new PolyAsyncIterable(sliceGen(this._iterable, start, end))
+    return new PolyAsyncIterable(sliceGen(this.#iterable, start, end))
   }
 
-  filter<U extends T> (func : IndexedNarrowingPredicate<T, U>) : PolyAsyncIterable<U>
+  filter<U extends T> (func : IndexedTypePredicate<T, U>) : PolyAsyncIterable<U>
   filter (func : IndexedPredicate<T>) : PolyAsyncIterable<T>
 
-  filter<U extends T> (func : IndexedPredicate<T> | IndexedNarrowingPredicate<T, U>) : PolyAsyncIterable<T | U> {
+  filter<U extends T> (func : IndexedPredicate<T> | IndexedTypePredicate<T, U>) : PolyAsyncIterable<T | U> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(filterGen(this._iterable, func))
+    return new PolyAsyncIterable(filterGen(this.#iterable, func))
   }
 
   filterNotNullish () : PolyAsyncIterable<Exclude<T, null | undefined>> {
@@ -363,18 +427,18 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
 
   map<U> (func : IndexedMapping<T, U>) : PolyAsyncIterable<U> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(mapGen(this._iterable, func))
+    return new PolyAsyncIterable(mapGen(this.#iterable, func))
   }
 
   tap (func : IndexedRunnable<T>) : PolyAsyncIterable<T> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(tapGen(this._iterable, func))
+    return new PolyAsyncIterable(tapGen(this.#iterable, func))
   }
 
   flatten<U> (
     this : PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>,
   ) : PolyAsyncIterable<U> {
-    return new PolyAsyncIterable(flattenGen(this._iterable))
+    return new PolyAsyncIterable(flattenGen(this.#iterable))
   }
 
   flat<U> (
@@ -389,43 +453,70 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     return this.map(func).flatten()
   }
 
-  group (num : number = 1) : PolyAsyncIterable<Array<T>> {
+  chunk (num : number = 1) : PolyAsyncIterable<Array<T>> {
     asserts.isPositiveInteger(num)
-    return new PolyAsyncIterable(groupGen(this._iterable, num))
+    return new PolyAsyncIterable(chunkGen(this.#iterable, num))
   }
 
-  groupWhile (func : GroupingPredicate<T>) : PolyAsyncIterable<Array<T>> {
+  chunkWhile (func : ChunkingPredicate<T>) : PolyAsyncIterable<Array<T>> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(groupWhileGen(this._iterable, func))
+    return new PolyAsyncIterable(chunkWhileGen(this.#iterable, func))
   }
 
-  unique (func : UniqueMapping<T> = asyncIdentity) : PolyAsyncIterable<T> {
+  groupBy<K extends PropertyKey> (func : IndexedMapping<T, K>) : PolyAsyncIterable<[K, Array<T>]> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(uniqueGen(this._iterable, func))
+    return new PolyAsyncIterable(groupByGen(this.#iterable, func))
+  }
+
+  unique (func : IndexedMapping<T, unknown> = asyncIdentity) : PolyAsyncIterable<T> {
+    asserts.isFunction(func)
+    return new PolyAsyncIterable(uniqueGen(this.#iterable, func))
   }
 
   reverse () : PolyAsyncIterable<T> {
-    return new PolyAsyncIterable(reverseGen(this._iterable))
+    return new PolyAsyncIterable(reverseGen(this.#iterable))
   }
 
   sort (func : Comparator<T> = comparator) : PolyAsyncIterable<T> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(sortGen(this._iterable, func))
+    return new PolyAsyncIterable(sortGen(this.#iterable, func))
   }
 
   async toArray () : Promise<Array<T>> {
     const array = []
-    for await (const elem of this._iterable) {
+    for await (const elem of this.#iterable) {
       array.push(elem)
     }
     return array
   }
 
-  async toObject<K extends string | number | symbol, V> (
+  // eslint-disable-next-line max-len
+  async toPartitionArrays<U extends T> (func : IndexedTypePredicate<T, U>) : Promise<[Array<U>, Array<Exclude<T, U>>]>
+  async toPartitionArrays (func : IndexedPredicate<T>) : Promise<[Array<T>, Array<T>]>
+
+  async toPartitionArrays<U extends T> (
+    func : IndexedPredicate<T> | IndexedTypePredicate<T, U>,
+  ) : Promise<[Array<U | T>, Array<T | Exclude<T, U>>]> {
+    const trues: Array<U | T> = []
+    const falses: Array<T | Exclude<T, U>> = []
+
+    let idx = 0
+    for await (const elem of this.#iterable) {
+      if (await func(elem, idx++)) {
+        trues.push(elem)
+      } else {
+        falses.push(elem)
+      }
+    }
+
+    return [trues, falses]
+  }
+
+  async toObject<K extends PropertyKey, V> (
     this : PolyAsyncIterable<readonly [K, V]>,
   ) : Promise<Record<K, V>> {
     const object = {} as Record<K, V>
-    for await (const [key, value] of this._iterable) {
+    for await (const [key, value] of this.#iterable) {
       object[key] = value
     }
     return object
@@ -434,7 +525,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
   async toMap<K, V> (this : PolyAsyncIterable<readonly [K, V]>) : Promise<Map<K, V>> {
     const map = new Map<K, V>()
 
-    const iterable = this._iterable
+    const iterable = this.#iterable
     for await (const [key, value] of iterable) {
       map.set(key, value)
     }
@@ -442,11 +533,14 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     return map
   }
 
-  async find (func : IndexedPredicate<T>) : Promise<T | undefined> {
+  async find<U extends T> (func : IndexedTypePredicate<T, U>) : Promise<U | undefined>
+  async find (func : IndexedPredicate<T>) : Promise<T | undefined>
+
+  async find<U extends T> (func : IndexedPredicate<T> | IndexedTypePredicate<T, U>) : Promise<T | U | undefined> {
     asserts.isFunction(func)
 
     let idx = 0
-    for await (const elem of this._iterable) {
+    for await (const elem of this.#iterable) {
       if (await func(elem, idx++)) {
         return elem
       }
@@ -455,7 +549,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
   }
 
   async includes (obj: T) : Promise<boolean> {
-    for await (const elem of this._iterable) {
+    for await (const elem of this.#iterable) {
       if (Object.is(obj, elem) || (obj === elem)) {
         return true
       }
@@ -468,7 +562,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     asserts.isFunction(func)
 
     let idx = 0
-    for await (const item of this._iterable) {
+    for await (const item of this.#iterable) {
       if (await func(item, idx++)) {
         return true
       }
@@ -481,7 +575,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     asserts.isFunction(func)
 
     let idx = 0
-    for await (const item of this._iterable) {
+    for await (const item of this.#iterable) {
       if (!(await func(item, idx++))) {
         return false
       }
@@ -497,7 +591,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     let isFirst = (accumulated === undefined)
     let idx = 0
 
-    for await (const elem of this._iterable) {
+    for await (const elem of this.#iterable) {
       accumulated = isFirst ? (elem as unknown as U) : await reducer(accumulated as U, elem, idx++)
       isFirst = false
     }
@@ -509,7 +603,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     asserts.isFunction(func)
 
     let idx = 0
-    for await (const elem of this._iterable) {
+    for await (const elem of this.#iterable) {
       await func(elem, idx++)
     }
   }
@@ -518,7 +612,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     let str = ''
     let first = true
 
-    for await (const elem of this._iterable) {
+    for await (const elem of this.#iterable) {
       str += (first ? '' : glue) + (elem === null || elem === undefined ? '' : elem)
       first = false
     }
@@ -526,9 +620,14 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     return str
   }
 
+  /**
+   * Perform this iteration doing nothing.
+   *
+   * @returns a promise that will resolve when the iteration is done
+   */
   async drain () : Promise<void> {
     /* eslint-disable-next-line no-unused-vars */
-    for await (const elem of this._iterable) {
+    for await (const elem of this.#iterable) {
       /* do nothing, just iterate */
     }
   }

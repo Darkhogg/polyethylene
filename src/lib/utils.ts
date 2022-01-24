@@ -52,9 +52,18 @@ export const asserts = {
   },
 
   isAsyncIterable (arg : any, name = 'argument') : arg is AsyncIterable<any> {
-    const iteratorMethod = arg[Symbol.asyncIterator] || arg[Symbol.iterator]
-    if (typeof iteratorMethod !== 'function') {
+    const asyncIteratorMethod = arg[Symbol.asyncIterator]
+    if (typeof asyncIteratorMethod !== 'function') {
       throw new Error(`${name} should be async iterable`)
+    }
+    return true
+  },
+
+  isSyncOrAsyncIterable (arg : any, name = 'argument') : arg is Iterable<any> | AsyncIterable<any> {
+    const iteratorMethod = (arg as any)[Symbol.iterator]
+    const asyncIteratorMethod = arg[Symbol.asyncIterator]
+    if (typeof iteratorMethod !== 'function' && typeof asyncIteratorMethod !== 'function') {
+      throw new Error(`${name} should be sync or async iterable`)
     }
     return true
   },

@@ -15,6 +15,7 @@
   "typings": "./dist/lib/main.d.ts",
   "scripts": {
     "build": "tsc",
+    "docs": "nr -s build && ./gen-docs.sh",
     "test": "nr -s build && mocha dist/tests/*.test.js",
     "preversion": "nr test",
     "prepublish": "nr -s build"
@@ -22,9 +23,12 @@
   "devDependencies": {
     "@antfu/ni": "^0.10.1",
     "@darkhogg/eslint-config": "^1.1.2",
+    "@microsoft/api-documenter": "^7.13.78",
+    "@microsoft/api-extractor": "^7.19.3",
     "@types/chai": "^4.2.22",
     "@types/chai-as-promised": "^7.1.4",
     "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "chai": "^4.3.4",

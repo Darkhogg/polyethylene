@@ -24,16 +24,6 @@ describe('Async Iterable', () => {
       await expect(collectAsync(iter)).to.eventually.deep.equal(VALUES)
     })
 
-    it('should not retrieve elements without iterating', async () => {
-      let calledTimes = 0
-      Poly.syncFrom(VALUES).async().tap(() => {
-        calledTimes += 1
-      }).prefetch()
-
-      await delay(10)
-      expect(calledTimes).to.equal(0)
-    })
-
     it('should retrieve (only) a second item if iterated only once', async () => {
       let calledTimes = 0
       const iter = Poly.syncFrom(VALUES).async().tap(() => {
@@ -46,22 +36,12 @@ describe('Async Iterable', () => {
 
       expect(calledTimes).to.equal(2)
     })
-  })
-
-  describe('#preload', () => {
-    const VALUES = Object.freeze([0, 1, 1, 2, 3, 5, 8, 13, 21, 34])
-
-    it('should yield the same elements', async () => {
-      const iter = Poly.syncFrom(VALUES).async().preload()
-
-      await expect(collectAsync(iter)).to.eventually.deep.equal(VALUES)
-    })
 
     it('should retrieve the first element without iterating', async () => {
       let calledFirst = false
       Poly.syncFrom(VALUES).async().tap(() => {
         calledFirst = true
-      }).preload()
+      }).prefetch()
 
       await delay(10)
       expect(calledFirst).to.be.true
@@ -71,10 +51,10 @@ describe('Async Iterable', () => {
       let calledTimes = 0
       Poly.syncFrom(VALUES).async().tap(() => {
         calledTimes += 1
-      }).preload()
+      }).prefetch()
 
       await delay(10)
-      expect(calledTimes).to.equal(1)
+      expect(calledTimes).to.be.lessThanOrEqual(1)
     })
   })
 
@@ -162,11 +142,6 @@ describe('Async Iterable', () => {
       await expect(collectAsync(iter)).to.eventually.deep.equal([4, 5])
     })
 
-    it('should correctly drop nothing if not passed anything', async () => {
-      const iter = Poly.syncFrom([1, 2]).async().drop()
-      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2])
-    })
-
     it('should correctly drop everything if not enough elements', async () => {
       const iter = Poly.syncFrom([1, 2]).async().drop(3)
       await expect(collectAsync(iter)).to.eventually.deep.equal([])
@@ -185,11 +160,6 @@ describe('Async Iterable', () => {
   describe('#dropLast', () => {
     it('should correctly drop the last few elements', async () => {
       const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().dropLast(3)
-      await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2])
-    })
-
-    it('should correctly drop nothing if not passed anything', async () => {
-      const iter = Poly.syncFrom([1, 2]).async().dropLast()
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2])
     })
 
@@ -214,11 +184,6 @@ describe('Async Iterable', () => {
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3])
     })
 
-    it('should correctly take nothing if not passed anything', async () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().take()
-      await expect(collectAsync(iter)).to.eventually.deep.equal([])
-    })
-
     it('should correctly take everything if not enough elements', async () => {
       const iter = Poly.syncFrom([1, 2]).async().take(3)
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2])
@@ -238,11 +203,6 @@ describe('Async Iterable', () => {
     it('should correctly take the last few elements', async () => {
       const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().takeLast(3)
       await expect(collectAsync(iter)).to.eventually.deep.equal([3, 4, 5])
-    })
-
-    it('should correctly take nothing if not passed anything', async () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().takeLast()
-      await expect(collectAsync(iter)).to.eventually.deep.equal([])
     })
 
     it('should correctly take everything if not enough elements', async () => {
@@ -459,49 +419,68 @@ describe('Async Iterable', () => {
   })
 
 
-  describe('#group', () => {
-    it('should yield elements correctly grouped if amount is a divisor', async () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5, 6]).async().group(2)
+  describe('#chunk', () => {
+    it('should yield elements correctly chunked if amount is a divisor', async () => {
+      const iter = Poly.syncFrom([1, 2, 3, 4, 5, 6]).async().chunk(2)
       await expect(collectAsync(iter)).to.eventually.deep.equal([[1, 2], [3, 4], [5, 6]])
     })
 
-    it('should yield last elements correctly grouped if amount is not a divisor', async () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().group(2)
+    it('should yield last elements correctly chunked if amount is not a divisor', async () => {
+      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().chunk(2)
       await expect(collectAsync(iter)).to.eventually.deep.equal([[1, 2], [3, 4], [5]])
     })
 
     it('should yield nothing if original iterable was empty', async () => {
-      const iter = Poly.syncFrom([]).async().group(2)
+      const iter = Poly.syncFrom([]).async().chunk(2)
       await expect(collectAsync(iter)).to.eventually.deep.equal([])
     })
 
     it('should throw if not passed an integer', () => {
-      expect(() => Poly.syncFrom([]).async().group('foo' as any)).to.throw()
+      expect(() => Poly.syncFrom([]).async().chunk('foo' as any)).to.throw()
     })
 
     it('should throw if passed zero', () => {
-      expect(() => Poly.syncFrom([]).async().group(0)).to.throw()
+      expect(() => Poly.syncFrom([]).async().chunk(0)).to.throw()
     })
 
     it('should throw if passed a negative number', () => {
-      expect(() => Poly.syncFrom([]).async().group(-1)).to.throw()
+      expect(() => Poly.syncFrom([]).async().chunk(-1)).to.throw()
     })
   })
 
 
-  describe('#groupWhile', () => {
-    it('should yield elements correctly grouped', async () => {
-      const iter = Poly.range(0, 10).async().groupWhile((elem) => elem % 4 !== 0 && elem % 5 !== 0)
+  describe('#chunkWhile', () => {
+    it('should yield elements correctly chunked', async () => {
+      const iter = Poly.range(0, 10).async().chunkWhile((elem) => elem % 4 !== 0 && elem % 5 !== 0)
       await expect(collectAsync(iter)).to.eventually.deep.equal([[0, 1, 2, 3], [4], [5, 6, 7], [8, 9]])
     })
 
     it('should yield nothing if original iterable was empty', async () => {
-      const iter = Poly.syncFrom([]).async().groupWhile(() => true)
+      const iter = Poly.syncFrom([]).async().chunkWhile(() => true)
       await expect(collectAsync(iter)).to.eventually.deep.equal([])
     })
 
     it('should throw if not passed a function', async () => {
-      expect(() => Poly.syncFrom([]).async().groupWhile('foo' as any)).to.throw()
+      expect(() => Poly.syncFrom([]).async().chunkWhile('foo' as any)).to.throw()
+    })
+  })
+
+
+  describe('#groupBy', () => {
+    it('should work for empty iterations', async () => {
+      const iter = Poly.asyncFrom([]).groupBy(() => 0)
+      expect(collectAsync(iter)).to.eventually.deep.equal([])
+    })
+
+    it('should yield correctly grouped elements', async () => {
+      const elems = ['one', 'two', 'three', 'four', 'five']
+      const groups = [[3, ['one', 'two']], [5, ['three']], [4, ['four', 'five']]]
+      const iter = Poly.asyncFrom(elems).groupBy((str) => str.length)
+      await expect(collectAsync(iter)).to.eventually.deep.equal(groups)
+    })
+
+    it('should throw if not passed a function', async () => {
+      expect(() => Poly.asyncFrom([]).groupBy('foo' as any)).to.throw()
     })
   })
 
@@ -603,6 +582,41 @@ describe('Async Iterable', () => {
     it('should return empty array if no elements', async () => {
       const iter = Poly.range(0).async()
       await expect(iter.toArray()).to.eventually.deep.equal([])
+    })
+  })
+
+
+  describe('#toPartitionArrays', () => {
+    it('should return empty arrays for an ampty iteration', async () => {
+      const iter = Poly.empty().async()
+      const [trues, falses] = await iter.toPartitionArrays((x) => !!x)
+
+      expect(trues).to.deep.equal([])
+      expect(falses).to.deep.equal([])
+    })
+
+    it('should return empty "trues" array if function always returns false', async () => {
+      const iter = Poly.range(5).async()
+      const [trues, falses] = await iter.toPartitionArrays(() => true)
+
+      expect(trues).to.not.deep.equal([])
+      expect(falses).to.deep.equal([])
+    })
+
+    it('should return empty "falses" array if function always returns true', async () => {
+      const iter = Poly.range(5).async()
+      const [trues, falses] = await iter.toPartitionArrays(() => false)
+
+      expect(trues).to.deep.equal([])
+      expect(falses).to.not.deep.equal([])
+    })
+
+    it('should correctly partition into "trues" and "falses"', async () => {
+      const iter = Poly.range(10).async()
+      const [trues, falses] = await iter.toPartitionArrays((n) => (n % 3 === 0) || (n % 5 === 0))
+
+      expect(trues).to.deep.equal([0, 3, 5, 6, 9])
+      expect(falses).to.deep.equal([1, 2, 4, 7, 8])
     })
   })
 

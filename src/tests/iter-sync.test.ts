@@ -406,49 +406,68 @@ describe('Sync Iterable', () => {
   })
 
 
-  describe('#group', () => {
-    it('should yield elements correctly grouped if amount is a divisor', () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5, 6]).group(2)
+  describe('#chunk', () => {
+    it('should yield elements correctly chunked if amount is a divisor', () => {
+      const iter = Poly.syncFrom([1, 2, 3, 4, 5, 6]).chunk(2)
       expect(collectSync(iter)).to.deep.equal([[1, 2], [3, 4], [5, 6]])
     })
 
-    it('should yield last elements correctly grouped if amount is not a divisor', () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).group(2)
+    it('should yield last elements correctly chunked if amount is not a divisor', () => {
+      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).chunk(2)
       expect(collectSync(iter)).to.deep.equal([[1, 2], [3, 4], [5]])
     })
 
     it('should yield nothing if original iterable was empty', () => {
-      const iter = Poly.syncFrom([]).group(2)
+      const iter = Poly.syncFrom([]).chunk(2)
       expect(collectSync(iter)).to.deep.equal([])
     })
 
     it('should throw if not passed an integer', () => {
-      expect(() => Poly.syncFrom([]).group('foo' as any)).to.throw()
+      expect(() => Poly.syncFrom([]).chunk('foo' as any)).to.throw()
     })
 
     it('should throw if passed zero', () => {
-      expect(() => Poly.syncFrom([]).group(0)).to.throw()
+      expect(() => Poly.syncFrom([]).chunk(0)).to.throw()
     })
 
     it('should throw if passed a negative number', () => {
-      expect(() => Poly.syncFrom([]).group(-1)).to.throw()
+      expect(() => Poly.syncFrom([]).chunk(-1)).to.throw()
     })
   })
 
 
-  describe('#groupWhile', () => {
-    it('should yield elements correctly grouped', () => {
-      const iter = Poly.range(0, 10).groupWhile((elem) => elem % 4 !== 0 && elem % 5 !== 0)
+  describe('#chunkWhile', () => {
+    it('should yield elements correctly chunked', () => {
+      const iter = Poly.range(0, 10).chunkWhile((elem) => elem % 4 !== 0 && elem % 5 !== 0)
       expect(collectSync(iter)).to.deep.equal([[0, 1, 2, 3], [4], [5, 6, 7], [8, 9]])
     })
 
     it('should yield nothing if original iterable was empty', () => {
-      const iter = Poly.syncFrom([]).groupWhile(() => true)
+      const iter = Poly.syncFrom([]).chunkWhile(() => true)
       expect(collectSync(iter)).to.deep.equal([])
     })
 
     it('should throw if not passed a function', () => {
-      expect(() => Poly.syncFrom([]).groupWhile('foo' as any)).to.throw()
+      expect(() => Poly.syncFrom([]).chunkWhile('foo' as any)).to.throw()
+    })
+  })
+
+
+  describe('#groupBy', () => {
+    it('should work for empty iterations', () => {
+      const iter = Poly.syncFrom([]).groupBy(() => 0)
+      expect(collectSync(iter)).to.deep.equal([])
+    })
+
+    it('should yield correctly grouped elements', () => {
+      const elems = ['one', 'two', 'three', 'four', 'five']
+      const groups = [[3, ['one', 'two']], [5, ['three']], [4, ['four', 'five']]]
+      const iter = Poly.syncFrom(elems).groupBy((str) => str.length)
+      expect(collectSync(iter)).to.deep.equal(groups)
+    })
+
+    it('should throw if not passed a function', () => {
+      expect(() => Poly.syncFrom([]).groupBy('foo' as any)).to.throw()
     })
   })
 
@@ -550,6 +569,41 @@ describe('Sync Iterable', () => {
     it('should return empty array if no elements', () => {
       const iter = Poly.range(0)
       expect(iter.toArray()).to.deep.equal([])
+    })
+  })
+
+
+  describe('#toPartitionArrays', () => {
+    it('should return empty arrays for an ampty iteration', () => {
+      const iter = Poly.empty()
+      const [trues, falses] = iter.toPartitionArrays((x) => !!x)
+
+      expect(trues).to.deep.equal([])
+      expect(falses).to.deep.equal([])
+    })
+
+    it('should return empty "trues" array if function always returns false', () => {
+      const iter = Poly.range(5)
+      const [trues, falses] = iter.toPartitionArrays(() => true)
+
+      expect(trues).to.not.deep.equal([])
+      expect(falses).to.deep.equal([])
+    })
+
+    it('should return empty "falses" array if function always returns true', () => {
+      const iter = Poly.range(5)
+      const [trues, falses] = iter.toPartitionArrays(() => false)
+
+      expect(trues).to.deep.equal([])
+      expect(falses).to.not.deep.equal([])
+    })
+
+    it('should correctly partition into "trues" and "falses"', () => {
+      const iter = Poly.range(10)
+      const [trues, falses] = iter.toPartitionArrays((n) => (n % 3 === 0) || (n % 5 === 0))
+
+      expect(trues).to.deep.equal([0, 3, 5, 6, 9])
+      expect(falses).to.deep.equal([1, 2, 4, 7, 8])
     })
   })
 

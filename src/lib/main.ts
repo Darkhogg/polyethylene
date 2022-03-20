@@ -4,7 +4,7 @@
  *
  * @remarks
  * The entry point for this library is the {@link Poly} namespace, and the main iterable classes are
- * {@link PolySyncIterable} and {@link PolyAsyncIterable.}
+ * {@link PolySyncIterable} and {@link PolyAsyncIterable}.
  *
  * @packageDocumentation
  */

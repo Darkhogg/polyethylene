@@ -8,7 +8,7 @@ A library for working with iterables and async iterables in a functional style, 
 
 ## Remarks
 
-The entry point for this library is the [Poly](./polyethylene.poly.md) namespace, and the main iterable classes are [PolySyncIterable](./polyethylene.polysynciterable.md) and 
+The entry point for this library is the [Poly](./polyethylene.poly.md) namespace, and the main iterable classes are [PolySyncIterable](./polyethylene.polysynciterable.md) and [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->.
 
 ## Classes
 

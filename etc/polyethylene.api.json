@@ -161,7 +161,7 @@
   },
   "kind": "Package",
   "canonicalReference": "polyethylene!",
-  "docComment": "/**\n * A library for working with iterables and async iterables in a functional style, by transforming the iterations on the fly and getting results from them.\n *\n * @remarks\n *\n * The entry point for this library is the {@link Poly} namespace, and the main iterable classes are {@link PolySyncIterable} and {@link PolyAsyncIterable.}\n *\n * @packageDocumentation\n */\n",
+  "docComment": "/**\n * A library for working with iterables and async iterables in a functional style, by transforming the iterations on the fly and getting results from them.\n *\n * @remarks\n *\n * The entry point for this library is the {@link Poly} namespace, and the main iterable classes are {@link PolySyncIterable} and {@link PolyAsyncIterable}.\n *\n * @packageDocumentation\n */\n",
   "name": "polyethylene",
   "members": [
     {

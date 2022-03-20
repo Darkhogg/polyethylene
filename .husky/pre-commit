@@ -1,0 +1,6 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+pnpm run -s test
+pnpm run -s docs
+git add docs

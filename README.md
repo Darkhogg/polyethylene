@@ -52,7 +52,7 @@ await Poly.asyncFrom(findUsers())
 
 See the [API Documentation][docs].
 
-  - [docs]: ./blob/master/docs/polyathylene.md
+  - [docs]: ./blob/main/docs/polyathylene.md
 
 
 ## License

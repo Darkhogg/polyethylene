@@ -50,7 +50,7 @@ await Poly.asyncFrom(findUsers())
 
 ## Documentation
 
-See the [API Documentation][./docs/polyethylene.md].
+See the [API Documentation](./docs/polyethylene.md).
 
 ## License
 

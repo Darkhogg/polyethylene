@@ -50,10 +50,8 @@ await Poly.asyncFrom(findUsers())
 
 ## Documentation
 
-See the [API Documentation][docs].
-
-  [docs]: ./docs/polyethylene.md
-
+See the [API Documentation][./docs/polyethylene.md].
 
 ## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene?ref=badge_large)
+
+Polyethylene is released under the [MIT License](./LICENSE)

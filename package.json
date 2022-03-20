@@ -15,10 +15,10 @@
   "typings": "./dist/lib/main.d.ts",
   "scripts": {
     "build": "tsc",
-    "docs": "nr -s build && ./gen-docs.sh",
-    "test": "nr -s build && mocha --enable-source-maps dist/tests/*.test.js",
-    "preversion": "nr -s test && nr -s docs",
-    "prepublish": "nr -s build",
+    "docs": "pnpm run -s build && ./gen-docs.sh",
+    "test": "pnpm run -s build && mocha --enable-source-maps dist/tests/*.test.js",
+    "preversion": "pnpm run -s test && pnpm run -s docs",
+    "prepublish": "pnpm run -s build",
     "prepare": "husky install"
   },
   "devDependencies": {

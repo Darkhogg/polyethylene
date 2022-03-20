@@ -12,7 +12,8 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "incremental": true
   },
   "include": ["src/**/*"]
 }

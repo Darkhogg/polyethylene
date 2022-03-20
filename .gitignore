@@ -62,6 +62,7 @@ typings/
 
 # TSC output
 dist/
+tsconfig.tsbuildinfo
 
 # API-Extractor stuff
 temp/

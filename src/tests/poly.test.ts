@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import Poly from '../lib/main.js'
+import PolyAsyncIterable from '../lib/async/poly-iterable.js'
 
 import chai, {expect} from 'chai'
 import chaiAsPromised from 'chai-as-promised'
@@ -117,7 +118,7 @@ describe('Poly', () => {
    */
   for (const funcName of ['keys', 'values', 'entries'] as const) {
     describe(`.${funcName}`, () => {
-      function checkFor (obj : object) {
+      function checkFor (obj: object) {
         const expected = Object[funcName](obj)
         const actual = collectSync((Poly[funcName] as any)(obj))
 
@@ -216,120 +217,144 @@ describe('Poly', () => {
     })
   })
 
-  describe('.assemble', () => {
-    function fromTimeouts (spec: Array<[string | undefined | Error, number]>) {
-      return Poly.assemble(({value, error, done}) => {
-        for (const [obj, ms] of spec) {
-          const func = (obj === undefined) ? done
-            : (obj instanceof Error) ? error.bind(null, obj)
-              : value.bind(null, obj)
+  function fromTimeoutsWithBuild<T> (spec: Array<[T | undefined | Error, number]>): PolyAsyncIterable<T> {
+    return Poly.buildWith((builder) => {
+      for (const [obj, ms] of spec) {
+        const func = (obj === undefined) ? builder.done.bind(builder)
+          : (obj instanceof Error) ? builder.error.bind(builder, obj)
+            : builder.value.bind(builder, obj)
 
-          if (ms > 0) {
-            setTimeout(func, ms)
-          } else {
-            func()
-          }
+        if (ms > 0) {
+          setTimeout(func, ms)
+        } else {
+          func()
         }
-      })
+      }
+    })
+  }
+
+  function fromTimeoutsWithBuilder<T> (spec: Array<[T | undefined | Error, number]>): PolyAsyncIterable<T> {
+    const builder = Poly.builder<T>()
+
+    for (const [obj, ms] of spec) {
+      const func = (obj === undefined) ? builder.done.bind(builder)
+        : (obj instanceof Error) ? builder.error.bind(builder, obj)
+          : builder.value.bind(builder, obj)
+
+      if (ms > 0) {
+        setTimeout(func, ms)
+      } else {
+        func()
+      }
     }
 
-    it('should work for fully sync iterations', async () => {
-      const iter = fromTimeouts([
-        ['a', 0],
-        ['b', 0],
-        [undefined, 0],
-        ['X', 0],
-      ])
+    return Poly.asyncFrom(builder)
+  }
 
-      const expected = ['a', 'b']
-      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
-    })
+  const BUILDING_FUNCS = [
+    ['builder', fromTimeoutsWithBuilder],
+    ['build', fromTimeoutsWithBuild],
+  ] as const
+  BUILDING_FUNCS.forEach(([name, fromTimeous]) => {
+    describe(`.${name}`, () => {
+      it('should work for fully sync iterations', async () => {
+        const iter = fromTimeous([
+          ['a', 0],
+          ['b', 0],
+          [undefined, 0],
+          ['X', 0],
+        ])
 
-    it('should work for fully sync iteration errors', async () => {
-      const iter = fromTimeouts([
-        [new Error(), 0],
-        ['X', 0],
-      ])
+        const expected = ['a', 'b']
+        await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
+      })
 
-      await expect(collectAsync(iter, 8)).to.be.rejected
-    })
+      it('should work for fully sync iteration errors', async () => {
+        const iter = fromTimeous([
+          [new Error(), 0],
+          ['X', 0],
+        ])
 
-    it('should work for sync empty iterations', async () => {
-      const iter = fromTimeouts([
-        [undefined, 0],
-        ['X', 0],
-        [new Error(), 0],
-      ])
+        await expect(collectAsync(iter, 8)).to.be.rejected
+      })
 
-      const expected: Array<unknown> = []
-      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
-    })
+      it('should work for sync empty iterations', async () => {
+        const iter = fromTimeous([
+          [undefined, 0],
+          ['X', 0],
+          [new Error(), 0],
+        ])
 
-    it('should work for semi-async iterations', async () => {
-      const iter = fromTimeouts([
-        ['a', 0],
-        ['b', 0],
-        ['c', 10],
-        ['d', 10],
-        ['e', 20],
-        ['f', 20],
-        [undefined, 30],
-        ['X', 35],
-      ])
+        const expected: Array<unknown> = []
+        await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
+      })
 
-      const expected = ['a', 'b', 'c', 'd', 'e', 'f']
-      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
-    })
+      it('should work for semi-async iterations', async () => {
+        const iter = fromTimeous([
+          ['a', 0],
+          ['b', 0],
+          ['c', 10],
+          ['d', 10],
+          ['e', 20],
+          ['f', 20],
+          [undefined, 30],
+          ['X', 35],
+        ])
 
-    it('should work for semi-async iteration errors', async () => {
-      const iter = fromTimeouts([
-        ['a', 0],
-        ['b', 0],
-        [new Error(), 10],
-        [undefined, 20],
-        ['X', 30],
-      ])
+        const expected = ['a', 'b', 'c', 'd', 'e', 'f']
+        await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
+      })
 
-      await expect(collectAsync(iter, 8)).to.be.rejected
-    })
+      it('should work for semi-async iteration errors', async () => {
+        const iter = fromTimeous([
+          ['a', 0],
+          ['b', 0],
+          [new Error(), 10],
+          [undefined, 20],
+          ['X', 30],
+        ])
 
-    it('should work for async iterations', async () => {
-      const iter = fromTimeouts([
-        ['a', 0],
-        ['b', 5],
-        ['c', 10],
-        ['d', 15],
-        ['e', 20],
-        ['f', 25],
-        [undefined, 30],
-        ['X', 35],
-      ])
+        await expect(collectAsync(iter, 8)).to.be.rejected
+      })
 
-      const expected = ['a', 'b', 'c', 'd', 'e', 'f']
-      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
-    })
+      it('should work for async iterations', async () => {
+        const iter = fromTimeous([
+          ['a', 0],
+          ['b', 5],
+          ['c', 10],
+          ['d', 15],
+          ['e', 20],
+          ['f', 25],
+          [undefined, 30],
+          ['X', 35],
+        ])
 
-    it('should work for async iteration errors', async () => {
-      const iter = fromTimeouts([
-        ['a', 0],
-        ['b', 5],
-        [new Error(), 10],
-        [undefined, 20],
-        ['X', 30],
-      ])
+        const expected = ['a', 'b', 'c', 'd', 'e', 'f']
+        await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
+      })
 
-      await expect(collectAsync(iter, 8)).to.be.rejected
-    })
+      it('should work for async iteration errors', async () => {
+        const iter = fromTimeous([
+          ['a', 0],
+          ['b', 5],
+          [new Error(), 10],
+          [undefined, 20],
+          ['X', 30],
+        ])
 
-    it('should work for async empty iterations', async () => {
-      const iter = fromTimeouts([
-        [undefined, 5],
-        ['X', 10],
-        [new Error(), 15],
-      ])
+        await expect(collectAsync(iter, 8)).to.be.rejected
+      })
 
-      const expected: Array<unknown> = []
-      await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
+      it('should work for async empty iterations', async () => {
+        const iter = fromTimeous([
+          [undefined, 5],
+          ['X', 10],
+          [new Error(), 15],
+        ])
+
+        const expected: Array<unknown> = []
+        await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
+      })
     })
   })
 })

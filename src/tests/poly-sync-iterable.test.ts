@@ -268,7 +268,7 @@ describe('Sync Iterable', () => {
 
 
   describe('#slice', () => {
-    function testSlice (start : number, end : number) {
+    function testSlice (start: number, end?: number) {
       for (const n of [5, 7, 9, 12, 15, 20]) {
         const array = Array(n).fill(null).map((_, i) => i)
 
@@ -278,14 +278,28 @@ describe('Sync Iterable', () => {
       }
     }
 
-    it('should work correctly when start > 0 and end > 0', () => {
+    it('should work correctly when start >= 0 and end == undefined', () => {
+      testSlice(0)
+      testSlice(1)
+      testSlice(3)
+      testSlice(5)
+    })
+
+    it('should work correctly when start < 0 and end == undefined', () => {
+      testSlice(-1)
+      testSlice(-3)
+      testSlice(-5)
+      testSlice(-10)
+    })
+
+    it('should work correctly when start >= 0 and end >= 0', () => {
       testSlice(0, 1)
       testSlice(1, 4)
       testSlice(3, 10)
       testSlice(5, 1)
     })
 
-    it('should work correctly when start < 0 and end > 0', () => {
+    it('should work correctly when start < 0 and end >= 0', () => {
       testSlice(-1, 0)
       testSlice(-10, 10)
       testSlice(-5, 5)
@@ -293,7 +307,7 @@ describe('Sync Iterable', () => {
       testSlice(-6, 100)
     })
 
-    it('should work correctly when start > 0 and end < 0', () => {
+    it('should work correctly when start >= 0 and end < 0', () => {
       testSlice(0, -1)
       testSlice(0, -50)
       testSlice(10, -5)
@@ -319,8 +333,6 @@ describe('Sync Iterable', () => {
     it('should throw if second argument is not an integer', () => {
       expect(() => Poly.syncFrom([]).slice(0, 0.5)).to.throw()
       expect(() => Poly.syncFrom([]).slice(0, 'bar' as any)).to.throw()
-      expect(() => Poly.syncFrom([]).slice(0, null as any)).to.throw()
-      expect(() => Poly.syncFrom([]).slice(0, undefined as any)).to.throw()
     })
   })
 
@@ -533,7 +545,7 @@ describe('Sync Iterable', () => {
       return Array(n).fill(null).map(() => CHARS[Math.floor(Math.random() * CHARS.length)])
     }
 
-    function checkSort<T> (arr : Array<T>, func? : (a : T, b : T) => number) {
+    function checkSort<T> (arr: Array<T>, func?: (a: T, b: T) => number) {
       const iter = Poly.syncFrom(arr).sort(func)
       expect(collectSync(iter)).to.deep.equal(arr.slice().sort(func))
     }
@@ -776,16 +788,16 @@ describe('Sync Iterable', () => {
   })
 
 
-  describe('#drain', () => {
-    it('should drain the iterable', () => {
+  describe('#complete', () => {
+    it('should complete the iterable', () => {
       let called = false
       const iter = Poly.syncFrom(function * () {
         yield * Array(10).fill(0)
         called = true
       })
 
-      iter.drain()
-      expect(called, 'iterable drained').to.be.ok
+      iter.complete()
+      expect(called, 'iterable completeed').to.be.ok
     })
   })
 })

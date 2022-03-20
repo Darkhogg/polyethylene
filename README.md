@@ -21,25 +21,27 @@ https://img.shields.io/travis/Darkhogg/polyethylene.svg
     - Move to ESModules and remove support for CommonJS
     - Split `Poly.from` into `Poly.syncFrom` and `Poly.asyncFrom`
     - Split `Poly.iterate` into `Poly.syncIterate` and `Poly.asyncIterate`
-    - Remove `options` object altogether (replaced with `preload` and `prefetch` methods)
-    - Remove `async` from async iterators -- it is uneeded as there are no ambiguous methods anymore
+    - Remove `options` object altogether (replaced with `prefetch` method)
     - Remove default arguments for most methods that accept a function as a parameter (`unique` and `sort` preserve their defaults)
     - Rename `group` and `groupWhile` to `chunk` and `chunkWhile` respectively
+    - Rename `drain` to `complete`
   - **New Features**
     - Port codebase to TypeScript, and add type definition files
     - Add `Poly.empty<T>` method to create (typed) empty iterables
-    - Add `preload` and `prefetch` methods to async iterables
+    - Add `prefetch` method to async iterables
+    - Add `filterNotNullish` as a shorthand for filtering out `null` and `undefined` from an iterable
     - Add `groupBy` to both sync and async iterables
     - Add `toMap` leaf method to both sync and async iterables
     - Add `toPartitionArray` leaf method to both sync and async iterables
 
 ## Example
 
-```javascript
+```typescript
 import Poly from 'polyethylene';
+import {findUsers, findUserPosts} from 'some-api-lib'
 
 // Print the first 10 posts of each user
-await Poly.from(findUsers())
+await Poly.asyncFrom(findUsers())
   .map(user => Poly.from(findUserPosts(user)).take(10))
   .flat()
   .forEach(post => console.log(post));
@@ -50,16 +52,7 @@ await Poly.from(findUsers())
 
 See the [API Documentation][docs].
 
-  - [docs]: ./blob/master/README.md
-
-## Planned Features
-
-The following are a few planned features I intend to add in the future, in no particular order:
-
-- A `tee`/`fork` method that, from a single iterator, returns N iterators that get the same
-  elements or errors in the same order.
-- The possibility of running processing functions in parallel as long as elements are coming
-  fast enough.
+  - [docs]: ./blob/master/docs/polyathylene.md
 
 
 ## License

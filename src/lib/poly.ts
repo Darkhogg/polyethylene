@@ -1,24 +1,16 @@
-import PolyAsyncIterable from './iter-async.js'
-import PolySyncIterable from './iter-sync.js'
+import AsyncIterableBuilder from './builder.js'
+import PolyAsyncIterable from './async/poly-iterable.js'
+import PolySyncIterable from './sync/poly-iterable.js'
+import {isAsyncIterable, isSyncIterable} from './utils.js'
 
 
-function isSyncIterable<T> (obj : unknown) : obj is Iterable<T> {
-  return typeof obj == 'object' && obj != null && Symbol.iterator in obj
-}
-
-
-function isAsyncIterable<T> (obj : unknown) : obj is AsyncIterable<T> {
-  return typeof obj == 'object' && obj != null && Symbol.asyncIterator in obj
-}
-
-
-function * rangeUp (from : number, to : number, step : number) : Iterable<number> {
+function * rangeUp (from: number, to: number, step: number): Iterable<number> {
   for (let n = from; n < to; n += step) {
     yield n
   }
 }
 
-function * rangeDown (from : number, to : number, step : number) : Iterable<number> {
+function * rangeDown (from: number, to: number, step: number): Iterable<number> {
   for (let n = from; n > to; n -= step) {
     yield n
   }
@@ -44,44 +36,6 @@ export namespace Poly {
   export type AsyncIterableFactory<T> = () => AsyncIterable<T>
 
   /**
-   * A callback that receives a single value of type `T`
-   * @typeParam T - The generic type of the accepted value
-   */
-  export type ValueCallback<T> = (value : T) => void
-
-  /**
-   * A callback that receives a single error value
-   */
-  export type ErrorCallback = (error : Error) => void
-
-  /**
-   * A callback that receives no values
-   */
-  export type DoneCallback = () => void
-
-  /**
-   * An object containing callback functions to generate an iteration
-   * @typeParam T - The generic type of the accepted values
-   *
-   * @public
-   */
-  export interface AssemblerCallbacks<T> {
-    /** A callback that accepts a single `value` and will produce an element in the iteration */
-    value : ValueCallback<T>,
-    /** A callback that accepts a single `error` and will produce an error in the iteration */
-    error : ErrorCallback,
-    /** A callback that accepts nothing and will end in the iteration */
-    done : DoneCallback
-  }
-
-  /**
-   * A function that receives an {@link Poly.AssemblerCallbacks} object to generate an iteration
-   * @typeParam T - The generic type of the produced iteration
-   */
-  export type AssemblerFunction<T> = (callbacks : AssemblerCallbacks<T>) => void
-
-
-  /**
    * Create a new {@link PolySyncIterable} object from an iterable or a function that returns iterables (such as a
    * generator function).
    *
@@ -94,7 +48,7 @@ export namespace Poly {
    *
    * @public
    */
-  export function syncFrom<T> (iterableOrFactory : Iterable<T> | IterableFactory<T>) : PolySyncIterable<T> {
+  export function syncFrom<T> (iterableOrFactory: Iterable<T> | IterableFactory<T>): PolySyncIterable<T> {
     if (iterableOrFactory instanceof PolySyncIterable) {
       return iterableOrFactory
     }
@@ -125,8 +79,8 @@ export namespace Poly {
    * @public
    */
   export function asyncFrom<T> (
-    iterableOrFactory : Iterable<T> | IterableFactory<T> | AsyncIterable<T> | AsyncIterableFactory<T>,
-  ) : PolyAsyncIterable<T> {
+    iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIterable<T> | AsyncIterableFactory<T>,
+  ): PolyAsyncIterable<T> {
     if (iterableOrFactory instanceof PolyAsyncIterable) {
       return iterableOrFactory
     }
@@ -146,94 +100,37 @@ export namespace Poly {
     throw Error('argument is not sync or async iterable')
   }
 
-
   /**
-   * Create a new {@link PolyAsyncIterable} by manually emitting values, errors, or signalling the end of the iteration.
+   * Return a new {@link AsyncIterableBuilder}, an iterable object that can be constructed by calling its methods.
    *
    * @remarks
-   * This method for creating iterables should only be used as a last resort, if converting an existing iterable or
-   * defining a generator function proves impossible.
+   * This method for creating iterables should only be used as last resort if other functions are not enough.
+   * In particular, before using this method, see if {@link Poly.buildWith} works for you.
    *
-   * @typeParam T - The type of the resulting async iterable
-   * @param assembler - A function that will receive an object containing the methods `value`, `error` and `done`.
+   * @typeParam T - The type of the resulting builder
    *
    * @public
    */
-  export function assemble<T> (assembler : AssemblerFunction<T>) : PolyAsyncIterable<T> {
-    let currentPromise : {accept: ValueCallback<IteratorResult<T>>, reject: ErrorCallback} | null = null
+  export function builder<T> (): AsyncIterableBuilder<T> {
+    return new AsyncIterableBuilder<T>()
+  }
 
-    const pendingValues : Array<T> = []
-    let pendingError : Error | null = null
-    let pendingDone : boolean = false
 
-    /* function to yield a new value */
-    const value = (obj : T) : void => {
-      if (pendingDone) {
-        return
-      }
-
-      if (currentPromise) {
-        currentPromise.accept({value: obj})
-        currentPromise = null
-        return
-      }
-
-      pendingValues.push(obj)
-    }
-
-    /* function to notify of an error */
-    const error = (err : Error) : void => {
-      if (pendingDone) {
-        return
-      }
-
-      pendingDone = true
-      if (currentPromise) {
-        currentPromise.reject(err)
-        currentPromise = null
-        return
-      }
-
-      pendingError = err
-    }
-
-    /* function to end the iteration */
-    const done = () : void => {
-      if (pendingDone) {
-        return
-      }
-
-      if (currentPromise) {
-        currentPromise.accept({done: true, value: undefined})
-        currentPromise = null
-      }
-
-      pendingDone = true
-    }
-    return new PolyAsyncIterable<T>({
-      [Symbol.asyncIterator] () : AsyncIterator<T> {
-        assembler({value, error, done})
-
-        return {
-          async next (/* ignore this */) : Promise<IteratorResult<T>> {
-            if (pendingValues.length) {
-              return Promise.resolve({done: false, value: pendingValues.shift() as T})
-            }
-            if (pendingError) {
-              pendingError = null
-              return Promise.reject(pendingError)
-            }
-            if (pendingDone) {
-              return Promise.resolve({done: true, value: undefined})
-            }
-
-            return new Promise((accept, reject) => {
-              currentPromise = {accept, reject}
-            })
-          },
-        }
-      },
-    })
+  /**
+   * Create a new {@link PolyAsyncIterable} by passing the `func` function an {@link AsyncIterableBuilder} object.
+   *
+   * @remarks
+   * This method for creating iterables should only be used as a last resort if other functions are not enough.
+   *
+   * @typeParam T - The type of the resulting async iterable
+   * @param func - A function that will receive an object containing the methods `value`, `error` and `done`.
+   *
+   * @public
+   */
+  export function buildWith<T> (func: (builder: AsyncIterableBuilder<T>) => void): PolyAsyncIterable<T> {
+    const bld = builder<T>()
+    func(bld)
+    return Poly.asyncFrom(bld)
   }
 
   /**
@@ -244,7 +141,7 @@ export namespace Poly {
    *
    * @public
    */
-  export function empty<T = never> () : PolySyncIterable<T> {
+  export function empty<T = never> (): PolySyncIterable<T> {
     return syncFrom<T>([])
   }
 
@@ -258,8 +155,8 @@ export namespace Poly {
    * @public
    */
   export function entries<K extends string | number | symbol, V> (
-    obj : Record<K, V>,
-  ) : PolySyncIterable<[K, V]> {
+    obj: Record<K, V>,
+  ): PolySyncIterable<[K, V]> {
     return syncFrom(function * () {
       for (const key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -278,8 +175,8 @@ export namespace Poly {
    * @public
    */
   export function keys<K extends string | number | symbol> (
-    obj : Record<K, unknown>,
-  ) : PolySyncIterable<K> {
+    obj: Record<K, unknown>,
+  ): PolySyncIterable<K> {
     return syncFrom(function * () {
       for (const key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -298,8 +195,8 @@ export namespace Poly {
    * @public
    */
   export function values<V> (
-    obj : Record<string | number | symbol, V>,
-  ) : PolySyncIterable<V> {
+    obj: Record<string | number | symbol, V>,
+  ): PolySyncIterable<V> {
     return syncFrom(function * () {
       for (const key in obj) {
         if (Object.prototype.hasOwnProperty.call(obj, key)) {
@@ -345,10 +242,10 @@ export namespace Poly {
   export function range(from: number, to: number, step?: number): PolySyncIterable<number>
 
   export function range (
-    fromOrTo : number,
-    maybeTo? : number,
-    step : number = 1,
-  ) : PolySyncIterable<number> {
+    fromOrTo: number,
+    maybeTo?: number,
+    step: number = 1,
+  ): PolySyncIterable<number> {
     const fromNum = (maybeTo === undefined) ? 0 : fromOrTo
     const toNum = (maybeTo === undefined) ? fromOrTo : maybeTo
 
@@ -369,7 +266,7 @@ export namespace Poly {
    *
    * @public
    */
-  export function repeat<T> (value : T) : PolySyncIterable<T> {
+  export function repeat<T> (value: T): PolySyncIterable<T> {
     return syncFrom(function * () {
       while (true) {
         yield value
@@ -397,7 +294,7 @@ export namespace Poly {
    *
    * @public
    */
-  export function syncIterate<T> (func : (lastValue : T | undefined) => T) : PolySyncIterable<T>
+  export function syncIterate<T> (func: (lastValue: T | undefined) => T): PolySyncIterable<T>
 
   /**
    * Returns a {@link PolySyncIterable} that will yield the values returned from calling `func` with the value last
@@ -419,12 +316,12 @@ export namespace Poly {
    *
    * @public
    */
-  export function syncIterate<T> (func : (lastValue : T) => T, initValue : T) : PolySyncIterable<T>
+  export function syncIterate<T> (func: (lastValue: T) => T, initValue: T): PolySyncIterable<T>
 
   export function syncIterate<T> (
-    func : (lastValue : T | undefined) => T,
-    initValue? : T,
-  ) : PolySyncIterable<T> {
+    func: (lastValue: T | undefined) => T,
+    initValue?: T,
+  ): PolySyncIterable<T> {
     return syncFrom(function * () {
       let nextValue = initValue
       while (true) {
@@ -454,7 +351,7 @@ export namespace Poly {
    *
    * @public
    */
-  export function asyncIterate<T> (func : (lastValue : T | undefined) => T | Promise<T>) : PolyAsyncIterable<T>
+  export function asyncIterate<T> (func: (lastValue: T | undefined) => T | Promise<T>): PolyAsyncIterable<T>
 
   /**
    * Returns a {@link PolyAsyncIterable} that will yield the values returned from calling `func` with the value last
@@ -476,12 +373,12 @@ export namespace Poly {
    *
    * @public
    */
-  export function asyncIterate<T> (func : (lastValue : T) => T | Promise<T>, initValue : T) : PolyAsyncIterable<T>
+  export function asyncIterate<T> (func: (lastValue: T) => T | Promise<T>, initValue: T): PolyAsyncIterable<T>
 
   export function asyncIterate<T> (
-    func : (lastValue : T | undefined) => Promise<T>,
-    initValue? : T,
-  ) : PolyAsyncIterable<T> {
+    func: (lastValue: T | undefined) => Promise<T>,
+    initValue?: T,
+  ): PolyAsyncIterable<T> {
     return asyncFrom(async function * () {
       let nextValue = initValue
       while (true) {

@@ -277,7 +277,7 @@ describe('Async Iterable', () => {
 
 
   describe('#slice', () => {
-    async function testSlice (start : number, end : number) {
+    async function testSlice (start: number, end?: number) {
       for (const n of [5, 7, 9, 12, 15, 20]) {
         const array = Array(n).fill(null).map((_, i) => i)
 
@@ -286,6 +286,20 @@ describe('Async Iterable', () => {
         await expect(collectAsync(iter)).to.eventually.deep.equal(slicedArray)
       }
     }
+
+    it('should work correctly when start >= 0 and end == undefined', () => {
+      testSlice(0)
+      testSlice(1)
+      testSlice(3)
+      testSlice(5)
+    })
+
+    it('should work correctly when start < 0 and end == undefined', () => {
+      testSlice(-1)
+      testSlice(-3)
+      testSlice(-5)
+      testSlice(-10)
+    })
 
     it('should work correctly when start > 0 and end > 0', async () => {
       await testSlice(0, 1)
@@ -328,15 +342,13 @@ describe('Async Iterable', () => {
     it('should throw if second argument is not an integer', () => {
       expect(() => Poly.syncFrom([]).slice(0, 0.5)).to.throw()
       expect(() => Poly.syncFrom([]).slice(0, 'bar' as any)).to.throw()
-      expect(() => Poly.syncFrom([]).slice(0, null as any)).to.throw()
-      expect(() => Poly.syncFrom([]).slice(0, undefined as any)).to.throw()
     })
   })
 
 
   describe('#filter', () => {
     it('should only yield elements for which passed function returns true', async () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5, 6, 7]).async().filter((n : number) => n % 3 === 1)
+      const iter = Poly.syncFrom([1, 2, 3, 4, 5, 6, 7]).async().filter((n: number) => n % 3 === 1)
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 4, 7])
     })
 
@@ -368,7 +380,7 @@ describe('Async Iterable', () => {
 
   describe('#tap', () => {
     it('should yield elements of original iteration', async () => {
-      const iter = Poly.syncFrom([1, 2, 3]).async().tap(((n : number) => n) as (n : number) => void)
+      const iter = Poly.syncFrom([1, 2, 3]).async().tap(((n: number) => n) as (n: number) => void)
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3])
     })
 
@@ -546,7 +558,7 @@ describe('Async Iterable', () => {
       return Array(n).fill(null).map(() => CHARS[Math.floor(Math.random() * CHARS.length)])
     }
 
-    async function checkSort<T> (arr : Array<T>, func?: (a : T, b : T) => number) {
+    async function checkSort<T> (arr: Array<T>, func?: (a: T, b: T) => number) {
       const iter = Poly.syncFrom(arr).async().sort(func)
       await expect(collectAsync(iter)).to.eventually.deep.equal(arr.slice().sort(func))
     }
@@ -793,16 +805,16 @@ describe('Async Iterable', () => {
   })
 
 
-  describe('#drain', () => {
-    it('should drain the iterable', async () => {
+  describe('#complete', () => {
+    it('should complete the iterable', async () => {
       let called = false
       const iter = Poly.asyncFrom(async function * () {
         yield * Array(10).fill(0)
         called = true
       })
 
-      await iter.drain()
-      expect(called, 'iterable drained').to.be.ok
+      await iter.complete()
+      expect(called, 'iterable completeed').to.be.ok
     })
   })
 })

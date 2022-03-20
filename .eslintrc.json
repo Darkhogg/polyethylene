@@ -10,7 +10,22 @@
   },
   "rules": {
     "no-redeclare": ["off"],
+    "@typescript-eslint/no-redeclare": ["error"],
+
     "no-dupe-class-members": ["off"],
-    "@typescript-eslint/no-redeclare": ["error"]
+
+    "no-useless-constructor": ["off"],
+    "@typescript-eslint/no-useless-constructor": ["error"],
+
+    "@typescript-eslint/type-annotation-spacing": ["error", {
+      "before": false,
+      "after": true,
+      "overrides": {
+        "arrow": {
+          "before": true,
+          "after": true
+        }
+      }
+    }]
   }
 }

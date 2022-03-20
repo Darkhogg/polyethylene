@@ -16,12 +16,12 @@
   "scripts": {
     "build": "tsc",
     "docs": "nr -s build && ./gen-docs.sh",
-    "test": "nr -s build && mocha dist/tests/*.test.js",
-    "preversion": "nr test",
-    "prepublish": "nr -s build"
+    "test": "nr -s build && mocha --enable-source-maps dist/tests/*.test.js",
+    "preversion": "nr -s test && nr -s docs",
+    "prepublish": "nr -s build",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.10.1",
     "@darkhogg/eslint-config": "^1.1.2",
     "@microsoft/api-documenter": "^7.13.78",
     "@microsoft/api-extractor": "^7.19.3",
@@ -34,7 +34,8 @@
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
     "eslint": "^7.32.0",
-    "mocha": "^9.1.3",
+    "husky": "^7.0.4",
+    "mocha": "^9.2.0",
     "nyc": "^15.1.0",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"

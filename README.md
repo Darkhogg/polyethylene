@@ -5,10 +5,8 @@ functional operators in a similar way you do with arrays but without the memory 
 to wait for an asynchronous iteration to end.
 
 [![Version](https://img.shields.io/npm/v/polyethylene.svg)](https://www.npmjs.com/package/polyethylene)
-[![Tests](https://img.shields.io/github/workflow/status/Darkhogg/polyethylene/test.yaml?label=tests)](https://github.com/Darkhogg/polyethylene/actions/workflows/test.yaml?query=branch%3Amain)
-<!--[![Test Coverage](https://img.shields.io/codeclimate/coverage/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)-->
-[![](https://img.shields.io/github/license/Darkhogg/polyethylene)][License]
+[![Tests](https://img.shields.io/github/workflow/status/Darkhogg/polyethylene/Tests?label=tests)](https://github.com/Darkhogg/polyethylene/actions/workflows/test.yaml?query=branch%3Amain)
+[![](https://img.shields.io/github/license/Darkhogg/polyethylene)][license]
 
 
 ## 2.0 Changes
@@ -50,6 +48,6 @@ See the [API Documentation](./docs/polyethylene.md).
 
 ## License
 
-Polyethylene is released under the [MIT License][License]
+Polyethylene is released under the [MIT License][license]
 
-  [License]: ./LICENSE
+  [license]: ./LICENSE

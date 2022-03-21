@@ -1,4 +1,4 @@
-name: Run Polyethylene test suite
+name: Tests
 on:
   - push
   - pull_request

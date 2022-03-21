@@ -12,7 +12,7 @@ https://img.shields.io/travis/Darkhogg/polyethylene.svg
 )](https://travis-ci.org/Darkhogg/polyethylene)
 [![Test Coverage](https://img.shields.io/codeclimate/coverage/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
 [![Maintainability](https://img.shields.io/codeclimate/maintainability/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FDarkhogg%2Fpolyethylene?ref=badge_shield)
+![[License][]](https://img.shields.io/github/license/Darkhogg/polyethylene)
 
 
 ## 2.0 Changes
@@ -54,4 +54,6 @@ See the [API Documentation](./docs/polyethylene.md).
 
 ## License
 
-Polyethylene is released under the [MIT License](./LICENSE)
+Polyethylene is released under the [MIT License][License]
+
+  [License]: ./LICENSE

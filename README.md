@@ -4,15 +4,11 @@ Polyethylene is a wrapping layer around iterators and async iterators that lets 
 functional operators in a similar way you do with arrays but without the memory overhead or having
 to wait for an asynchronous iteration to end.
 
-[![npm version](
-https://img.shields.io/npm/v/polyethylene.svg
-)](https://www.npmjs.com/package/polyethylene)
-[![Build Status](
-https://img.shields.io/travis/Darkhogg/polyethylene.svg
-)](https://travis-ci.org/Darkhogg/polyethylene)
-[![Test Coverage](https://img.shields.io/codeclimate/coverage/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
-![[License][]](https://img.shields.io/github/license/Darkhogg/polyethylene)
+[![Version](https://img.shields.io/npm/v/polyethylene.svg)](https://www.npmjs.com/package/polyethylene)
+[![Tests](https://img.shields.io/github/workflow/status/Darkhogg/polyethylene/test.yaml?label=tests)](https://github.com/Darkhogg/polyethylene/actions/workflows/test.yaml?query=branch%3Amain)
+<!--[![Test Coverage](https://img.shields.io/codeclimate/coverage/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability/Darkhogg/polyethylene.svg)](https://codeclimate.com/github/Darkhogg/polyethylene)-->
+[![](https://img.shields.io/github/license/Darkhogg/polyethylene)][License]
 
 
 ## 2.0 Changes

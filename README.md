@@ -9,26 +9,18 @@ to wait for an asynchronous iteration to end.
 [![](https://img.shields.io/github/license/Darkhogg/polyethylene)][license]
 
 
-## 2.0 Changes
+## Basic Usage
 
-  - **Breaking Changes**
-    - Move to ESModules and remove support for CommonJS
-    - Split `Poly.from` into `Poly.syncFrom` and `Poly.asyncFrom`
-    - Split `Poly.iterate` into `Poly.syncIterate` and `Poly.asyncIterate`
-    - Remove `options` object altogether (replaced with `prefetch` method)
-    - Remove default arguments for most methods that accept a function as a parameter (`unique` and `sort` preserve their defaults)
-    - Rename `group` and `groupWhile` to `chunk` and `chunkWhile` respectively
-    - Rename `drain` to `complete`
-  - **New Features**
-    - Port codebase to TypeScript, and add type definition files
-    - Add `Poly.empty<T>` method to create (typed) empty iterables
-    - Add `prefetch` method to async iterables
-    - Add `filterNotNullish` as a shorthand for filtering out `null` and `undefined` from an iterable
-    - Add `groupBy` to both sync and async iterables
-    - Add `toMap` leaf method to both sync and async iterables
-    - Add `toPartitionArray` leaf method to both sync and async iterables
+The default export of `polyethylene` (named `Poly` throughout the documentation) is the main entry point.
+You would typically create an "augmented" iterable object using `Poly.asyncFrom` or `Poly.syncFrom`, then you start
+calling _transform methods_ like `.map`, `.filter`, etc. in the returned object, ending with a _leaf method_ like
+`.reduce` or `.forEach`.
 
-## Example
+In this way, polyethylene objects behave very similarly to `Array`s, but they are fundamentally different because they
+don't store their elements anywhere, instead processing them one by one.
+
+The following is a very simple, fictitious example of using polyethylene:
+
 
 ```typescript
 import Poly from 'polyethylene';
@@ -36,13 +28,12 @@ import {findUsers, findUserPosts} from 'some-api-lib'
 
 // Print the first 10 posts of each user
 await Poly.asyncFrom(findUsers())
-  .map(user => Poly.from(findUserPosts(user)).take(10))
-  .flat()
+  .flatMap(user => Poly.from(findUserPosts(user)).take(10))
   .forEach(post => console.log(post));
 ```
 
 
-## Documentation
+## Full Documentation
 
 See the [API Documentation](./docs/polyethylene.md).
 

@@ -69,3 +69,9 @@ temp/
 # Documentation
 docs/
 etc/
+
+# GitHub stuff
+.github/
+
+# Tests
+dist/tests/

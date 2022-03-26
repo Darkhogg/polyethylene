@@ -172,7 +172,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncChunkingPredicate:type",
-          "docComment": "/**\n * A function that receives an element (`elem`) of the iteration and the first and last element of a chunk, and returns a boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk (if `true`) or be the start of a new chunk (if `false`)\n *\n * @param elem - An element of the iteration\n *\n * @param lastElem - The last element of the current chunk\n *\n * @param firstElem - The first element of the current chunk\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns A boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk (`true`) or be the start of a new chunk (`false`), or a\n */\n",
+          "docComment": "/**\n * A function that receives an element (`elem`) of the iteration and the first and last element of a chunk, and returns a boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk (if `true`) or be the start of a new chunk (if `false`)\n *\n * @param elem - An element of the iteration\n *\n * @param lastElem - The last element of the current chunk\n *\n * @param firstElem - The first element of the current chunk\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns A boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk (`true`) or be the start of a new chunk (`false`)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -219,7 +219,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncIndexedMapping:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a different object or a `Promise` to a different object\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The return type of the function\n *\n * @returns Some other value or a `Promise` to some other value\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a different object or a `Promise` to a different object\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The return type of the function\n *\n * @returns Some other value or a `Promise` to some other value\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -277,7 +277,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncIndexedPredicate:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value or a `Promise` to a `boolean` value.\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns A `boolean` value or a `Promise` to a `boolean` value\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value or a `Promise` to a `boolean` value.\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns A `boolean` value or a `Promise` to a `boolean` value\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -324,7 +324,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncIndexedReducer:type",
-          "docComment": "/**\n * A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result or a promise to a new accumulated result for the next call or as a final return value.\n *\n * @param acc - The previously accumulated value\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the iteration elements\n *\n * @typeParam U - The type of the accumulated result\n *\n * @returns The new accumulated result or a promise to the new accumulated result\n */\n",
+          "docComment": "/**\n * A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result or a promise to a new accumulated result for the next call or as a final return value.\n *\n * @param acc - The previously accumulated value\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the iteration elements\n *\n * @typeParam U - The type of the accumulated result\n *\n * @returns The new accumulated result or a promise to the new accumulated result\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -382,7 +382,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncIndexedRunnable:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and either returns a `Promise` to nothing or doesn't return anything\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns a `Promise` to an ignored value or nothing\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and either returns a `Promise` to nothing or doesn't return anything\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns a `Promise` to an ignored value or nothing\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -669,7 +669,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!ChunkingPredicate:type",
-          "docComment": "/**\n * A function that receives an element (`elem`) of the iteration and the first and last element of a chunk, and returns a boolean value representing whether `elem` should be added to the current chunk (if `true`) or be the start of a new chunk (if `false`)\n *\n * @param elem - An element of the iteration\n *\n * @param lastElem - The last element of the current chunk\n *\n * @param firstElem - The first element of the current chunk\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns Whether `elem` should be added to the current chunk (`true`) or be the start of a new chunk (`false`)\n */\n",
+          "docComment": "/**\n * A function that receives an element (`elem`) of the iteration and the first and last element of a chunk, and returns a boolean value representing whether `elem` should be added to the current chunk (if `true`) or be the start of a new chunk (if `false`)\n *\n * @param elem - An element of the iteration\n *\n * @param lastElem - The last element of the current chunk\n *\n * @param firstElem - The first element of the current chunk\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns Whether `elem` should be added to the current chunk (`true`) or be the start of a new chunk (`false`)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -707,7 +707,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!Comparator:type",
-          "docComment": "/**\n * A function that receives two objects `elemA` and `elemB` and returns a number value that is negative if `elemA` should be sorted before `elemB`, positive if `elemA` should be sorted after `elemB`, or `0` if they should be sorted at the same position.\n *\n * @param elemA - the first element\n *\n * @param elemB - the second element\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns A number representing the sorting of `elemA` and `elemB` with respect to each other, as defined above\n */\n",
+          "docComment": "/**\n * A function that receives two objects `elemA` and `elemB` and returns a number value that is negative if `elemA` should be sorted before `elemB`, positive if `elemA` should be sorted after `elemB`, or `0` if they should be sorted at the same position.\n *\n * @param elemA - the first element\n *\n * @param elemB - the second element\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns A number representing the sorting of `elemA` and `elemB` with respect to each other, as defined above\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -745,7 +745,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!IndexedMapping:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a different object\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The return type of the function\n *\n * @returns Some other value\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a different object\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The return type of the function\n *\n * @returns Some other value\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -794,7 +794,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!IndexedPredicate:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value.\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns A `boolean` value\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value.\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns A `boolean` value\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -832,7 +832,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!IndexedReducer:type",
-          "docComment": "/**\n * A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result for the next call or as a final return value.\n *\n * @param acc - The previously accumulated value\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the iteration elements\n *\n * @typeParam U - The type of the accumulated result\n *\n * @returns The new accumulated result\n */\n",
+          "docComment": "/**\n * A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result for the next call or as a final return value.\n *\n * @param acc - The previously accumulated value\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the iteration elements\n *\n * @typeParam U - The type of the accumulated result\n *\n * @returns The new accumulated result\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -881,7 +881,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!IndexedRunnable:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and doesn't return anything\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and doesn't return anything\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -919,7 +919,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!IndexedTypePredicate:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value indicating if `elem` is of the generic type `U`\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The type asserted by this function\n *\n * @returns A `boolean` value indicating if `elem` is of type `U`\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value indicating if `elem` is of the generic type `U`\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The type asserted by this function\n *\n * @returns A `boolean` value indicating if `elem` is of type `U`\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",

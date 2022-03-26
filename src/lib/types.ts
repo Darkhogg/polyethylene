@@ -5,6 +5,8 @@
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
  * @returns A `boolean` value
+ *
+ * @public
  */
 export type IndexedPredicate<T> = (elem: T, index: number) => boolean
 
@@ -17,6 +19,8 @@ export type IndexedPredicate<T> = (elem: T, index: number) => boolean
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
  * @returns A `boolean` value indicating if `elem` is of type `U`
+ *
+ * @public
  */
 export type IndexedTypePredicate<T, U extends T> = (elem: T, index: number) => elem is U
 
@@ -28,6 +32,8 @@ export type IndexedTypePredicate<T, U extends T> = (elem: T, index: number) => e
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
  * @returns A `boolean` value or a `Promise` to a `boolean` value
+ *
+ * @public
  */
 export type AsyncIndexedPredicate<T> = (elem: T, index: number) => boolean | PromiseLike<boolean>
 
@@ -39,6 +45,8 @@ export type AsyncIndexedPredicate<T> = (elem: T, index: number) => boolean | Pro
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
  * @returns Some other value
+ *
+ * @public
  */
 export type IndexedMapping<T, U> = (elem: T, index: number) => U
 
@@ -51,6 +59,8 @@ export type IndexedMapping<T, U> = (elem: T, index: number) => U
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
  * @returns Some other value or a `Promise` to some other value
+ *
+ * @public
  */
 export type AsyncIndexedMapping<T, U> = (elem: T, index: number) => U | PromiseLike<U>
 
@@ -60,6 +70,8 @@ export type AsyncIndexedMapping<T, U> = (elem: T, index: number) => U | PromiseL
  * @typeParam T - The type of the `elem` argument
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
+ *
+ * @public
  */
 export type IndexedRunnable<T> = (elem: T, index: number) => void
 
@@ -71,6 +83,8 @@ export type IndexedRunnable<T> = (elem: T, index: number) => void
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
  * @returns a `Promise` to an ignored value or nothing
+ *
+ * @public
  */
 export type AsyncIndexedRunnable<T> = (elem: T, index: number) => void | PromiseLike<void>
 
@@ -84,6 +98,8 @@ export type AsyncIndexedRunnable<T> = (elem: T, index: number) => void | Promise
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
  * @returns The new accumulated result
+ *
+ * @public
  */
 export type IndexedReducer<T, U> = (acc: U, item: T, index: number) => U
 
@@ -97,6 +113,8 @@ export type IndexedReducer<T, U> = (acc: U, item: T, index: number) => U
  * @param elem - An element of the iteration
  * @param index - The index of `elem` in the iteration
  * @returns The new accumulated result or a promise to the new accumulated result
+ *
+ * @public
  */
 export type AsyncIndexedReducer<T, U> = (acc: U, item: T, index: number) => U | PromiseLike<U>
 
@@ -110,6 +128,8 @@ export type AsyncIndexedReducer<T, U> = (acc: U, item: T, index: number) => U | 
  * @param lastElem - The last element of the current chunk
  * @param firstElem - The first element of the current chunk
  * @returns Whether `elem` should be added to the current chunk (`true`) or be the start of a new chunk (`false`)
+ *
+ * @public
  */
 export type ChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boolean
 
@@ -123,7 +143,9 @@ export type ChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boole
  * @param lastElem - The last element of the current chunk
  * @param firstElem - The first element of the current chunk
  * @returns A boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the
- * current chunk (`true`) or be the start of a new chunk (`false`), or a
+ * current chunk (`true`) or be the start of a new chunk (`false`)
+ *
+ * @public
  */
 export type AsyncChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boolean | PromiseLike<boolean>
 
@@ -136,5 +158,7 @@ export type AsyncChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => 
  * @param elemA - the first element
  * @param elemB - the second element
  * @returns A number representing the sorting of `elemA` and `elemB` with respect to each other, as defined above
+ *
+ * @public
  */
 export type Comparator<T> = (elemA: T, elemB: T) => number

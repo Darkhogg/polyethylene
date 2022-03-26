@@ -28,7 +28,7 @@ import {findUsers, findUserPosts} from 'some-api-lib'
 
 // Print the first 10 posts of each user
 await Poly.asyncFrom(findUsers())
-  .flatMap(user => Poly.from(findUserPosts(user)).take(10))
+  .flatMap(user => Poly.asyncFrom(findUserPosts(user)).take(10))
   .forEach(post => console.log(post));
 ```
 

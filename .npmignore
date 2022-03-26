@@ -59,3 +59,13 @@ typings/
 
 # next.js build output
 .next
+
+# TSC output
+tsconfig.tsbuildinfo
+
+# API-Extractor stuff
+temp/
+
+# Documentation
+docs/
+etc/

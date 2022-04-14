@@ -112,6 +112,78 @@ describe('Poly', () => {
     })
   })
 
+  describe('.from', () => {
+    it('should return a sync iterable if given a sync iterable', () => {
+      const obj = {
+        * [Symbol.iterator] (): Iterator<unknown> {},
+      }
+
+      const iter = Poly.from(obj)
+      expect(iter[Symbol.iterator]).to.exist
+    })
+
+    it('should return a sync iterable if given a sync iterable factory', () => {
+      function * gen () {}
+
+      const iter = Poly.from(gen)
+      expect(iter[Symbol.iterator]).to.exist
+    })
+
+    it('should return a sync iterable that produces the correct values', () => {
+      const values = [1, 3, 3, 7]
+
+      const iter = Poly.from(values)
+      expect(collectSync(iter)).to.deep.equal(values)
+    })
+
+    it('should not add overhead if passed a known SyncIterable', () => {
+      const origIter = Poly.empty().async()
+      const iter = Poly.from(origIter)
+
+      expect(iter).to.equal(origIter)
+    })
+
+    it('should return an async iterable if given an async iterable', () => {
+      const obj = {
+        async * [Symbol.asyncIterator] (): AsyncIterator<unknown> {},
+      }
+
+      const iter = Poly.asyncFrom(obj)
+      expect(iter[Symbol.asyncIterator]).to.exist
+    })
+
+    it('should return an async iterable if given an async iterable factory', () => {
+      async function * gen () {}
+
+      const iter = Poly.asyncFrom(gen)
+      expect(iter[Symbol.asyncIterator]).to.exist
+    })
+
+
+    it('should return an async iterable that produces the correct values if given an async iterable', async () => {
+      const values = [1, 3, 3, 7]
+      const obj = {
+        async * [Symbol.asyncIterator] (): AsyncIterator<number> {
+          yield * values
+        },
+      }
+
+      const iter = Poly.asyncFrom(obj)
+      await expect(collectAsync(iter)).to.eventually.deep.equal(values)
+    })
+
+    it('should not add overhead if passed a known AsyncIterable', () => {
+      const origIter = Poly.empty().async()
+      const iter = Poly.from(origIter)
+
+      expect(iter).to.equal(origIter)
+    })
+
+    it('should throw if not given an iterable or async iterable', () => {
+      expect(() => Poly.from(0 as any)).to.throw()
+    })
+  })
+
   /*
    * we check all three functions at the same time by checing they work the same
    * as their Object counterparts

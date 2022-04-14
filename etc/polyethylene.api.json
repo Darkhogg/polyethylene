@@ -1544,6 +1544,258 @@
               "name": "entries"
             },
             {
+              "kind": "Function",
+              "canonicalReference": "polyethylene!Poly.from:function(1)",
+              "docComment": "/**\n * Create a new {@link PolyAsyncIterable} object from an iterable, async iterable, or a function that returns iterables (such as a generator function or an async generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting {@link PolyAsyncIterable}.\n *\n * @param iterableOrFactory - an async iterable or async iterable factory used to create the resulting async iterable\n *\n * @typeParam T - The type of the resulting async iterable\n *\n * @returns A {@link PolyAsyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "function from<T>(iterableOrFactory: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AsyncIterable",
+                  "canonicalReference": "!AsyncIterable:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AsyncIterableFactory",
+                  "canonicalReference": "polyethylene!Poly.AsyncIterableFactory:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PolyAsyncIterable",
+                  "canonicalReference": "polyethylene!default:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "iterableOrFactory",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  }
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "T",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "from"
+            },
+            {
+              "kind": "Function",
+              "canonicalReference": "polyethylene!Poly.from:function(2)",
+              "docComment": "/**\n * Create a new {@link PolySyncIterable} object from an iterable or a function that returns iterables (such as a generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting {@link PolySyncIterable}.\n *\n * @param iterableOrFactory - an iterable or iterable factory used to create the resulting iterable\n *\n * @typeParam T - The type of the resulting iterable\n *\n * @returns A {@link PolySyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "function from<T>(iterableOrFactory: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Iterable",
+                  "canonicalReference": "!Iterable:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IterableFactory",
+                  "canonicalReference": "polyethylene!Poly.IterableFactory:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PolySyncIterable",
+                  "canonicalReference": "polyethylene!default:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 2,
+              "parameters": [
+                {
+                  "parameterName": "iterableOrFactory",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  }
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "T",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "from"
+            },
+            {
+              "kind": "Function",
+              "canonicalReference": "polyethylene!Poly.from:function(3)",
+              "docComment": "/**\n * Create a new {@link PolySyncIterable} or {@link PolyAsyncIterable} object from a sync or async iterable or a function that returns sync or async iterables (such as a sync or async generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting {@link PolySyncIterable} or {@link PolyAsyncIterable}.\n *\n * Whether the resulting iterable is sync or async depends on the input being sync or async.\n *\n * @param iterableOrFactory - a sync or async iterable or iterable factory used to create the resulting iterable\n *\n * @typeParam T - The type of the resulting iterable\n *\n * @returns A {@link PolySyncIterable} or {@link PolyAsyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "function from<T>(iterableOrFactory: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Iterable",
+                  "canonicalReference": "!Iterable:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IterableFactory",
+                  "canonicalReference": "polyethylene!Poly.IterableFactory:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AsyncIterable",
+                  "canonicalReference": "!AsyncIterable:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AsyncIterableFactory",
+                  "canonicalReference": "polyethylene!Poly.AsyncIterableFactory:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PolySyncIterable",
+                  "canonicalReference": "polyethylene!default:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T> | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PolyAsyncIterable",
+                  "canonicalReference": "polyethylene!default:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 14
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 3,
+              "parameters": [
+                {
+                  "parameterName": "iterableOrFactory",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 9
+                  }
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "T",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "from"
+            },
+            {
               "kind": "TypeAlias",
               "canonicalReference": "polyethylene!Poly.IterableFactory:type",
               "docComment": "/**\n * A function with no arguments that returns an `Iterable`\n *\n * @typeParam T - The generic type of the returned `Iterable`\n */\n",

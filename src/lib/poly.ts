@@ -53,12 +53,10 @@ export namespace Poly {
       return iterableOrFactory
     }
 
-    if (typeof iterableOrFactory === 'function') {
-      return syncFrom(iterableOrFactory())
-    }
+    const iterable = (typeof iterableOrFactory === 'function') ? iterableOrFactory() : iterableOrFactory
 
-    if (isSyncIterable<T>(iterableOrFactory)) {
-      return new PolySyncIterable<T>(iterableOrFactory)
+    if (isSyncIterable<T>(iterable)) {
+      return new PolySyncIterable<T>(iterable)
     }
 
     throw Error('argument is not iterable')
@@ -85,16 +83,85 @@ export namespace Poly {
       return iterableOrFactory
     }
 
-    if (typeof iterableOrFactory === 'function') {
-      return asyncFrom(iterableOrFactory())
+    const iterable = (typeof iterableOrFactory === 'function') ? iterableOrFactory() : iterableOrFactory
+
+    if (isAsyncIterable<T>(iterable)) {
+      return new PolyAsyncIterable<T>(iterable)
     }
 
-    if (isAsyncIterable<T>(iterableOrFactory)) {
-      return new PolyAsyncIterable<T>(iterableOrFactory)
+    if (isSyncIterable<T>(iterable)) {
+      return new PolySyncIterable<T>(iterable).async()
     }
 
-    if (isSyncIterable<T>(iterableOrFactory)) {
-      return new PolySyncIterable<T>(iterableOrFactory).async()
+    throw Error('argument is not sync or async iterable')
+  }
+
+
+  /**
+   * Create a new {@link PolyAsyncIterable} object from an iterable, async iterable, or a function that returns
+   * iterables (such as a generator function or an async generator function).
+   *
+   * If the passed argument is a function, it will be called with no arguments and its return value will be used to
+   * create the resulting {@link PolyAsyncIterable}.
+   *
+   * @typeParam T - The type of the resulting async iterable
+   * @param iterableOrFactory - an async iterable or async iterable factory used to create the resulting async iterable
+   * @returns A {@link PolyAsyncIterable} that iterates over the same elements as the passed iterable
+   *
+   * @public
+   */
+  export function from<T> (iterableOrFactory: AsyncIterable<T> | AsyncIterableFactory<T>): PolyAsyncIterable<T>
+
+  /**
+   * Create a new {@link PolySyncIterable} object from an iterable or a function that returns iterables (such as a
+   * generator function).
+   *
+   * If the passed argument is a function, it will be called with no arguments and its return value will be used to
+   * create the resulting {@link PolySyncIterable}.
+   *
+   * @typeParam T - The type of the resulting iterable
+   * @param iterableOrFactory - an iterable or iterable factory used to create the resulting iterable
+   * @returns A {@link PolySyncIterable} that iterates over the same elements as the passed iterable
+   *
+   * @public
+   */
+  export function from<T> (iterableOrFactory: Iterable<T> | IterableFactory<T>): PolySyncIterable<T>
+
+  /**
+   * Create a new {@link PolySyncIterable} or {@link PolyAsyncIterable} object from a sync or async iterable or a
+   * function that returns sync or async iterables (such as a sync or async generator function).
+   *
+   * If the passed argument is a function, it will be called with no arguments and its return value will be used to
+   * create the resulting {@link PolySyncIterable} or {@link PolyAsyncIterable}.
+   *
+   * Whether the resulting iterable is sync or async depends on the input being sync or async.
+   *
+   * @typeParam T - The type of the resulting iterable
+   * @param iterableOrFactory - a sync or async iterable or iterable factory used to create the resulting iterable
+   * @returns A {@link PolySyncIterable} or {@link PolyAsyncIterable} that iterates over the same elements as the
+   * passed iterable
+   *
+   * @public
+   */
+  export function from<T> (
+    iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIterable<T> | AsyncIterableFactory<T>,
+  ): PolySyncIterable<T> | PolyAsyncIterable<T>
+
+  export function from<T> (
+    iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIterable<T> | AsyncIterableFactory<T>,
+  ): PolySyncIterable<T> | PolyAsyncIterable<T> {
+    if (iterableOrFactory instanceof PolySyncIterable || iterableOrFactory instanceof PolyAsyncIterable) {
+      return iterableOrFactory
+    }
+
+    const iterable = (typeof iterableOrFactory === 'function') ? iterableOrFactory() : iterableOrFactory
+
+    if (isAsyncIterable<T>(iterable)) {
+      return new PolyAsyncIterable<T>(iterable)
+    }
+
+    if (isSyncIterable<T>(iterable)) {
+      return new PolySyncIterable<T>(iterable)
     }
 
     throw Error('argument is not sync or async iterable')

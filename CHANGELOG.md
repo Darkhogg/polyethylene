@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed:
   - Further reduced the size of the distributed package by excluding tests and GitHub stuff
 
+### Added:
+  - Added a `.from` method with the combined functionality of `.syncFrom` and `.asyncFrom`
+
+
 ## [2.0.1] - 2022-03-26
 
 ### Changed:

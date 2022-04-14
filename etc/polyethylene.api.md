@@ -61,6 +61,9 @@ namespace Poly {
     function buildWith<T>(func: (builder: AsyncIterableBuilder<T>) => void): PolyAsyncIterable<T>;
     function empty<T = never>(): PolySyncIterable<T>;
     function entries<K extends string | number | symbol, V>(obj: Record<K, V>): PolySyncIterable<[K, V]>;
+    function from<T>(iterableOrFactory: AsyncIterable<T> | AsyncIterableFactory<T>): PolyAsyncIterable<T>;
+    function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T>): PolySyncIterable<T>;
+    function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIterable<T> | AsyncIterableFactory<T>): PolySyncIterable<T> | PolyAsyncIterable<T>;
     type IterableFactory<T> = () => Iterable<T>;
     function keys<K extends string | number | symbol>(obj: Record<K, unknown>): PolySyncIterable<K>;
     function range(to: number): PolySyncIterable<number>;

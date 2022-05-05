@@ -17,7 +17,7 @@ reduce(reducer: IndexedReducer<T, T>, init?: T): T;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  reducer | [IndexedReducer](./polyethylene.indexedreducer.md)<!-- -->&lt;T, T&gt; | A function to call for all elements with the result of a previous call |
-|  init | T | First element to be passed to the <code>reducer</code> function |
+|  init | T | <i>(Optional)</i> First element to be passed to the <code>reducer</code> function |
 
 <b>Returns:</b>
 

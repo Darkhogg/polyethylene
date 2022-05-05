@@ -8,36 +8,40 @@
     "type": "git",
     "url": "https://github.com/Darkhogg/polyethylene"
   },
-  "type": "module",
+  "main": "./dist/cjs/lib/main.js",
+  "module": "./dist/mjs/lib/main.js",
   "exports": {
-    ".": "./dist/lib/main.js"
+    ".": {
+      "require": "./dist/cjs/lib/main.js",
+      "import": "./dist/mjs/lib/main.js"
+    }
   },
-  "typings": "./dist/lib/main.d.ts",
+  "typings": "./dist/msj/lib/main.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.mjs.json && tsc -p tsconfig.cjs.json && ./post-build.sh",
     "docs": "pnpm run -s build && ./gen-docs.sh",
-    "test": "pnpm run -s build && mocha --enable-source-maps dist/tests/*.test.js",
+    "test": "pnpm run -s build && mocha --enable-source-maps dist/mjs/tests/*.test.js",
     "preversion": "pnpm run -s test && pnpm run -s docs",
     "prepublish": "pnpm run -s build",
     "prepare": "husky install"
   },
   "devDependencies": {
     "@darkhogg/eslint-config": "^1.1.2",
-    "@microsoft/api-documenter": "^7.13.78",
-    "@microsoft/api-extractor": "^7.19.3",
-    "@types/chai": "^4.2.22",
-    "@types/chai-as-promised": "^7.1.4",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^16.11.7",
+    "@microsoft/api-documenter": "^7.17.12",
+    "@microsoft/api-extractor": "^7.23.1",
+    "@types/chai": "^4.3.1",
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^16.11.33",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "chai": "^4.3.4",
+    "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
     "eslint": "^7.32.0",
     "husky": "^7.0.4",
-    "mocha": "^9.2.0",
+    "mocha": "^9.2.2",
     "nyc": "^15.1.0",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.4.4"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.4"
   }
 }

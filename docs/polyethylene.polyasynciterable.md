@@ -13,7 +13,7 @@ This class works as an async version of [PolySyncIterable](./polyethylene.polysy
 ```typescript
 export default class PolyAsyncIterable<T> implements AsyncIterable<T> 
 ```
-<b>Implements:</b> AsyncIterable&lt;T&gt;
+<b>Implements:</b> AsyncIterable
 
 ## Remarks
 

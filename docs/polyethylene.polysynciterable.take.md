@@ -16,7 +16,7 @@ take(num?: number): PolySyncIterable<T>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  num | number | The number of elements to yield |
+|  num | number | <i>(Optional)</i> The number of elements to yield |
 
 <b>Returns:</b>
 

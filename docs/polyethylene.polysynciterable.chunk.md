@@ -16,7 +16,7 @@ chunk(num?: number): PolySyncIterable<Array<T>>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  num | number | Size of the chunks |
+|  num | number | <i>(Optional)</i> Size of the chunks |
 
 <b>Returns:</b>
 

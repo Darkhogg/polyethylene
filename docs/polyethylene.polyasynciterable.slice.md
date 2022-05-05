@@ -17,7 +17,7 @@ slice(start: number, end?: number): PolyAsyncIterable<T>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  start | number | The index of the first element returned |
-|  end | number | The index of the first element \*not\* returned, inclusive |
+|  end | number | <i>(Optional)</i> The index of the first element \*not\* returned, inclusive |
 
 <b>Returns:</b>
 

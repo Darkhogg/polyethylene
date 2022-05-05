@@ -17,7 +17,7 @@ reduce(reducer: AsyncIndexedReducer<T, T>, init?: T): Promise<T>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  reducer | [AsyncIndexedReducer](./polyethylene.asyncindexedreducer.md)<!-- -->&lt;T, T&gt; | A function to call for all elements with the result of a previous call |
-|  init | T | First element to be passed to the <code>reducer</code> function |
+|  init | T | <i>(Optional)</i> First element to be passed to the <code>reducer</code> function |
 
 <b>Returns:</b>
 

@@ -16,7 +16,7 @@ join(glue?: string): Promise<string>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  glue | string | The string to use for joining the elements |
+|  glue | string | <i>(Optional)</i> The string to use for joining the elements |
 
 <b>Returns:</b>
 

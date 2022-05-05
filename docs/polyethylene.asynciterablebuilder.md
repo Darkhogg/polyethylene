@@ -13,7 +13,7 @@ In order to create the iteration, you must call the ,  and  methods with appropr
 ```typescript
 export default class AsyncIterableBuilder<T> implements AsyncIterable<T> 
 ```
-<b>Implements:</b> AsyncIterable&lt;T&gt;
+<b>Implements:</b> AsyncIterable
 
 ## Remarks
 

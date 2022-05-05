@@ -18,7 +18,7 @@ function range(from: number, to: number, step?: number): PolySyncIterable<number
 |  --- | --- | --- |
 |  from | number | Inclusive lower bound of the iteration |
 |  to | number | Exclusive upper bound of the iteration |
-|  step | number | Distance between the iterated numbers |
+|  step | number | <i>(Optional)</i> Distance between the iterated numbers |
 
 <b>Returns:</b>
 

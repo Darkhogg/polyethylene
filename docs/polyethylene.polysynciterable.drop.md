@@ -16,7 +16,7 @@ drop(num?: number): PolySyncIterable<T>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  num | number | The number of elements to skip |
+|  num | number | <i>(Optional)</i> The number of elements to skip |
 
 <b>Returns:</b>
 

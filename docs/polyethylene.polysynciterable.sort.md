@@ -16,7 +16,7 @@ sort(func?: Comparator<T>): PolySyncIterable<T>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  func | [Comparator](./polyethylene.comparator.md)<!-- -->&lt;T&gt; | A comparator function |
+|  func | [Comparator](./polyethylene.comparator.md)<!-- -->&lt;T&gt; | <i>(Optional)</i> A comparator function |
 
 <b>Returns:</b>
 

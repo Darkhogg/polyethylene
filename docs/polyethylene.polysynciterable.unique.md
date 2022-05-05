@@ -16,7 +16,7 @@ unique(func?: IndexedMapping<T, unknown>): PolySyncIterable<T>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, unknown&gt; | A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
+|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, unknown&gt; | <i>(Optional)</i> A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
 
 <b>Returns:</b>
 

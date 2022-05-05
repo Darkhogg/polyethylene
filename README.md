@@ -32,6 +32,19 @@ await Poly.asyncFrom(findUsers())
   .forEach(post => console.log(post));
 ```
 
+### CommonJS
+
+This package is designed as an ECMAScript Module from the get go, but since 2.1.0 a CommonJS version is provided.
+
+All named exports are supported, but the default export must be accessed via the `default` or `Poly` exports:
+
+```javascript
+const Poly = require('polyethylene').default
+```
+```javascript
+const {Poly} = require('polyethylene')
+```
+
 
 ## Full Documentation
 

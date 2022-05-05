@@ -6,7 +6,7 @@ This file is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [Unreleased]
+## [2.1.0] - 2022-05-05
 
 ### Changed:
   - Further reduced the size of the distributed package by excluding tests and GitHub stuff

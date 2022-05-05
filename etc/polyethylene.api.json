@@ -1,8 +1,8 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.19.3",
-    "schemaVersion": 1004,
+    "toolVersion": "7.23.1",
+    "schemaVersion": 1005,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
       "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
@@ -156,7 +156,8 @@
         "@betaDocumentation": true,
         "@internalRemarks": true,
         "@preapproved": true
-      }
+      },
+      "reportUnsupportedHtmlElements": false
     }
   },
   "kind": "Package",
@@ -574,7 +575,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "error"
@@ -653,7 +655,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "value"
@@ -662,7 +665,7 @@
           "implementsTokenRanges": [
             {
               "startIndex": 1,
-              "endIndex": 3
+              "endIndex": 2
             }
           ]
         },
@@ -1070,7 +1073,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 9
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1187,7 +1191,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 4
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1265,14 +1270,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 4
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "initValue",
                   "parameterTypeTokenRange": {
                     "startIndex": 5,
                     "endIndex": 6
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1387,7 +1394,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 4
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1514,7 +1522,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1600,7 +1609,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1675,7 +1685,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1777,7 +1788,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 9
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1898,7 +1910,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -1959,7 +1972,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "range"
@@ -2015,14 +2029,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "to",
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 4
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "range"
@@ -2086,21 +2102,24 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "to",
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 4
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "step",
                   "parameterTypeTokenRange": {
                     "startIndex": 5,
                     "endIndex": 6
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "range"
@@ -2148,7 +2167,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2223,7 +2243,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2284,7 +2305,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2353,14 +2375,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "initValue",
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 4
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2426,7 +2450,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2583,7 +2608,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2689,7 +2715,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "chunk"
@@ -2753,7 +2780,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "chunkWhile"
@@ -2851,7 +2879,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2914,7 +2943,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "drop"
@@ -2964,7 +2994,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "dropLast"
@@ -3019,7 +3050,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "dropWhile"
@@ -3074,7 +3106,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "every"
@@ -3137,7 +3170,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3205,7 +3239,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "filter"
@@ -3311,7 +3346,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3379,7 +3415,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "find"
@@ -3452,7 +3489,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 7
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3538,7 +3576,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 7
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3624,7 +3663,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 7
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3692,7 +3732,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "forEach"
@@ -3756,7 +3797,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3819,7 +3861,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "includes"
@@ -3869,7 +3912,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "join"
@@ -3924,7 +3968,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -4035,7 +4080,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -4111,14 +4157,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "init",
                   "parameterTypeTokenRange": {
                     "startIndex": 4,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "reduce"
@@ -4181,14 +4229,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "init",
                   "parameterTypeTokenRange": {
                     "startIndex": 4,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -4293,14 +4343,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "end",
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 4
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "slice"
@@ -4355,7 +4407,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "some"
@@ -4410,7 +4463,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "sort"
@@ -4460,7 +4514,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "take"
@@ -4510,7 +4565,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "takeLast"
@@ -4565,7 +4621,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "takeWhile"
@@ -4620,7 +4677,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "tap"
@@ -4727,7 +4785,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -4824,7 +4883,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -4938,7 +4998,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -5024,7 +5085,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "toPartitionArrays"
@@ -5079,7 +5141,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "unique"
@@ -5088,7 +5151,7 @@
           "implementsTokenRanges": [
             {
               "startIndex": 1,
-              "endIndex": 3
+              "endIndex": 2
             }
           ]
         },
@@ -5220,7 +5283,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -5326,7 +5390,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "chunk"
@@ -5390,7 +5455,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "chunkWhile"
@@ -5474,7 +5540,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -5537,7 +5604,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "drop"
@@ -5587,7 +5655,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "dropLast"
@@ -5642,7 +5711,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "dropWhile"
@@ -5692,7 +5762,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "every"
@@ -5755,7 +5826,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -5823,7 +5895,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "filter"
@@ -5924,7 +5997,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -5987,7 +6061,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "find"
@@ -6051,7 +6126,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6128,7 +6204,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6205,7 +6282,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6268,7 +6346,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "forEach"
@@ -6332,7 +6411,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6390,7 +6470,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "includes"
@@ -6435,7 +6516,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "join"
@@ -6490,7 +6572,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6558,7 +6641,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6629,14 +6713,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "init",
                   "parameterTypeTokenRange": {
                     "startIndex": 4,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "reduce"
@@ -6694,14 +6780,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "init",
                   "parameterTypeTokenRange": {
                     "startIndex": 4,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6806,14 +6894,16 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": false
                 },
                 {
                   "parameterName": "end",
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 4
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "slice"
@@ -6863,7 +6953,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "some"
@@ -6918,7 +7009,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "sort"
@@ -6968,7 +7060,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "take"
@@ -7018,7 +7111,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 2
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "takeLast"
@@ -7073,7 +7167,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "takeWhile"
@@ -7128,7 +7223,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "tap"
@@ -7217,7 +7313,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -7305,7 +7402,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -7414,7 +7512,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 3,
                     "endIndex": 5
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -7495,7 +7594,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": false
                 }
               ],
               "name": "toPartitionArrays"
@@ -7550,7 +7650,8 @@
                   "parameterTypeTokenRange": {
                     "startIndex": 1,
                     "endIndex": 3
-                  }
+                  },
+                  "isOptional": true
                 }
               ],
               "name": "unique"
@@ -7559,7 +7660,7 @@
           "implementsTokenRanges": [
             {
               "startIndex": 1,
-              "endIndex": 3
+              "endIndex": 2
             }
           ]
         }

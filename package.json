@@ -1,6 +1,6 @@
 {
   "name": "polyethylene",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Functional programming for iterables and async iterables",
   "author": "Daniel Escoz <darkhogg+npm.polyethylene@gmail.com>",
   "license": "MIT",
@@ -16,7 +16,7 @@
       "import": "./dist/mjs/lib/main.js"
     }
   },
-  "typings": "./dist/msj/lib/main.d.ts",
+  "typings": "./dist/mjs/lib/main.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.mjs.json && tsc -p tsconfig.cjs.json && ./post-build.sh",
     "docs": "pnpm run -s build && ./gen-docs.sh",

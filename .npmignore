@@ -62,6 +62,8 @@ typings/
 
 # TSC output
 tsconfig.tsbuildinfo
+tsconfig.cjs.tsbuildinfo
+tsconfig.mjs.tsbuildinfo
 
 # API-Extractor stuff
 temp/

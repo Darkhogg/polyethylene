@@ -18,7 +18,7 @@
   },
   "typings": "./dist/mjs/lib/main.d.ts",
   "scripts": {
-    "build": "tsc -p tsconfig.mjs.json && tsc -p tsconfig.cjs.json && ./post-build.sh",
+    "build": "tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && ./post-build.sh",
     "docs": "pnpm run -s build && ./gen-docs.sh",
     "test": "pnpm run -s build && mocha --enable-source-maps dist/mjs/tests/*.test.js",
     "preversion": "pnpm run -s test && pnpm run -s docs",

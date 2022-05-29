@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "rootDir": "./src",
+    "target": "es2022", 
+    "module": "es2022",
+    "outDir": "dist/mjs/",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,

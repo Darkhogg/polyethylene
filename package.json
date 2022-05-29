@@ -27,21 +27,21 @@
   },
   "devDependencies": {
     "@darkhogg/eslint-config": "^1.1.2",
-    "@microsoft/api-documenter": "^7.17.12",
-    "@microsoft/api-extractor": "^7.23.1",
+    "@microsoft/api-documenter": "^7.17.16",
+    "@microsoft/api-extractor": "^7.24.2",
     "@types/chai": "^4.3.1",
     "@types/chai-as-promised": "^7.1.5",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^16.11.33",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
+    "@types/node": "^16.11.36",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
     "chai": "^4.3.6",
     "chai-as-promised": "^7.1.1",
     "eslint": "^7.32.0",
     "husky": "^7.0.4",
     "mocha": "^9.2.2",
     "nyc": "^15.1.0",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.4"
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
   }
 }

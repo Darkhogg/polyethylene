@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.23.1",
+    "toolVersion": "7.24.2",
     "schemaVersion": 1005,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -3423,6 +3423,139 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "polyethylene!PolyAsyncIterable#findLast:member(1)",
+              "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * The return type of this function is narrowed to the type asserted by `func`.\n *\n * @param func - A type predicate called for elements of `this`\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to the last element of the iteration for which `func` returned `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findLast<U extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedTypePredicate",
+                  "canonicalReference": "polyethylene!IndexedTypePredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, U>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<U | undefined>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "U",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "findLast"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolyAsyncIterable#findLast:member(2)",
+              "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns A promise to the last element of the iteration for which `func` returned `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findLast(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AsyncIndexedPredicate",
+                  "canonicalReference": "polyethylene!AsyncIndexedPredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T | undefined>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 2,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "findLast"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#flat:member(1)",
               "docComment": "/**\n * Return an iteration of the yielded elements of the sub-iterables.\n *\n * @remarks\n *\n * This method is an alias of {@link PolyAsyncIterable.flatten}.\n *\n * @typeParam U - The type of the sub-iterable elements\n *\n * @returns A new {@link PolyAsyncIterable} that will yield the elements of all sub-iterables\n */\n",
               "excerptTokens": [
@@ -6066,6 +6199,129 @@
                 }
               ],
               "name": "find"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#findLast:member(1)",
+              "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * The return type of this function is narrowed to the type asserted by `func`.\n *\n * @param func - A type predicate called for elements of `this`\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns The last element of the iteration for which `func` returned `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findLast<U extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedTypePredicate",
+                  "canonicalReference": "polyethylene!IndexedTypePredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, U>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "U | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "U",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "name": "findLast"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#findLast:member(2)",
+              "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns The last element of the iteration for which `func` returned `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findLast(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedPredicate",
+                  "canonicalReference": "polyethylene!IndexedPredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T | undefined"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 2,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "findLast"
             },
             {
               "kind": "Method",

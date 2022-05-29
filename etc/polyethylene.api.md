@@ -98,6 +98,8 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     filterNotNullish(): PolyAsyncIterable<NonNullable<T>>;
     find<U extends T>(func: IndexedTypePredicate<T, U>): Promise<U | undefined>;
     find(func: AsyncIndexedPredicate<T>): Promise<T | undefined>;
+    findLast<U extends T>(func: IndexedTypePredicate<T, U>): Promise<U | undefined>;
+    findLast(func: AsyncIndexedPredicate<T>): Promise<T | undefined>;
     flat<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
     flatMap<U>(func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
     flatten<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
@@ -146,6 +148,8 @@ export class PolySyncIterable<T> implements Iterable<T> {
     filterNotNullish(): PolySyncIterable<NonNullable<T>>;
     find<U extends T>(func: IndexedTypePredicate<T, U>): U | undefined;
     find(func: IndexedPredicate<T>): T | undefined;
+    findLast<U extends T>(func: IndexedTypePredicate<T, U>): U | undefined;
+    findLast(func: IndexedPredicate<T>): T | undefined;
     flat<U>(this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U>;
     flatMap<U>(func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U>;
     flatten<U>(this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U>;

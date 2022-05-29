@@ -598,6 +598,46 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     return undefined
   }
 
+
+  /**
+   * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.
+   *
+   * @remarks
+   * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.
+   *
+   * The return type of this function is narrowed to the type asserted by `func`.
+   *
+   * @typeParam U - The type asserted by `func`
+   * @param func - A type predicate called for elements of `this`
+   * @returns A promise to the last element of the iteration for which `func` returned `true`
+   */
+  async findLast<U extends T> (func: IndexedTypePredicate<T, U>): Promise<U | undefined>
+
+  /**
+   * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.
+   *
+   * @remarks
+   * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.
+   *
+   * @param func - A boolean returning function called for elements of `this`
+   * @returns A promise to the last element of the iteration for which `func` returned `true`
+   */
+  async findLast (func: AsyncIndexedPredicate<T>): Promise<T | undefined>
+
+  async findLast<U extends T> (
+    func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>,
+  ): Promise<T | U | undefined> {
+    asserts.isFunction(func)
+    let found
+    let idx = 0
+    for await (const elem of this.#iterable) {
+      if (await func(elem, idx++)) {
+        found = elem
+      }
+    }
+    return found
+  }
+
   /**
    * Returns whether an element is present in this iteration.
    *

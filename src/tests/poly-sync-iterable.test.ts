@@ -672,6 +672,23 @@ describe('Sync Iterable', () => {
   })
 
 
+  describe('#findLast', () => {
+    it('should correctly return last element for which passed function is true', () => {
+      const iter = Poly.range(15)
+      expect(iter.findLast((n) => n % 6 === 5)).to.equal(11)
+    })
+
+    it('should correctly return undefined if passed function never returns true', () => {
+      const iter = Poly.range(15)
+      expect(iter.findLast((n) => false)).to.not.exist
+    })
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.syncFrom([]).findLast('foo' as any)).to.throw()
+    })
+  })
+
+
   describe('#includes', () => {
     it('should correctly return true if element is included', () => {
       const iter = Poly.range(15)

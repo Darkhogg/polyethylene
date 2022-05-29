@@ -39,6 +39,8 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [filterNotNullish()](./polyethylene.polysynciterable.filternotnullish.md) |  | Return an iteration of all the elements as <code>this</code> that aren't <code>null</code> or <code>undefined</code>. |
 |  [find(func)](./polyethylene.polysynciterable.find.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
 |  [find(func)](./polyethylene.polysynciterable.find_1.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findLast(func)](./polyethylene.polysynciterable.findlast.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findLast(func)](./polyethylene.polysynciterable.findlast_1.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
 |  [flat(this)](./polyethylene.polysynciterable.flat.md) |  | Return an iteration of the yielded elements of the sub-iterables. |
 |  [flatMap(func)](./polyethylene.polysynciterable.flatmap.md) |  | Return an iteration of elements of the sub-iterables that result from calling <code>func(element)</code> for every element in <code>this</code>. |
 |  [flatten(this)](./polyethylene.polysynciterable.flatten.md) |  | Return an iteration of the yielded elements of the sub-iterables. |

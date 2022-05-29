@@ -582,6 +582,44 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   }
 
   /**
+   * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.
+   *
+   * @remarks
+   * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.
+   *
+   * The return type of this function is narrowed to the type asserted by `func`.
+   *
+   * @typeParam U - The type asserted by `func`
+   * @param func - A type predicate called for elements of `this`
+   * @returns The last element of the iteration for which `func` returned `true`
+   */
+  findLast<U extends T> (func: IndexedTypePredicate<T, U>): U | undefined
+
+  /**
+   * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.
+   *
+   * @remarks
+   * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.
+   *
+   * @param func - A boolean returning function called for elements of `this`
+   * @returns The last element of the iteration for which `func` returned `true`
+   */
+  findLast (func: IndexedPredicate<T>): T | undefined
+
+  findLast<U extends T> (func: IndexedPredicate<T> | IndexedTypePredicate<T, U>): T | U | undefined {
+    asserts.isFunction(func)
+    let found
+    let idx = 0
+    for (const elem of this.#iterable) {
+      if (func(elem, idx++)) {
+        found = elem
+      }
+    }
+    return found
+  }
+
+
+  /**
    * Returns whether an element is present in this iteration.
    *
    * @remarks

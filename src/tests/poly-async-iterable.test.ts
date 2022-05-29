@@ -687,6 +687,23 @@ describe('Async Iterable', () => {
   })
 
 
+  describe('#findLast', () => {
+    it('should correctly return last element for which passed function is true', async () => {
+      const iter = Poly.range(15).async()
+      await expect(iter.findLast(async (n) => n % 6 === 5)).to.eventually.equal(11)
+    })
+
+    it('should correctly return undefined if passed function never returns true', async () => {
+      const iter = Poly.range(15).async()
+      await expect(iter.findLast(async (n) => false)).to.eventually.not.exist
+    })
+
+    it('should throw if passed argument is not a function', async () => {
+      await expect(Poly.syncFrom([]).async().findLast('foo' as any)).to.be.rejected
+    })
+  })
+
+
   describe('#includes', () => {
     it('should correctly return true if element is included', async () => {
       const iter = Poly.range(15).async()

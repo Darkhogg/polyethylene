@@ -3423,6 +3423,62 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "polyethylene!PolyAsyncIterable#findIndex:member(1)",
+              "docComment": "/**\n * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns A promise the index of the first element of the iteration for which `func` returned `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findIndex(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AsyncIndexedPredicate",
+                  "canonicalReference": "polyethylene!AsyncIndexedPredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<number>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "findIndex"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#findLast:member(1)",
               "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * The return type of this function is narrowed to the type asserted by `func`.\n *\n * @param func - A type predicate called for elements of `this`\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to the last element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
@@ -3553,6 +3609,62 @@
                 }
               ],
               "name": "findLast"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolyAsyncIterable#findLastIndex:member(1)",
+              "docComment": "/**\n * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns A promise the index of the last element of the iteration for which `func` returned `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findLastIndex(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "AsyncIndexedPredicate",
+                  "canonicalReference": "polyethylene!AsyncIndexedPredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<number>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "findLastIndex"
             },
             {
               "kind": "Method",
@@ -6202,6 +6314,57 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#findIndex:member(1)",
+              "docComment": "/**\n * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns The index of the first element of the iteration for which `func` returned `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findIndex(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedPredicate",
+                  "canonicalReference": "polyethylene!IndexedPredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "findIndex"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#findLast:member(1)",
               "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * The return type of this function is narrowed to the type asserted by `func`.\n *\n * @param func - A type predicate called for elements of `this`\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns The last element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
@@ -6322,6 +6485,57 @@
                 }
               ],
               "name": "findLast"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#findLastIndex:member(1)",
+              "docComment": "/**\n * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns The index of the last element of the iteration for which `func` returned `true`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "findLastIndex(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedPredicate",
+                  "canonicalReference": "polyethylene!IndexedPredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "findLastIndex"
             },
             {
               "kind": "Method",
@@ -6734,6 +6948,57 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#indexOf:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "indexOf(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedPredicate",
+                  "canonicalReference": "polyethylene!IndexedPredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "indexOf"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#join:member(1)",
               "docComment": "/**\n * Return the result of joining the elements of `this` with the given `glue`, or `','` if no glue is given.\n *\n * @remarks\n *\n * `null` or `undefined` elements are treated as empty strings.\n *\n * @param glue - The string to use for joining the elements\n *\n * @returns A string concatenating all elements of `this` using the given `glue`\n */\n",
               "excerptTokens": [
@@ -6777,6 +7042,57 @@
                 }
               ],
               "name": "join"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#lastIndexOf:member(1)",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "lastIndexOf(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedPredicate",
+                  "canonicalReference": "polyethylene!IndexedPredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "releaseTag": "Public",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "lastIndexOf"
             },
             {
               "kind": "Method",
@@ -7522,7 +7838,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#toMap:member(1)",
-              "docComment": "/**\n * Return a `Map` made from the entries of `this`. This method is roughly equivalent to calling `new Map(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs where the first component is a valid object key type.\n *\n * @returns A `Map` composed of the entries yielded by this iterable.\n */\n",
+              "docComment": "/**\n * Return a `Map` made from the entries of `this`. This method is roughly equivalent to calling `new Map(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @returns A `Map` composed of the entries yielded by this iterable.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

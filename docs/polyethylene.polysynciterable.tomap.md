@@ -26,5 +26,5 @@ A `Map` composed of the entries yielded by this iterable.
 
 ## Remarks
 
-This method is only available for iterations of pairs where the first component is a valid object key type.
+This method is only available for iterations of pairs.
 

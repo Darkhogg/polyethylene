@@ -531,7 +531,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * This method is roughly equivalent to calling `new Map(iter.toArray())`.
    *
    * @remarks
-   * This method is only available for iterations of pairs where the first component is a valid object key type.
+   * This method is only available for iterations of pairs.
    *
    * @returns A `Map` composed of the entries yielded by this iterable.
    */
@@ -618,6 +618,62 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     return found
   }
 
+  /**
+   * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.
+   *
+   * @remarks
+   * `func` will be called on elements of this iteration until it returns `true`, and then not called again.
+   *
+   * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities,
+   * but it's here for completion and consistency with `Array`.
+   *
+   * @param func - A boolean returning function called for elements of `this`
+   * @returns The index of the first element of the iteration for which `func` returned `true`
+   */
+  findIndex (func: IndexedPredicate<T>): number {
+    asserts.isFunction(func)
+    let idx = 0
+    for (const elem of this.#iterable) {
+      if (func(elem, idx)) {
+        return idx
+      }
+      idx++
+    }
+    return -1
+  }
+
+  /**
+   * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.
+   *
+   * @remarks
+   * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.
+   *
+   * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities,
+   * but it's here for completion and consistency with `Array`.
+   *
+   * @param func - A boolean returning function called for elements of `this`
+   * @returns The index of the last element of the iteration for which `func` returned `true`
+   */
+  findLastIndex (func: IndexedPredicate<T>): number {
+    asserts.isFunction(func)
+    let foundIndex = -1
+    let idx = 0
+    for (const elem of this.#iterable) {
+      if (func(elem, idx)) {
+        foundIndex = idx
+      }
+      idx++
+    }
+    return foundIndex
+  }
+
+  indexOf (func: IndexedPredicate<T>): number {
+    return Number.NaN
+  }
+
+  lastIndexOf (func: IndexedPredicate<T>): number {
+    return Number.NaN
+  }
 
   /**
    * Returns whether an element is present in this iteration.

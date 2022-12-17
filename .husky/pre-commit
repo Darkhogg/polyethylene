@@ -3,4 +3,4 @@
 
 pnpm run -s test
 pnpm run -s docs
-git add docs
+git add etc docs

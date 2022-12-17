@@ -39,8 +39,10 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [filterNotNullish()](./polyethylene.polyasynciterable.filternotnullish.md) |  | Return an iteration of all the elements as <code>this</code> that aren't <code>null</code> or <code>undefined</code>. |
 |  [find(func)](./polyethylene.polyasynciterable.find.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
 |  [find(func)](./polyethylene.polyasynciterable.find_1.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findIndex(func)](./polyethylene.polyasynciterable.findindex.md) |  | Returns the index of the first element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
 |  [findLast(func)](./polyethylene.polyasynciterable.findlast.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
 |  [findLast(func)](./polyethylene.polyasynciterable.findlast_1.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findLastIndex(func)](./polyethylene.polyasynciterable.findlastindex.md) |  | Returns the index of the last element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
 |  [flat(this)](./polyethylene.polyasynciterable.flat.md) |  | Return an iteration of the yielded elements of the sub-iterables. |
 |  [flatMap(func)](./polyethylene.polyasynciterable.flatmap.md) |  | Return an iteration of elements of the sub-iterables that result from calling <code>func(element)</code> for every element in <code>this</code>. |
 |  [flatten(this)](./polyethylene.polyasynciterable.flatten.md) |  | Return an iteration of the yielded elements of the sub-iterables. |

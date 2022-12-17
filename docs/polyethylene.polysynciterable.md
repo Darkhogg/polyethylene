@@ -39,15 +39,19 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [filterNotNullish()](./polyethylene.polysynciterable.filternotnullish.md) |  | Return an iteration of all the elements as <code>this</code> that aren't <code>null</code> or <code>undefined</code>. |
 |  [find(func)](./polyethylene.polysynciterable.find.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
 |  [find(func)](./polyethylene.polysynciterable.find_1.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findIndex(func)](./polyethylene.polysynciterable.findindex.md) |  | Returns the index of the first element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
 |  [findLast(func)](./polyethylene.polysynciterable.findlast.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
 |  [findLast(func)](./polyethylene.polysynciterable.findlast_1.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findLastIndex(func)](./polyethylene.polysynciterable.findlastindex.md) |  | Returns the index of the last element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
 |  [flat(this)](./polyethylene.polysynciterable.flat.md) |  | Return an iteration of the yielded elements of the sub-iterables. |
 |  [flatMap(func)](./polyethylene.polysynciterable.flatmap.md) |  | Return an iteration of elements of the sub-iterables that result from calling <code>func(element)</code> for every element in <code>this</code>. |
 |  [flatten(this)](./polyethylene.polysynciterable.flatten.md) |  | Return an iteration of the yielded elements of the sub-iterables. |
 |  [forEach(func)](./polyethylene.polysynciterable.foreach.md) |  | Call a function for each element of <code>this</code> iteration. |
 |  [groupBy(func)](./polyethylene.polysynciterable.groupby.md) |  | Return an iteration of group pairs, where the first element is a \_group key\_ and the second is an iterable of all the elements for which <code>func(element)</code> returned the key. |
 |  [includes(obj)](./polyethylene.polysynciterable.includes.md) |  | Returns whether an element is present in this iteration. |
+|  [indexOf(func)](./polyethylene.polysynciterable.indexof.md) |  |  |
 |  [join(glue)](./polyethylene.polysynciterable.join.md) |  | Return the result of joining the elements of <code>this</code> with the given <code>glue</code>, or <code>','</code> if no glue is given. |
+|  [lastIndexOf(func)](./polyethylene.polysynciterable.lastindexof.md) |  |  |
 |  [map(func)](./polyethylene.polysynciterable.map.md) |  | Return an iteration of the result of calling <code>func(element)</code> for every element in <code>this</code>. |
 |  [prepend(other)](./polyethylene.polysynciterable.prepend.md) |  | Return a new iteration that will iterate over <code>other</code>, then over <code>this</code>. |
 |  [reduce(reducer, init)](./polyethylene.polysynciterable.reduce.md) |  | Returns the result of calling the passed <code>reducer</code> for all elements of the iteration and the result of the previous call to <code>reducer</code>, starting by passing <code>init</code> or, if not present, the first element of the iteration. |

@@ -98,8 +98,10 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     filterNotNullish(): PolyAsyncIterable<NonNullable<T>>;
     find<U extends T>(func: IndexedTypePredicate<T, U>): Promise<U | undefined>;
     find(func: AsyncIndexedPredicate<T>): Promise<T | undefined>;
+    findIndex(func: AsyncIndexedPredicate<T>): Promise<number>;
     findLast<U extends T>(func: IndexedTypePredicate<T, U>): Promise<U | undefined>;
     findLast(func: AsyncIndexedPredicate<T>): Promise<T | undefined>;
+    findLastIndex(func: AsyncIndexedPredicate<T>): Promise<number>;
     flat<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
     flatMap<U>(func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
     flatten<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
@@ -148,15 +150,21 @@ export class PolySyncIterable<T> implements Iterable<T> {
     filterNotNullish(): PolySyncIterable<NonNullable<T>>;
     find<U extends T>(func: IndexedTypePredicate<T, U>): U | undefined;
     find(func: IndexedPredicate<T>): T | undefined;
+    findIndex(func: IndexedPredicate<T>): number;
     findLast<U extends T>(func: IndexedTypePredicate<T, U>): U | undefined;
     findLast(func: IndexedPredicate<T>): T | undefined;
+    findLastIndex(func: IndexedPredicate<T>): number;
     flat<U>(this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U>;
     flatMap<U>(func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U>;
     flatten<U>(this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U>;
     forEach(func: IndexedRunnable<T>): void;
     groupBy<K>(func: IndexedMapping<T, K>): PolySyncIterable<[K, Array<T>]>;
     includes(obj: T): boolean;
+    // (undocumented)
+    indexOf(func: IndexedPredicate<T>): number;
     join(glue?: string): string;
+    // (undocumented)
+    lastIndexOf(func: IndexedPredicate<T>): number;
     map<U>(func: IndexedMapping<T, U>): PolySyncIterable<U>;
     prepend<U>(other: Iterable<U>): PolySyncIterable<T | U>;
     reduce(reducer: IndexedReducer<T, T>, init?: T): T;

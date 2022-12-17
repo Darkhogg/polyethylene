@@ -8,14 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## UNRELEASED
 
-### Changed:
+### Addeded:
 
-  - Add `findLast` method to both iterable types       
+  - Added `findLast` leaf method to both iterable types
+  - Added `findIndex` leaf method to both iterables
+  - Added `findLastIndex` leaf method to both iterables
 
 ## [2.1.1] - 2022-05-05
 
 ### Changed:
-  - Fix a problem with type definitions reference
+  - Fixed a problem with type definitions reference
 
 
 ## [2.1.0] - 2022-05-05

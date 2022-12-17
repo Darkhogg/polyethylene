@@ -689,6 +689,49 @@ describe('Sync Iterable', () => {
   })
 
 
+  describe('#findIndex', () => {
+    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6] as const
+
+    it('should correctly return the index of the first element for which passed function is true', () => {
+      const iter = Poly.from(numbers)
+      expect(iter.findIndex((n) => n % 6 === 5)).to.equal(7)
+    })
+
+    it('should correctly return -1 if passed function never returns true', () => {
+      const iter = Poly.from(numbers)
+      expect(iter.findIndex((n) => false)).to.equal(-1)
+    })
+
+    it('should work for infinite iterables for which the passed function returns true', () => {
+      const iter = Poly.syncIterate((n) => n + 1, 0).map((n) => n ** 2)
+      expect(iter.findIndex((n) => n > 100)).to.equal(10)
+    })
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.syncFrom([]).findIndex('foo' as any)).to.throw()
+    })
+  })
+
+
+  describe('#findLastIndex', () => {
+    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6] as const
+
+    it('should correctly return the index of the last element for which passed function is true', () => {
+      const iter = Poly.from(numbers)
+      expect(iter.findLastIndex((n) => n % 6 === 5)).to.equal(9)
+    })
+
+    it('should correctly return -1 if passed function never returns true', () => {
+      const iter = Poly.from(numbers)
+      expect(iter.findLastIndex((n) => false)).to.equal(-1)
+    })
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.syncFrom([]).findLastIndex('foo' as any)).to.throw()
+    })
+  })
+
+
   describe('#includes', () => {
     it('should correctly return true if element is included', () => {
       const iter = Poly.range(15)

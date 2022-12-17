@@ -20,7 +20,7 @@ function entries<K extends string | number | symbol, V>(obj: Record<K, V>): Poly
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;\[K, V\]&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K, V\]&gt;
 
 An iterable that yields the entries of the passed object
 

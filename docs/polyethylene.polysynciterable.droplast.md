@@ -20,7 +20,7 @@ dropLast(num?: number): PolySyncIterable<T>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same the elements of `this`<!-- -->, except for the last `num` elements
 

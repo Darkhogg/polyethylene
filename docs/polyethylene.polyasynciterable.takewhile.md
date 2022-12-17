@@ -20,7 +20,7 @@ takeWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the same the elements of `this` as long as `func(element)` returns `true`
 

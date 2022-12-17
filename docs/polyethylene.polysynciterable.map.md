@@ -20,7 +20,7 @@ map<U>(func: IndexedMapping<T, U>): PolySyncIterable<U>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;U&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the results of calling `func(element)` for every element of `this`
 

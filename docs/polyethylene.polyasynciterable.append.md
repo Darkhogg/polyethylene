@@ -20,7 +20,7 @@ append<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T \| U&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T \| U&gt;
 
 a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the elements of `this` and then the elements of `other`
 

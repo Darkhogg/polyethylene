@@ -9,7 +9,7 @@ Return an iteration of the result of calling `func(element)` for every element i
 <b>Signature:</b>
 
 ```typescript
-map<U>(func: AsyncIndexedMapping<T, U>): PolyAsyncIterable<U>;
+map<U>(func: AsyncIndexedMapping<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>;
 ```
 
 ## Parameters
@@ -17,10 +17,11 @@ map<U>(func: AsyncIndexedMapping<T, U>): PolyAsyncIterable<U>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, U&gt; | A function that takes an element of <code>this</code> and returns something else |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;U&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;
 
 A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the results of calling `func(element)` for every element of `this`
 

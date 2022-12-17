@@ -9,7 +9,7 @@ Call a function for each element of `this` iteration.
 <b>Signature:</b>
 
 ```typescript
-forEach(func: AsyncIndexedRunnable<T>): Promise<void>;
+forEach(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): Promise<void>;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ forEach(func: AsyncIndexedRunnable<T>): Promise<void>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedRunnable](./polyethylene.asyncindexedrunnable.md)<!-- -->&lt;T&gt; | A function to be called for every element of the iteration |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
 
 <b>Returns:</b>
 

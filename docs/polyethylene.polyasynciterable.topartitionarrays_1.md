@@ -9,7 +9,7 @@ Splits this iteration into two arrays, one with elements for which `func(element
 <b>Signature:</b>
 
 ```typescript
-toPartitionArrays(func: AsyncIndexedPredicate<T>): Promise<[Array<T>, Array<T>]>;
+toPartitionArrays(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<[Array<T>, Array<T>]>;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ toPartitionArrays(func: AsyncIndexedPredicate<T>): Promise<[Array<T>, Array<T>]>
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | A function that will be called for all elements to split them into the result arrays |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
 
 <b>Returns:</b>
 

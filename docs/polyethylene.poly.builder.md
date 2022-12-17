@@ -13,7 +13,7 @@ function builder<T>(): AsyncIterableBuilder<T>;
 ```
 <b>Returns:</b>
 
-AsyncIterableBuilder&lt;T&gt;
+[AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->&lt;T&gt;
 
 ## Remarks
 

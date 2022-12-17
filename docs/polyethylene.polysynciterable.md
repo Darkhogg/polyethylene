@@ -13,7 +13,7 @@ The methods of this class are intended to resemble those of `Array`<!-- -->, wit
 ```typescript
 export default class PolySyncIterable<T> implements Iterable<T> 
 ```
-<b>Implements:</b> Iterable
+<b>Implements:</b> Iterable&lt;T&gt;
 
 ## Remarks
 

@@ -20,7 +20,7 @@ function syncIterate<T>(func: (lastValue: T | undefined) => T): PolySyncIterable
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 an infinite iterable that yields the return values from calling `func` repeatedly
 

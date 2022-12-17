@@ -37,6 +37,12 @@ export type ChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boole
 export type Comparator<T> = (elemA: T, elemB: T) => number;
 
 // @public
+export interface ConcurrencyOptions {
+    bufferSize?: number;
+    concurrency?: number;
+}
+
+// @public
 export type IndexedMapping<T, U> = (elem: T, index: number) => U;
 
 // @public
@@ -92,42 +98,42 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     drop(num: number): PolyAsyncIterable<T>;
     dropLast(num: number): PolyAsyncIterable<T>;
     dropWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
-    every(func: AsyncIndexedPredicate<T>): Promise<boolean>;
-    filter<U extends T>(func: IndexedTypePredicate<T, U>): PolyAsyncIterable<U>;
-    filter(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
+    every(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<boolean>;
+    filter<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>;
+    filter(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
     filterNotNullish(): PolyAsyncIterable<NonNullable<T>>;
-    find<U extends T>(func: IndexedTypePredicate<T, U>): Promise<U | undefined>;
-    find(func: AsyncIndexedPredicate<T>): Promise<T | undefined>;
-    findIndex(func: AsyncIndexedPredicate<T>): Promise<number>;
-    findLast<U extends T>(func: IndexedTypePredicate<T, U>): Promise<U | undefined>;
-    findLast(func: AsyncIndexedPredicate<T>): Promise<T | undefined>;
-    findLastIndex(func: AsyncIndexedPredicate<T>): Promise<number>;
+    find<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): Promise<U | undefined>;
+    find(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<T | undefined>;
+    findIndex(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<number>;
+    findLast<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): Promise<U | undefined>;
+    findLast(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<T | undefined>;
+    findLastIndex(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<number>;
     flat<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
-    flatMap<U>(func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
+    flatMap<U>(func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>, options?: ConcurrencyOptions): PolyAsyncIterable<U>;
     flatten<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
-    forEach(func: AsyncIndexedRunnable<T>): Promise<void>;
-    groupBy<K>(func: AsyncIndexedMapping<T, K>): PolyAsyncIterable<[K, Array<T>]>;
+    forEach(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): Promise<void>;
+    groupBy<K>(func: AsyncIndexedMapping<T, K>, options?: ConcurrencyOptions): PolyAsyncIterable<[K, Array<T>]>;
     includes(obj: T): Promise<boolean>;
     join(glue?: string): Promise<string>;
-    map<U>(func: AsyncIndexedMapping<T, U>): PolyAsyncIterable<U>;
+    map<U>(func: AsyncIndexedMapping<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>;
     prefetch(): PolyAsyncIterable<T>;
     prepend<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
     reduce(reducer: AsyncIndexedReducer<T, T>, init?: T): Promise<T>;
     reduce<U>(reducer: AsyncIndexedReducer<T, U>, init: U): Promise<U>;
     reverse(): PolyAsyncIterable<T>;
     slice(start: number, end?: number): PolyAsyncIterable<T>;
-    some(func: AsyncIndexedPredicate<T>): Promise<boolean>;
+    some(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<boolean>;
     sort(func?: Comparator<T>): PolyAsyncIterable<T>;
     take(num: number): PolyAsyncIterable<T>;
     takeLast(num: number): PolyAsyncIterable<T>;
     takeWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
-    tap(func: AsyncIndexedRunnable<T>): PolyAsyncIterable<T>;
+    tap(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
     toArray(): Promise<Array<T>>;
     toMap<K, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Map<K, V>>;
     toObject<K extends PropertyKey, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Record<K, V>>;
-    toPartitionArrays<U extends T>(func: IndexedTypePredicate<T, U>): Promise<[Array<U>, Array<Exclude<T, U>>]>;
-    toPartitionArrays(func: AsyncIndexedPredicate<T>): Promise<[Array<T>, Array<T>]>;
-    unique(func?: AsyncIndexedMapping<T, unknown>): PolyAsyncIterable<T>;
+    toPartitionArrays<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): Promise<[Array<U>, Array<Exclude<T, U>>]>;
+    toPartitionArrays(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<[Array<T>, Array<T>]>;
+    unique(func?: AsyncIndexedMapping<T, unknown>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
 }
 
 // @public

@@ -20,7 +20,7 @@ function keys<K extends string | number | symbol>(obj: Record<K, unknown>): Poly
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;K&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;K&gt;
 
 An iterable that yields the keys of the passed object
 

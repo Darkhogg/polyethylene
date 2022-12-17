@@ -1,8 +1,8 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.24.2",
-    "schemaVersion": 1005,
+    "toolVersion": "7.33.7",
+    "schemaVersion": 1010,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
       "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
@@ -164,11 +164,13 @@
   "canonicalReference": "polyethylene!",
   "docComment": "/**\n * A library for working with iterables and async iterables in a functional style, by transforming the iterations on the fly and getting results from them.\n *\n * @remarks\n *\n * The entry point for this library is the {@link Poly} namespace, and the main iterable classes are {@link PolySyncIterable} and {@link PolyAsyncIterable}.\n *\n * @packageDocumentation\n */\n",
   "name": "polyethylene",
+  "preserveMemberOrder": false,
   "members": [
     {
       "kind": "EntryPoint",
       "canonicalReference": "polyethylene!",
       "name": "",
+      "preserveMemberOrder": false,
       "members": [
         {
           "kind": "TypeAlias",
@@ -177,7 +179,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type AsyncChunkingPredicate<T> = "
+              "text": "export type AsyncChunkingPredicate<T> = "
             },
             {
               "kind": "Content",
@@ -197,6 +199,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "AsyncChunkingPredicate",
           "typeParameters": [
@@ -224,7 +227,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type AsyncIndexedMapping<T, U> = "
+              "text": "export type AsyncIndexedMapping<T, U> = "
             },
             {
               "kind": "Content",
@@ -244,6 +247,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "AsyncIndexedMapping",
           "typeParameters": [
@@ -282,7 +286,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type AsyncIndexedPredicate<T> = "
+              "text": "export type AsyncIndexedPredicate<T> = "
             },
             {
               "kind": "Content",
@@ -302,6 +306,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "AsyncIndexedPredicate",
           "typeParameters": [
@@ -329,7 +334,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type AsyncIndexedReducer<T, U> = "
+              "text": "export type AsyncIndexedReducer<T, U> = "
             },
             {
               "kind": "Content",
@@ -349,6 +354,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "AsyncIndexedReducer",
           "typeParameters": [
@@ -387,7 +393,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type AsyncIndexedRunnable<T> = "
+              "text": "export type AsyncIndexedRunnable<T> = "
             },
             {
               "kind": "Content",
@@ -407,6 +413,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "AsyncIndexedRunnable",
           "typeParameters": [
@@ -443,9 +450,14 @@
             },
             {
               "kind": "Content",
-              "text": "<T> "
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
             }
           ],
+          "fileUrlPath": "src/lib/builder.ts",
           "releaseTag": "Public",
           "typeParameters": [
             {
@@ -461,6 +473,7 @@
             }
           ],
           "name": "AsyncIterableBuilder",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Method",
@@ -494,15 +507,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "[Symbol.asyncIterator]"
             },
             {
@@ -523,15 +537,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "done"
             },
             {
@@ -561,13 +576,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 4
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -579,6 +594,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "error"
             },
             {
@@ -593,7 +609,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -604,15 +620,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "toPolyAsyncIterable"
             },
             {
@@ -641,13 +658,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 4
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -659,13 +676,14 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "value"
             }
           ],
           "implementsTokenRanges": [
             {
               "startIndex": 1,
-              "endIndex": 2
+              "endIndex": 3
             }
           ]
         },
@@ -676,7 +694,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type ChunkingPredicate<T> = "
+              "text": "export type ChunkingPredicate<T> = "
             },
             {
               "kind": "Content",
@@ -687,6 +705,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "ChunkingPredicate",
           "typeParameters": [
@@ -714,7 +733,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type Comparator<T> = "
+              "text": "export type Comparator<T> = "
             },
             {
               "kind": "Content",
@@ -725,6 +744,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "Comparator",
           "typeParameters": [
@@ -746,13 +766,85 @@
           }
         },
         {
+          "kind": "Interface",
+          "canonicalReference": "polyethylene!ConcurrencyOptions:interface",
+          "docComment": "/**\n * Options for concurrency.\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ConcurrencyOptions "
+            }
+          ],
+          "fileUrlPath": "src/lib/async/poly-iterable.ts",
+          "releaseTag": "Public",
+          "name": "ConcurrencyOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "polyethylene!ConcurrencyOptions#bufferSize:member",
+              "docComment": "/**\n * Maximum amount of intermediate results to store (defaults to twice the concurrency value)\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "bufferSize?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "bufferSize",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "polyethylene!ConcurrencyOptions#concurrency:member",
+              "docComment": "/**\n * Maximum amount of promises to launch at the same time (defaults to 1)\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "concurrency?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "concurrency",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!IndexedMapping:type",
           "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a different object\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The return type of the function\n *\n * @returns Some other value\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type IndexedMapping<T, U> = "
+              "text": "export type IndexedMapping<T, U> = "
             },
             {
               "kind": "Content",
@@ -763,6 +855,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "IndexedMapping",
           "typeParameters": [
@@ -801,7 +894,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type IndexedPredicate<T> = "
+              "text": "export type IndexedPredicate<T> = "
             },
             {
               "kind": "Content",
@@ -812,6 +905,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "IndexedPredicate",
           "typeParameters": [
@@ -839,7 +933,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type IndexedReducer<T, U> = "
+              "text": "export type IndexedReducer<T, U> = "
             },
             {
               "kind": "Content",
@@ -850,6 +944,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "IndexedReducer",
           "typeParameters": [
@@ -888,7 +983,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type IndexedRunnable<T> = "
+              "text": "export type IndexedRunnable<T> = "
             },
             {
               "kind": "Content",
@@ -899,6 +994,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "IndexedRunnable",
           "typeParameters": [
@@ -926,7 +1022,7 @@
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare type IndexedTypePredicate<T, U extends "
+              "text": "export type IndexedTypePredicate<T, U extends "
             },
             {
               "kind": "Content",
@@ -954,6 +1050,7 @@
               "text": ";"
             }
           ],
+          "fileUrlPath": "src/lib/types.ts",
           "releaseTag": "Public",
           "name": "IndexedTypePredicate",
           "typeParameters": [
@@ -995,8 +1092,10 @@
               "text": "export declare namespace Poly "
             }
           ],
+          "fileUrlPath": "src/lib/poly.ts",
           "releaseTag": "Public",
           "name": "Poly",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Function",
@@ -1050,7 +1149,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1168,7 +1267,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1247,7 +1346,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1309,7 +1408,7 @@
                 {
                   "kind": "Reference",
                   "text": "AsyncIterableBuilder",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!AsyncIterableBuilder:class"
                 },
                 {
                   "kind": "Content",
@@ -1358,7 +1457,7 @@
                 {
                   "kind": "Reference",
                   "text": "AsyncIterableBuilder",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!AsyncIterableBuilder:class"
                 },
                 {
                   "kind": "Content",
@@ -1371,7 +1470,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1433,7 +1532,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1499,7 +1598,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1586,7 +1685,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1662,7 +1761,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1756,7 +1855,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1765,7 +1864,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1887,7 +1986,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -1949,7 +2048,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2006,7 +2105,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2079,7 +2178,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2144,7 +2243,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2220,7 +2319,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2282,7 +2381,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2352,7 +2451,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2427,7 +2526,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2474,7 +2573,7 @@
         {
           "kind": "Class",
           "canonicalReference": "polyethylene!PolyAsyncIterable:class",
-          "docComment": "/**\n * An `AsyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single result from it.\n *\n * This class works as an async version of {@link PolySyncIterable}, but all methods accept async function where possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.\n *\n * @remarks\n *\n * The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `PolyAsyncIterable` class.\n *\n * @public\n */\n",
+          "docComment": "/**\n * An `AsyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single result from it.\n *\n * This class works as an async version of {@link PolySyncIterable}, but all methods accept async function where possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.\n *\n * ## Concurrency Many operations of this class accept as a final argument an {@link ConcurrencyOptions `options` object} than can specify some options for concurrent operations.\n *\n * - The `concurrency` option will specify how many times whatever `func` you pass is called before waiting for its results. Effectively, this is the number of promises that can be pending at the same time. If not specified, it will default to 0, meaning no concurrency. Must be a non-negative integer. - The `bufferSize` option will specify the size of the internal buffer used to store the pending and completed promises. Effectively, this is how many results will be prefetched. If not specified, it will default to `concurrency`, meaning no extra intermediate results are stored. Must be a positive integer greater or equal to `concurrency`.\n *\n * A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the concurrency completely, preventing any values to be requested before actually needed.\n *\n * Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than actually requested of the current one, similarly to {@link PolyAsyncIterable.prefetch}.\n *\n * @remarks\n *\n * The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `PolyAsyncIterable` class.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2487,9 +2586,14 @@
             },
             {
               "kind": "Content",
-              "text": "<T> "
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
             }
           ],
+          "fileUrlPath": "src/lib/async/poly-iterable.ts",
           "releaseTag": "Public",
           "typeParameters": [
             {
@@ -2505,6 +2609,7 @@
             }
           ],
           "name": "PolyAsyncIterable",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Method",
@@ -2538,15 +2643,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "[Symbol.asyncIterator]"
             },
             {
@@ -2583,7 +2689,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2592,24 +2698,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "other",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2625,6 +2713,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "other",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "append"
             },
             {
@@ -2639,7 +2746,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2650,15 +2757,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "async"
             },
             {
@@ -2681,7 +2789,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2701,13 +2809,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 7
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -2719,6 +2827,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "chunk"
             },
             {
@@ -2746,7 +2855,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2766,13 +2875,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -2784,6 +2893,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "chunkWhile"
             },
             {
@@ -2809,15 +2919,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "complete"
             },
             {
@@ -2854,7 +2965,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2863,24 +2974,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "other",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -2896,6 +2989,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "other",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "concat"
             },
             {
@@ -2918,7 +3030,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2929,13 +3041,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -2947,6 +3059,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "drop"
             },
             {
@@ -2969,7 +3082,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -2980,13 +3093,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -2998,6 +3111,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "dropLast"
             },
             {
@@ -3025,7 +3139,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3036,13 +3150,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -3054,12 +3168,13 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "dropWhile"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#every:member(1)",
-              "docComment": "/**\n * Returns `true` if calling `func(element)` returns `true` for every element, and `false` otherwise\n *\n * @remarks\n *\n * If a call to `func(element)` returns `false`, no more elements are iterated.\n *\n * @param func - A function to be called on the elements of the iteration\n *\n * @returns A promise to whether calling `func` returned `true` for all elements.\n */\n",
+              "docComment": "/**\n * Returns `true` if calling `func(element)` returns `true` for every element, and `false` otherwise\n *\n * @remarks\n *\n * If a call to `func(element)` returns `false`, no more elements are iterated.\n *\n * @param func - A function to be called on the elements of the iteration\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise to whether calling `func` returned `true` for all elements.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3073,6 +3188,15 @@
                 {
                   "kind": "Content",
                   "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -3092,13 +3216,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -3108,14 +3232,23 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "every"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#filter:member(1)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true and correctly narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true and correctly narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3140,12 +3273,21 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3154,24 +3296,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3187,12 +3311,39 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
               "name": "filter"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#filter:member(2)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @param func - The function to be called on all elements\n *\n * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @param func - The function to be called on all elements\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3209,12 +3360,21 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3225,13 +3385,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -3241,8 +3401,17 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "filter"
             },
             {
@@ -3257,7 +3426,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3277,21 +3446,22 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "filterNotNullish"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#find:member(1)",
-              "docComment": "/**\n * Returns the first element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * The return type of this function is narrowed to the type asserted by `func`.\n *\n * @param func - A type predicate called for elements of `this`\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to the first element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the first element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * The return type of this function is narrowed to the type asserted by `func`.\n *\n * @param func - A type predicate called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to the first element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3316,6 +3486,15 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
@@ -3332,24 +3511,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "U",
@@ -3363,12 +3524,39 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
               "name": "find"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#find:member(2)",
-              "docComment": "/**\n * Returns the first element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns A promise to the first element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the first element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise to the first element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3382,6 +3570,15 @@
                 {
                   "kind": "Content",
                   "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -3401,13 +3598,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -3417,14 +3614,23 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "find"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#findIndex:member(1)",
-              "docComment": "/**\n * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns A promise the index of the first element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise the index of the first element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3438,6 +3644,15 @@
                 {
                   "kind": "Content",
                   "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -3457,13 +3672,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -3473,14 +3688,23 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "findIndex"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#findLast:member(1)",
-              "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * The return type of this function is narrowed to the type asserted by `func`.\n *\n * @param func - A type predicate called for elements of `this`\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to the last element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * The return type of this function is narrowed to the type asserted by `func`.\n *\n * @param func - A type predicate called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to the last element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3505,6 +3729,15 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
@@ -3521,24 +3754,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "U",
@@ -3552,12 +3767,39 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
               "name": "findLast"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#findLast:member(2)",
-              "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns A promise to the last element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise to the last element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3571,6 +3813,15 @@
                 {
                   "kind": "Content",
                   "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -3590,13 +3841,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -3606,14 +3857,23 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "findLast"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#findLastIndex:member(1)",
-              "docComment": "/**\n * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns A promise the index of the last element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise the index of the last element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3627,6 +3887,15 @@
                 {
                   "kind": "Content",
                   "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -3646,13 +3915,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -3662,8 +3931,17 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "findLastIndex"
             },
             {
@@ -3678,7 +3956,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3709,7 +3987,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3718,24 +3996,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "this",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 7
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3751,12 +4011,31 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "this",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "flat"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#flatMap:member(1)",
-              "docComment": "/**\n * Return an iteration of elements of the sub-iterables that result from calling `func(element)` for every element in `this`.\n *\n * @remarks\n *\n * This method is equivalent to calling {@link PolyAsyncIterable.map map(func)} and then {@link PolyAsyncIterable.flatten flatten()}\n *\n * @param func - A function that takes an element of `this` and returns an iterable\n *\n * @typeParam U - The type of the sub-iterables returned by `func`\n *\n * @returns A new {@link PolyAsyncIterable} that yields the elements of the subiterables that results from calling `func(element)` for every element of `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of elements of the sub-iterables that result from calling `func(element)` for every element in `this`.\n *\n * @remarks\n *\n * This method is equivalent to calling {@link PolyAsyncIterable.map map(func)} and then {@link PolyAsyncIterable.flatten flatten()}\n *\n * @param func - A function that takes an element of `this` and returns an iterable\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type of the sub-iterables returned by `func`\n *\n * @returns A new {@link PolyAsyncIterable} that yields the elements of the subiterables that results from calling `func(element)` for every element of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3791,12 +4070,21 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3805,24 +4093,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 7
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3838,6 +4108,33 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 10,
+                "endIndex": 12
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 8,
+                    "endIndex": 9
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
               "name": "flatMap"
             },
             {
@@ -3852,7 +4149,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3883,7 +4180,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -3892,24 +4189,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 8,
-                "endIndex": 10
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "this",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 7
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -3925,12 +4204,31 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "this",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 7
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "flatten"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#forEach:member(1)",
-              "docComment": "/**\n * Call a function for each element of `this` iteration.\n *\n * @param func - A function to be called for every element of the iteration\n *\n * @returns A promise that will resolve when all calls have resolved\n */\n",
+              "docComment": "/**\n * Call a function for each element of `this` iteration.\n *\n * @param func - A function to be called for every element of the iteration\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise that will resolve when all calls have resolved\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3944,6 +4242,15 @@
                 {
                   "kind": "Content",
                   "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -3963,13 +4270,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -3979,14 +4286,23 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "forEach"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#groupBy:member(1)",
-              "docComment": "/**\n * Return an iteration of group pairs, where the first element is a _group key_ and the second is an iterable of all the elements for which `func(element)` returned the key.\n *\n * @remarks\n *\n * This method is intended to be combined with {@link PolyAsyncIterable.toObject toObject} or {@link PolyAsyncIterable.toMap toMap}, thus behaving like {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy Array.groupBy} and {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap Array.groupByToMap} respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.\n *\n * @param func - A function that returns the grouping key of each element\n *\n * @typeParam K - Type of the keys used to group elements\n *\n * @returns A new {@link PolyAsyncIterable} of group pairs with the key and the group\n */\n",
+              "docComment": "/**\n * Return an iteration of group pairs, where the first element is a _group key_ and the second is an iterable of all the elements for which `func(element)` returned the key.\n *\n * @remarks\n *\n * This method is intended to be combined with {@link PolyAsyncIterable.toObject toObject} or {@link PolyAsyncIterable.toMap toMap}, thus behaving like {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy Array.groupBy} and {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap Array.groupByToMap} respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.\n *\n * @param func - A function that returns the grouping key of each element\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam K - Type of the keys used to group elements\n *\n * @returns A new {@link PolyAsyncIterable} of group pairs with the key and the group\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4003,12 +4319,21 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4028,24 +4353,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "K",
@@ -4059,6 +4366,33 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
               "name": "groupBy"
             },
             {
@@ -4092,13 +4426,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4110,6 +4444,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "includes"
             },
             {
@@ -4143,13 +4478,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4161,12 +4496,13 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "join"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#map:member(1)",
-              "docComment": "/**\n * Return an iteration of the result of calling `func(element)` for every element in `this`.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolyAsyncIterable} that yields the results of calling `func(element)` for every element of `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of the result of calling `func(element)` for every element in `this`.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolyAsyncIterable} that yields the results of calling `func(element)` for every element of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4183,12 +4519,21 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4197,24 +4542,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -4230,6 +4557,33 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
               "name": "map"
             },
             {
@@ -4244,7 +4598,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4255,15 +4609,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "prefetch"
             },
             {
@@ -4300,7 +4655,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4309,24 +4664,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "other",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -4342,6 +4679,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "other",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "prepend"
             },
             {
@@ -4388,13 +4744,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
                 "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4414,6 +4770,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "reduce"
             },
             {
@@ -4460,13 +4817,26 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
+              "typeParameters": [
+                {
+                  "typeParameterName": "U",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
                 "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -4486,19 +4856,7 @@
                   "isOptional": false
                 }
               ],
-              "typeParameters": [
-                {
-                  "typeParameterName": "U",
-                  "constraintTokenRange": {
-                    "startIndex": 0,
-                    "endIndex": 0
-                  },
-                  "defaultTypeTokenRange": {
-                    "startIndex": 0,
-                    "endIndex": 0
-                  }
-                }
-              ],
+              "isOptional": false,
               "name": "reduce"
             },
             {
@@ -4513,7 +4871,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4524,15 +4882,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "reverse"
             },
             {
@@ -4563,7 +4922,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4574,13 +4933,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 5,
                 "endIndex": 7
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4600,12 +4959,13 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "slice"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#some:member(1)",
-              "docComment": "/**\n * Returns `true` if calling `func(element)` returns `true` for at least one element, and `false` otherwise\n *\n * @remarks\n *\n * If a call to `func(element)` returns `true`, no more elements are iterated.\n *\n * @param func - A function to be called on the elements of the iteration\n *\n * @returns A promise to whether calling `func` returned `true` on at least one element.\n */\n",
+              "docComment": "/**\n * Returns `true` if calling `func(element)` returns `true` for at least one element, and `false` otherwise\n *\n * @remarks\n *\n * If a call to `func(element)` returns `true`, no more elements are iterated.\n *\n * @param func - A function to be called on the elements of the iteration\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise to whether calling `func` returned `true` on at least one element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4619,6 +4979,15 @@
                 {
                   "kind": "Content",
                   "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -4638,13 +5007,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4654,8 +5023,17 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "some"
             },
             {
@@ -4683,7 +5061,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4694,13 +5072,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4712,6 +5090,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "sort"
             },
             {
@@ -4734,7 +5113,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4745,13 +5124,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4763,6 +5142,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "take"
             },
             {
@@ -4785,7 +5165,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4796,13 +5176,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4814,6 +5194,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "takeLast"
             },
             {
@@ -4841,7 +5222,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4852,13 +5233,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4870,12 +5251,13 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "takeWhile"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#tap:member(1)",
-              "docComment": "/**\n * Return an iteration of the same elements as `this` after calling `func(element)` for all elements.\n *\n * @param func - A function called for all elements\n *\n * @typeParam U - The return type of `func`\n *\n * @returns A new {@link PolyAsyncIterable} that yields the same elements as `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of the same elements as `this` after calling `func(element)` for all elements.\n *\n * @param func - A function called for all elements\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The return type of `func`\n *\n * @returns A new {@link PolyAsyncIterable} that yields the same elements as `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4892,12 +5274,21 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -4908,13 +5299,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -4924,8 +5315,17 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "tap"
             },
             {
@@ -4960,15 +5360,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "toArray"
             },
             {
@@ -4983,7 +5384,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5016,24 +5417,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "this",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "K",
@@ -5058,6 +5441,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "this",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "toMap"
             },
             {
@@ -5081,7 +5483,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5114,24 +5516,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 10
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "this",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "K",
@@ -5156,12 +5540,31 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 10
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "this",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "toObject"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#toPartitionArrays:member(1)",
-              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @remarks\n *\n * The array of _truthy elements_ has its element type narrowed to the type asserted by `func`.\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and the array of values for which `func` returned `false` as the second element.\n */\n",
+              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @remarks\n *\n * The array of _truthy elements_ has its element type narrowed to the type asserted by `func`.\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and the array of values for which `func` returned `false` as the second element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5183,6 +5586,15 @@
                 {
                   "kind": "Content",
                   "text": "<T, U>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -5229,24 +5641,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 14
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "U",
@@ -5260,12 +5654,39 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 16
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
+                }
+              ],
+              "isOptional": false,
               "name": "toPartitionArrays"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#toPartitionArrays:member(2)",
-              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and the array of values for which `func` returned `false` as the second element.\n */\n",
+              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and the array of values for which `func` returned `false` as the second element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5279,6 +5700,15 @@
                 {
                   "kind": "Content",
                   "text": "<T>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
                 },
                 {
                   "kind": "Content",
@@ -5316,13 +5746,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 10
+                "startIndex": 6,
+                "endIndex": 12
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -5332,14 +5762,23 @@
                     "endIndex": 3
                   },
                   "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "toPartitionArrays"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#unique:member(1)",
-              "docComment": "/**\n * Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is the same for both elements.\n *\n * @remarks\n *\n * Note that the first element seen with a specific key is always the one yielded, and every other element afterwards is ignored.\n *\n * If no key-mapping function is given, the elements theselves are used as keys. This is likely _not_ what you want in most situations unless elements are primitive types.\n *\n * @param func - A function that returns a _key_ used for uniqueness checks. If not passed, an identitity function is used.\n *\n * @returns A new {@link PolyAsyncIterable} only elements for which `func(element)` returns a value that hasn't been seen before\n */\n",
+              "docComment": "/**\n * Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is the same for both elements.\n *\n * @remarks\n *\n * Note that the first element seen with a specific key is always the one yielded, and every other element afterwards is ignored.\n *\n * If no key-mapping function is given, the elements theselves are used as keys. This is likely _not_ what you want in most situations unless elements are primitive types.\n *\n * @param func - A function that returns a _key_ used for uniqueness checks. If not passed, an identitity function is used.\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A new {@link PolyAsyncIterable} only elements for which `func(element)` returns a value that hasn't been seen before\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5356,12 +5795,21 @@
                 },
                 {
                   "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ConcurrencyOptions",
+                  "canonicalReference": "polyethylene!ConcurrencyOptions:interface"
+                },
+                {
+                  "kind": "Content",
                   "text": "): "
                 },
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5372,13 +5820,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
+                "startIndex": 6,
+                "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -5388,15 +5836,24 @@
                     "endIndex": 3
                   },
                   "isOptional": true
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 4,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "unique"
             }
           ],
           "implementsTokenRanges": [
             {
               "startIndex": 1,
-              "endIndex": 2
+              "endIndex": 3
             }
           ]
         },
@@ -5416,9 +5873,14 @@
             },
             {
               "kind": "Content",
-              "text": "<T> "
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": " "
             }
           ],
+          "fileUrlPath": "src/lib/sync/poly-iterable.ts",
           "releaseTag": "Public",
           "typeParameters": [
             {
@@ -5434,6 +5896,7 @@
             }
           ],
           "name": "PolySyncIterable",
+          "preserveMemberOrder": false,
           "members": [
             {
               "kind": "Method",
@@ -5467,15 +5930,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "[Symbol.iterator]"
             },
             {
@@ -5503,7 +5967,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5512,24 +5976,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "other",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -5545,6 +5991,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "other",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "append"
             },
             {
@@ -5559,7 +6024,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolyAsyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5570,15 +6035,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "async"
             },
             {
@@ -5601,7 +6067,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5621,13 +6087,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 7
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -5639,6 +6105,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "chunk"
             },
             {
@@ -5666,7 +6133,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5686,13 +6153,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 8
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -5704,6 +6171,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "chunkWhile"
             },
             {
@@ -5724,15 +6192,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 2
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "complete"
             },
             {
@@ -5760,7 +6229,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5769,24 +6238,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "other",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -5802,6 +6253,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "other",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "concat"
             },
             {
@@ -5824,7 +6294,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5835,13 +6305,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -5853,6 +6323,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "drop"
             },
             {
@@ -5875,7 +6346,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5886,13 +6357,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -5904,6 +6375,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "dropLast"
             },
             {
@@ -5931,7 +6403,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -5942,13 +6414,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -5960,6 +6432,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "dropWhile"
             },
             {
@@ -5993,13 +6466,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -6011,6 +6484,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "every"
             },
             {
@@ -6046,7 +6520,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6055,24 +6529,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6088,6 +6544,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "filter"
             },
             {
@@ -6115,7 +6590,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6126,13 +6601,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -6144,6 +6619,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "filter"
             },
             {
@@ -6158,7 +6634,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6178,15 +6654,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "filterNotNullish"
             },
             {
@@ -6228,24 +6705,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 7
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "U",
@@ -6259,6 +6718,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "find"
             },
             {
@@ -6292,13 +6770,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -6310,6 +6788,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "find"
             },
             {
@@ -6343,13 +6822,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -6361,6 +6840,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "findIndex"
             },
             {
@@ -6402,24 +6882,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 7
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "U",
@@ -6433,6 +6895,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 7
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "findLast"
             },
             {
@@ -6466,13 +6947,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -6484,6 +6965,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "findLast"
             },
             {
@@ -6517,13 +6999,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -6535,6 +7017,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "findLastIndex"
             },
             {
@@ -6549,7 +7032,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6571,7 +7054,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6580,24 +7063,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "this",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6613,6 +7078,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "this",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "flat"
             },
             {
@@ -6649,7 +7133,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6658,24 +7142,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6691,6 +7157,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "flatMap"
             },
             {
@@ -6705,7 +7190,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6727,7 +7212,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6736,24 +7221,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "this",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -6769,6 +7236,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "this",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "flatten"
             },
             {
@@ -6802,13 +7288,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -6820,6 +7306,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "forEach"
             },
             {
@@ -6847,7 +7334,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -6867,24 +7354,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "K",
@@ -6898,6 +7367,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "groupBy"
             },
             {
@@ -6926,13 +7414,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 4
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -6944,6 +7432,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "includes"
             },
             {
@@ -6977,13 +7466,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -6995,6 +7484,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "indexOf"
             },
             {
@@ -7023,13 +7513,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 4
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7041,6 +7531,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "join"
             },
             {
@@ -7074,13 +7565,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7092,6 +7583,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "lastIndexOf"
             },
             {
@@ -7119,7 +7611,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7128,24 +7620,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -7161,6 +7635,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "map"
             },
             {
@@ -7188,7 +7681,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7197,24 +7690,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "other",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -7230,6 +7705,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "other",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "prepend"
             },
             {
@@ -7271,13 +7765,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
                 "endIndex": 7
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7297,6 +7791,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "reduce"
             },
             {
@@ -7338,13 +7833,26 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
+              "typeParameters": [
+                {
+                  "typeParameterName": "U",
+                  "constraintTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 6,
                 "endIndex": 7
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -7364,19 +7872,7 @@
                   "isOptional": false
                 }
               ],
-              "typeParameters": [
-                {
-                  "typeParameterName": "U",
-                  "constraintTokenRange": {
-                    "startIndex": 0,
-                    "endIndex": 0
-                  },
-                  "defaultTypeTokenRange": {
-                    "startIndex": 0,
-                    "endIndex": 0
-                  }
-                }
-              ],
+              "isOptional": false,
               "name": "reduce"
             },
             {
@@ -7391,7 +7887,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7402,15 +7898,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "reverse"
             },
             {
@@ -7441,7 +7938,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7452,13 +7949,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 5,
                 "endIndex": 7
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7478,6 +7975,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "slice"
             },
             {
@@ -7511,13 +8009,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7529,6 +8027,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "some"
             },
             {
@@ -7556,7 +8055,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7567,13 +8066,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7585,6 +8084,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "sort"
             },
             {
@@ -7607,7 +8107,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7618,13 +8118,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7636,6 +8136,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "take"
             },
             {
@@ -7658,7 +8159,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7669,13 +8170,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 3,
                 "endIndex": 5
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7687,6 +8188,7 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "takeLast"
             },
             {
@@ -7714,7 +8216,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7725,13 +8227,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7743,6 +8245,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "takeWhile"
             },
             {
@@ -7770,7 +8273,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7781,13 +8284,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -7799,6 +8302,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "tap"
             },
             {
@@ -7824,15 +8328,16 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 1,
                 "endIndex": 3
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [],
+              "isOptional": false,
               "name": "toArray"
             },
             {
@@ -7847,7 +8352,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7869,24 +8374,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 6
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "this",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -7913,6 +8400,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 6
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "this",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 3
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "toMap"
             },
             {
@@ -7936,7 +8442,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -7958,24 +8464,6 @@
                 {
                   "kind": "Content",
                   "text": ";"
-                }
-              ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 8
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "this",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
                 }
               ],
               "typeParameters": [
@@ -8002,6 +8490,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "this",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "toObject"
             },
             {
@@ -8070,24 +8577,6 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 6,
-                "endIndex": 13
-              },
-              "releaseTag": "Public",
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 3,
-                    "endIndex": 5
-                  },
-                  "isOptional": false
-                }
-              ],
               "typeParameters": [
                 {
                   "typeParameterName": "U",
@@ -8101,6 +8590,25 @@
                   }
                 }
               ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 13
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
               "name": "toPartitionArrays"
             },
             {
@@ -8152,13 +8660,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 9
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 2,
               "parameters": [
                 {
@@ -8170,6 +8678,7 @@
                   "isOptional": false
                 }
               ],
+              "isOptional": false,
               "name": "toPartitionArrays"
             },
             {
@@ -8197,7 +8706,7 @@
                 {
                   "kind": "Reference",
                   "text": "PolySyncIterable",
-                  "canonicalReference": "polyethylene!default:class"
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
                 },
                 {
                   "kind": "Content",
@@ -8208,13 +8717,13 @@
                   "text": ";"
                 }
               ],
-              "isOptional": false,
               "isStatic": false,
               "returnTypeTokenRange": {
                 "startIndex": 4,
                 "endIndex": 6
               },
               "releaseTag": "Public",
+              "isProtected": false,
               "overloadIndex": 1,
               "parameters": [
                 {
@@ -8226,13 +8735,14 @@
                   "isOptional": true
                 }
               ],
+              "isOptional": false,
               "name": "unique"
             }
           ],
           "implementsTokenRanges": [
             {
               "startIndex": 1,
-              "endIndex": 2
+              "endIndex": 3
             }
           ]
         }

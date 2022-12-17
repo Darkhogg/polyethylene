@@ -9,7 +9,7 @@ Return an iteration of the same elements as `this` after calling `func(element)`
 <b>Signature:</b>
 
 ```typescript
-tap(func: AsyncIndexedRunnable<T>): PolyAsyncIterable<T>;
+tap(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
 ```
 
 ## Parameters
@@ -17,10 +17,11 @@ tap(func: AsyncIndexedRunnable<T>): PolyAsyncIterable<T>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedRunnable](./polyethylene.asyncindexedrunnable.md)<!-- -->&lt;T&gt; | A function called for all elements |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the same elements as `this`
 

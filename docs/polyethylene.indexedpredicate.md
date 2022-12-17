@@ -9,5 +9,5 @@ A function that receives an object (`elem`<!-- -->) and its `index` in the itera
 <b>Signature:</b>
 
 ```typescript
-export declare type IndexedPredicate<T> = (elem: T, index: number) => boolean;
+export type IndexedPredicate<T> = (elem: T, index: number) => boolean;
 ```

@@ -16,7 +16,7 @@ toMap<K, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Map<K, V>>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | PolyAsyncIterable&lt;readonly \[K, V\]&gt; |  |
+|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;readonly \[K, V\]&gt; |  |
 
 <b>Returns:</b>
 

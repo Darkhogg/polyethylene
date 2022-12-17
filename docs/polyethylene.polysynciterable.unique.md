@@ -20,7 +20,7 @@ unique(func?: IndexedMapping<T, unknown>): PolySyncIterable<T>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) only elements for which `func(element)` returns a value that hasn't been seen before
 

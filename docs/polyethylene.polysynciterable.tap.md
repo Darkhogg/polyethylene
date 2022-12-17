@@ -20,7 +20,7 @@ tap(func: IndexedRunnable<T>): PolySyncIterable<T>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as `this`
 

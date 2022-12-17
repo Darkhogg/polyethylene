@@ -20,7 +20,7 @@ function asyncIterate<T>(func: (lastValue: T | undefined) => T | Promise<T>): Po
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 an infinite iterable that yields the return values from calling `func` repeatedly
 

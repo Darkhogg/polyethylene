@@ -26,6 +26,9 @@
           "after": true
         }
       }
-    }]
+    }],
+
+    "no-unused-vars": ["warn", {"args": "none", "ignoreRestSiblings": true, "varsIgnorePattern": "_.*"}]
   }
 }
+

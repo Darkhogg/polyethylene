@@ -20,7 +20,7 @@ filter<U extends T>(func: IndexedTypePredicate<T, U>): PolySyncIterable<U>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;U&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) with only elements for which `func(element)` returned true and correctly narrowed to the type asserted by `func`
 

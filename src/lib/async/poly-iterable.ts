@@ -9,6 +9,7 @@ import {
 } from '../types.js'
 
 import {comparator, asserts, asyncIdentity, isNotNullish} from '../utils.js'
+import {ConcurrentMapper} from './concurrency.js'
 import {
   appendGen,
   chunkGen,
@@ -30,11 +31,42 @@ import {
 
 
 /**
+ * Options for concurrency.
+ *
+ * @public
+ */
+export interface ConcurrencyOptions {
+  /** Maximum amount of promises to launch at the same time (defaults to 1) */
+  concurrency?: number
+  /** Maximum amount of intermediate results to store (defaults to twice the concurrency value) */
+  bufferSize?: number
+}
+
+
+/**
  * An `AsyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a
  * single result from it.
  *
  * This class works as an async version of {@link PolySyncIterable}, but all methods accept async function where
  * possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.
+ *
+ * ## Concurrency
+ * Many operations of this class accept as a final argument an {@link ConcurrencyOptions `options` object} than can
+ * specify some options for concurrent operations.
+ *
+ * - The `concurrency` option will specify how many times whatever `func` you pass is called before waiting for its
+ * results.  Effectively, this is the number of promises that can be pending at the same time.  If not specified, it
+ * will default to 0, meaning no concurrency.  Must be a non-negative integer.
+ * - The `bufferSize` option will specify the size of the internal buffer used to store the pending and completed
+ * promises.  Effectively, this is how many results will be prefetched.  If not specified, it will default to
+ * `concurrency`, meaning no extra intermediate results are stored.  Must be a positive integer greater or equal to
+ * `concurrency`.
+ *
+ * A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the concurrency completely, preventing
+ * any values to be requested before actually needed.
+ *
+ * Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than
+ * actually requested of the current one, similarly to {@link PolyAsyncIterable.prefetch}.
  *
  * @public
  */
@@ -244,24 +276,29 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam U - The type asserted by `func`, if any
    * @param func - The function to be called on all elements
+   * @param options - Options for concurrency of this operation
    * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true and correctly
    * narrowed to the type asserted by `func`
    *
    * {@label FILTER_TYPEPRED}
    */
-  filter<U extends T> (func: IndexedTypePredicate<T, U>): PolyAsyncIterable<U>
+  filter<U extends T> (func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>
 
   /**
    * Return an iteration of the elements of `this` for which `func(element)` returns `true`.
    *
    * @param func - The function to be called on all elements
+   * @param options - Options for concurrency of this operation
    * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned
    */
-  filter (func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>
+  filter (func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>
 
-  filter<U extends T> (func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>): PolyAsyncIterable<T | U> {
+  filter<U extends T> (
+    func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>,
+    options: ConcurrencyOptions = {},
+  ): PolyAsyncIterable<T | U> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(filterGen(this.#iterable, func))
+    return new PolyAsyncIterable(filterGen(this.#iterable, func, options))
   }
 
   /**
@@ -284,12 +321,13 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam U - The return type of `func` and the generic type of the resulting iterable
    * @param func - A function that takes an element of `this` and returns something else
+   * @param options - Options for concurrency of this operation
    * @returns A new {@link PolyAsyncIterable} that yields the results of calling `func(element)`
    * for every element of `this`
    */
-  map<U> (func: AsyncIndexedMapping<T, U>): PolyAsyncIterable<U> {
+  map<U> (func: AsyncIndexedMapping<T, U>, options: ConcurrencyOptions = {}): PolyAsyncIterable<U> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(mapGen(this.#iterable, func))
+    return new PolyAsyncIterable(mapGen(this.#iterable, func, options))
   }
 
   /**
@@ -297,11 +335,12 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam U - The return type of `func`
    * @param func - A function called for all elements
+   * @param options - Options for concurrency of this operation
    * @returns A new {@link PolyAsyncIterable} that yields the same elements as `this`
    */
-  tap (func: AsyncIndexedRunnable<T>): PolyAsyncIterable<T> {
+  tap (func: AsyncIndexedRunnable<T>, options: ConcurrencyOptions = {}): PolyAsyncIterable<T> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(tapGen(this.#iterable, func))
+    return new PolyAsyncIterable(tapGen(this.#iterable, func, options))
   }
 
   /**
@@ -339,13 +378,15 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam U - The type of the sub-iterables returned by `func`
    * @param func - A function that takes an element of `this` and returns an iterable
+   * @param options - Options for concurrency of this operation
    * @returns A new {@link PolyAsyncIterable} that yields the elements of the subiterables that results from
    * calling `func(element)` for every element of `this`
    */
   flatMap<U> (
     func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>,
+    options?: ConcurrencyOptions,
   ): PolyAsyncIterable<U> {
-    return this.map(func).flatten()
+    return this.map(func, options).flatten()
   }
 
   /**
@@ -405,11 +446,12 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam K - Type of the keys used to group elements
    * @param func - A function that returns the grouping key of each element
+   * @param options - Options for concurrency of this operation
    * @returns A new {@link PolyAsyncIterable} of group pairs with the key and the group
    */
-  groupBy<K> (func: AsyncIndexedMapping<T, K>): PolyAsyncIterable<[K, Array<T>]> {
+  groupBy<K> (func: AsyncIndexedMapping<T, K>, options: ConcurrencyOptions = {}): PolyAsyncIterable<[K, Array<T>]> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(groupByGen(this.#iterable, func))
+    return new PolyAsyncIterable(groupByGen(this.#iterable, func, options))
   }
 
   /**
@@ -425,12 +467,16 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @param func - A function that returns a _key_ used for uniqueness checks.
    * If not passed, an identitity function is used.
+   * @param options - Options for concurrency of this operation
    * @returns A new {@link PolyAsyncIterable} only elements for which `func(element)` returns a value that hasn't
    * been seen before
    */
-  unique (func: AsyncIndexedMapping<T, unknown> = asyncIdentity): PolyAsyncIterable<T> {
+  unique (
+    func: AsyncIndexedMapping<T, unknown> = asyncIdentity,
+    options: ConcurrencyOptions = {},
+  ): PolyAsyncIterable<T> {
     asserts.isFunction(func)
-    return new PolyAsyncIterable(uniqueGen(this.#iterable, func))
+    return new PolyAsyncIterable(uniqueGen(this.#iterable, func, options))
   }
 
   /**
@@ -489,33 +535,39 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam U - The type asserted by `func`
    * @param func - A function that will be called for all elements to split them into the result arrays
+   * @param options - Options for concurrency of this operation
    * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and
    * the array of values for which `func` returned `false` as the second element.
    */
-  async toPartitionArrays<U extends T> (func: IndexedTypePredicate<T, U>): Promise<[Array<U>, Array<Exclude<T, U>>]>
+  async toPartitionArrays<U extends T> (
+    func: IndexedTypePredicate<T, U>,
+    options?: ConcurrencyOptions,
+  ): Promise<[Array<U>, Array<Exclude<T, U>>]>
 
   /**
    * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy
    * elements_) and one for which it returns `false` (the _falsy elements_).
    *
    * @param func - A function that will be called for all elements to split them into the result arrays
+   * @param options - Options for concurrency of this operation
    * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and
    * the array of values for which `func` returned `false` as the second element.
    */
-  async toPartitionArrays (func: AsyncIndexedPredicate<T>): Promise<[Array<T>, Array<T>]>
+  async toPartitionArrays (func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<[Array<T>, Array<T>]>
 
   async toPartitionArrays<U extends T> (
     func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>,
+    options: ConcurrencyOptions = {},
   ): Promise<[Array<U | T>, Array<T | Exclude<T, U>>]> {
     const trues: Array<U | T> = []
     const falses: Array<T | Exclude<T, U>> = []
 
-    let idx = 0
-    for await (const elem of this.#iterable) {
-      if (await func(elem, idx++)) {
-        trues.push(elem)
+    const concIter = new ConcurrentMapper(this.#iterable, func, options)
+    for await (const elem of concIter) {
+      if (elem.mapped) {
+        trues.push(elem.original)
       } else {
-        falses.push(elem)
+        falses.push(elem.original)
       }
     }
 
@@ -571,9 +623,10 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam U - The type asserted by `func`
    * @param func - A type predicate called for elements of `this`
+   * @param options - Options for concurrency of this operation
    * @returns A promise to the first element of the iteration for which `func` returned `true`
    */
-  async find<U extends T> (func: IndexedTypePredicate<T, U>): Promise<U | undefined>
+  async find<U extends T> (func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): Promise<U | undefined>
 
   /**
    * Returns the first element for which `func(element)` returns `true`, or `undefined` if it never does.
@@ -582,19 +635,24 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * `func` will be called on elements of this iteration until it returns `true`, and then not called again.
    *
    * @param func - A boolean returning function called for elements of `this`
+   * @param options - Options for concurrency of this operation
    * @returns A promise to the first element of the iteration for which `func` returned `true`
    */
-  async find (func: AsyncIndexedPredicate<T>): Promise<T | undefined>
+  async find (func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<T | undefined>
 
-  async find<U extends T> (func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>): Promise<T | U | undefined> {
+  async find<U extends T> (
+    func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>,
+    options: ConcurrencyOptions = {},
+  ): Promise<T | U | undefined> {
     asserts.isFunction(func)
 
-    let idx = 0
-    for await (const elem of this.#iterable) {
-      if (await func(elem, idx++)) {
-        return elem
+    const concIter = new ConcurrentMapper(this.#iterable, func, options)
+    for await (const elem of concIter) {
+      if (elem.mapped) {
+        return elem.original
       }
     }
+
     return undefined
   }
 
@@ -609,9 +667,10 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam U - The type asserted by `func`
    * @param func - A type predicate called for elements of `this`
+   * @param options - Options for concurrency of this operation
    * @returns A promise to the last element of the iteration for which `func` returned `true`
    */
-  async findLast<U extends T> (func: IndexedTypePredicate<T, U>): Promise<U | undefined>
+  async findLast<U extends T> (func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): Promise<U | undefined>
 
   /**
    * Returns the last element for which `func(element)` returns `true`, or `undefined` if it never does.
@@ -620,21 +679,26 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.
    *
    * @param func - A boolean returning function called for elements of `this`
+   * @param options - Options for concurrency of this operation
    * @returns A promise to the last element of the iteration for which `func` returned `true`
    */
-  async findLast (func: AsyncIndexedPredicate<T>): Promise<T | undefined>
+  async findLast (func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<T | undefined>
 
   async findLast<U extends T> (
     func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>,
+    options: ConcurrencyOptions = {},
   ): Promise<T | U | undefined> {
     asserts.isFunction(func)
-    let found
-    let idx = 0
-    for await (const elem of this.#iterable) {
-      if (await func(elem, idx++)) {
-        found = elem
+
+    let found: T | undefined
+
+    const concIter = new ConcurrentMapper(this.#iterable, func, options)
+    for await (const elem of concIter) {
+      if (elem.mapped) {
+        found = elem.original
       }
     }
+
     return found
   }
 
@@ -648,17 +712,19 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * but it's here for completion and consistency with `Array`.
    *
    * @param func - A boolean returning function called for elements of `this`
+   * @param options - Options for concurrency of this operation
    * @returns A promise the index of the first element of the iteration for which `func` returned `true`
    */
-  async findIndex (func: AsyncIndexedPredicate<T>): Promise<number> {
+  async findIndex (func: AsyncIndexedPredicate<T>, options: ConcurrencyOptions = {}): Promise<number> {
     asserts.isFunction(func)
-    let idx = 0
-    for await (const elem of this.#iterable) {
-      if (func(elem, idx)) {
-        return idx
+
+    const concIter = new ConcurrentMapper(this.#iterable, func, options)
+    for await (const elem of concIter) {
+      if (elem.mapped) {
+        return elem.index
       }
-      idx++
     }
+
     return -1
   }
 
@@ -672,18 +738,20 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * but it's here for completion and consistency with `Array`.
    *
    * @param func - A boolean returning function called for elements of `this`
+   * @param options - Options for concurrency of this operation
    * @returns A promise the index of the last element of the iteration for which `func` returned `true`
    */
-  async findLastIndex (func: AsyncIndexedPredicate<T>): Promise<number> {
+  async findLastIndex (func: AsyncIndexedPredicate<T>, options: ConcurrencyOptions = {}): Promise<number> {
     asserts.isFunction(func)
     let foundIndex = -1
-    let idx = 0
-    for await (const elem of this.#iterable) {
-      if (func(elem, idx)) {
-        foundIndex = idx
+
+    const concIter = new ConcurrentMapper(this.#iterable, func, options)
+    for await (const elem of concIter) {
+      if (elem.mapped) {
+        foundIndex = elem.index
       }
-      idx++
     }
+
     return foundIndex
   }
 
@@ -713,14 +781,15 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * If a call to `func(element)` returns `true`, no more elements are iterated.
    *
    * @param func - A function to be called on the elements of the iteration
+   * @param options - Options for concurrency of this operation
    * @returns A promise to whether calling `func` returned `true` on at least one element.
    */
-  async some (func: AsyncIndexedPredicate<T>): Promise<boolean> {
+  async some (func: AsyncIndexedPredicate<T>, options: ConcurrencyOptions = {}): Promise<boolean> {
     asserts.isFunction(func)
 
-    let idx = 0
-    for await (const item of this.#iterable) {
-      if (await func(item, idx++)) {
+    const concIter = new ConcurrentMapper(this.#iterable, func, options)
+    for await (const item of concIter) {
+      if (item.mapped) {
         return true
       }
     }
@@ -735,14 +804,15 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * If a call to `func(element)` returns `false`, no more elements are iterated.
    *
    * @param func - A function to be called on the elements of the iteration
+   * @param options - Options for concurrency of this operation
    * @returns A promise to whether calling `func` returned `true` for all elements.
    */
-  async every (func: AsyncIndexedPredicate<T>): Promise<boolean> {
+  async every (func: AsyncIndexedPredicate<T>, options: ConcurrencyOptions = {}): Promise<boolean> {
     asserts.isFunction(func)
 
-    let idx = 0
-    for await (const item of this.#iterable) {
-      if (!(await func(item, idx++))) {
+    const concIter = new ConcurrentMapper(this.#iterable, func, options)
+    for await (const item of concIter) {
+      if (!item.mapped) {
         return false
       }
     }
@@ -808,14 +878,15 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * Call a function for each element of `this` iteration.
    *
    * @param func - A function to be called for every element of the iteration
+   * @param options - Options for concurrency of this operation
    * @returns A promise that will resolve when all calls have resolved
    */
-  async forEach (func: AsyncIndexedRunnable<T>): Promise<void> {
+  async forEach (func: AsyncIndexedRunnable<T>, options: ConcurrencyOptions = {}): Promise<void> {
     asserts.isFunction(func)
 
-    let idx = 0
-    for await (const elem of this.#iterable) {
-      await func(elem, idx++)
+    const concIter = new ConcurrentMapper(this.#iterable, func, options)
+    for await (const _elem of concIter) {
+      /* do nothing, func was called on mapper */
     }
   }
 

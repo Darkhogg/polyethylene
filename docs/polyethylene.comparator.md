@@ -9,5 +9,5 @@ A function that receives two objects `elemA` and `elemB` and returns a number va
 <b>Signature:</b>
 
 ```typescript
-export declare type Comparator<T> = (elemA: T, elemB: T) => number;
+export type Comparator<T> = (elemA: T, elemB: T) => number;
 ```

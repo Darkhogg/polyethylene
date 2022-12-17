@@ -9,5 +9,5 @@ A function that receives an element (`elem`<!-- -->) of the iteration and the fi
 <b>Signature:</b>
 
 ```typescript
-export declare type AsyncChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boolean | PromiseLike<boolean>;
+export type AsyncChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boolean | PromiseLike<boolean>;
 ```

@@ -16,7 +16,7 @@ toMap<K, V>(this: PolySyncIterable<readonly [K, V]>): Map<K, V>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | PolySyncIterable&lt;readonly \[K, V\]&gt; |  |
+|  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;readonly \[K, V\]&gt; |  |
 
 <b>Returns:</b>
 

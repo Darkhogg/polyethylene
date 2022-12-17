@@ -9,5 +9,5 @@ A function that receives an accumulated result, an element of an iteration, and 
 <b>Signature:</b>
 
 ```typescript
-export declare type AsyncIndexedReducer<T, U> = (acc: U, item: T, index: number) => U | PromiseLike<U>;
+export type AsyncIndexedReducer<T, U> = (acc: U, item: T, index: number) => U | PromiseLike<U>;
 ```

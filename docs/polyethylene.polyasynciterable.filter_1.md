@@ -9,7 +9,7 @@ Return an iteration of the elements of `this` for which `func(element)` returns 
 <b>Signature:</b>
 
 ```typescript
-filter(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
+filter(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
 ```
 
 ## Parameters
@@ -17,10 +17,11 @@ filter(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | The function to be called on all elements |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) with only elements for which `func(element)` returned
 

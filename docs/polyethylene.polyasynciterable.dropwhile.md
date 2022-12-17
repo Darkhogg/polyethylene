@@ -20,7 +20,7 @@ dropWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the same the elements of `this`<!-- -->, excepts the first few for which`func(element)` returns `true`
 

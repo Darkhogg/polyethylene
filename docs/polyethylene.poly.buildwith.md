@@ -16,11 +16,11 @@ function buildWith<T>(func: (builder: AsyncIterableBuilder<T>) => void): PolyAsy
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  func | (builder: AsyncIterableBuilder&lt;T&gt;) =&gt; void | A function that will receive an object containing the methods <code>value</code>, <code>error</code> and <code>done</code>. |
+|  func | (builder: [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->&lt;T&gt;) =&gt; void | A function that will receive an object containing the methods <code>value</code>, <code>error</code> and <code>done</code>. |
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 ## Remarks
 

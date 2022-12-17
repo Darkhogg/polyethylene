@@ -8,12 +8,20 @@ An `AsyncIterable<T>` with a suite of methods for transforming the iteration int
 
 This class works as an async version of [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->, but all methods accept async function where possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.
 
+\#\# Concurrency Many operations of this class accept as a final argument an  than can specify some options for concurrent operations.
+
+- The `concurrency` option will specify how many times whatever `func` you pass is called before waiting for its results. Effectively, this is the number of promises that can be pending at the same time. If not specified, it will default to 0, meaning no concurrency. Must be a non-negative integer. - The `bufferSize` option will specify the size of the internal buffer used to store the pending and completed promises. Effectively, this is how many results will be prefetched. If not specified, it will default to `concurrency`<!-- -->, meaning no extra intermediate results are stored. Must be a positive integer greater or equal to `concurrency`<!-- -->.
+
+A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the concurrency completely, preventing any values to be requested before actually needed.
+
+Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than actually requested of the current one, similarly to [PolyAsyncIterable.prefetch()](./polyethylene.polyasynciterable.prefetch.md)<!-- -->.
+
 <b>Signature:</b>
 
 ```typescript
 export default class PolyAsyncIterable<T> implements AsyncIterable<T> 
 ```
-<b>Implements:</b> AsyncIterable
+<b>Implements:</b> AsyncIterable&lt;T&gt;
 
 ## Remarks
 
@@ -33,40 +41,40 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [drop(num)](./polyethylene.polyasynciterable.drop.md) |  | Return a new iteration that skips the first <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
 |  [dropLast(num)](./polyethylene.polyasynciterable.droplast.md) |  | Return a new iteration that skips the last <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
 |  [dropWhile(func)](./polyethylene.polyasynciterable.dropwhile.md) |  | Return a new iteration that skips the first few elements for which <code>func(element)</code> returns <code>true</code>. |
-|  [every(func)](./polyethylene.polyasynciterable.every.md) |  | Returns <code>true</code> if calling <code>func(element)</code> returns <code>true</code> for every element, and <code>false</code> otherwise |
-|  [filter(func)](./polyethylene.polyasynciterable.filter.md) |  | Return an iteration of the elements of <code>this</code> for which <code>func(element)</code> returns <code>true</code>. |
-|  [filter(func)](./polyethylene.polyasynciterable.filter_1.md) |  | Return an iteration of the elements of <code>this</code> for which <code>func(element)</code> returns <code>true</code>. |
+|  [every(func, options)](./polyethylene.polyasynciterable.every.md) |  | Returns <code>true</code> if calling <code>func(element)</code> returns <code>true</code> for every element, and <code>false</code> otherwise |
+|  [filter(func, options)](./polyethylene.polyasynciterable.filter.md) |  | Return an iteration of the elements of <code>this</code> for which <code>func(element)</code> returns <code>true</code>. |
+|  [filter(func, options)](./polyethylene.polyasynciterable.filter_1.md) |  | Return an iteration of the elements of <code>this</code> for which <code>func(element)</code> returns <code>true</code>. |
 |  [filterNotNullish()](./polyethylene.polyasynciterable.filternotnullish.md) |  | Return an iteration of all the elements as <code>this</code> that aren't <code>null</code> or <code>undefined</code>. |
-|  [find(func)](./polyethylene.polyasynciterable.find.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
-|  [find(func)](./polyethylene.polyasynciterable.find_1.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
-|  [findIndex(func)](./polyethylene.polyasynciterable.findindex.md) |  | Returns the index of the first element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
-|  [findLast(func)](./polyethylene.polyasynciterable.findlast.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
-|  [findLast(func)](./polyethylene.polyasynciterable.findlast_1.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
-|  [findLastIndex(func)](./polyethylene.polyasynciterable.findlastindex.md) |  | Returns the index of the last element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
+|  [find(func, options)](./polyethylene.polyasynciterable.find.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [find(func, options)](./polyethylene.polyasynciterable.find_1.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findIndex(func, options)](./polyethylene.polyasynciterable.findindex.md) |  | Returns the index of the first element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
+|  [findLast(func, options)](./polyethylene.polyasynciterable.findlast.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findLast(func, options)](./polyethylene.polyasynciterable.findlast_1.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
+|  [findLastIndex(func, options)](./polyethylene.polyasynciterable.findlastindex.md) |  | Returns the index of the last element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
 |  [flat(this)](./polyethylene.polyasynciterable.flat.md) |  | Return an iteration of the yielded elements of the sub-iterables. |
-|  [flatMap(func)](./polyethylene.polyasynciterable.flatmap.md) |  | Return an iteration of elements of the sub-iterables that result from calling <code>func(element)</code> for every element in <code>this</code>. |
+|  [flatMap(func, options)](./polyethylene.polyasynciterable.flatmap.md) |  | Return an iteration of elements of the sub-iterables that result from calling <code>func(element)</code> for every element in <code>this</code>. |
 |  [flatten(this)](./polyethylene.polyasynciterable.flatten.md) |  | Return an iteration of the yielded elements of the sub-iterables. |
-|  [forEach(func)](./polyethylene.polyasynciterable.foreach.md) |  | Call a function for each element of <code>this</code> iteration. |
-|  [groupBy(func)](./polyethylene.polyasynciterable.groupby.md) |  | Return an iteration of group pairs, where the first element is a \_group key\_ and the second is an iterable of all the elements for which <code>func(element)</code> returned the key. |
+|  [forEach(func, options)](./polyethylene.polyasynciterable.foreach.md) |  | Call a function for each element of <code>this</code> iteration. |
+|  [groupBy(func, options)](./polyethylene.polyasynciterable.groupby.md) |  | Return an iteration of group pairs, where the first element is a \_group key\_ and the second is an iterable of all the elements for which <code>func(element)</code> returned the key. |
 |  [includes(obj)](./polyethylene.polyasynciterable.includes.md) |  | Returns whether an element is present in this iteration. |
 |  [join(glue)](./polyethylene.polyasynciterable.join.md) |  | Return the result of joining the elements of <code>this</code> with the given <code>glue</code>, or <code>','</code> if no glue is given. |
-|  [map(func)](./polyethylene.polyasynciterable.map.md) |  | Return an iteration of the result of calling <code>func(element)</code> for every element in <code>this</code>. |
+|  [map(func, options)](./polyethylene.polyasynciterable.map.md) |  | Return an iteration of the result of calling <code>func(element)</code> for every element in <code>this</code>. |
 |  [prefetch()](./polyethylene.polyasynciterable.prefetch.md) |  | Return the same iteration, but with its elements requested with anticipation to allow for asynchronous operations to begin and reduce wait times. |
 |  [prepend(other)](./polyethylene.polyasynciterable.prepend.md) |  | Return a new iteration that will iterate over <code>other</code>, then over <code>this</code>. |
 |  [reduce(reducer, init)](./polyethylene.polyasynciterable.reduce.md) |  | Returns the result of calling the passed <code>reducer</code> for all elements of the iteration and the result of the previous call to <code>reducer</code>, starting by passing <code>init</code> or, if not present, the first element of the iteration. |
 |  [reduce(reducer, init)](./polyethylene.polyasynciterable.reduce_1.md) |  | Returns the result of calling the passed <code>reducer</code> for all elements of the iteration and the result of the previous call to <code>reducer</code>, starting by passing <code>init</code>. |
 |  [reverse()](./polyethylene.polyasynciterable.reverse.md) |  | Return an iteration of the elements of <code>this</code> in reverse order. |
 |  [slice(start, end)](./polyethylene.polyasynciterable.slice.md) |  | Return a new iteration that starts from the <code>start</code>th element (included) and ends at the <code>end</code>th element (excluded) of <code>this</code>. |
-|  [some(func)](./polyethylene.polyasynciterable.some.md) |  | Returns <code>true</code> if calling <code>func(element)</code> returns <code>true</code> for at least one element, and <code>false</code> otherwise |
+|  [some(func, options)](./polyethylene.polyasynciterable.some.md) |  | Returns <code>true</code> if calling <code>func(element)</code> returns <code>true</code> for at least one element, and <code>false</code> otherwise |
 |  [sort(func)](./polyethylene.polyasynciterable.sort.md) |  | Return an iteration of the elements of <code>this</code> sorted according to <code>func</code> |
 |  [take(num)](./polyethylene.polyasynciterable.take.md) |  | Return a new iteration that iterates only over the first <code>num</code> elements. If there were less than than <code>num</code> elements in the iteration, all elements are yielded with no additions. |
 |  [takeLast(num)](./polyethylene.polyasynciterable.takelast.md) |  | Return a new iteration that iterates only over the last <code>num</code> elements. If there were less than than <code>num</code> elements in the iteration, all elements are yielded with no additions. |
 |  [takeWhile(func)](./polyethylene.polyasynciterable.takewhile.md) |  | Return a new iteration that yields the first few elements for which <code>func(element)</code> returns <code>true</code>. |
-|  [tap(func)](./polyethylene.polyasynciterable.tap.md) |  | Return an iteration of the same elements as <code>this</code> after calling <code>func(element)</code> for all elements. |
+|  [tap(func, options)](./polyethylene.polyasynciterable.tap.md) |  | Return an iteration of the same elements as <code>this</code> after calling <code>func(element)</code> for all elements. |
 |  [toArray()](./polyethylene.polyasynciterable.toarray.md) |  | Return an array of all elements of this iteration in the same order that were yielded. |
 |  [toMap(this)](./polyethylene.polyasynciterable.tomap.md) |  | Return a <code>Map</code> made from the entries of <code>this</code>. This method is roughly equivalent to calling <code>new Map(iter.toArray())</code>. |
 |  [toObject(this)](./polyethylene.polyasynciterable.toobject.md) |  | Return an object made from the entries of <code>this</code>. This method is roughly equivalent to calling <code>Object.fromEntires(iter.toArray())</code>. |
-|  [toPartitionArrays(func)](./polyethylene.polyasynciterable.topartitionarrays.md) |  | Splits this iteration into two arrays, one with elements for which <code>func(element)</code> returns <code>true</code> (the \_truthy elements\_) and one for which it returns <code>false</code> (the \_falsy elements\_). |
-|  [toPartitionArrays(func)](./polyethylene.polyasynciterable.topartitionarrays_1.md) |  | Splits this iteration into two arrays, one with elements for which <code>func(element)</code> returns <code>true</code> (the \_truthy elements\_) and one for which it returns <code>false</code> (the \_falsy elements\_). |
-|  [unique(func)](./polyethylene.polyasynciterable.unique.md) |  | Return an iteration of unique elements, where two elements are considered equal if the result of <code>func(element)</code> is the same for both elements. |
+|  [toPartitionArrays(func, options)](./polyethylene.polyasynciterable.topartitionarrays.md) |  | Splits this iteration into two arrays, one with elements for which <code>func(element)</code> returns <code>true</code> (the \_truthy elements\_) and one for which it returns <code>false</code> (the \_falsy elements\_). |
+|  [toPartitionArrays(func, options)](./polyethylene.polyasynciterable.topartitionarrays_1.md) |  | Splits this iteration into two arrays, one with elements for which <code>func(element)</code> returns <code>true</code> (the \_truthy elements\_) and one for which it returns <code>false</code> (the \_falsy elements\_). |
+|  [unique(func, options)](./polyethylene.polyasynciterable.unique.md) |  | Return an iteration of unique elements, where two elements are considered equal if the result of <code>func(element)</code> is the same for both elements. |
 

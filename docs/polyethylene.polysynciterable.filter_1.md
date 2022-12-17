@@ -20,7 +20,7 @@ filter(func: IndexedPredicate<T>): PolySyncIterable<T>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) with only elements for which `func(element)` returned
 

@@ -21,7 +21,7 @@ function syncIterate<T>(func: (lastValue: T) => T, initValue: T): PolySyncIterab
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 an infinite iterable that yields the return values from calling `func` repeatedly
 

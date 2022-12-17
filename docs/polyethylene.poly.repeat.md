@@ -20,7 +20,7 @@ function repeat<T>(value: T): PolySyncIterable<T>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 an infinite iterable over the same element
 

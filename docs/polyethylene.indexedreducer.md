@@ -9,5 +9,5 @@ A function that receives an accumulated result, an element of an iteration, and 
 <b>Signature:</b>
 
 ```typescript
-export declare type IndexedReducer<T, U> = (acc: U, item: T, index: number) => U;
+export type IndexedReducer<T, U> = (acc: U, item: T, index: number) => U;
 ```

@@ -20,7 +20,7 @@ chunkWhile(func: ChunkingPredicate<T>): PolySyncIterable<Array<T>>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;Array&lt;T&gt;&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields arrays with the elements of `this` as separated by `func`
 

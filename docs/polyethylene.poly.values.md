@@ -20,7 +20,7 @@ function values<V>(obj: Record<string | number | symbol, V>): PolySyncIterable<V
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;V&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;V&gt;
 
 An iterable that yields the values of the passed object
 

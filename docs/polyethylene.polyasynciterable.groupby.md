@@ -9,7 +9,7 @@ Return an iteration of group pairs, where the first element is a \_group key\_ a
 <b>Signature:</b>
 
 ```typescript
-groupBy<K>(func: AsyncIndexedMapping<T, K>): PolyAsyncIterable<[K, Array<T>]>;
+groupBy<K>(func: AsyncIndexedMapping<T, K>, options?: ConcurrencyOptions): PolyAsyncIterable<[K, Array<T>]>;
 ```
 
 ## Parameters
@@ -17,10 +17,11 @@ groupBy<K>(func: AsyncIndexedMapping<T, K>): PolyAsyncIterable<[K, Array<T>]>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, K&gt; | A function that returns the grouping key of each element |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;\[K, Array&lt;T&gt;\]&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, Array&lt;T&gt;\]&gt;
 
 A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) of group pairs with the key and the group
 

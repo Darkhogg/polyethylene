@@ -13,7 +13,7 @@ async(): PolyAsyncIterable<T>;
 ```
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 A [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the same elements as `this`
 

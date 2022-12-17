@@ -9,7 +9,7 @@ Returns the first element for which `func(element)` returns `true`<!-- -->, or `
 <b>Signature:</b>
 
 ```typescript
-find<U extends T>(func: IndexedTypePredicate<T, U>): Promise<U | undefined>;
+find<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): Promise<U | undefined>;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ find<U extends T>(func: IndexedTypePredicate<T, U>): Promise<U | undefined>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt; | A type predicate called for elements of <code>this</code> |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
 
 <b>Returns:</b>
 

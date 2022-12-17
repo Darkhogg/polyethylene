@@ -20,7 +20,7 @@ function range(to: number): PolySyncIterable<number>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;number&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;number&gt;
 
 - An iterable over the numbers from 0 to `to` with a step of 1
 

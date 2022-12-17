@@ -6,6 +6,8 @@ import {
   Comparator,
   IndexedTypePredicate,
 } from '../types.js'
+import {ConcurrentMapper} from './concurrency.js'
+import {ConcurrencyOptions} from './poly-iterable.js'
 
 export function prefetchGen<T> (iterable: AsyncIterable<T>): AsyncIterable<T> {
   const it = iterable[Symbol.asyncIterator]()
@@ -155,33 +157,52 @@ export function sliceGen<T> (iter: AsyncIterable<T>, start: number, end?: number
   }
 }
 
-export function filterGen<T, U extends T> (iter: AsyncIterable<T>, func: IndexedTypePredicate<T, U>): AsyncIterable<U>
-export function filterGen<T> (iter: AsyncIterable<T>, func: AsyncIndexedPredicate<T>): AsyncIterable<T>
+
+export function filterGen<T, U extends T> (
+  iter: AsyncIterable<T>,
+  func: IndexedTypePredicate<T, U>,
+  options: ConcurrencyOptions,
+): AsyncIterable<U>
+
+export function filterGen<T> (
+  iter: AsyncIterable<T>,
+  func: AsyncIndexedPredicate<T>,
+  options: ConcurrencyOptions,
+): AsyncIterable<T>
 
 export async function * filterGen<T, U extends T> (
   iter: AsyncIterable<T>,
   func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>,
+  options: ConcurrencyOptions,
 ): AsyncIterable<T | U> {
-  let idx = 0
-  for await (const elem of iter) {
-    if (await func(elem, idx++)) {
-      yield elem
+  const concIter = new ConcurrentMapper(iter, func, options)
+  for await (const elem of concIter) {
+    if (elem.mapped) {
+      yield elem.original
     }
   }
 }
 
-export async function * mapGen<T, U> (iter: AsyncIterable<T>, func: AsyncIndexedMapping<T, U>): AsyncIterable<U> {
-  let idx = 0
-  for await (const elem of iter) {
-    yield await func(elem, idx++)
+
+export async function * mapGen<T, U> (
+  iter: AsyncIterable<T>,
+  func: AsyncIndexedMapping<T, U>,
+  options: ConcurrencyOptions,
+): AsyncIterable<U> {
+  const concIter = new ConcurrentMapper(iter, func, options)
+  for await (const elem of concIter) {
+    yield elem.mapped
   }
 }
 
-export async function * tapGen<T> (iter: AsyncIterable<T>, func: AsyncIndexedRunnable<T>): AsyncIterable<T> {
-  let idx = 0
-  for await (const elem of iter) {
-    await func(elem, idx++)
-    yield elem
+export async function * tapGen<T> (
+  iter: AsyncIterable<T>,
+  func: AsyncIndexedRunnable<T>,
+  options: ConcurrencyOptions,
+): AsyncIterable<T> {
+  const concIter = new ConcurrentMapper(iter, func, options)
+  for await (const elem of concIter) {
+    yield elem.original
   }
 }
 
@@ -216,7 +237,7 @@ export async function * chunkWhileGen<T> (
   let chunk: Array<T> = []
 
   for await (const elem of iter) {
-    if (chunk.length === 0 || func(elem, chunk[chunk.length - 1], chunk[0])) {
+    if (chunk.length === 0 || await func(elem, chunk[chunk.length - 1], chunk[0])) {
       chunk.push(elem)
     } else {
       yield chunk
@@ -232,15 +253,16 @@ export async function * chunkWhileGen<T> (
 export async function * groupByGen<K, T> (
   iter: AsyncIterable<T>,
   func: AsyncIndexedMapping<T, K>,
+  options: ConcurrencyOptions,
 ): AsyncIterable<[K, Array<T>]> {
   const groups: Map<K, Array<T>> = new Map()
 
-  let idx = 0
-  for await (const elem of iter) {
-    const key = await func(elem, idx++)
+  const concIter = new ConcurrentMapper(iter, func, options)
+  for await (const elem of concIter) {
+    const key = elem.mapped
 
     const group = groups.get(key) ?? []
-    group.push(elem)
+    group.push(elem.original)
 
     groups.set(key, group)
   }
@@ -248,14 +270,18 @@ export async function * groupByGen<K, T> (
   yield * groups.entries()
 }
 
-export async function * uniqueGen<T> (iter: AsyncIterable<T>, func: AsyncIndexedMapping<T, unknown>): AsyncIterable<T> {
+export async function * uniqueGen<T> (
+  iter: AsyncIterable<T>,
+  func: AsyncIndexedMapping<T, unknown>,
+  options: ConcurrencyOptions,
+): AsyncIterable<T> {
   const seen = new Set()
 
-  let idx = 0
-  for await (const elem of iter) {
-    const key = await func(elem, idx++)
+  const concIter = new ConcurrentMapper(iter, func, options)
+  for await (const elem of concIter) {
+    const key = elem.mapped
     if (!seen.has(key)) {
-      yield elem
+      yield elem.original
       seen.add(key)
     }
   }

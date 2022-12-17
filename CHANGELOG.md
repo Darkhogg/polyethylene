@@ -9,10 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## UNRELEASED
 
 ### Addeded:
-
   - Added `findLast` leaf method to both iterable types
   - Added `findIndex` leaf method to both iterables
   - Added `findLastIndex` leaf method to both iterables
+  - Added `concurrency` and `bufferSize` options to many of `PolyAsyncIterable` methods
+
+### Changed:
+  - Fixed `chunkWhile` not working correctly
+  - Fixed async iterable tests not actually covering the case of async functions
+
 
 ## [2.1.1] - 2022-05-05
 

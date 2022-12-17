@@ -20,7 +20,7 @@ prepend<U>(other: Iterable<U>): PolySyncIterable<T | U>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T \| U&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T \| U&gt;
 
 a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the elements of `other` and then the elements of `this`
 

@@ -16,11 +16,11 @@ flat<U>(this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | PolySyncIterable&lt;Iterable&lt;U&gt;&gt; |  |
+|  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Iterable&lt;U&gt;&gt; |  |
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;U&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) that will yield the elements of all sub-iterables
 

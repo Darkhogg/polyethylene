@@ -20,7 +20,7 @@ groupBy<K>(func: IndexedMapping<T, K>): PolySyncIterable<[K, Array<T>]>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;\[K, Array&lt;T&gt;\]&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K, Array&lt;T&gt;\]&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) of group pairs with the key and the group
 

@@ -20,7 +20,7 @@ takeWhile(func: IndexedPredicate<T>): PolySyncIterable<T>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same the elements of `this` as long as `func(element)` returns `true`
 

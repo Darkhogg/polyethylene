@@ -24,7 +24,7 @@ function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIter
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt; \| PolyAsyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt; \| [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 A [PolySyncIterable](./polyethylene.polysynciterable.md) or [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates over the same elements as the passed iterable
 

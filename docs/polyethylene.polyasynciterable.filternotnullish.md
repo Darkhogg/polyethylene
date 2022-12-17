@@ -13,7 +13,7 @@ filterNotNullish(): PolyAsyncIterable<NonNullable<T>>;
 ```
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;NonNullable&lt;T&gt;&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;NonNullable&lt;T&gt;&gt;
 
 A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the same elements as `this` except for `null` or `undefined` values
 

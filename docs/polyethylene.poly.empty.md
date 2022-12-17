@@ -13,7 +13,7 @@ function empty<T = never>(): PolySyncIterable<T>;
 ```
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 An iterable that yields no elements
 

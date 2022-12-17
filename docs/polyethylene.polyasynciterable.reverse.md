@@ -13,7 +13,7 @@ reverse(): PolyAsyncIterable<T>;
 ```
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the elements of `this` in reverse order
 

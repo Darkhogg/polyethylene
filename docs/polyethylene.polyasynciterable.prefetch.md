@@ -13,7 +13,7 @@ prefetch(): PolyAsyncIterable<T>;
 ```
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that prefetched the iterated elementsd
 

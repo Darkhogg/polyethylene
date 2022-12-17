@@ -20,7 +20,7 @@ chunk(num?: number): PolySyncIterable<Array<T>>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;Array&lt;T&gt;&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields arrays of size `num` (except possibly the last) containing groupings of elements of `this`
 

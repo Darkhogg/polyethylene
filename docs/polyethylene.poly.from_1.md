@@ -22,7 +22,7 @@ function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T>): PolySyncI
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 A [PolySyncIterable](./polyethylene.polysynciterable.md) that iterates over the same elements as the passed iterable
 

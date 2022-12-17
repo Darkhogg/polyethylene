@@ -9,7 +9,7 @@ Return an iteration of unique elements, where two elements are considered equal 
 <b>Signature:</b>
 
 ```typescript
-unique(func?: AsyncIndexedMapping<T, unknown>): PolyAsyncIterable<T>;
+unique(func?: AsyncIndexedMapping<T, unknown>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
 ```
 
 ## Parameters
@@ -17,10 +17,11 @@ unique(func?: AsyncIndexedMapping<T, unknown>): PolyAsyncIterable<T>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, unknown&gt; | <i>(Optional)</i> A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) only elements for which `func(element)` returns a value that hasn't been seen before
 

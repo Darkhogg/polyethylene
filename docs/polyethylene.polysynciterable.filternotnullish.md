@@ -13,7 +13,7 @@ filterNotNullish(): PolySyncIterable<NonNullable<T>>;
 ```
 <b>Returns:</b>
 
-PolySyncIterable&lt;NonNullable&lt;T&gt;&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;NonNullable&lt;T&gt;&gt;
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as `this` except for `null` or `undefined` values
 

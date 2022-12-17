@@ -16,11 +16,11 @@ flatten<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIt
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | PolyAsyncIterable&lt;Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;&gt; |  |
+|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;&gt; |  |
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;U&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;
 
 A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that will yield the elements of all sub-iterables
 

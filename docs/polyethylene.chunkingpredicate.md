@@ -9,5 +9,5 @@ A function that receives an element (`elem`<!-- -->) of the iteration and the fi
 <b>Signature:</b>
 
 ```typescript
-export declare type ChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boolean;
+export type ChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boolean;
 ```

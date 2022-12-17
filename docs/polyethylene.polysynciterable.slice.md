@@ -21,7 +21,7 @@ slice(start: number, end?: number): PolySyncIterable<T>;
 
 <b>Returns:</b>
 
-PolySyncIterable&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
 a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the elements going that starts from the `start`<!-- -->th element (included) and ends at the `end`<!-- -->th element (excluded) of `this`
 

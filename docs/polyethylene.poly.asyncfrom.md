@@ -22,7 +22,7 @@ function asyncFrom<T>(iterableOrFactory: Iterable<T> | IterableFactory<T> | Asyn
 
 <b>Returns:</b>
 
-PolyAsyncIterable&lt;T&gt;
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
 A [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates over the same elements as the passed iterable
 

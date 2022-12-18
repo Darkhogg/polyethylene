@@ -348,7 +348,7 @@ describe('Async Iterable', () => {
 
   describe('#filter', () => {
     it('should only yield elements for which passed function returns true', async () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5, 6, 7]).async().filter((n: number) => n % 3 === 1)
+      const iter = Poly.syncFrom([1, 2, 3, 4, 5, 6, 7]).async().filter(async (n: number) => n % 3 === 1)
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 4, 7])
     })
 
@@ -368,7 +368,7 @@ describe('Async Iterable', () => {
 
   describe('#map', () => {
     it('should yield elements correctly mapped', async () => {
-      const iter = Poly.syncFrom([1, 2, 3]).async().map((n) => n * n)
+      const iter = Poly.syncFrom([1, 2, 3]).async().map(async (n) => n * n)
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 4, 9])
     })
 
@@ -380,7 +380,7 @@ describe('Async Iterable', () => {
 
   describe('#tap', () => {
     it('should yield elements of original iteration', async () => {
-      const iter = Poly.syncFrom([1, 2, 3]).async().tap(((n: number) => n) as (n: number) => void)
+      const iter = Poly.syncFrom([1, 2, 3]).async().tap(async (n) => {}) // eslint-disable-line no-void
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3])
     })
 
@@ -416,12 +416,13 @@ describe('Async Iterable', () => {
 
   describe('#flatMap', () => {
     it('should yield elements correctly mapped', async () => {
-      const iter = Poly.syncFrom([1, 2, 3]).async().flatMap((n) => Array(n).fill(null).map((_, i) => (10 * n) + i))
+      const iter = Poly.syncFrom([1, 2, 3]).async()
+        .flatMap(async (n) => Array(n).fill(null).map((_, i) => (10 * n) + i))
       await expect(collectAsync(iter)).to.eventually.deep.equal([10, 20, 21, 30, 31, 32])
     })
 
     it('should throw if a mapped element is not iterable', async () => {
-      const iter = Poly.syncFrom([0]).async().flatMap((n) => n as any)
+      const iter = Poly.syncFrom([0]).async().flatMap(async (n) => n as any)
       await expect(collectAsync(iter)).to.be.rejected
     })
 
@@ -463,12 +464,12 @@ describe('Async Iterable', () => {
 
   describe('#chunkWhile', () => {
     it('should yield elements correctly chunked', async () => {
-      const iter = Poly.range(0, 10).async().chunkWhile((elem) => elem % 4 !== 0 && elem % 5 !== 0)
+      const iter = Poly.range(0, 10).async().chunkWhile(async (elem) => elem % 4 !== 0 && elem % 5 !== 0)
       await expect(collectAsync(iter)).to.eventually.deep.equal([[0, 1, 2, 3], [4], [5, 6, 7], [8, 9]])
     })
 
     it('should yield nothing if original iterable was empty', async () => {
-      const iter = Poly.syncFrom([]).async().chunkWhile(() => true)
+      const iter = Poly.syncFrom([]).async().chunkWhile(async () => true)
       await expect(collectAsync(iter)).to.eventually.deep.equal([])
     })
 
@@ -487,7 +488,7 @@ describe('Async Iterable', () => {
     it('should yield correctly grouped elements', async () => {
       const elems = ['one', 'two', 'three', 'four', 'five']
       const groups = [[3, ['one', 'two']], [5, ['three']], [4, ['four', 'five']]]
-      const iter = Poly.asyncFrom(elems).groupBy((str) => str.length)
+      const iter = Poly.asyncFrom(elems).groupBy(async (str) => str.length)
       await expect(collectAsync(iter)).to.eventually.deep.equal(groups)
     })
 
@@ -514,17 +515,17 @@ describe('Async Iterable', () => {
     })
 
     it('should work when passed a function that is always different', async () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().unique((x) => x * 3)
+      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().unique(async (x) => x * 3)
       await expect(collectAsync(iter)).to.eventually.deep.equal([1, 2, 3, 4, 5])
     })
 
     it('should work when passed a function that is sometimes the same', async () => {
-      const iter = Poly.syncFrom([0, 1, 2, 3, 4, 5]).async().unique((x) => Math.floor(x / 2))
+      const iter = Poly.syncFrom([0, 1, 2, 3, 4, 5]).async().unique(async (x) => Math.floor(x / 2))
       await expect(collectAsync(iter)).to.eventually.deep.equal([0, 2, 4])
     })
 
     it('should work when passed a function that is always the same', async () => {
-      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().unique((x) => 0)
+      const iter = Poly.syncFrom([1, 2, 3, 4, 5]).async().unique(async (x) => 0)
       await expect(collectAsync(iter)).to.eventually.deep.equal([1])
     })
 
@@ -709,17 +710,17 @@ describe('Async Iterable', () => {
 
     it('should correctly return the index of the first element for which passed function is true', () => {
       const iter = Poly.from(numbers).async()
-      expect(iter.findIndex((n) => n % 6 === 5)).to.eventually.equal(7)
+      expect(iter.findIndex(async (n) => n % 6 === 5)).to.eventually.equal(7)
     })
 
     it('should correctly return -1 if passed function never returns true', () => {
       const iter = Poly.from(numbers).async()
-      expect(iter.findIndex((n) => false)).to.eventually.equal(-1)
+      expect(iter.findIndex(async (n) => false)).to.eventually.equal(-1)
     })
 
     it('should work for infinite iterables for which the passed function returns true', () => {
       const iter = Poly.syncIterate((n) => n + 1, 0).map((n) => n ** 2).async()
-      expect(iter.findIndex((n) => n > 100)).to.eventually.equal(10)
+      expect(iter.findIndex(async (n) => n > 100)).to.eventually.equal(10)
     })
 
     it('should throw if passed argument is not a function', () => {
@@ -733,12 +734,12 @@ describe('Async Iterable', () => {
 
     it('should correctly return the index of the last element for which passed function is true', () => {
       const iter = Poly.from(numbers).async()
-      expect(iter.findLastIndex((n) => n % 6 === 5)).to.eventually.equal(9)
+      expect(iter.findLastIndex(async (n) => n % 6 === 5)).to.eventually.equal(9)
     })
 
     it('should correctly return -1 if passed function never returns true', () => {
       const iter = Poly.from(numbers).async()
-      expect(iter.findLastIndex((n) => false)).to.eventually.equal(-1)
+      expect(iter.findLastIndex(async (n) => false)).to.eventually.equal(-1)
     })
 
     it('should throw if passed argument is not a function', () => {
@@ -773,17 +774,17 @@ describe('Async Iterable', () => {
   describe('#some', () => {
     it('should correctly return true if passed function returns true at any point', async () => {
       const iter = Poly.range(42).async()
-      await expect(iter.some((n) => n === 13)).to.eventually.be.ok
+      await expect(iter.some(async (n) => n === 13)).to.eventually.be.ok
     })
 
     it('should correctly return false if passed function always return false', async () => {
       const iter = Poly.range(42).async()
-      await expect(iter.some((n) => false)).to.eventually.not.be.ok
+      await expect(iter.some(async (n) => false)).to.eventually.not.be.ok
     })
 
     it('should work for infinite iterables for which the passed function returns true', async () => {
       const iter = Poly.asyncIterate((n) => n + 1, 0)
-      await expect(iter.some((n) => n === 42)).to.eventually.be.ok
+      await expect(iter.some(async (n) => n === 42)).to.eventually.be.ok
     })
 
     it('should throw if passed argument is not a function', async () => {
@@ -795,17 +796,17 @@ describe('Async Iterable', () => {
   describe('#every', () => {
     it('should correctly return true if passed function always returns true', async () => {
       const iter = Poly.range(42).async()
-      await expect(iter.every((n) => true)).to.eventually.be.ok
+      await expect(iter.every(async (n) => true)).to.eventually.be.ok
     })
 
     it('should correctly return false if passed function return false at any point', async () => {
       const iter = Poly.range(42).async()
-      await expect(iter.every((n) => n !== 13)).to.eventually.not.be.ok
+      await expect(iter.every(async (n) => n !== 13)).to.eventually.not.be.ok
     })
 
     it('should work for infinite iterables for which the passed function returns false', async () => {
       const iter = Poly.asyncIterate((n) => n + 1, 0)
-      await expect(iter.every((n) => n !== 42)).to.eventually.not.be.ok
+      await expect(iter.every(async (n) => n !== 42)).to.eventually.not.be.ok
     })
 
     it('should throw if passed argument is not a function', async () => {
@@ -817,17 +818,17 @@ describe('Async Iterable', () => {
   describe('#reduce', () => {
     it('should correctly accumulate the result of the given function', async () => {
       const iter = Poly.syncFrom([1, 2, 3, 4]).async()
-      await expect(iter.reduce((a, b) => a + b, 0)).to.eventually.equal(10)
+      await expect(iter.reduce(async (a, b) => a + b, 0)).to.eventually.equal(10)
     })
 
     it('should use the given init value as starting accumulator', async () => {
       const iter = Poly.syncFrom([1, 2, 3, 4]).async()
-      await expect(iter.reduce((a, _) => a, 'i')).to.eventually.equal('i')
+      await expect(iter.reduce(async (a, _) => a, 'i')).to.eventually.equal('i')
     })
 
     it('should use the first element as accumulator if no init value given', async () => {
       const iter = Poly.syncFrom([1, 2, 3, 4]).async()
-      await expect(iter.reduce((a, _) => a, undefined)).to.eventually.equal(1)
+      await expect(iter.reduce(async (a, _) => a, undefined)).to.eventually.equal(1)
     })
 
     it('should throw if passed argument is not a function', async () => {

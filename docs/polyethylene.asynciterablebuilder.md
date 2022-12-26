@@ -4,9 +4,9 @@
 
 ## AsyncIterableBuilder class
 
-A class that helps with building an  from a non-structured source.
+A class that helps with building an [AsyncIterable](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator) from a non-structured source.
 
-In order to create the iteration, you must call the ,  and  methods with appropriate arguments.
+In order to create the iteration, you must call the [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods with appropriate arguments.
 
 <b>Signature:</b>
 
@@ -26,6 +26,6 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [\[Symbol.asyncIterator\]()](./polyethylene.asynciterablebuilder._symbol.asynciterator_.md) |  | Allows this class to work as a regular <code>AsyncIterable&lt;T&gt;</code> |
 |  [done()](./polyethylene.asynciterablebuilder.done.md) |  | Makes the underlying iterable finish the iteration. |
 |  [error(error)](./polyethylene.asynciterablebuilder.error.md) |  | Makes the underlying iterable throw the given <code>error</code> object. |
-|  [toPolyAsyncIterable()](./polyethylene.asynciterablebuilder.topolyasynciterable.md) |  | Get a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates the elements as determined by calls to <code>this</code> object's ,  and  methods. |
+|  [toPolyAsyncIterable()](./polyethylene.asynciterablebuilder.topolyasynciterable.md) |  | Get a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates the elements as determined by calls to <code>this</code> object's [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods. |
 |  [value(obj)](./polyethylene.asynciterablebuilder.value.md) |  | Gives the underlying iterable a new value to be yielded. |
 

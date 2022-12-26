@@ -17,7 +17,7 @@ void
 
 ## Remarks
 
-Any values that were given with  will be yielded before the iteration ends.
+Any values that were given with [value](./polyethylene.asynciterablebuilder.value.md) will be yielded before the iteration ends.
 
-Calling  or  after calling this method or calling this method after calling  will act as a no-op.
+Calling [value](./polyethylene.asynciterablebuilder.value.md) or [error](./polyethylene.asynciterablebuilder.error.md) after calling this method or calling this method after calling [error](./polyethylene.asynciterablebuilder.error.md) will act as a no-op.
 

@@ -8,7 +8,7 @@ An `AsyncIterable<T>` with a suite of methods for transforming the iteration int
 
 This class works as an async version of [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->, but all methods accept async function where possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.
 
-\#\# Concurrency Many operations of this class accept as a final argument an  than can specify some options for concurrent operations.
+\#\# Concurrency Many operations of this class accept as a final argument an [options object](./polyethylene.concurrencyoptions.md) than can specify some options for concurrent operations.
 
 - The `concurrency` option will specify how many times whatever `func` you pass is called before waiting for its results. Effectively, this is the number of promises that can be pending at the same time. If not specified, it will default to 0, meaning no concurrency. Must be a non-negative integer. - The `bufferSize` option will specify the size of the internal buffer used to store the pending and completed promises. Effectively, this is how many results will be prefetched. If not specified, it will default to `concurrency`<!-- -->, meaning no extra intermediate results are stored. Must be a positive integer greater or equal to `concurrency`<!-- -->.
 

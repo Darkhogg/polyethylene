@@ -26,5 +26,5 @@ A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the ele
 
 ## Remarks
 
-This method is equivalent to calling  and then 
+This method is equivalent to calling [map(func)](./polyethylene.polysynciterable.map.md) and then [flatten()](./polyethylene.polysynciterable.flatten.md)
 

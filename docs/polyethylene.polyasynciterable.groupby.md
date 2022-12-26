@@ -27,5 +27,5 @@ A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) of group pairs wi
 
 ## Remarks
 
-This method is intended to be combined with  or , thus behaving like  and  respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.
+This method is intended to be combined with [toObject](./polyethylene.polyasynciterable.toobject.md) or [toMap](./polyethylene.polyasynciterable.tomap.md)<!-- -->, thus behaving like [Array.groupBy](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy) and [Array.groupByToMap](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap) respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.
 

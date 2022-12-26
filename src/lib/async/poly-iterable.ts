@@ -29,6 +29,8 @@ import {
   uniqueGen,
 } from './generators.js'
 
+// eslint-disable-next-line no-unused-vars -- here for documentation
+import type PolySyncIterable from '../sync/poly-iterable.js'
 
 /**
  * Options for concurrency.
@@ -51,7 +53,7 @@ export interface ConcurrencyOptions {
  * possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.
  *
  * ## Concurrency
- * Many operations of this class accept as a final argument an {@link ConcurrencyOptions `options` object} than can
+ * Many operations of this class accept as a final argument an {@link ConcurrencyOptions | options object} than can
  * specify some options for concurrent operations.
  *
  * - The `concurrency` option will specify how many times whatever `func` you pass is called before waiting for its
@@ -253,7 +255,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * Both `start` and `end` allow for negative values, in which case they refer to the nth-to-last element,
    * with n being the absolute value of the argument.  `end` might also be `undefined`, in which case the iteration is
    * not shortened on the end side, yielding up to the end, including the last element.
-   * This mimics the behaviour of {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice Array.slice}.
+   * This mimics the behaviour of {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice | Array.slice}.
    *
    * This function will likely need a buffer, effectively delaying the yielding of elements for a while.
    *
@@ -280,7 +282,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true and correctly
    * narrowed to the type asserted by `func`
    *
-   * {@label FILTER_TYPEPRED}
+   * {@label filter_typePred}
    */
   filter<U extends T> (func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>
 
@@ -305,9 +307,10 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.
    *
    * @remarks
-   * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:FILTER_TYPEPRED)} with a type predicate
-   * function that correctly filters out `null` and `undefined` values from the iteration.  Note that other falsy values
-   * will remain in the iteration, and that the return value is correctly typed to exclude `null` and `undefined`.
+   * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:filter_typePred) filter} with a type
+   * predicate function that correctly filters out `null` and `undefined` values from the iteration.  Note that other
+   * falsy values will remain in the iteration, and that the return value is correctly typed to exclude
+   * `null` and `undefined`.
    *
    * @returns A new {@link PolyAsyncIterable} that yields the same elements as `this`
    * except for `null` or `undefined` values
@@ -373,8 +376,8 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * for every element in `this`.
    *
    * @remarks
-   * This method is equivalent to calling {@link PolyAsyncIterable.map map(func)}
-   * and then {@link PolyAsyncIterable.flatten flatten()}
+   * This method is equivalent to calling {@link PolyAsyncIterable.map | map(func)}
+   * and then {@link PolyAsyncIterable.flatten | flatten()}
    *
    * @typeParam U - The type of the sub-iterables returned by `func`
    * @param func - A function that takes an element of `this` and returns an iterable
@@ -438,10 +441,10 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * the elements for which `func(element)` returned the key.
    *
    * @remarks
-   * This method is intended to be combined with {@link PolyAsyncIterable.toObject toObject}
-   * or {@link PolyAsyncIterable.toMap toMap}, thus behaving like
-   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy Array.groupBy} and
-   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap Array.groupByToMap}
+   * This method is intended to be combined with {@link PolyAsyncIterable.toObject | toObject}
+   * or {@link PolyAsyncIterable.toMap | toMap}, thus behaving like
+   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy | Array.groupBy} and
+   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap | Array.groupByToMap}
    * respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.
    *
    * @typeParam K - Type of the keys used to group elements
@@ -496,11 +499,11 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @remarks
    * The sort function `func` is used to call
-   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort Array.sort}
+   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort}
    * on an array of all the elements.
    * However, the default comparator function will sort elements according to the `<` and `>` operators defined on
    * their own type, of always sorting lexicagraphically like
-   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort Array.sort}
+   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort}
    * does.
    *
    * This method will buffer _all_ elements of the iteration, and yield them all at once at the end

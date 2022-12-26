@@ -27,5 +27,5 @@ A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the e
 
 ## Remarks
 
-This method is equivalent to calling  and then 
+This method is equivalent to calling [map(func)](./polyethylene.polyasynciterable.map.md) and then [flatten()](./polyethylene.polyasynciterable.flatten.md)
 

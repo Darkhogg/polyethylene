@@ -24,7 +24,7 @@ void
 
 ## Remarks
 
-Any values that were given with  will be yielded before the error is thrown.
+Any values that were given with [value](./polyethylene.asynciterablebuilder.value.md) will be yielded before the error is thrown.
 
-Calling  or  after calling this method or calling this method after calling  will act as a no-op.
+Calling [value](./polyethylene.asynciterablebuilder.value.md) or [done](./polyethylene.asynciterablebuilder.done.md) after calling this method or calling this method after calling [done](./polyethylene.asynciterablebuilder.done.md) will act as a no-op.
 

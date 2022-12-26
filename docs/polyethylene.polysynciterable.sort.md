@@ -26,7 +26,7 @@ A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the ele
 
 ## Remarks
 
-The sort function `func` is used to call  on an array of all the elements. However, the default comparator function will sort elements according to the `<` and `>` operators defined on their own type, of always sorting lexicagraphically like  does.
+The sort function `func` is used to call [Array.sort](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) on an array of all the elements. However, the default comparator function will sort elements according to the `<` and `>` operators defined on their own type, of always sorting lexicagraphically like [Array.sort](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) does.
 
 This method will buffer \_all\_ elements of the iteration, and yield them all at once at the end
 

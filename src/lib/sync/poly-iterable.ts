@@ -212,7 +212,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * Both `start` and `end` allow for negative values, in which case they refer to the nth-to-last element,
    * with n being the absolute value of the argument.  `end` might also be `undefined`, in which case the iteration is
    * not shortened on the end side, yielding up to the end, including the last element.
-   * This mimics the behaviour of {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice Array.slice}.
+   * This mimics the behaviour of {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice | Array.slice}.
    *
    * This function will likely need a buffer, effectively delaying the yielding of elements for a while.
    *
@@ -325,8 +325,8 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * for every element in `this`.
    *
    * @remarks
-   * This method is equivalent to calling {@link PolySyncIterable.map map(func)}
-   * and then {@link PolySyncIterable.flatten flatten()}
+   * This method is equivalent to calling {@link PolySyncIterable.map | map(func)}
+   * and then {@link PolySyncIterable.flatten | flatten()}
    *
    * @typeParam U - The type of the sub-iterables returned by `func`
    * @param func - A function that takes an element of `this` and returns an iterable
@@ -386,10 +386,10 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * the elements for which `func(element)` returned the key.
    *
    * @remarks
-   * This method is intended to be combined with {@link PolySyncIterable.toObject toObject}
-   * or {@link PolySyncIterable.toMap toMap}, thus behaving like
-   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy Array.groupBy} and
-   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap Array.groupByToMap}
+   * This method is intended to be combined with {@link PolySyncIterable.toObject | toObject}
+   * or {@link PolySyncIterable.toMap | toMap}, thus behaving like
+   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy | Array.groupBy} and
+   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap | Array.groupByToMap}
    * respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.
    *
    * @typeParam K - Type of the keys used to group elements
@@ -439,11 +439,11 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    *
    * @remarks
    * The sort function `func` is used to call
-   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort Array.sort}
+   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort}
    * on an array of all the elements.
    * However, the default comparator function will sort elements according to the `<` and `>` operators defined on
    * their own type, of always sorting lexicagraphically like
-   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort Array.sort}
+   * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort}
    * does.
    *
    * This method will buffer _all_ elements of the iteration, and yield them all at once at the end

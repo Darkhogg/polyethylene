@@ -2,11 +2,11 @@ import PolyAsyncIterable from './async/poly-iterable.js'
 
 /**
  * A class that helps with building an
- * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator AsyncIterable}
+ * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator | AsyncIterable}
  * from a non-structured source.
  *
- * In order to create the iteration, you must call the {@link AsyncIterableBuilder.value value},
- * {@link AsyncIterableBuilder.error error} and {@link AsyncIterableBuilder.done done} methods with
+ * In order to create the iteration, you must call the {@link AsyncIterableBuilder.value | value},
+ * {@link AsyncIterableBuilder.error | error} and {@link AsyncIterableBuilder.done | done} methods with
  * appropriate arguments.
  *
  * @public
@@ -32,7 +32,8 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
    * Objects given for iteration will be buffered until they are requested, and are guaranteed to be yielded before
    * errors and before finishing the iteration.
    *
-   * If this method is called after {@link AsyncIterableBuilder.error error} or {@link AsyncIterableBuilder.done done},
+   * If this method is called after {@link AsyncIterableBuilder.error | error}
+   * or {@link AsyncIterableBuilder.done | done},
    * the given object is ignored.
    *
    * @param obj - The object to be yielded by the underlying iterable
@@ -55,11 +56,11 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
    * Makes the underlying iterable throw the given `error` object.
    *
    * @remarks
-   * Any values that were given with {@link AsyncIterableBuilder.value value} will be yielded before the error is
+   * Any values that were given with {@link AsyncIterableBuilder.value | value} will be yielded before the error is
    * thrown.
    *
-   * Calling {@link AsyncIterableBuilder.value value} or {@link AsyncIterableBuilder.done done} after calling this
-   * method or calling this method after calling {@link AsyncIterableBuilder.done done} will act as a no-op.
+   * Calling {@link AsyncIterableBuilder.value | value} or {@link AsyncIterableBuilder.done | done} after calling this
+   * method or calling this method after calling {@link AsyncIterableBuilder.done | done} will act as a no-op.
    *
    * @param error - The error to be thrown by the underlying iterable
    */
@@ -82,10 +83,11 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
    * Makes the underlying iterable finish the iteration.
    *
    * @remarks
-   * Any values that were given with {@link AsyncIterableBuilder.value value} will be yielded before the iteration ends.
+   * Any values that were given with {@link AsyncIterableBuilder.value | value} will be yielded
+   * before the iteration ends.
    *
-   * Calling {@link AsyncIterableBuilder.value value} or {@link AsyncIterableBuilder.error error} after calling this
-   * method or calling this method after calling {@link AsyncIterableBuilder.error error} will act as a no-op.
+   * Calling {@link AsyncIterableBuilder.value | value} or {@link AsyncIterableBuilder.error | error} after calling this
+   * method or calling this method after calling {@link AsyncIterableBuilder.error | error} will act as a no-op.
    */
   done (): void {
     if (this._pendingDone) {
@@ -102,8 +104,8 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
 
   /**
    * Get a {@link PolyAsyncIterable} that iterates the elements as determined by calls to `this` object's
-   * {@link AsyncIterableBuilder.value value}, {@link AsyncIterableBuilder.error error} and
-   * {@link AsyncIterableBuilder.done done} methods.
+   * {@link AsyncIterableBuilder.value | value}, {@link AsyncIterableBuilder.error | error} and
+   * {@link AsyncIterableBuilder.done | done} methods.
    *
    * @returns A {@link PolyAsyncIterable} that yields elements as determined by the calls to `this`' methods
    */

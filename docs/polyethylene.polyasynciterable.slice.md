@@ -27,7 +27,7 @@ a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the e
 
 ## Remarks
 
-Both `start` and `end` allow for negative values, in which case they refer to the nth-to-last element, with n being the absolute value of the argument. `end` might also be `undefined`<!-- -->, in which case the iteration is not shortened on the end side, yielding up to the end, including the last element. This mimics the behaviour of .
+Both `start` and `end` allow for negative values, in which case they refer to the nth-to-last element, with n being the absolute value of the argument. `end` might also be `undefined`<!-- -->, in which case the iteration is not shortened on the end side, yielding up to the end, including the last element. This mimics the behaviour of [Array.slice](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)<!-- -->.
 
 This function will likely need a buffer, effectively delaying the yielding of elements for a while.
 

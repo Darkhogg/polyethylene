@@ -4,7 +4,7 @@
 
 ## AsyncIterableBuilder.toPolyAsyncIterable() method
 
-Get a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates the elements as determined by calls to `this` object's ,  and  methods.
+Get a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates the elements as determined by calls to `this` object's [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods.
 
 <b>Signature:</b>
 

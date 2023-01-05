@@ -877,6 +877,23 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     return accumulated!
   }
 
+
+  /**
+   * Return the number of elements on this iteration.
+   *
+   * @returns A promise to the number of elements in this iteration
+   */
+  async count (): Promise<number> {
+    let count = 0
+
+    for await (const _ of this.#iterable) {
+      count++
+    }
+
+    return count
+  }
+
+
   /**
    * Call a function for each element of `this` iteration.
    *

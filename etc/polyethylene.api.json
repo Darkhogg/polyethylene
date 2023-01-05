@@ -3012,6 +3012,41 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "polyethylene!PolyAsyncIterable#count:member(1)",
+              "docComment": "/**\n * Return the number of elements on this iteration.\n *\n * @returns A promise to the number of elements in this iteration\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "count(): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Promise",
+                  "canonicalReference": "!Promise:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<number>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "name": "count"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#drop:member(1)",
               "docComment": "/**\n * Return a new iteration that skips the first `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this`, except for the first `num` elements\n */\n",
               "excerptTokens": [
@@ -6273,6 +6308,36 @@
               ],
               "isOptional": false,
               "name": "concat"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#count:member(1)",
+              "docComment": "/**\n * Return the number of elements on this iteration.\n *\n * @returns The number of elements in this iteration\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "count(): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [],
+              "isOptional": false,
+              "name": "count"
             },
             {
               "kind": "Method",

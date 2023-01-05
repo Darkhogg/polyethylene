@@ -95,6 +95,7 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     chunkWhile(func: AsyncChunkingPredicate<T>): PolyAsyncIterable<Array<T>>;
     complete(): Promise<void>;
     concat<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
+    count(): Promise<number>;
     drop(num: number): PolyAsyncIterable<T>;
     dropLast(num: number): PolyAsyncIterable<T>;
     dropWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
@@ -147,6 +148,7 @@ export class PolySyncIterable<T> implements Iterable<T> {
     chunkWhile(func: ChunkingPredicate<T>): PolySyncIterable<Array<T>>;
     complete(): void;
     concat<U>(other: Iterable<U>): PolySyncIterable<T | U>;
+    count(): number;
     drop(num?: number): PolySyncIterable<T>;
     dropLast(num?: number): PolySyncIterable<T>;
     dropWhile(func: IndexedPredicate<T>): PolySyncIterable<T>;

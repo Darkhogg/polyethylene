@@ -787,6 +787,21 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   }
 
   /**
+   * Return the number of elements on this iteration.
+   *
+   * @returns The number of elements in this iteration
+   */
+  count (): number {
+    let count = 0
+
+    for (const _ of this.#iterable) {
+      count++
+    }
+
+    return count
+  }
+
+  /**
    * Call a function for each element of `this` iteration.
    *
    * @param func - A function to be called for every element of the iteration

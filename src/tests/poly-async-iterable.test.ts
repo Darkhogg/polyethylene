@@ -837,6 +837,14 @@ describe('Async Iterable', () => {
   })
 
 
+  describe('#count', () => {
+    it('should correctly count the length of an iterable', async () => {
+      const iter = Poly.range(13).async()
+      await expect(iter.count()).to.eventually.equal(13)
+    })
+  })
+
+
   describe('#forEach', () => {
     it('should call the passed function once per element', async () => {
       const called: Array<number> = []

@@ -38,6 +38,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [chunkWhile(func)](./polyethylene.polyasynciterable.chunkwhile.md) |  | Return an iteration of arrays with elements of this separated based on the result of calling <code>func(elements)</code>. |
 |  [complete()](./polyethylene.polyasynciterable.complete.md) |  | Perform this iteration doing nothing. |
 |  [concat(other)](./polyethylene.polyasynciterable.concat.md) |  | Return a new iteration that will iterate over <code>this</code>, then over <code>other</code>. |
+|  [count()](./polyethylene.polyasynciterable.count.md) |  | Return the number of elements on this iteration. |
 |  [drop(num)](./polyethylene.polyasynciterable.drop.md) |  | Return a new iteration that skips the first <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
 |  [dropLast(num)](./polyethylene.polyasynciterable.droplast.md) |  | Return a new iteration that skips the last <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
 |  [dropWhile(func)](./polyethylene.polyasynciterable.dropwhile.md) |  | Return a new iteration that skips the first few elements for which <code>func(element)</code> returns <code>true</code>. |

@@ -6,7 +6,7 @@
 
 Return an iteration of the elements of `this` sorted according to `func`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 sort(func?: Comparator<T>): PolySyncIterable<T>;
@@ -16,9 +16,9 @@ sort(func?: Comparator<T>): PolySyncIterable<T>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  func | [Comparator](./polyethylene.comparator.md)<!-- -->&lt;T&gt; | <i>(Optional)</i> A comparator function |
+|  func | [Comparator](./polyethylene.comparator.md)<!-- -->&lt;T&gt; | _(Optional)_ A comparator function |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 

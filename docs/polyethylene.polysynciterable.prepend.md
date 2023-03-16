@@ -6,7 +6,7 @@
 
 Return a new iteration that will iterate over `other`<!-- -->, then over `this`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 prepend<U>(other: Iterable<U>): PolySyncIterable<T | U>;
@@ -18,7 +18,7 @@ prepend<U>(other: Iterable<U>): PolySyncIterable<T | U>;
 |  --- | --- | --- |
 |  other | Iterable&lt;U&gt; | Iterable to be prepended |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T \| U&gt;
 

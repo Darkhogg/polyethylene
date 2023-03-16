@@ -6,7 +6,7 @@
 
 Return a new iteration that skips the first `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 drop(num: number): PolyAsyncIterable<T>;
@@ -18,7 +18,7 @@ drop(num: number): PolyAsyncIterable<T>;
 |  --- | --- | --- |
 |  num | number | The number of elements to skip |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

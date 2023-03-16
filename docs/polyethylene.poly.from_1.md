@@ -8,7 +8,7 @@ Create a new [PolySyncIterable](./polyethylene.polysynciterable.md) object from 
 
 If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T>): PolySyncIterable<T>;
@@ -20,7 +20,7 @@ function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T>): PolySyncI
 |  --- | --- | --- |
 |  iterableOrFactory | Iterable&lt;T&gt; \| [IterableFactory](./polyethylene.poly.iterablefactory.md)<!-- -->&lt;T&gt; | an iterable or iterable factory used to create the resulting iterable |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 

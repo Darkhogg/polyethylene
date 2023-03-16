@@ -1,8 +1,8 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.33.7",
-    "schemaVersion": 1010,
+    "toolVersion": "7.34.4",
+    "schemaVersion": 1011,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
       "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
@@ -472,6 +472,7 @@
               }
             }
           ],
+          "isAbstract": false,
           "name": "AsyncIterableBuilder",
           "preserveMemberOrder": false,
           "members": [
@@ -517,6 +518,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "[Symbol.asyncIterator]"
             },
             {
@@ -547,6 +549,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "done"
             },
             {
@@ -595,6 +598,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "error"
             },
             {
@@ -630,6 +634,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toPolyAsyncIterable"
             },
             {
@@ -677,6 +682,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "value"
             }
           ],
@@ -2608,6 +2614,7 @@
               }
             }
           ],
+          "isAbstract": false,
           "name": "PolyAsyncIterable",
           "preserveMemberOrder": false,
           "members": [
@@ -2653,6 +2660,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "[Symbol.asyncIterator]"
             },
             {
@@ -2732,6 +2740,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "append"
             },
             {
@@ -2767,6 +2776,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "async"
             },
             {
@@ -2828,6 +2838,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "chunk"
             },
             {
@@ -2894,6 +2905,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "chunkWhile"
             },
             {
@@ -2929,6 +2941,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "complete"
             },
             {
@@ -3008,6 +3021,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "concat"
             },
             {
@@ -3043,6 +3057,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "count"
             },
             {
@@ -3095,6 +3110,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "drop"
             },
             {
@@ -3147,6 +3163,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "dropLast"
             },
             {
@@ -3204,6 +3221,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "dropWhile"
             },
             {
@@ -3278,12 +3296,13 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "every"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#filter:member(1)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true and correctly narrowed to the type asserted by `func`\n *\n * {@label filter_typePred}\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true, correctly narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3373,6 +3392,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "filter"
             },
             {
@@ -3447,12 +3467,13 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "filter"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#filterNotNullish:member(1)",
-              "docComment": "/**\n * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.\n *\n * @remarks\n *\n * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:filter_typePred) filter} with a type predicate function that correctly filters out `null` and `undefined` values from the iteration. Note that other falsy values will remain in the iteration, and that the return value is correctly typed to exclude `null` and `undefined`.\n *\n * @returns A new {@link PolyAsyncIterable} that yields the same elements as `this` except for `null` or `undefined` values\n */\n",
+              "docComment": "/**\n * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.\n *\n * @remarks\n *\n * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type predicate function that correctly filters out `null` and `undefined` values from the iteration. Note that other falsy values will remain in the iteration, and that the return value is correctly typed to exclude `null` and `undefined`.\n *\n * @returns A new {@link PolyAsyncIterable} that yields the same elements as `this` except for `null` or `undefined` values\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3491,6 +3512,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "filterNotNullish"
             },
             {
@@ -3586,6 +3608,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "find"
             },
             {
@@ -3660,6 +3683,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "find"
             },
             {
@@ -3734,6 +3758,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "findIndex"
             },
             {
@@ -3829,6 +3854,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "findLast"
             },
             {
@@ -3903,6 +3929,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "findLast"
             },
             {
@@ -3977,6 +4004,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "findLastIndex"
             },
             {
@@ -4065,6 +4093,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "flat"
             },
             {
@@ -4170,6 +4199,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "flatMap"
             },
             {
@@ -4258,6 +4288,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "flatten"
             },
             {
@@ -4332,6 +4363,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "forEach"
             },
             {
@@ -4428,6 +4460,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "groupBy"
             },
             {
@@ -4480,6 +4513,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "includes"
             },
             {
@@ -4532,6 +4566,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "join"
             },
             {
@@ -4619,6 +4654,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "map"
             },
             {
@@ -4654,6 +4690,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "prefetch"
             },
             {
@@ -4733,6 +4770,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "prepend"
             },
             {
@@ -4806,6 +4844,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "reduce"
             },
             {
@@ -4892,6 +4931,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "reduce"
             },
             {
@@ -4927,6 +4967,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "reverse"
             },
             {
@@ -4995,6 +5036,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "slice"
             },
             {
@@ -5069,6 +5111,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "some"
             },
             {
@@ -5126,6 +5169,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "sort"
             },
             {
@@ -5178,6 +5222,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "take"
             },
             {
@@ -5230,11 +5275,91 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "takeLast"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#takeWhile:member(1)",
+              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this` as long as `func(element)` returns `true`, correctly narrowed to the type asserted by `func`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "takeWhile<U extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedTypePredicate",
+                  "canonicalReference": "polyethylene!IndexedTypePredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, U>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PolyAsyncIterable",
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<U>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "U",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "takeWhile"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolyAsyncIterable#takeWhile:member(2)",
               "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this` as long as `func(element)` returns `true`\n */\n",
               "excerptTokens": [
                 {
@@ -5275,7 +5400,7 @@
               },
               "releaseTag": "Public",
               "isProtected": false,
-              "overloadIndex": 1,
+              "overloadIndex": 2,
               "parameters": [
                 {
                   "parameterName": "func",
@@ -5287,6 +5412,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "takeWhile"
             },
             {
@@ -5361,6 +5487,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "tap"
             },
             {
@@ -5405,6 +5532,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toArray"
             },
             {
@@ -5495,6 +5623,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toMap"
             },
             {
@@ -5594,6 +5723,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toObject"
             },
             {
@@ -5716,6 +5846,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toPartitionArrays"
             },
             {
@@ -5808,6 +5939,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toPartitionArrays"
             },
             {
@@ -5882,6 +6014,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "unique"
             }
           ],
@@ -5930,6 +6063,7 @@
               }
             }
           ],
+          "isAbstract": false,
           "name": "PolySyncIterable",
           "preserveMemberOrder": false,
           "members": [
@@ -5975,6 +6109,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "[Symbol.iterator]"
             },
             {
@@ -6045,6 +6180,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "append"
             },
             {
@@ -6080,6 +6216,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "async"
             },
             {
@@ -6141,6 +6278,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "chunk"
             },
             {
@@ -6207,6 +6345,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "chunkWhile"
             },
             {
@@ -6237,6 +6376,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "complete"
             },
             {
@@ -6307,6 +6447,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "concat"
             },
             {
@@ -6337,6 +6478,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "count"
             },
             {
@@ -6389,6 +6531,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "drop"
             },
             {
@@ -6441,6 +6584,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "dropLast"
             },
             {
@@ -6498,6 +6642,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "dropWhile"
             },
             {
@@ -6550,12 +6695,13 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "every"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#filter:member(1)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true and correctly narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true, correctly narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6628,12 +6774,13 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "filter"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#filter:member(2)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @param func - The function to be called on all elements\n *\n * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @param func - The function to be called on all elements\n *\n * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6685,6 +6832,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "filter"
             },
             {
@@ -6729,6 +6877,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "filterNotNullish"
             },
             {
@@ -6802,6 +6951,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "find"
             },
             {
@@ -6854,6 +7004,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "find"
             },
             {
@@ -6906,6 +7057,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "findIndex"
             },
             {
@@ -6979,6 +7131,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "findLast"
             },
             {
@@ -7031,6 +7184,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "findLast"
             },
             {
@@ -7083,6 +7237,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "findLastIndex"
             },
             {
@@ -7162,6 +7317,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "flat"
             },
             {
@@ -7241,6 +7397,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "flatMap"
             },
             {
@@ -7320,6 +7477,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "flatten"
             },
             {
@@ -7372,6 +7530,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "forEach"
             },
             {
@@ -7451,6 +7610,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "groupBy"
             },
             {
@@ -7498,6 +7658,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "includes"
             },
             {
@@ -7550,6 +7711,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "indexOf"
             },
             {
@@ -7597,6 +7759,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "join"
             },
             {
@@ -7649,6 +7812,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "lastIndexOf"
             },
             {
@@ -7719,6 +7883,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "map"
             },
             {
@@ -7789,6 +7954,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "prepend"
             },
             {
@@ -7857,6 +8023,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "reduce"
             },
             {
@@ -7938,6 +8105,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "reduce"
             },
             {
@@ -7973,6 +8141,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "reverse"
             },
             {
@@ -8041,6 +8210,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "slice"
             },
             {
@@ -8093,6 +8263,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "some"
             },
             {
@@ -8150,6 +8321,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "sort"
             },
             {
@@ -8202,6 +8374,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "take"
             },
             {
@@ -8254,11 +8427,91 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "takeLast"
             },
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#takeWhile:member(1)",
+              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this` as long as `func(element)` returns `true`, correctly narrowed to the type asserted by `func`\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "takeWhile<U extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "T"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(func: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IndexedTypePredicate",
+                  "canonicalReference": "polyethylene!IndexedTypePredicate:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T, U>"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PolySyncIterable",
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<U>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "U",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 6,
+                "endIndex": 8
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "func",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "takeWhile"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#takeWhile:member(2)",
               "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this` as long as `func(element)` returns `true`\n */\n",
               "excerptTokens": [
                 {
@@ -8299,7 +8552,7 @@
               },
               "releaseTag": "Public",
               "isProtected": false,
-              "overloadIndex": 1,
+              "overloadIndex": 2,
               "parameters": [
                 {
                   "parameterName": "func",
@@ -8311,6 +8564,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "takeWhile"
             },
             {
@@ -8368,6 +8622,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "tap"
             },
             {
@@ -8403,6 +8658,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toArray"
             },
             {
@@ -8484,6 +8740,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toMap"
             },
             {
@@ -8574,6 +8831,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toObject"
             },
             {
@@ -8674,6 +8932,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toPartitionArrays"
             },
             {
@@ -8744,6 +9003,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "toPartitionArrays"
             },
             {
@@ -8801,6 +9061,7 @@
                 }
               ],
               "isOptional": false,
+              "isAbstract": false,
               "name": "unique"
             }
           ],

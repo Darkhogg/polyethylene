@@ -6,7 +6,7 @@
 
 Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the previous call to `reducer`<!-- -->, starting by passing `init`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 reduce<U>(reducer: AsyncIndexedReducer<T, U>, init: U): Promise<U>;
@@ -19,7 +19,7 @@ reduce<U>(reducer: AsyncIndexedReducer<T, U>, init: U): Promise<U>;
 |  reducer | [AsyncIndexedReducer](./polyethylene.asyncindexedreducer.md)<!-- -->&lt;T, U&gt; | A function to call for all elements with the result of a previous call |
 |  init | U | First element to be passed to the <code>reducer</code> function |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;U&gt;
 

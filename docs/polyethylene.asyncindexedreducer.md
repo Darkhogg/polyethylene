@@ -6,7 +6,7 @@
 
 A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result or a promise to a new accumulated result for the next call or as a final return value.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type AsyncIndexedReducer<T, U> = (acc: U, item: T, index: number) => U | PromiseLike<U>;

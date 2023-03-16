@@ -195,11 +195,25 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   /**
    * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.
    *
+   * @remarks
+   * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.
+   *
+   * @param func - The function to call on the elements
+   * @returns a new {@link PolySyncIterable} that yields the same the elements of `this` as long as `func(element)`
+   * returns `true`, correctly narrowed to the type asserted by `func`
+   */
+  takeWhile<U extends T> (func: IndexedTypePredicate<T, U>): PolySyncIterable<U>
+
+  /**
+   * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.
+   *
    * @param func - The function to call on the elements
    * @returns a new {@link PolySyncIterable} that yields the same the elements of `this` as long as `func(element)`
    * returns `true`
    */
-  takeWhile (func: IndexedPredicate<T>): PolySyncIterable<T> {
+  takeWhile (func: IndexedPredicate<T>): PolySyncIterable<T>
+
+  takeWhile<U extends T> (func: IndexedPredicate<T> | IndexedTypePredicate<T, U>): PolySyncIterable<T | U> {
     asserts.isFunction(func)
     return new PolySyncIterable(takeWhileGen(this.#iterable, func))
   }
@@ -235,7 +249,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    *
    * @typeParam U - The type asserted by `func`, if any
    * @param func - The function to be called on all elements
-   * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true and correctly
+   * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true, correctly
    * narrowed to the type asserted by `func`
    *
    * {@label FILTER_TYPEPRED}
@@ -246,7 +260,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * Return an iteration of the elements of `this` for which `func(element)` returns `true`.
    *
    * @param func - The function to be called on all elements
-   * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned
+   * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true
    */
   filter (func: IndexedPredicate<T>): PolySyncIterable<T>
 

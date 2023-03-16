@@ -6,7 +6,7 @@
 
 Return an iteration of the elements of `this` for which `func(element)` returns `true`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 filter<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>;
@@ -17,13 +17,13 @@ filter<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptio
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt; | The function to be called on all elements |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;
 
-A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) with only elements for which `func(element)` returned true and correctly narrowed to the type asserted by `func`
+A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) with only elements for which `func(element)` returned true, correctly narrowed to the type asserted by `func`
 
 
 ## Remarks

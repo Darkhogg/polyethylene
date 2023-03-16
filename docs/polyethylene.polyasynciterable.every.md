@@ -6,7 +6,7 @@
 
 Returns `true` if calling `func(element)` returns `true` for every element, and `false` otherwise
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 every(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<boolean>;
@@ -17,9 +17,9 @@ every(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<boo
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | A function to be called on the elements of the iteration |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;boolean&gt;
 

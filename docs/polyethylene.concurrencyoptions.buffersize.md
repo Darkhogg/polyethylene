@@ -6,7 +6,7 @@
 
 Maximum amount of intermediate results to store (defaults to twice the concurrency value)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 bufferSize?: number;

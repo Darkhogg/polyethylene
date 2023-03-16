@@ -6,7 +6,7 @@
 
 Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields numbers from 0 up to, but not including, `to`<!-- -->, with a step of 1.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function range(to: number): PolySyncIterable<number>;
@@ -18,7 +18,7 @@ function range(to: number): PolySyncIterable<number>;
 |  --- | --- | --- |
 |  to | number | Exclusive upper bound of the iteration |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;number&gt;
 

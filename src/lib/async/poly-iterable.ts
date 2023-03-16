@@ -238,11 +238,25 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
   /**
    * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.
    *
+   * @remarks
+   * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.
+   *
+   * @param func - The function to call on the elements
+   * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this` as long as `func(element)`
+   * returns `true`, correctly narrowed to the type asserted by `func`
+   */
+  takeWhile<U extends T> (func: IndexedTypePredicate<T, U>): PolyAsyncIterable<U>
+
+  /**
+   * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.
+   *
    * @param func - The function to call on the elements
    * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this` as long as `func(element)`
    * returns `true`
    */
-  takeWhile (func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T> {
+  takeWhile (func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>
+
+  takeWhile<U extends T> (func: AsyncIndexedPredicate<T> | IndexedTypePredicate<T, U>): PolyAsyncIterable<T | U> {
     asserts.isFunction(func)
     return new PolyAsyncIterable(takeWhileGen(this.#iterable, func))
   }
@@ -279,10 +293,10 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @typeParam U - The type asserted by `func`, if any
    * @param func - The function to be called on all elements
    * @param options - Options for concurrency of this operation
-   * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true and correctly
+   * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true, correctly
    * narrowed to the type asserted by `func`
    *
-   * {@label filter_typePred}
+   * {@label FILTER_TYPEPRED}
    */
   filter<U extends T> (func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>
 
@@ -307,7 +321,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.
    *
    * @remarks
-   * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:filter_typePred) filter} with a type
+   * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type
    * predicate function that correctly filters out `null` and `undefined` values from the iteration.  Note that other
    * falsy values will remain in the iteration, and that the return value is correctly typed to exclude
    * `null` and `undefined`.

@@ -16,12 +16,12 @@ A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the
 
 Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than actually requested of the current one, similarly to [PolyAsyncIterable.prefetch()](./polyethylene.polyasynciterable.prefetch.md)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export default class PolyAsyncIterable<T> implements AsyncIterable<T> 
 ```
-<b>Implements:</b> AsyncIterable&lt;T&gt;
+**Implements:** AsyncIterable&lt;T&gt;
 
 ## Remarks
 
@@ -71,6 +71,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [take(num)](./polyethylene.polyasynciterable.take.md) |  | Return a new iteration that iterates only over the first <code>num</code> elements. If there were less than than <code>num</code> elements in the iteration, all elements are yielded with no additions. |
 |  [takeLast(num)](./polyethylene.polyasynciterable.takelast.md) |  | Return a new iteration that iterates only over the last <code>num</code> elements. If there were less than than <code>num</code> elements in the iteration, all elements are yielded with no additions. |
 |  [takeWhile(func)](./polyethylene.polyasynciterable.takewhile.md) |  | Return a new iteration that yields the first few elements for which <code>func(element)</code> returns <code>true</code>. |
+|  [takeWhile(func)](./polyethylene.polyasynciterable.takewhile_1.md) |  | Return a new iteration that yields the first few elements for which <code>func(element)</code> returns <code>true</code>. |
 |  [tap(func, options)](./polyethylene.polyasynciterable.tap.md) |  | Return an iteration of the same elements as <code>this</code> after calling <code>func(element)</code> for all elements. |
 |  [toArray()](./polyethylene.polyasynciterable.toarray.md) |  | Return an array of all elements of this iteration in the same order that were yielded. |
 |  [toMap(this)](./polyethylene.polyasynciterable.tomap.md) |  | Return a <code>Map</code> made from the entries of <code>this</code>. This method is roughly equivalent to calling <code>new Map(iter.toArray())</code>. |

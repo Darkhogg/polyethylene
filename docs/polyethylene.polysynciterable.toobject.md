@@ -6,7 +6,7 @@
 
 Return an object made from the entries of `this`<!-- -->. This method is roughly equivalent to calling `Object.fromEntires(iter.toArray())`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toObject<K extends PropertyKey, V>(this: PolySyncIterable<readonly [K, V]>): Record<K, V>;
@@ -18,7 +18,7 @@ toObject<K extends PropertyKey, V>(this: PolySyncIterable<readonly [K, V]>): Rec
 |  --- | --- | --- |
 |  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;readonly \[K, V\]&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Record&lt;K, V&gt;
 

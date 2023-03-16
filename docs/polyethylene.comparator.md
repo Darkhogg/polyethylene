@@ -6,7 +6,7 @@
 
 A function that receives two objects `elemA` and `elemB` and returns a number value that is negative if `elemA` should be sorted before `elemB`<!-- -->, positive if `elemA` should be sorted after `elemB`<!-- -->, or `0` if they should be sorted at the same position.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type Comparator<T> = (elemA: T, elemB: T) => number;

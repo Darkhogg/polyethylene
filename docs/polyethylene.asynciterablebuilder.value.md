@@ -6,7 +6,7 @@
 
 Gives the underlying iterable a new value to be yielded.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 value(obj: T): void;
@@ -18,7 +18,7 @@ value(obj: T): void;
 |  --- | --- | --- |
 |  obj | T | The object to be yielded by the underlying iterable |
 
-<b>Returns:</b>
+**Returns:**
 
 void
 

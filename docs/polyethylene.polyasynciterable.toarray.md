@@ -6,12 +6,12 @@
 
 Return an array of all elements of this iteration in the same order that were yielded.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toArray(): Promise<Array<T>>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;Array&lt;T&gt;&gt;
 

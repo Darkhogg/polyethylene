@@ -6,7 +6,7 @@
 
 Return a new iteration that iterates only over the last `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 takeLast(num: number): PolyAsyncIterable<T>;
@@ -18,7 +18,7 @@ takeLast(num: number): PolyAsyncIterable<T>;
 |  --- | --- | --- |
 |  num | number | The number of elements to yield |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

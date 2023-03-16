@@ -8,12 +8,12 @@ A `SyncIterable<T>` with a suite of methods for transforming the iteration into 
 
 The methods of this class are intended to resemble those of `Array`<!-- -->, with added utilities where appropriate and made for any kind of iterable.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export default class PolySyncIterable<T> implements Iterable<T> 
 ```
-<b>Implements:</b> Iterable&lt;T&gt;
+**Implements:** Iterable&lt;T&gt;
 
 ## Remarks
 
@@ -64,6 +64,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [take(num)](./polyethylene.polysynciterable.take.md) |  | Return a new iteration that iterates only over the first <code>num</code> elements. If there were less than than <code>num</code> elements in the iteration, all elements are yielded with no additions. |
 |  [takeLast(num)](./polyethylene.polysynciterable.takelast.md) |  | Return a new iteration that iterates only over the last <code>num</code> elements. If there were less than than <code>num</code> elements in the iteration, all elements are yielded with no additions. |
 |  [takeWhile(func)](./polyethylene.polysynciterable.takewhile.md) |  | Return a new iteration that yields the first few elements for which <code>func(element)</code> returns <code>true</code>. |
+|  [takeWhile(func)](./polyethylene.polysynciterable.takewhile_1.md) |  | Return a new iteration that yields the first few elements for which <code>func(element)</code> returns <code>true</code>. |
 |  [tap(func)](./polyethylene.polysynciterable.tap.md) |  | Return an iteration of the same elements as <code>this</code> after calling <code>func(element)</code> for all elements. |
 |  [toArray()](./polyethylene.polysynciterable.toarray.md) |  | Return an array of all elements of this iteration in the same order that were yielded. |
 |  [toMap(this)](./polyethylene.polysynciterable.tomap.md) |  | Return a <code>Map</code> made from the entries of <code>this</code>. This method is roughly equivalent to calling <code>new Map(iter.toArray())</code>. |

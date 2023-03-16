@@ -6,7 +6,7 @@
 
 Create a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) by passing the `func` function an [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md) object.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function buildWith<T>(func: (builder: AsyncIterableBuilder<T>) => void): PolyAsyncIterable<T>;
@@ -18,7 +18,7 @@ function buildWith<T>(func: (builder: AsyncIterableBuilder<T>) => void): PolyAsy
 |  --- | --- | --- |
 |  func | (builder: [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->&lt;T&gt;) =&gt; void | A function that will receive an object containing the methods <code>value</code>, <code>error</code> and <code>done</code>. |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

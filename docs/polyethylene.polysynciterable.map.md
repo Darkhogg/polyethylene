@@ -6,7 +6,7 @@
 
 Return an iteration of the result of calling `func(element)` for every element in `this`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 map<U>(func: IndexedMapping<T, U>): PolySyncIterable<U>;
@@ -18,7 +18,7 @@ map<U>(func: IndexedMapping<T, U>): PolySyncIterable<U>;
 |  --- | --- | --- |
 |  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, U&gt; | A function that takes an element of <code>this</code> and returns something else |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;
 

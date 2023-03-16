@@ -6,7 +6,7 @@
 
 A function with no arguments that returns an `AsyncIterable`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type AsyncIterableFactory<T> = () => AsyncIterable<T>;

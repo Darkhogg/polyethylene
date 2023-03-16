@@ -8,12 +8,12 @@ A class that helps with building an [AsyncIterable](https://developer.mozilla.or
 
 In order to create the iteration, you must call the [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods with appropriate arguments.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export default class AsyncIterableBuilder<T> implements AsyncIterable<T> 
 ```
-<b>Implements:</b> AsyncIterable&lt;T&gt;
+**Implements:** AsyncIterable&lt;T&gt;
 
 ## Remarks
 

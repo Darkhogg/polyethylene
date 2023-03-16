@@ -6,7 +6,7 @@
 
 Returns the last element for which `func(element)` returns `true`<!-- -->, or `undefined` if it never does.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 findLast(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<T | undefined>;
@@ -17,9 +17,9 @@ findLast(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | A boolean returning function called for elements of <code>this</code> |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;T \| undefined&gt;
 

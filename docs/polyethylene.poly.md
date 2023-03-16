@@ -6,7 +6,7 @@
 
 Main namespace for the creation of [PolySyncIterable](./polyethylene.polysynciterable.md) and [PolyAsyncIterable](./polyethylene.polyasynciterable.md) objects.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export declare namespace Poly 

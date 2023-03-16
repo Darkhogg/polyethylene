@@ -6,12 +6,12 @@
 
 Return an iteration of the elements of `this` in reverse order.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 reverse(): PolySyncIterable<T>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 

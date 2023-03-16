@@ -6,7 +6,7 @@
 
 Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the \_truthy elements\_) and one for which it returns `false` (the \_falsy elements\_).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toPartitionArrays(func: IndexedPredicate<T>): [Array<T>, Array<T>];
@@ -18,7 +18,7 @@ toPartitionArrays(func: IndexedPredicate<T>): [Array<T>, Array<T>];
 |  --- | --- | --- |
 |  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; | A function that will be called for all elements to split them into the result arrays |
 
-<b>Returns:</b>
+**Returns:**
 
 \[Array&lt;T&gt;, Array&lt;T&gt;\]
 

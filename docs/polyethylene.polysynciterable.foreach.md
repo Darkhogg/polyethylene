@@ -6,7 +6,7 @@
 
 Call a function for each element of `this` iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 forEach(func: IndexedRunnable<T>): void;
@@ -18,7 +18,7 @@ forEach(func: IndexedRunnable<T>): void;
 |  --- | --- | --- |
 |  func | [IndexedRunnable](./polyethylene.indexedrunnable.md)<!-- -->&lt;T&gt; | A function to be called for every element of the iteration |
 
-<b>Returns:</b>
+**Returns:**
 
 void
 

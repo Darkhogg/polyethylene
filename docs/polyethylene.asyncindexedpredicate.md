@@ -6,7 +6,7 @@
 
 A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a `boolean` value or a `Promise` to a `boolean` value.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type AsyncIndexedPredicate<T> = (elem: T, index: number) => boolean | PromiseLike<boolean>;

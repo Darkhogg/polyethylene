@@ -6,7 +6,7 @@
 
 Returns whether an element is present in this iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 includes(obj: T): boolean;
@@ -18,7 +18,7 @@ includes(obj: T): boolean;
 |  --- | --- | --- |
 |  obj | T | The element to search in the iteration |
 
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

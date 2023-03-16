@@ -6,12 +6,12 @@
 
 Allows this class to work as a regular `Iterable<T>`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 [Symbol.iterator](): Generator<T, void, undefined>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Generator&lt;T, void, undefined&gt;
 

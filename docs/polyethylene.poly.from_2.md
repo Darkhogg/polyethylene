@@ -10,7 +10,7 @@ If the passed argument is a function, it will be called with no arguments and it
 
 Whether the resulting iterable is sync or async depends on the input being sync or async.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIterable<T> | AsyncIterableFactory<T>): PolySyncIterable<T> | PolyAsyncIterable<T>;
@@ -22,7 +22,7 @@ function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIter
 |  --- | --- | --- |
 |  iterableOrFactory | Iterable&lt;T&gt; \| [IterableFactory](./polyethylene.poly.iterablefactory.md)<!-- -->&lt;T&gt; \| AsyncIterable&lt;T&gt; \| [AsyncIterableFactory](./polyethylene.poly.asynciterablefactory.md)<!-- -->&lt;T&gt; | a sync or async iterable or iterable factory used to create the resulting iterable |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt; \| [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

@@ -6,12 +6,12 @@
 
 Makes the underlying iterable finish the iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 done(): void;
 ```
-<b>Returns:</b>
+**Returns:**
 
 void
 

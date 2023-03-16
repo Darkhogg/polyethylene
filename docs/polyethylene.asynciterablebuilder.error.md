@@ -6,7 +6,7 @@
 
 Makes the underlying iterable throw the given `error` object.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 error(error: Error): void;
@@ -18,7 +18,7 @@ error(error: Error): void;
 |  --- | --- | --- |
 |  error | Error | The error to be thrown by the underlying iterable |
 
-<b>Returns:</b>
+**Returns:**
 
 void
 

@@ -6,7 +6,7 @@
 
 A function that receives an element (`elem`<!-- -->) of the iteration and the first and last element of a chunk, and returns a boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk (if `true`<!-- -->) or be the start of a new chunk (if `false`<!-- -->)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type AsyncChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boolean | PromiseLike<boolean>;

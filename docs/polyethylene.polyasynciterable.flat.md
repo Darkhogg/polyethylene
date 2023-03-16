@@ -6,7 +6,7 @@
 
 Return an iteration of the yielded elements of the sub-iterables.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flat<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIterable<U>;
@@ -18,7 +18,7 @@ flat<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncItera
 |  --- | --- | --- |
 |  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;
 

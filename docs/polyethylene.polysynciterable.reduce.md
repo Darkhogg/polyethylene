@@ -6,7 +6,7 @@
 
 Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the previous call to `reducer`<!-- -->, starting by passing `init` or, if not present, the first element of the iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 reduce(reducer: IndexedReducer<T, T>, init?: T): T;
@@ -17,9 +17,9 @@ reduce(reducer: IndexedReducer<T, T>, init?: T): T;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  reducer | [IndexedReducer](./polyethylene.indexedreducer.md)<!-- -->&lt;T, T&gt; | A function to call for all elements with the result of a previous call |
-|  init | T | <i>(Optional)</i> First element to be passed to the <code>reducer</code> function |
+|  init | T | _(Optional)_ First element to be passed to the <code>reducer</code> function |
 
-<b>Returns:</b>
+**Returns:**
 
 T
 

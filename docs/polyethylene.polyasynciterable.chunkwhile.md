@@ -6,7 +6,7 @@
 
 Return an iteration of arrays with elements of this separated based on the result of calling `func(elements)`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 chunkWhile(func: AsyncChunkingPredicate<T>): PolyAsyncIterable<Array<T>>;
@@ -18,7 +18,7 @@ chunkWhile(func: AsyncChunkingPredicate<T>): PolyAsyncIterable<Array<T>>;
 |  --- | --- | --- |
 |  func | [AsyncChunkingPredicate](./polyethylene.asyncchunkingpredicate.md)<!-- -->&lt;T&gt; | A function that decides if an element is part of the current chunk or initiates a new one |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;
 

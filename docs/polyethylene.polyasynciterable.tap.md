@@ -6,7 +6,7 @@
 
 Return an iteration of the same elements as `this` after calling `func(element)` for all elements.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 tap(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
@@ -17,9 +17,9 @@ tap(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): PolyAsyncItera
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedRunnable](./polyethylene.asyncindexedrunnable.md)<!-- -->&lt;T&gt; | A function called for all elements |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

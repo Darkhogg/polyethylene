@@ -6,7 +6,7 @@
 
 A function with no arguments that returns an `Iterable`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 type IterableFactory<T> = () => Iterable<T>;

@@ -6,7 +6,7 @@
 
 Returns the index of the last element for which `func(element)` returns `true`<!-- -->, or `-1` if it never does.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 findLastIndex(func: IndexedPredicate<T>): number;
@@ -18,7 +18,7 @@ findLastIndex(func: IndexedPredicate<T>): number;
 |  --- | --- | --- |
 |  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; | A boolean returning function called for elements of <code>this</code> |
 
-<b>Returns:</b>
+**Returns:**
 
 number
 

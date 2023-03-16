@@ -6,7 +6,7 @@
 
 Returns the index of the first element for which `func(element)` returns `true`<!-- -->, or `-1` if it never does.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 findIndex(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<number>;
@@ -17,9 +17,9 @@ findIndex(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | A boolean returning function called for elements of <code>this</code> |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;number&gt;
 

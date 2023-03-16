@@ -6,7 +6,7 @@
 
 Maximum amount of promises to launch at the same time (defaults to 1)
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 concurrency?: number;

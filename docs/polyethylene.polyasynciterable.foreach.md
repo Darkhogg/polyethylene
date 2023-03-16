@@ -6,7 +6,7 @@
 
 Call a function for each element of `this` iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 forEach(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): Promise<void>;
@@ -17,9 +17,9 @@ forEach(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): Promise<vo
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedRunnable](./polyethylene.asyncindexedrunnable.md)<!-- -->&lt;T&gt; | A function to be called for every element of the iteration |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;void&gt;
 

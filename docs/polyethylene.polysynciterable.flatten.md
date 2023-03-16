@@ -6,7 +6,7 @@
 
 Return an iteration of the yielded elements of the sub-iterables.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flatten<U>(this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U>;
@@ -18,7 +18,7 @@ flatten<U>(this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U>;
 |  --- | --- | --- |
 |  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Iterable&lt;U&gt;&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;
 

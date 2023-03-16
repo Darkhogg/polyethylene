@@ -6,7 +6,7 @@
 
 Return an iteration of elements of the sub-iterables that result from calling `func(element)` for every element in `this`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flatMap<U>(func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U>;
@@ -18,7 +18,7 @@ flatMap<U>(func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U>;
 |  --- | --- | --- |
 |  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, Iterable&lt;U&gt;&gt; | A function that takes an element of <code>this</code> and returns an iterable |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;
 

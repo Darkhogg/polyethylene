@@ -6,12 +6,12 @@
 
 Return a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields no elements upon iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function empty<T = never>(): PolySyncIterable<T>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 

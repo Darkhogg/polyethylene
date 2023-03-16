@@ -6,12 +6,12 @@
 
 Return the number of elements on this iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 count(): number;
 ```
-<b>Returns:</b>
+**Returns:**
 
 number
 

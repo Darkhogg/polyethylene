@@ -6,7 +6,7 @@
 
 A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a `boolean` value.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type IndexedPredicate<T> = (elem: T, index: number) => boolean;

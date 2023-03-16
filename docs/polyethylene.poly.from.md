@@ -8,7 +8,7 @@ Create a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) object fro
 
 If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function from<T>(iterableOrFactory: AsyncIterable<T> | AsyncIterableFactory<T>): PolyAsyncIterable<T>;
@@ -20,7 +20,7 @@ function from<T>(iterableOrFactory: AsyncIterable<T> | AsyncIterableFactory<T>):
 |  --- | --- | --- |
 |  iterableOrFactory | AsyncIterable&lt;T&gt; \| [AsyncIterableFactory](./polyethylene.poly.asynciterablefactory.md)<!-- -->&lt;T&gt; | an async iterable or async iterable factory used to create the resulting async iterable |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

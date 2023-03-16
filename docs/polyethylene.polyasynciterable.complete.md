@@ -6,12 +6,12 @@
 
 Perform this iteration doing nothing.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 complete(): Promise<void>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;void&gt;
 

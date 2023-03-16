@@ -6,7 +6,7 @@
 
 Options for concurrency.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export interface ConcurrencyOptions 
@@ -16,6 +16,6 @@ export interface ConcurrencyOptions
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [bufferSize?](./polyethylene.concurrencyoptions.buffersize.md) |  | number | <i>(Optional)</i> Maximum amount of intermediate results to store (defaults to twice the concurrency value) |
-|  [concurrency?](./polyethylene.concurrencyoptions.concurrency.md) |  | number | <i>(Optional)</i> Maximum amount of promises to launch at the same time (defaults to 1) |
+|  [bufferSize?](./polyethylene.concurrencyoptions.buffersize.md) |  | number | _(Optional)_ Maximum amount of intermediate results to store (defaults to twice the concurrency value) |
+|  [concurrency?](./polyethylene.concurrencyoptions.concurrency.md) |  | number | _(Optional)_ Maximum amount of promises to launch at the same time (defaults to 1) |
 

@@ -6,12 +6,12 @@
 
 Return an iteration of all the elements as `this` that aren't `null` or `undefined`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 filterNotNullish(): PolySyncIterable<NonNullable<T>>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;NonNullable&lt;T&gt;&gt;
 

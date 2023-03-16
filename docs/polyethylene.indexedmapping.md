@@ -6,7 +6,7 @@
 
 A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a different object
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type IndexedMapping<T, U> = (elem: T, index: number) => U;

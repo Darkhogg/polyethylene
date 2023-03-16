@@ -6,7 +6,7 @@
 
 Return a `Map` made from the entries of `this`<!-- -->. This method is roughly equivalent to calling `new Map(iter.toArray())`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toMap<K, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Map<K, V>>;
@@ -18,7 +18,7 @@ toMap<K, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Map<K, V>>;
 |  --- | --- | --- |
 |  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;readonly \[K, V\]&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;Map&lt;K, V&gt;&gt;
 

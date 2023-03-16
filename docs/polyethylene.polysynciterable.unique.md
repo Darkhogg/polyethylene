@@ -6,7 +6,7 @@
 
 Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is the same for both elements.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unique(func?: IndexedMapping<T, unknown>): PolySyncIterable<T>;
@@ -16,9 +16,9 @@ unique(func?: IndexedMapping<T, unknown>): PolySyncIterable<T>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, unknown&gt; | <i>(Optional)</i> A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
+|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, unknown&gt; | _(Optional)_ A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 

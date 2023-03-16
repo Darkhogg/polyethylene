@@ -6,7 +6,7 @@
 
 Return a `Map` made from the entries of `this`<!-- -->. This method is roughly equivalent to calling `new Map(iter.toArray())`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toMap<K, V>(this: PolySyncIterable<readonly [K, V]>): Map<K, V>;
@@ -18,7 +18,7 @@ toMap<K, V>(this: PolySyncIterable<readonly [K, V]>): Map<K, V>;
 |  --- | --- | --- |
 |  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;readonly \[K, V\]&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 Map&lt;K, V&gt;
 

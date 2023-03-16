@@ -127,6 +127,7 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     sort(func?: Comparator<T>): PolyAsyncIterable<T>;
     take(num: number): PolyAsyncIterable<T>;
     takeLast(num: number): PolyAsyncIterable<T>;
+    takeWhile<U extends T>(func: IndexedTypePredicate<T, U>): PolyAsyncIterable<U>;
     takeWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
     tap(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
     toArray(): Promise<Array<T>>;
@@ -183,6 +184,7 @@ export class PolySyncIterable<T> implements Iterable<T> {
     sort(func?: Comparator<T>): PolySyncIterable<T>;
     take(num?: number): PolySyncIterable<T>;
     takeLast(num?: number): PolySyncIterable<T>;
+    takeWhile<U extends T>(func: IndexedTypePredicate<T, U>): PolySyncIterable<U>;
     takeWhile(func: IndexedPredicate<T>): PolySyncIterable<T>;
     tap(func: IndexedRunnable<T>): PolySyncIterable<T>;
     toArray(): Array<T>;

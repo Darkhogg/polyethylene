@@ -6,7 +6,7 @@
 
 Return a new iteration that starts from the `start`<!-- -->th element (included) and ends at the `end`<!-- -->th element (excluded) of `this`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 slice(start: number, end?: number): PolyAsyncIterable<T>;
@@ -17,9 +17,9 @@ slice(start: number, end?: number): PolyAsyncIterable<T>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  start | number | The index of the first element returned |
-|  end | number | <i>(Optional)</i> The index of the first element \*not\* returned, inclusive |
+|  end | number | _(Optional)_ The index of the first element \*not\* returned, inclusive |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

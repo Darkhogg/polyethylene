@@ -6,7 +6,7 @@
 
 A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a `boolean` value indicating if `elem` is of the generic type `U`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type IndexedTypePredicate<T, U extends T> = (elem: T, index: number) => elem is U;

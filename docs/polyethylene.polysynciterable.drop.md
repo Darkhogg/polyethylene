@@ -6,7 +6,7 @@
 
 Return a new iteration that skips the first `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 drop(num?: number): PolySyncIterable<T>;
@@ -16,9 +16,9 @@ drop(num?: number): PolySyncIterable<T>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  num | number | <i>(Optional)</i> The number of elements to skip |
+|  num | number | _(Optional)_ The number of elements to skip |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 

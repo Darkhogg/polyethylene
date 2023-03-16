@@ -6,12 +6,12 @@
 
 Return a new [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->, an iterable object that can be constructed by calling its methods.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function builder<T>(): AsyncIterableBuilder<T>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->&lt;T&gt;
 

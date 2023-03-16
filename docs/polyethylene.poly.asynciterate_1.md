@@ -6,7 +6,7 @@
 
 Returns a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that will yield the values returned from calling `func` with the value last returned, or `initValue` when called for the first time.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function asyncIterate<T>(func: (lastValue: T) => T | Promise<T>, initValue: T): PolyAsyncIterable<T>;
@@ -19,7 +19,7 @@ function asyncIterate<T>(func: (lastValue: T) => T | Promise<T>, initValue: T): 
 |  func | (lastValue: T) =&gt; T \| Promise&lt;T&gt; | The function that will be called to generate new elements of the iteration |
 |  initValue | T |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

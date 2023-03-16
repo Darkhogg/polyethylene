@@ -6,7 +6,7 @@
 
 Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the \_truthy elements\_) and one for which it returns `false` (the \_falsy elements\_).
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toPartitionArrays(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<[Array<T>, Array<T>]>;
@@ -17,9 +17,9 @@ toPartitionArrays(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions):
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | A function that will be called for all elements to split them into the result arrays |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;\[Array&lt;T&gt;, Array&lt;T&gt;\]&gt;
 

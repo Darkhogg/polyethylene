@@ -6,21 +6,25 @@
 
 Return a new iteration that yields the first few elements for which `func(element)` returns `true`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
-takeWhile(func: IndexedPredicate<T>): PolySyncIterable<T>;
+takeWhile<U extends T>(func: IndexedTypePredicate<T, U>): PolySyncIterable<U>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; | The function to call on the elements |
+|  func | [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt; | The function to call on the elements |
 
-<b>Returns:</b>
+**Returns:**
 
-[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;
 
-a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same the elements of `this` as long as `func(element)` returns `true`
+a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same the elements of `this` as long as `func(element)` returns `true`<!-- -->, correctly narrowed to the type asserted by `func`
+
+## Remarks
+
+Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`<!-- -->.
 

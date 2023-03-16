@@ -6,7 +6,7 @@
 
 Returns `true` if calling `func(element)` returns `true` for at least one element, and `false` otherwise
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 some(func: IndexedPredicate<T>): boolean;
@@ -18,7 +18,7 @@ some(func: IndexedPredicate<T>): boolean;
 |  --- | --- | --- |
 |  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; | A function to be called on the elements of the iteration |
 
-<b>Returns:</b>
+**Returns:**
 
 boolean
 

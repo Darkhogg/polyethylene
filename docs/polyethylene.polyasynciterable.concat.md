@@ -6,7 +6,7 @@
 
 Return a new iteration that will iterate over `this`<!-- -->, then over `other`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 concat<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
@@ -18,7 +18,7 @@ concat<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
 |  --- | --- | --- |
 |  other | Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt; | Iterable to be appended |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T \| U&gt;
 

@@ -6,7 +6,7 @@
 
 Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the passed argument forever, without ending.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function repeat<T>(value: T): PolySyncIterable<T>;
@@ -18,7 +18,7 @@ function repeat<T>(value: T): PolySyncIterable<T>;
 |  --- | --- | --- |
 |  value | T | The reapeated element |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 

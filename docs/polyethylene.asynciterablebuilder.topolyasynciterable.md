@@ -6,12 +6,12 @@
 
 Get a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates the elements as determined by calls to `this` object's [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 toPolyAsyncIterable(): PolyAsyncIterable<T>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

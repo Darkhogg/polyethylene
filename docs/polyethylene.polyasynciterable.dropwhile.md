@@ -6,7 +6,7 @@
 
 Return a new iteration that skips the first few elements for which `func(element)` returns `true`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 dropWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
@@ -18,7 +18,7 @@ dropWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
 |  --- | --- | --- |
 |  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | The function to call on the elements |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

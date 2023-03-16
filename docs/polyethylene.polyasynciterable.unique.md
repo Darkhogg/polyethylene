@@ -6,7 +6,7 @@
 
 Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is the same for both elements.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 unique(func?: AsyncIndexedMapping<T, unknown>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
@@ -16,10 +16,10 @@ unique(func?: AsyncIndexedMapping<T, unknown>, options?: ConcurrencyOptions): Po
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, unknown&gt; | <i>(Optional)</i> A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, unknown&gt; | _(Optional)_ A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

@@ -6,7 +6,7 @@
 
 Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as `Object.values` would.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function values<V>(obj: Record<string | number | symbol, V>): PolySyncIterable<V>;
@@ -18,7 +18,7 @@ function values<V>(obj: Record<string | number | symbol, V>): PolySyncIterable<V
 |  --- | --- | --- |
 |  obj | Record&lt;string \| number \| symbol, V&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;V&gt;
 

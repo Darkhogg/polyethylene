@@ -6,7 +6,7 @@
 
 A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and either returns a `Promise` to nothing or doesn't return anything
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type AsyncIndexedRunnable<T> = (elem: T, index: number) => void | PromiseLike<void>;

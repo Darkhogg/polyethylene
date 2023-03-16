@@ -6,12 +6,12 @@
 
 Return the same iteration, but with its elements requested with anticipation to allow for asynchronous operations to begin and reduce wait times.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 prefetch(): PolyAsyncIterable<T>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

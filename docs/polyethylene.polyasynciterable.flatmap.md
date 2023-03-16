@@ -6,7 +6,7 @@
 
 Return an iteration of elements of the sub-iterables that result from calling `func(element)` for every element in `this`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 flatMap<U>(func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>, options?: ConcurrencyOptions): PolyAsyncIterable<U>;
@@ -17,9 +17,9 @@ flatMap<U>(func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>, options
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;&gt; | A function that takes an element of <code>this</code> and returns an iterable |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;
 

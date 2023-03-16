@@ -6,7 +6,7 @@
 
 Return an iteration of arrays of size `num` (except possibly the last) containing groupings of elements of `this` iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 chunk(num?: number): PolySyncIterable<Array<T>>;
@@ -16,9 +16,9 @@ chunk(num?: number): PolySyncIterable<Array<T>>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  num | number | <i>(Optional)</i> Size of the chunks |
+|  num | number | _(Optional)_ Size of the chunks |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;
 

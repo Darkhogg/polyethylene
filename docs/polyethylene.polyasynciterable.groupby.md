@@ -6,7 +6,7 @@
 
 Return an iteration of group pairs, where the first element is a \_group key\_ and the second is an iterable of all the elements for which `func(element)` returned the key.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 groupBy<K>(func: AsyncIndexedMapping<T, K>, options?: ConcurrencyOptions): PolyAsyncIterable<[K, Array<T>]>;
@@ -17,9 +17,9 @@ groupBy<K>(func: AsyncIndexedMapping<T, K>, options?: ConcurrencyOptions): PolyA
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, K&gt; | A function that returns the grouping key of each element |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | <i>(Optional)</i> Options for concurrency of this operation |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, Array&lt;T&gt;\]&gt;
 

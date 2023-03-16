@@ -6,7 +6,7 @@
 
 Return a new iteration that will iterate over `other`<!-- -->, then over `this`<!-- -->.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 prepend<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
@@ -18,7 +18,7 @@ prepend<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
 |  --- | --- | --- |
 |  other | Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt; | Iterable to be prepended |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T \| U&gt;
 

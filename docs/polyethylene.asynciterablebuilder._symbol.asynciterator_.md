@@ -6,12 +6,12 @@
 
 Allows this class to work as a regular `AsyncIterable<T>`
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 [Symbol.asyncIterator](): AsyncIterator<T>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 AsyncIterator&lt;T&gt;
 

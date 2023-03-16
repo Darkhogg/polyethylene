@@ -6,7 +6,7 @@
 
 A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and doesn't return anything
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 export type IndexedRunnable<T> = (elem: T, index: number) => void;

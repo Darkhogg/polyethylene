@@ -6,7 +6,7 @@
 
 Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that will yield the values returned from calling `func` with the value last returned, or `initValue` when called for the first time.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 function syncIterate<T>(func: (lastValue: T) => T, initValue: T): PolySyncIterable<T>;
@@ -19,7 +19,7 @@ function syncIterate<T>(func: (lastValue: T) => T, initValue: T): PolySyncIterab
 |  func | (lastValue: T) =&gt; T | The function that will be called to generate new elements of the iteration |
 |  initValue | T |  |
 
-<b>Returns:</b>
+**Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 

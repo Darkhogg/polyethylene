@@ -4,7 +4,7 @@
 
 ## PolySyncIterable.lastIndexOf() method
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 lastIndexOf(func: IndexedPredicate<T>): number;
@@ -16,7 +16,7 @@ lastIndexOf(func: IndexedPredicate<T>): number;
 |  --- | --- | --- |
 |  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; |  |
 
-<b>Returns:</b>
+**Returns:**
 
 number
 

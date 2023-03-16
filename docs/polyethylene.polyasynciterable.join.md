@@ -6,7 +6,7 @@
 
 Return the result of joining the elements of `this` with the given `glue`<!-- -->, or `','` if no glue is given.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 join(glue?: string): Promise<string>;
@@ -16,9 +16,9 @@ join(glue?: string): Promise<string>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  glue | string | <i>(Optional)</i> The string to use for joining the elements |
+|  glue | string | _(Optional)_ The string to use for joining the elements |
 
-<b>Returns:</b>
+**Returns:**
 
 Promise&lt;string&gt;
 

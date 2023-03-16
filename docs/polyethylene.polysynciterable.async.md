@@ -6,12 +6,12 @@
 
 Return an async version of this same iteration.
 
-<b>Signature:</b>
+**Signature:**
 
 ```typescript
 async(): PolyAsyncIterable<T>;
 ```
-<b>Returns:</b>
+**Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 

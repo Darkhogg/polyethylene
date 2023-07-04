@@ -9,14 +9,14 @@ Return a `Map` made from the entries of `this`<!-- -->. This method is roughly e
 **Signature:**
 
 ```typescript
-toMap<K, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Map<K, V>>;
+toMap<K, V>(this: PolyAsyncIterable<[K, V] | readonly [K, V]>): Promise<Map<K, V>>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;readonly \[K, V\]&gt; |  |
+|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, V\] \| readonly \[K, V\]&gt; |  |
 
 **Returns:**
 

@@ -373,7 +373,31 @@ describe('Async Iterable', () => {
     })
 
     it('should throw if passed argument is not a function', () => {
-      expect(() => Poly.syncFrom([]).async().map('foo' as any)).to.throw()
+      expect(() => Poly.asyncFrom([]).map('foo' as any)).to.throw()
+    })
+  })
+
+
+  describe('#mapKeys', () => {
+    it('should yield key-value pairs with correctly mapped key', () => {
+      const iter = Poly.entries({a: 1, b: 2, c: 3}).async().mapKeys(([k, n]) => k.toUpperCase())
+      expect(collectAsync(iter)).to.eventually.deep.equal([['A', 1], ['B', 2], ['C', 3]])
+    })
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.asyncFrom([]).mapKeys('foo' as any)).to.throw()
+    })
+  })
+
+
+  describe('#mapValues', () => {
+    it('should yield key-value pairs with correctly mapped value', () => {
+      const iter = Poly.entries({a: 1, b: 2, c: 3}).async().mapValues(([k, n]) => n * n)
+      expect(collectAsync(iter)).to.eventually.deep.equal([['a', 1], ['b', 4], ['c', 9]])
+    })
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.asyncFrom([]).mapValues('foo' as any)).to.throw()
     })
   })
 

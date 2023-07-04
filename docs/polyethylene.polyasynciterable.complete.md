@@ -9,8 +9,15 @@ Perform this iteration doing nothing.
 **Signature:**
 
 ```typescript
-complete(): Promise<void>;
+complete(options?: ConcurrencyOptions): Promise<void>;
 ```
+
+## Parameters
+
+|  Parameter | Type | Description |
+|  --- | --- | --- |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+
 **Returns:**
 
 Promise&lt;void&gt;

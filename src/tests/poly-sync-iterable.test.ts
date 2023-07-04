@@ -369,6 +369,30 @@ describe('Sync Iterable', () => {
   })
 
 
+  describe('#mapKeys', () => {
+    it('should yield key-value pairs with correctly mapped key', () => {
+      const iter = Poly.entries({a: 1, b: 2, c: 3}).mapKeys(([k, n]) => k.toUpperCase())
+      expect(collectSync(iter)).to.deep.equal([['A', 1], ['B', 2], ['C', 3]])
+    })
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.syncFrom([]).mapKeys('foo' as any)).to.throw()
+    })
+  })
+
+
+  describe('#mapValues', () => {
+    it('should yield key-value pairs with correctly mapped value', () => {
+      const iter = Poly.entries({a: 1, b: 2, c: 3}).mapValues(([k, n]) => n * n)
+      expect(collectSync(iter)).to.deep.equal([['a', 1], ['b', 4], ['c', 9]])
+    })
+
+    it('should throw if passed argument is not a function', () => {
+      expect(() => Poly.syncFrom([]).mapValues('foo' as any)).to.throw()
+    })
+  })
+
+
   describe('#tap', () => {
     it('should yield elements of original iteration', () => {
       const iter = Poly.syncFrom([1, 2, 3]).tap((n) => n * n)

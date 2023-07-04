@@ -9,14 +9,14 @@ Return a `Map` made from the entries of `this`<!-- -->. This method is roughly e
 **Signature:**
 
 ```typescript
-toMap<K, V>(this: PolySyncIterable<readonly [K, V]>): Map<K, V>;
+toMap<K, V>(this: PolySyncIterable<[K, V] | readonly [K, V]>): Map<K, V>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;readonly \[K, V\]&gt; |  |
+|  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K, V\] \| readonly \[K, V\]&gt; |  |
 
 **Returns:**
 

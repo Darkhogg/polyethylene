@@ -9,7 +9,7 @@ Return the result of joining the elements of `this` with the given `glue`<!-- --
 **Signature:**
 
 ```typescript
-join(glue?: string): Promise<string>;
+join(glue?: string, options?: ConcurrencyOptions): Promise<string>;
 ```
 
 ## Parameters
@@ -17,6 +17,7 @@ join(glue?: string): Promise<string>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  glue | string | _(Optional)_ The string to use for joining the elements |
+|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
 
 **Returns:**
 

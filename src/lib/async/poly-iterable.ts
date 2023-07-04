@@ -45,6 +45,9 @@ export interface ConcurrencyOptions {
 }
 
 
+const NOOP = <T>(x: T): T => x
+
+
 /**
  * An `AsyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a
  * single result from it.
@@ -348,6 +351,52 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
   }
 
   /**
+   * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as
+   * the first element of the pair (the *key*) and preserving the second (the *value*).
+   *
+   * @remarks
+   * This method is only available for iterations of pairs.
+   *
+   * @typeParam U - The return type of `func` and the generic type of the resulting iterable
+   * @param func - A function that takes an element of `this` and returns something else
+   * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
+   * for every element of `this` and using it to replace the keys
+   */
+  mapKeys<K1, K2, V> (
+    this: PolyAsyncIterable<[K1, V]>,
+    func: AsyncIndexedMapping<[K1, V], K2>,
+    options: ConcurrencyOptions = {},
+  ): PolyAsyncIterable<[K2, V]> {
+    asserts.isFunction(func)
+    return new PolyAsyncIterable(
+      mapGen(this.#iterable, async ([k, v], index) => [await func([k, v], index), v], options),
+    )
+  }
+
+  /**
+   * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as
+   * the second element of the pair (the *value*) and preserving the first (the *key*).
+   *
+   * @remarks
+   * This method is only available for iterations of pairs.
+   *
+   * @typeParam U - The return type of `func` and the generic type of the resulting iterable
+   * @param func - A function that takes an element of `this` and returns something else
+   * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
+   * for every element of `this` and using it to replace the values
+   */
+  mapValues<K, V1, V2> (
+    this: PolyAsyncIterable<[K, V1]>,
+    func: AsyncIndexedMapping<[K, V1], V2>,
+    options: ConcurrencyOptions = {},
+  ): PolyAsyncIterable<[K, V2]> {
+    asserts.isFunction(func)
+    return new PolyAsyncIterable(
+      mapGen(this.#iterable, async ([k, v], index) => [k, await func([k, v], index)], options),
+    )
+  }
+
+  /**
    * Return an iteration of the same elements as `this` after calling `func(element)` for all elements.
    *
    * @typeParam U - The return type of `func`
@@ -601,7 +650,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @returns A promise to an object composed of the entries yielded by this iterable.
    */
   async toObject<K extends PropertyKey, V> (
-    this: PolyAsyncIterable<readonly [K, V]>,
+    this: PolyAsyncIterable<[K, V] | readonly [K, V]>,
   ): Promise<Record<K, V>> {
     const object = {} as Record<K, V>
     for await (const [key, value] of this.#iterable) {
@@ -619,7 +668,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @returns A promise to a `Map` composed of the entries yielded by this iterable.
    */
-  async toMap<K, V> (this: PolyAsyncIterable<readonly [K, V]>): Promise<Map<K, V>> {
+  async toMap<K, V> (this: PolyAsyncIterable<[K, V] | readonly [K, V]>): Promise<Map<K, V>> {
     const map = new Map<K, V>()
 
     const iterable = this.#iterable
@@ -931,14 +980,16 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * `null` or `undefined` elements are treated as empty strings.
    *
    * @param glue - The string to use for joining the elements
+   * @param options - Options for concurrency of this operation
    * @returns A promise to a string concatenating all elements of `this` using the given `glue`
    */
-  async join (glue: string = ','): Promise<string> {
+  async join (glue: string = ',', options: ConcurrencyOptions = {}): Promise<string> {
     let str = ''
     let first = true
 
-    for await (const elem of this.#iterable) {
-      str += (first ? '' : glue) + (elem == null ? '' : elem)
+    const concIter = new ConcurrentMapper(this.#iterable, NOOP, options)
+    for await (const elem of concIter) {
+      str += (first ? '' : glue) + (elem.mapped ?? '')
       first = false
     }
 
@@ -948,11 +999,13 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
   /**
    * Perform this iteration doing nothing.
    *
+   * @param options - Options for concurrency of this operation
    * @returns a promise that will resolve when the iteration is done
    */
-  async complete (): Promise<void> {
+  async complete (options: ConcurrencyOptions = {}): Promise<void> {
     /* eslint-disable-next-line no-unused-vars */
-    for await (const elem of this.#iterable) {
+    const concIter = new ConcurrentMapper(this.#iterable, NOOP, options)
+    for await (const _elem of concIter) {
       /* do nothing, just iterate */
     }
   }

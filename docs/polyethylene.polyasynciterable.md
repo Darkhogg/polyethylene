@@ -36,7 +36,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [async()](./polyethylene.polyasynciterable.async.md) |  | Return <code>this</code>. |
 |  [chunk(num)](./polyethylene.polyasynciterable.chunk.md) |  | Return an iteration of arrays of size <code>num</code> (except possibly the last) containing groupings of elements of <code>this</code> iteration. |
 |  [chunkWhile(func)](./polyethylene.polyasynciterable.chunkwhile.md) |  | Return an iteration of arrays with elements of this separated based on the result of calling <code>func(elements)</code>. |
-|  [complete()](./polyethylene.polyasynciterable.complete.md) |  | Perform this iteration doing nothing. |
+|  [complete(options)](./polyethylene.polyasynciterable.complete.md) |  | Perform this iteration doing nothing. |
 |  [concat(other)](./polyethylene.polyasynciterable.concat.md) |  | Return a new iteration that will iterate over <code>this</code>, then over <code>other</code>. |
 |  [count()](./polyethylene.polyasynciterable.count.md) |  | Return the number of elements on this iteration. |
 |  [drop(num)](./polyethylene.polyasynciterable.drop.md) |  | Return a new iteration that skips the first <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
@@ -58,8 +58,10 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [forEach(func, options)](./polyethylene.polyasynciterable.foreach.md) |  | Call a function for each element of <code>this</code> iteration. |
 |  [groupBy(func, options)](./polyethylene.polyasynciterable.groupby.md) |  | Return an iteration of group pairs, where the first element is a \_group key\_ and the second is an iterable of all the elements for which <code>func(element)</code> returned the key. |
 |  [includes(obj)](./polyethylene.polyasynciterable.includes.md) |  | Returns whether an element is present in this iteration. |
-|  [join(glue)](./polyethylene.polyasynciterable.join.md) |  | Return the result of joining the elements of <code>this</code> with the given <code>glue</code>, or <code>','</code> if no glue is given. |
+|  [join(glue, options)](./polyethylene.polyasynciterable.join.md) |  | Return the result of joining the elements of <code>this</code> with the given <code>glue</code>, or <code>','</code> if no glue is given. |
 |  [map(func, options)](./polyethylene.polyasynciterable.map.md) |  | Return an iteration of the result of calling <code>func(element)</code> for every element in <code>this</code>. |
+|  [mapKeys(this, func, options)](./polyethylene.polyasynciterable.mapkeys.md) |  | Return an iteration of the pairs resulting of calling <code>func(element)</code> for every element in <code>this</code> and using it as the first element of the pair (the \*key\*) and preserving the second (the \*value\*). |
+|  [mapValues(this, func, options)](./polyethylene.polyasynciterable.mapvalues.md) |  | Return an iteration of the pairs resulting of calling <code>func(element)</code> for every element in <code>this</code> and using it as the second element of the pair (the \*value\*) and preserving the first (the \*key\*). |
 |  [prefetch()](./polyethylene.polyasynciterable.prefetch.md) |  | Return the same iteration, but with its elements requested with anticipation to allow for asynchronous operations to begin and reduce wait times. |
 |  [prepend(other)](./polyethylene.polyasynciterable.prepend.md) |  | Return a new iteration that will iterate over <code>other</code>, then over <code>this</code>. |
 |  [reduce(reducer, init)](./polyethylene.polyasynciterable.reduce.md) |  | Returns the result of calling the passed <code>reducer</code> for all elements of the iteration and the result of the previous call to <code>reducer</code>, starting by passing <code>init</code> or, if not present, the first element of the iteration. |

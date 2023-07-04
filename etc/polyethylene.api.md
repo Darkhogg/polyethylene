@@ -93,7 +93,7 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     async(): PolyAsyncIterable<T>;
     chunk(num: number): PolyAsyncIterable<Array<T>>;
     chunkWhile(func: AsyncChunkingPredicate<T>): PolyAsyncIterable<Array<T>>;
-    complete(): Promise<void>;
+    complete(options?: ConcurrencyOptions): Promise<void>;
     concat<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
     count(): Promise<number>;
     drop(num: number): PolyAsyncIterable<T>;
@@ -115,8 +115,10 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     forEach(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): Promise<void>;
     groupBy<K>(func: AsyncIndexedMapping<T, K>, options?: ConcurrencyOptions): PolyAsyncIterable<[K, Array<T>]>;
     includes(obj: T): Promise<boolean>;
-    join(glue?: string): Promise<string>;
+    join(glue?: string, options?: ConcurrencyOptions): Promise<string>;
     map<U>(func: AsyncIndexedMapping<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>;
+    mapKeys<K1, K2, V>(this: PolyAsyncIterable<[K1, V]>, func: AsyncIndexedMapping<[K1, V], K2>, options?: ConcurrencyOptions): PolyAsyncIterable<[K2, V]>;
+    mapValues<K, V1, V2>(this: PolyAsyncIterable<[K, V1]>, func: AsyncIndexedMapping<[K, V1], V2>, options?: ConcurrencyOptions): PolyAsyncIterable<[K, V2]>;
     prefetch(): PolyAsyncIterable<T>;
     prepend<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
     reduce(reducer: AsyncIndexedReducer<T, T>, init?: T): Promise<T>;
@@ -131,8 +133,8 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     takeWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
     tap(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
     toArray(): Promise<Array<T>>;
-    toMap<K, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Map<K, V>>;
-    toObject<K extends PropertyKey, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Record<K, V>>;
+    toMap<K, V>(this: PolyAsyncIterable<[K, V] | readonly [K, V]>): Promise<Map<K, V>>;
+    toObject<K extends PropertyKey, V>(this: PolyAsyncIterable<[K, V] | readonly [K, V]>): Promise<Record<K, V>>;
     toPartitionArrays<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): Promise<[Array<U>, Array<Exclude<T, U>>]>;
     toPartitionArrays(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<[Array<T>, Array<T>]>;
     unique(func?: AsyncIndexedMapping<T, unknown>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
@@ -175,6 +177,8 @@ export class PolySyncIterable<T> implements Iterable<T> {
     // (undocumented)
     lastIndexOf(func: IndexedPredicate<T>): number;
     map<U>(func: IndexedMapping<T, U>): PolySyncIterable<U>;
+    mapKeys<K1, K2, V>(this: PolySyncIterable<[K1, V]>, func: IndexedMapping<[K1, V], K2>): PolySyncIterable<[K2, V]>;
+    mapValues<K, V1, V2>(this: PolySyncIterable<[K, V1]>, func: IndexedMapping<[K, V1], V2>): PolySyncIterable<[K, V2]>;
     prepend<U>(other: Iterable<U>): PolySyncIterable<T | U>;
     reduce(reducer: IndexedReducer<T, T>, init?: T): T;
     reduce<U>(reducer: IndexedReducer<T, U>, init: U): U;
@@ -188,8 +192,8 @@ export class PolySyncIterable<T> implements Iterable<T> {
     takeWhile(func: IndexedPredicate<T>): PolySyncIterable<T>;
     tap(func: IndexedRunnable<T>): PolySyncIterable<T>;
     toArray(): Array<T>;
-    toMap<K, V>(this: PolySyncIterable<readonly [K, V]>): Map<K, V>;
-    toObject<K extends PropertyKey, V>(this: PolySyncIterable<readonly [K, V]>): Record<K, V>;
+    toMap<K, V>(this: PolySyncIterable<[K, V] | readonly [K, V]>): Map<K, V>;
+    toObject<K extends PropertyKey, V>(this: PolySyncIterable<[K, V] | readonly [K, V]>): Record<K, V>;
     toPartitionArrays<U extends T>(func: IndexedTypePredicate<T, U>): [Array<U>, Array<Exclude<T, U>>];
     toPartitionArrays(func: IndexedPredicate<T>): [Array<T>, Array<T>];
     unique(func?: IndexedMapping<T, unknown>): PolySyncIterable<T>;

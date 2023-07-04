@@ -9,14 +9,14 @@ Return an object made from the entries of `this`<!-- -->. This method is roughly
 **Signature:**
 
 ```typescript
-toObject<K extends PropertyKey, V>(this: PolyAsyncIterable<readonly [K, V]>): Promise<Record<K, V>>;
+toObject<K extends PropertyKey, V>(this: PolyAsyncIterable<[K, V] | readonly [K, V]>): Promise<Record<K, V>>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;readonly \[K, V\]&gt; |  |
+|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, V\] \| readonly \[K, V\]&gt; |  |
 
 **Returns:**
 

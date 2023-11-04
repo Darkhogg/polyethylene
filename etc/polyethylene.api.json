@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.34.4",
+    "toolVersion": "7.38.2",
     "schemaVersion": 1011,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -3244,6 +3244,89 @@
             },
             {
               "kind": "Method",
+              "canonicalReference": "polyethylene!PolyAsyncIterable#duplicate:member(1)",
+              "docComment": "/**\n * Returns a tuple containing `num` iterables that will yield independent copies of the elements yielded by `this`.\n *\n * @remarks\n *\n * Note that, as with every other method of this class, this instance is unusable after calling this method.\n *\n * In order to provide a truly independent iteration for all returned iterables, a buffer is kept, which can grow as big as the whole iteration in certain circumstances. The buffer is filled as fast as the fastest iterable requests new items, and emptied as fast as the slowest iterable consumes those items.\n *\n * @param num - the number of copies to be returned\n *\n * @returns An array of `num` elements containing independent copies of this iterable\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "duplicate<N extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(num: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "N"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Tuple",
+                  "canonicalReference": "polyethylene!Tuple:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PolyAsyncIterable",
+                  "canonicalReference": "polyethylene!PolyAsyncIterable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>, N>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "N",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 9
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "num",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "duplicate"
+            },
+            {
+              "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#every:member(1)",
               "docComment": "/**\n * Returns `true` if calling `func(element)` returns `true` for every element, and `false` otherwise\n *\n * @remarks\n *\n * If a call to `func(element)` returns `false`, no more elements are iterated.\n *\n * @param func - A function to be called on the elements of the iteration\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise to whether calling `func` returned `true` for all elements.\n */\n",
               "excerptTokens": [
@@ -6384,8 +6467,8 @@
                 },
                 {
                   "kind": "Reference",
-                  "text": "Generator",
-                  "canonicalReference": "!Generator:interface"
+                  "text": "Iterator",
+                  "canonicalReference": "!Iterator:interface"
                 },
                 {
                   "kind": "Content",
@@ -6941,6 +7024,89 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "dropWhile"
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "polyethylene!PolySyncIterable#duplicate:member(1)",
+              "docComment": "/**\n * Returns a tuple containing `num` iterables that will yield independent copies of the elements yielded by `this`.\n *\n * @remarks\n *\n * Note that, as with every other method of this class, this instance is unusable after calling this method.\n *\n * In order to provide a truly independent iteration for all returned iterables, a buffer is kept, which can grow as big as the whole iteration in certain circumstances. The buffer is filled as fast as the fastest iterable requests new items, and emptied as fast as the slowest iterable requests new items.\n *\n * Note that for synchronous iterations, it's common to end up with a full buffer if the returned duplicated elements are used in sequence. In this situation, it might be more useful to simply convert the iteration to an array and pass it around, rather than pay the overhead of this method.\n *\n * @param num - the number of copies to be returned\n *\n * @returns An array of `num` elements containing independent copies of this iterable\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "duplicate<N extends "
+                },
+                {
+                  "kind": "Content",
+                  "text": "number"
+                },
+                {
+                  "kind": "Content",
+                  "text": ">(num: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "N"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Tuple",
+                  "canonicalReference": "polyethylene!Tuple:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "PolySyncIterable",
+                  "canonicalReference": "polyethylene!PolySyncIterable:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<T>, N>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "typeParameters": [
+                {
+                  "typeParameterName": "N",
+                  "constraintTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "defaultTypeTokenRange": {
+                    "startIndex": 0,
+                    "endIndex": 0
+                  }
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 9
+              },
+              "releaseTag": "Public",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "num",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "isAbstract": false,
+              "name": "duplicate"
             },
             {
               "kind": "Method",
@@ -9596,6 +9762,64 @@
               "endIndex": 3
             }
           ]
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "polyethylene!Tuple:type",
+          "docComment": "/**\n * A tuple of `N` elements of type `T`.\n *\n * @typeParam T - The type of elements of the tuple\n *\n * @typeParam N - The number of elements in this tuple\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export type Tuple<T, N extends "
+            },
+            {
+              "kind": "Content",
+              "text": "number"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Content",
+              "text": "[T, ...T[]] & {\n    length: N;\n}"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "fileUrlPath": "src/lib/types.ts",
+          "releaseTag": "Public",
+          "name": "Tuple",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "N",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 4
+          }
         }
       ]
     }

@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added:
   - Added `mapKey` method to both iterables
   - Added `mapValue` method to both iterables
+  - Added `duplicate` method to both iterables
 
 ### Changed:
   - Improved types of `toObject` and `toMap` methods

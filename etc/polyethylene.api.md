@@ -99,6 +99,7 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
     drop(num: number): PolyAsyncIterable<T>;
     dropLast(num: number): PolyAsyncIterable<T>;
     dropWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
+    duplicate<N extends number>(num: N): Tuple<PolyAsyncIterable<T>, N>;
     every(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<boolean>;
     filter<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>;
     filter(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): PolyAsyncIterable<T>;
@@ -142,7 +143,7 @@ export class PolyAsyncIterable<T> implements AsyncIterable<T> {
 
 // @public
 export class PolySyncIterable<T> implements Iterable<T> {
-    [Symbol.iterator](): Generator<T, void, undefined>;
+    [Symbol.iterator](): Iterator<T, void, undefined>;
     // @internal
     constructor(iterable: Iterable<T>);
     append<U>(other: Iterable<U>): PolySyncIterable<T | U>;
@@ -155,6 +156,7 @@ export class PolySyncIterable<T> implements Iterable<T> {
     drop(num?: number): PolySyncIterable<T>;
     dropLast(num?: number): PolySyncIterable<T>;
     dropWhile(func: IndexedPredicate<T>): PolySyncIterable<T>;
+    duplicate<N extends number>(num: N): Tuple<PolySyncIterable<T>, N>;
     every(func: IndexedPredicate<T>): boolean;
     filter<U extends T>(func: IndexedTypePredicate<T, U>): PolySyncIterable<U>;
     filter(func: IndexedPredicate<T>): PolySyncIterable<T>;
@@ -198,5 +200,10 @@ export class PolySyncIterable<T> implements Iterable<T> {
     toPartitionArrays(func: IndexedPredicate<T>): [Array<T>, Array<T>];
     unique(func?: IndexedMapping<T, unknown>): PolySyncIterable<T>;
 }
+
+// @public
+export type Tuple<T, N extends number> = [T, ...T[]] & {
+    length: N;
+};
 
 ```

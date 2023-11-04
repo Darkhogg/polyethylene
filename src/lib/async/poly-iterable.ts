@@ -6,6 +6,7 @@ import {
   AsyncIndexedRunnable,
   Comparator,
   IndexedTypePredicate,
+  Tuple,
 } from '../types.js'
 
 import {comparator, asserts, asyncIdentity, isNotNullish} from '../utils.js'
@@ -586,7 +587,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    */
   async toArray (): Promise<Array<T>> {
     const array = []
-    for await (const elem of this.#iterable) {
+    for await (const elem of this) {
       array.push(elem)
     }
     return array
@@ -1008,5 +1009,56 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     for await (const _elem of concIter) {
       /* do nothing, just iterate */
     }
+  }
+
+
+  /**
+   * Returns a tuple containing `num` iterables that will yield independent
+   * copies of the elements yielded by `this`.
+   *
+   * @remarks
+   * Note that, as with every other method of this class, this instance is unusable after calling this method.
+   *
+   * In order to provide a truly independent iteration for all returned iterables, a buffer is kept, which can grow as
+   * big as the whole iteration in certain circumstances.  The buffer is filled as fast as the fastest iterable requests
+   * new items, and emptied as fast as the slowest iterable consumes those items.
+   *
+   * @param num - the number of copies to be returned
+   * @returns An array of `num` elements containing independent copies of this iterable
+   */
+  duplicate<N extends number> (num: N): Tuple<PolyAsyncIterable<T>, N> {
+    asserts.isNonNegativeInteger(num)
+
+    const it = this[Symbol.asyncIterator]()
+
+    let offsIndex = 0 // index offset for when the buffer is shrunk
+    const buffer: Array<{item: IteratorResult<T, never>, pending: number}> = []
+
+    async function * generator (): AsyncIterable<T> {
+      let currIndex = 0
+      while (true) {
+        const index = currIndex - offsIndex
+
+        if (buffer[index] == null) {
+          const item = await it.next() as IteratorResult<T, never>
+          buffer[index] = {item, pending: num}
+        }
+
+        if (buffer[index].item.done) {
+          return
+        }
+
+        currIndex += 1
+        buffer[index].pending -= 1
+        yield buffer[index].item.value
+
+        while (buffer.length > 0 && buffer[0].pending <= 0 && !buffer[0].item.done) {
+          buffer.shift()
+          offsIndex += 1
+        }
+      }
+    }
+
+    return Array(num).fill(null).map(() => new PolyAsyncIterable(generator())) as Tuple<PolyAsyncIterable<T>, N>
   }
 }

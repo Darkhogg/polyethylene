@@ -9,11 +9,11 @@ Allows this class to work as a regular `Iterable<T>`
 **Signature:**
 
 ```typescript
-[Symbol.iterator](): Generator<T, void, undefined>;
+[Symbol.iterator](): Iterator<T, void, undefined>;
 ```
 **Returns:**
 
-Generator&lt;T, void, undefined&gt;
+Iterator&lt;T, void, undefined&gt;
 
 an iterable that will yield the same elements as the iterable used to create this instance
 

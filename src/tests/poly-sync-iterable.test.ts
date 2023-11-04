@@ -892,4 +892,60 @@ describe('Sync Iterable', () => {
       expect(called, 'iterable completeed').to.be.ok
     })
   })
+
+
+  describe('#duplicate', () => {
+    /* we use a generator function so that elements are really only generated once */
+    const TIMES = 3
+    const VALUES = [1, 2, 3]
+    const EXPANDED = VALUES.flatMap((val) => Array(TIMES).fill(val))
+    function * iter (): Iterable<(typeof VALUES)[number]> {
+      yield * VALUES
+    }
+
+    it('should return a correctly sized tuple', () => {
+      const dupes = Poly.syncFrom([]).duplicate(TIMES)
+      expect(dupes).to.have.length(TIMES)
+    })
+
+    it('should work if dupes are consumed sequentially', () => {
+      const dupes = Poly.syncFrom(iter).duplicate(TIMES)
+
+      for (const dupe of dupes) {
+        expect(collectSync(dupe)).to.deep.equal(VALUES)
+      }
+    })
+
+    it('should work if dupes are consumed one element at a time', () => {
+      const its = Poly.syncFrom(iter).duplicate(TIMES).map((iter) => iter[Symbol.iterator]())
+      const result: typeof VALUES = []
+
+      let cont = true
+      while (cont) {
+        cont = false
+
+        for (const it of its) {
+          const item = it.next()
+          if (!item.done) {
+            cont = true
+            result.push(item.value)
+          }
+        }
+      }
+
+      expect(result).to.deep.equal(EXPANDED)
+    })
+
+    it('should throw if passed something other than a number', () => {
+      expect(() => Poly.syncFrom([]).duplicate('foo' as any)).to.throw()
+    })
+
+    it('should throw if passed a non-integer number', () => {
+      expect(() => Poly.syncFrom([]).duplicate(0.5)).to.throw()
+    })
+
+    it('should throw if passed a negative number', () => {
+      expect(() => Poly.syncFrom([]).duplicate(-1)).to.throw()
+    })
+  })
 })

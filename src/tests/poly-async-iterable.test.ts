@@ -910,4 +910,61 @@ describe('Async Iterable', () => {
       expect(called, 'iterable completeed').to.be.ok
     })
   })
+
+
+  describe('#duplicate', () => {
+    /* we use a generator function so that elements are really only generated once */
+    const TIMES = 3
+    const VALUES = [1, 2, 3]
+    const EXPANDED = VALUES.flatMap((val) => Array(TIMES).fill(val))
+    async function * iter (): AsyncIterable<(typeof VALUES)[number]> {
+      yield * VALUES
+    }
+
+    it('should return a correctly sized tuple', () => {
+      const dupes = Poly.asyncFrom([]).duplicate(3)
+      expect(dupes).to.have.length(3)
+    })
+
+
+    it('should work if dupes are consumed sequentially', async () => {
+      const dupes = Poly.asyncFrom(iter).duplicate(TIMES)
+
+      for (const dupe of dupes) {
+        await expect(collectAsync(dupe)).to.eventually.deep.equal(VALUES)
+      }
+    })
+
+    it('should work if dupes are consumed one element at a time', async () => {
+      const its = Poly.asyncFrom(iter).duplicate(TIMES).map((iter) => iter[Symbol.asyncIterator]())
+      const result: typeof VALUES = []
+
+      let cont = true
+      while (cont) {
+        cont = false
+
+        for (const it of its) {
+          const item = await it.next()
+          if (!item.done) {
+            cont = true
+            result.push(item.value)
+          }
+        }
+      }
+
+      expect(result).to.deep.equal(EXPANDED)
+    })
+
+    it('should throw if passed something other than a number', () => {
+      expect(() => Poly.asyncFrom([]).duplicate('foo' as any)).to.throw()
+    })
+
+    it('should throw if passed a non-integer number', () => {
+      expect(() => Poly.asyncFrom([]).duplicate(0.5)).to.throw()
+    })
+
+    it('should throw if passed a negative number', () => {
+      expect(() => Poly.asyncFrom([]).duplicate(-1)).to.throw()
+    })
+  })
 })

@@ -136,7 +136,7 @@ export function filterGen<T> (iter: Iterable<T>, func: IndexedPredicate<T>): Ite
 export function * filterGen<T, U extends T> (
   iter: Iterable<T>,
   func: IndexedPredicate<T> | IndexedTypePredicate<T, U>,
-): Iterable<U> {
+): Iterable<T | U> {
   let idx = 0
   for (const elem of iter) {
     if (func(elem, idx++)) {

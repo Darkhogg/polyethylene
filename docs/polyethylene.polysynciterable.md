@@ -34,6 +34,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [drop(num)](./polyethylene.polysynciterable.drop.md) |  | Return a new iteration that skips the first <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
 |  [dropLast(num)](./polyethylene.polysynciterable.droplast.md) |  | Return a new iteration that skips the last <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
 |  [dropWhile(func)](./polyethylene.polysynciterable.dropwhile.md) |  | Return a new iteration that skips the first few elements for which <code>func(element)</code> returns <code>true</code>. |
+|  [duplicate(num)](./polyethylene.polysynciterable.duplicate.md) |  | Returns a tuple containing <code>num</code> iterables that will yield independent copies of the elements yielded by <code>this</code>. |
 |  [every(func)](./polyethylene.polysynciterable.every.md) |  | Returns <code>true</code> if calling <code>func(element)</code> returns <code>true</code> for every element, and <code>false</code> otherwise |
 |  [filter(func)](./polyethylene.polysynciterable.filter.md) |  | Return an iteration of the elements of <code>this</code> for which <code>func(element)</code> returns <code>true</code>. |
 |  [filter(func)](./polyethylene.polysynciterable.filter_1.md) |  | Return an iteration of the elements of <code>this</code> for which <code>func(element)</code> returns <code>true</code>. |

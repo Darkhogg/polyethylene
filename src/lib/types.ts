@@ -162,3 +162,11 @@ export type AsyncChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => 
  * @public
  */
 export type Comparator<T> = (elemA: T, elemB: T) => number
+
+/**
+ * A tuple of `N` elements of type `T`.
+ *
+ * @typeParam T - The type of elements of the tuple
+ * @typeParam N - The number of elements in this tuple
+ */
+export type Tuple<T, N extends number> = [T, ...T[]] & { length: N };

@@ -6,6 +6,7 @@ import {
   IndexedReducer,
   IndexedRunnable,
   IndexedTypePredicate,
+  Tuple,
 } from '../types.js'
 
 import {
@@ -56,7 +57,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    *
    * @returns an iterable that will yield the same elements as the iterable used to create this instance
    */
-  * [Symbol.iterator] (): Generator<T, void, undefined> {
+  * [Symbol.iterator] (): Iterator<T, void, undefined> {
     yield * this.#iterable
   }
 
@@ -510,7 +511,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * @returns An array that contains the same elements as this iteration, in the same order
    */
   toArray (): Array<T> {
-    return Array.from(this.#iterable)
+    return Array.from(this)
   }
 
   /**
@@ -892,5 +893,60 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     for (const elem of this.#iterable) {
       /* do nothing, just iterate */
     }
+  }
+
+  /**
+   * Returns a tuple containing `num` iterables that will yield independent
+   * copies of the elements yielded by `this`.
+   *
+   * @remarks
+   * Note that, as with every other method of this class, this instance is unusable after calling this method.
+   *
+   * In order to provide a truly independent iteration for all returned iterables, a buffer is kept, which can grow as
+   * big as the whole iteration in certain circumstances.  The buffer is filled as fast as the fastest iterable requests
+   * new items, and emptied as fast as the slowest iterable requests new items.
+   *
+   * Note that for synchronous iterations, it's common to end up with a full buffer if the returned duplicated elements
+   * are used in sequence.  In this situation, it might be more useful to simply convert the iteration to an array and
+   * pass it around, rather than pay the overhead of this method.
+   *
+   * @param num - the number of copies to be returned
+   * @returns An array of `num` elements containing independent copies of this iterable
+   */
+  duplicate<N extends number> (num: N): Tuple<PolySyncIterable<T>, N> {
+    asserts.isNonNegativeInteger(num)
+
+    const it = this[Symbol.iterator]()
+
+    let offsIndex = 0 // index offset for when the buffer is shrunk
+    const buffer: Array<{item: IteratorResult<T, never>, pending: number}> = []
+
+    function * generator (): Iterable<T> {
+      let currIndex = 0
+
+      while (true) {
+        const index = currIndex - offsIndex
+
+        if (buffer[index] == null) {
+          const item = it.next() as IteratorResult<T, never>
+          buffer[index] = {item, pending: num}
+        }
+
+        if (buffer[index].item.done) {
+          return
+        }
+
+        currIndex += 1
+        buffer[index].pending -= 1
+        yield buffer[index].item.value
+
+        while (buffer.length > 0 && buffer[0].pending <= 0 && !buffer[0].item.done) {
+          buffer.shift()
+          offsIndex += 1
+        }
+      }
+    }
+
+    return Array(num).fill(null).map(() => new PolySyncIterable(generator())) as Tuple<PolySyncIterable<T>, N>
   }
 }

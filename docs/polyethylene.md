@@ -46,4 +46,5 @@ The entry point for this library is the [Poly](./polyethylene.poly.md) namespace
 |  [IndexedReducer](./polyethylene.indexedreducer.md) | A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result for the next call or as a final return value. |
 |  [IndexedRunnable](./polyethylene.indexedrunnable.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and doesn't return anything |
 |  [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and returns a <code>boolean</code> value indicating if <code>elem</code> is of the generic type <code>U</code> |
+|  [Tuple](./polyethylene.tuple.md) | A tuple of <code>N</code> elements of type <code>T</code>. |
 

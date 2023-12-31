@@ -15,8 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed:
   - Improved types of `toObject` and `toMap` methods
-  - Add an `options` argument to `PolyAsyncIterable#complete`
-  - Add an `options` argument to `PolyAsyncIterable#join`
+  - Added an `options` argument to `PolyAsyncIterable#complete`
+  - Added an `options` argument to `PolyAsyncIterable#join`
+  - Improved performance of `PolySyncIterable#map` and `PolySyncIterable#filter`
 
 
 ## [2.3.0] - 2023-03-16

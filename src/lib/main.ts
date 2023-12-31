@@ -11,12 +11,13 @@
 import {Poly} from './poly.js'
 
 import AsyncIterableBuilder from './builder.js'
-import PolySyncIterable from './sync/poly-iterable.js'
+import {PolySyncIterable} from './sync/main.js'
 import PolyAsyncIterable from './async/poly-iterable.js'
 
 export default Poly
 export {Poly, PolySyncIterable, PolyAsyncIterable, AsyncIterableBuilder}
-export * from './sync/poly-iterable.js'
-export * from './async/poly-iterable.js'
 
-export * from './types.js'
+export type * from './sync/poly-sync-iterable.js'
+export type * from './async/poly-iterable.js'
+
+export type * from './types.js'

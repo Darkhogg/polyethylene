@@ -31,7 +31,7 @@ import {
 } from './generators.js'
 
 // eslint-disable-next-line no-unused-vars -- here for documentation
-import type PolySyncIterable from '../sync/poly-iterable.js'
+import type PolySyncIterable from '../sync/poly-sync-iterable.js'
 
 /**
  * Options for concurrency.

@@ -1,4 +1,5 @@
-import {
+/* eslint-disable no-use-before-define */
+import type {
   ChunkingPredicate,
   Comparator,
   IndexedMapping,
@@ -16,10 +17,8 @@ import {
   dropGen,
   dropLastGen,
   dropWhileGen,
-  filterGen,
   flattenGen,
   groupByGen,
-  mapGen,
   prependGen,
   reverseGen,
   sliceGen,
@@ -34,6 +33,17 @@ import {
 import {comparator, asserts, identity, isNotNullish} from '../utils.js'
 import PolyAsyncIterable from '../async/poly-iterable.js'
 
+import type MapSyncIterable from './map-sync-iterable.js'
+import FilterSyncIterable from './filter-sync-iterable.js'
+
+/* default implementatios -- undefined here to prevent circular dependencies */
+interface BaseImpls {
+  map: typeof MapSyncIterable.create
+  filter: typeof FilterSyncIterable.create
+}
+export const baseImpls = {} as BaseImpls
+
+
 /**
  * A `SyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single
  * result from it.
@@ -43,23 +53,13 @@ import PolyAsyncIterable from '../async/poly-iterable.js'
  *
  * @public
  */
-export default class PolySyncIterable<T> implements Iterable<T> {
-  #iterable: Iterable<T>
-
-  /** @internal */
-  constructor (iterable: Iterable<T>) {
-    this.#iterable = iterable
-  }
-
-
+export default abstract class PolySyncIterable<T> implements Iterable<T> {
   /**
    * Allows this class to work as a regular `Iterable<T>`
    *
    * @returns an iterable that will yield the same elements as the iterable used to create this instance
    */
-  * [Symbol.iterator] (): Iterator<T, void, undefined> {
-    yield * this.#iterable
-  }
+  abstract [Symbol.iterator](): Iterator<T>
 
   /**
    * Return an async version of this same iteration.
@@ -67,7 +67,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * @returns A {@link PolyAsyncIterable} that yields the same elements as `this`
    */
   async (): PolyAsyncIterable<T> {
-    const syncIterable = this.#iterable
+    const syncIterable = this
     const asyncIterable = {
       async * [Symbol.asyncIterator] (): AsyncIterator<T> {
         yield * syncIterable
@@ -89,7 +89,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   append<U> (other: Iterable<U>): PolySyncIterable<T | U> {
     asserts.isSyncIterable(other)
-    return new PolySyncIterable(appendGen(this.#iterable, other))
+    return new IterablePolySyncIterable(appendGen(this, other))
   }
 
   /**
@@ -119,7 +119,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   prepend<U> (other: Iterable<U>): PolySyncIterable<T | U> {
     asserts.isSyncIterable(other)
-    return new PolySyncIterable(prependGen(this.#iterable, other))
+    return new IterablePolySyncIterable(prependGen(this, other))
   }
 
 
@@ -133,7 +133,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   drop (num: number = 0): PolySyncIterable<T> {
     asserts.isNonNegativeInteger(num)
-    return new PolySyncIterable(dropGen(this.#iterable, num))
+    return new IterablePolySyncIterable(dropGen(this, num))
   }
 
   /**
@@ -145,7 +145,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   take (num: number = 0): PolySyncIterable<T> {
     asserts.isNonNegativeInteger(num)
-    return new PolySyncIterable(takeGen(this.#iterable, num))
+    return new IterablePolySyncIterable(takeGen(this, num))
   }
 
   /**
@@ -162,7 +162,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   dropLast (num: number = 0): PolySyncIterable<T> {
     asserts.isNonNegativeInteger(num)
-    return new PolySyncIterable(dropLastGen(this.#iterable, num))
+    return new IterablePolySyncIterable(dropLastGen(this, num))
   }
 
   /**
@@ -178,7 +178,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   takeLast (num: number = 0): PolySyncIterable<T> {
     asserts.isNonNegativeInteger(num)
-    return new PolySyncIterable(takeLastGen(this.#iterable, num))
+    return new IterablePolySyncIterable(takeLastGen(this, num))
   }
 
   /**
@@ -190,7 +190,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   dropWhile (func: IndexedPredicate<T>): PolySyncIterable<T> {
     asserts.isFunction(func)
-    return new PolySyncIterable(dropWhileGen(this.#iterable, func))
+    return new IterablePolySyncIterable(dropWhileGen(this, func))
   }
 
   /**
@@ -216,7 +216,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
 
   takeWhile<U extends T> (func: IndexedPredicate<T> | IndexedTypePredicate<T, U>): PolySyncIterable<T | U> {
     asserts.isFunction(func)
-    return new PolySyncIterable(takeWhileGen(this.#iterable, func))
+    return new IterablePolySyncIterable(takeWhileGen(this, func))
   }
 
   /**
@@ -239,7 +239,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   slice (start: number, end?: number): PolySyncIterable<T> {
     asserts.isInteger(start, 'start')
     asserts.isInteger(end ?? 0, 'end')
-    return new PolySyncIterable(sliceGen(this.#iterable, start, end))
+    return new IterablePolySyncIterable(sliceGen(this, start, end))
   }
 
   /**
@@ -267,7 +267,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
 
   filter<U extends T> (func: IndexedPredicate<T> | IndexedTypePredicate<T, U>): PolySyncIterable<T | U> {
     asserts.isFunction(func)
-    return new PolySyncIterable(filterGen(this.#iterable, func))
+    return baseImpls.filter(this, func)
   }
 
 
@@ -297,7 +297,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   map<U> (func: IndexedMapping<T, U>): PolySyncIterable<U> {
     asserts.isFunction(func)
-    return new PolySyncIterable(mapGen(this.#iterable, func))
+    return baseImpls.map(this, func)
   }
 
   /**
@@ -314,7 +314,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   mapKeys<K1, K2, V> (this: PolySyncIterable<[K1, V]>, func: IndexedMapping<[K1, V], K2>): PolySyncIterable<[K2, V]> {
     asserts.isFunction(func)
-    return new PolySyncIterable(mapGen(this.#iterable, ([k, v], index) => [func([k, v], index), v]))
+    return this.map(([k, v], index) => [func([k, v], index), v])
   }
 
   /**
@@ -331,7 +331,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   mapValues<K, V1, V2> (this: PolySyncIterable<[K, V1]>, func: IndexedMapping<[K, V1], V2>): PolySyncIterable<[K, V2]> {
     asserts.isFunction(func)
-    return new PolySyncIterable(mapGen(this.#iterable, ([k, v], index) => [k, func([k, v], index)]))
+    return this.map(([k, v], index) => [k, func([k, v], index)])
   }
 
   /**
@@ -343,7 +343,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   tap (func: IndexedRunnable<T>): PolySyncIterable<T> {
     asserts.isFunction(func)
-    return new PolySyncIterable(tapGen(this.#iterable, func))
+    return new IterablePolySyncIterable(tapGen(this, func))
   }
 
   /**
@@ -353,7 +353,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * @returns A new {@link PolySyncIterable} that will yield the elements of all sub-iterables
    */
   flatten<U> (this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U> {
-    return new PolySyncIterable(flattenGen(this.#iterable))
+    return new IterablePolySyncIterable(flattenGen(this))
   }
 
   /**
@@ -401,7 +401,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   chunk (num: number = 1): PolySyncIterable<Array<T>> {
     asserts.isPositiveInteger(num)
-    return new PolySyncIterable(chunkGen(this.#iterable, num))
+    return new IterablePolySyncIterable(chunkGen(this, num))
   }
 
   /**
@@ -427,7 +427,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   chunkWhile (func: ChunkingPredicate<T>): PolySyncIterable<Array<T>> {
     asserts.isFunction(func)
-    return new PolySyncIterable(chunkWhileGen(this.#iterable, func))
+    return new IterablePolySyncIterable(chunkWhileGen(this, func))
   }
 
   /**
@@ -447,7 +447,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   groupBy<K> (func: IndexedMapping<T, K>): PolySyncIterable<[K, Array<T>]> {
     asserts.isFunction(func)
-    return new PolySyncIterable(groupByGen(this.#iterable, func))
+    return new IterablePolySyncIterable(groupByGen(this, func))
   }
 
   /**
@@ -468,7 +468,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   unique (func: IndexedMapping<T, unknown> = identity): PolySyncIterable<T> {
     asserts.isFunction(func)
-    return new PolySyncIterable(uniqueGen(this.#iterable, func))
+    return new IterablePolySyncIterable(uniqueGen(this, func))
   }
 
   /**
@@ -480,7 +480,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * @returns A new {@link PolySyncIterable} that yields the elements of `this` in reverse order
    */
   reverse (): PolySyncIterable<T> {
-    return new PolySyncIterable(reverseGen(this.#iterable))
+    return new IterablePolySyncIterable(reverseGen(this))
   }
 
   /**
@@ -502,7 +502,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   sort (func: Comparator<T> = comparator): PolySyncIterable<T> {
     asserts.isFunction(func)
-    return new PolySyncIterable(sortGen(this.#iterable, func))
+    return new IterablePolySyncIterable(sortGen(this, func))
   }
 
   /**
@@ -545,7 +545,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     const falses: Array<T | Exclude<T, U>> = []
 
     let idx = 0
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       if (func(elem, idx++)) {
         trues.push(elem)
       } else {
@@ -568,7 +568,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   toObject<K extends PropertyKey, V> (this: PolySyncIterable<[K, V] | readonly [K, V]>): Record<K, V> {
     const object = {} as Record<K, V>
 
-    for (const [key, value] of this.#iterable) {
+    for (const [key, value] of this) {
       object[key] = value
     }
 
@@ -587,7 +587,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   toMap<K, V> (this: PolySyncIterable<[K, V] | readonly [K, V]>): Map<K, V> {
     const map = new Map<K, V>()
 
-    for (const [key, value] of this.#iterable) {
+    for (const [key, value] of this) {
       map.set(key, value)
     }
 
@@ -622,7 +622,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   find<U extends T> (func: IndexedPredicate<T> | IndexedTypePredicate<T, U>): T | U | undefined {
     asserts.isFunction(func)
     let idx = 0
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       if (func(elem, idx++)) {
         return elem
       }
@@ -659,7 +659,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     asserts.isFunction(func)
     let found
     let idx = 0
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       if (func(elem, idx++)) {
         found = elem
       }
@@ -682,7 +682,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   findIndex (func: IndexedPredicate<T>): number {
     asserts.isFunction(func)
     let idx = 0
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       if (func(elem, idx)) {
         return idx
       }
@@ -707,21 +707,13 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     asserts.isFunction(func)
     let foundIndex = -1
     let idx = 0
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       if (func(elem, idx)) {
         foundIndex = idx
       }
       idx++
     }
     return foundIndex
-  }
-
-  indexOf (func: IndexedPredicate<T>): number {
-    return Number.NaN
-  }
-
-  lastIndexOf (func: IndexedPredicate<T>): number {
-    return Number.NaN
   }
 
   /**
@@ -734,7 +726,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    * @returns Whether `obj` is present in this iteration or not
    */
   includes (obj: T): boolean {
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       if (Object.is(obj, elem) || obj === elem) {
         return true
       }
@@ -756,7 +748,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     asserts.isFunction(func)
 
     let idx = 0
-    for (const item of this.#iterable) {
+    for (const item of this) {
       if (func(item, idx++)) {
         return true
       }
@@ -778,7 +770,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     asserts.isFunction(func)
 
     let idx = 0
-    for (const item of this.#iterable) {
+    for (const item of this) {
       if (!func(item, idx++)) {
         return false
       }
@@ -827,7 +819,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     let isFirst = (accumulated === undefined)
     let idx = 0
 
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       accumulated = isFirst ? (elem as unknown as U) : reducer(accumulated as U, elem, idx++)
       isFirst = false
     }
@@ -843,7 +835,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
   count (): number {
     let count = 0
 
-    for (const _ of this.#iterable) {
+    for (const _ of this) {
       count++
     }
 
@@ -859,7 +851,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     asserts.isFunction(func)
 
     let idx = 0
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       func(elem, idx++)
     }
   }
@@ -877,7 +869,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
     let str = ''
     let first = true
 
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       str += (first ? '' : glue) + (elem == null ? '' : elem)
       first = false
     }
@@ -890,7 +882,7 @@ export default class PolySyncIterable<T> implements Iterable<T> {
    */
   complete (): void {
     /* eslint-disable-next-line no-unused-vars */
-    for (const elem of this.#iterable) {
+    for (const elem of this) {
       /* do nothing, just iterate */
     }
   }
@@ -947,6 +939,28 @@ export default class PolySyncIterable<T> implements Iterable<T> {
       }
     }
 
-    return Array(num).fill(null).map(() => new PolySyncIterable(generator())) as Tuple<PolySyncIterable<T>, N>
+    return Array(num).fill(null)
+      .map(() => new IterablePolySyncIterable(generator())) as Tuple<IterablePolySyncIterable<T>, N>
+  }
+}
+
+
+/**
+ * @internal
+ *
+ * A {@link PolySyncIterable} implementation that iterates over the object passed as its constructor argument.
+ * This class in intended as a default implementation when specific, more efficient implementation are not available.
+ */
+export class IterablePolySyncIterable<T> extends PolySyncIterable<T> {
+  readonly #iterable: Iterable<T>
+
+  /** @internal */
+  constructor (iterable: Iterable<T>) {
+    super()
+    this.#iterable = iterable
+  }
+
+  [Symbol.iterator] (): Iterator<T, void, undefined> {
+    return this.#iterable[Symbol.iterator]()
   }
 }

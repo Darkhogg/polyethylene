@@ -16,6 +16,11 @@ The entry point for this library is the [Poly](./polyethylene.poly.md) namespace
 |  --- | --- |
 |  [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md) | <p>A class that helps with building an [AsyncIterable](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator) from a non-structured source.</p><p>In order to create the iteration, you must call the [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods with appropriate arguments.</p> |
 |  [PolyAsyncIterable](./polyethylene.polyasynciterable.md) | <p>An <code>AsyncIterable&lt;T&gt;</code> with a suite of methods for transforming the iteration into other iterations or to get a single result from it.</p><p>This class works as an async version of [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->, but all methods accept async function where possible and will always return either <code>PolyAsyncIterables</code> or a <code>Promise</code> to a value.</p><p>\#\# Concurrency Many operations of this class accept as a final argument an [options object](./polyethylene.concurrencyoptions.md) than can specify some options for concurrent operations.</p><p>- The <code>concurrency</code> option will specify how many times whatever <code>func</code> you pass is called before waiting for its results. Effectively, this is the number of promises that can be pending at the same time. If not specified, it will default to 0, meaning no concurrency. Must be a non-negative integer. - The <code>bufferSize</code> option will specify the size of the internal buffer used to store the pending and completed promises. Effectively, this is how many results will be prefetched. If not specified, it will default to <code>concurrency</code>, meaning no extra intermediate results are stored. Must be a positive integer greater or equal to <code>concurrency</code>.</p><p>A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the concurrency completely, preventing any values to be requested before actually needed.</p><p>Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than actually requested of the current one, similarly to [PolyAsyncIterable.prefetch()](./polyethylene.polyasynciterable.prefetch.md)<!-- -->.</p> |
+
+## Abstract Classes
+
+|  Abstract Class | Description |
+|  --- | --- |
 |  [PolySyncIterable](./polyethylene.polysynciterable.md) | <p>A <code>SyncIterable&lt;T&gt;</code> with a suite of methods for transforming the iteration into other iterations or to get a single result from it.</p><p>The methods of this class are intended to resemble those of <code>Array</code>, with added utilities where appropriate and made for any kind of iterable.</p> |
 
 ## Interfaces
@@ -29,6 +34,12 @@ The entry point for this library is the [Poly](./polyethylene.poly.md) namespace
 |  Namespace | Description |
 |  --- | --- |
 |  [Poly](./polyethylene.poly.md) | Main namespace for the creation of [PolySyncIterable](./polyethylene.polysynciterable.md) and [PolyAsyncIterable](./polyethylene.polyasynciterable.md) objects. |
+
+## Variables
+
+|  Variable | Description |
+|  --- | --- |
+|  [baseImpls](./polyethylene.baseimpls.md) |  |
 
 ## Type Aliases
 

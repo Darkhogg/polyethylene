@@ -1,6 +1,6 @@
 import AsyncIterableBuilder from './builder.js'
 import PolyAsyncIterable from './async/poly-iterable.js'
-import PolySyncIterable from './sync/poly-iterable.js'
+import {PolySyncIterable, IterablePolySyncIterable} from './sync/main.js'
 import {isAsyncIterable, isSyncIterable} from './utils.js'
 
 
@@ -56,7 +56,7 @@ export namespace Poly {
     const iterable = (typeof iterableOrFactory === 'function') ? iterableOrFactory() : iterableOrFactory
 
     if (isSyncIterable<T>(iterable)) {
-      return new PolySyncIterable<T>(iterable)
+      return new IterablePolySyncIterable<T>(iterable)
     }
 
     throw Error('argument is not iterable')
@@ -90,7 +90,7 @@ export namespace Poly {
     }
 
     if (isSyncIterable<T>(iterable)) {
-      return new PolySyncIterable<T>(iterable).async()
+      return new IterablePolySyncIterable<T>(iterable).async()
     }
 
     throw Error('argument is not sync or async iterable')
@@ -161,7 +161,7 @@ export namespace Poly {
     }
 
     if (isSyncIterable<T>(iterable)) {
-      return new PolySyncIterable<T>(iterable)
+      return new IterablePolySyncIterable<T>(iterable)
     }
 
     throw Error('argument is not sync or async iterable')

@@ -11,19 +11,15 @@ The methods of this class are intended to resemble those of `Array`<!-- -->, wit
 **Signature:**
 
 ```typescript
-export default class PolySyncIterable<T> implements Iterable<T> 
+export default abstract class PolySyncIterable<T> implements Iterable<T> 
 ```
 **Implements:** Iterable&lt;T&gt;
-
-## Remarks
-
-The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `PolySyncIterable` class.
 
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
-|  [\[Symbol.iterator\]()](./polyethylene.polysynciterable._symbol.iterator_.md) |  | Allows this class to work as a regular <code>Iterable&lt;T&gt;</code> |
+|  [\[Symbol.iterator\]()](./polyethylene.polysynciterable._symbol.iterator_.md) | <code>abstract</code> | Allows this class to work as a regular <code>Iterable&lt;T&gt;</code> |
 |  [append(other)](./polyethylene.polysynciterable.append.md) |  | Return a new iteration that will iterate over <code>this</code>, then over <code>other</code>. |
 |  [async()](./polyethylene.polysynciterable.async.md) |  | Return an async version of this same iteration. |
 |  [chunk(num)](./polyethylene.polysynciterable.chunk.md) |  | Return an iteration of arrays of size <code>num</code> (except possibly the last) containing groupings of elements of <code>this</code> iteration. |
@@ -51,9 +47,7 @@ The constructor for this class is marked as internal. Third-party code should no
 |  [forEach(func)](./polyethylene.polysynciterable.foreach.md) |  | Call a function for each element of <code>this</code> iteration. |
 |  [groupBy(func)](./polyethylene.polysynciterable.groupby.md) |  | Return an iteration of group pairs, where the first element is a \_group key\_ and the second is an iterable of all the elements for which <code>func(element)</code> returned the key. |
 |  [includes(obj)](./polyethylene.polysynciterable.includes.md) |  | Returns whether an element is present in this iteration. |
-|  [indexOf(func)](./polyethylene.polysynciterable.indexof.md) |  |  |
 |  [join(glue)](./polyethylene.polysynciterable.join.md) |  | Return the result of joining the elements of <code>this</code> with the given <code>glue</code>, or <code>','</code> if no glue is given. |
-|  [lastIndexOf(func)](./polyethylene.polysynciterable.lastindexof.md) |  |  |
 |  [map(func)](./polyethylene.polysynciterable.map.md) |  | Return an iteration of the result of calling <code>func(element)</code> for every element in <code>this</code>. |
 |  [mapKeys(this, func)](./polyethylene.polysynciterable.mapkeys.md) |  | Return an iteration of the pairs resulting of calling <code>func(element)</code> for every element in <code>this</code> and using it as the first element of the pair (the \*key\*) and preserving the second (the \*value\*). |
 |  [mapValues(this, func)](./polyethylene.polysynciterable.mapvalues.md) |  | Return an iteration of the pairs resulting of calling <code>func(element)</code> for every element in <code>this</code> and using it as the second element of the pair (the \*value\*) and preserving the first (the \*key\*). |

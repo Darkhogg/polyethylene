@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.38.2",
+    "toolVersion": "7.39.0",
     "schemaVersion": 1011,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -692,6 +692,30 @@
               "endIndex": 3
             }
           ]
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "polyethylene!baseImpls:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "baseImpls: "
+            },
+            {
+              "kind": "Reference",
+              "text": "BaseImpls",
+              "canonicalReference": "polyethylene!~BaseImpls:interface"
+            }
+          ],
+          "fileUrlPath": "src/lib/sync/poly-sync-iterable.ts",
+          "isReadonly": true,
+          "releaseTag": "Public",
+          "name": "baseImpls",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
         },
         {
           "kind": "TypeAlias",
@@ -6408,11 +6432,11 @@
         {
           "kind": "Class",
           "canonicalReference": "polyethylene!PolySyncIterable:class",
-          "docComment": "/**\n * A `SyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single result from it.\n *\n * The methods of this class are intended to resemble those of `Array`, with added utilities where appropriate and made for any kind of iterable.\n *\n * @remarks\n *\n * The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `PolySyncIterable` class.\n *\n * @public\n */\n",
+          "docComment": "/**\n * A `SyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single result from it.\n *\n * The methods of this class are intended to resemble those of `Array`, with added utilities where appropriate and made for any kind of iterable.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export default class PolySyncIterable<T> implements "
+              "text": "export default abstract class PolySyncIterable<T> implements "
             },
             {
               "kind": "Reference",
@@ -6428,7 +6452,7 @@
               "text": " "
             }
           ],
-          "fileUrlPath": "src/lib/sync/poly-iterable.ts",
+          "fileUrlPath": "src/lib/sync/poly-sync-iterable.ts",
           "releaseTag": "Public",
           "typeParameters": [
             {
@@ -6443,7 +6467,7 @@
               }
             }
           ],
-          "isAbstract": false,
+          "isAbstract": true,
           "name": "PolySyncIterable",
           "preserveMemberOrder": false,
           "members": [
@@ -6454,7 +6478,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "["
+                  "text": "abstract ["
                 },
                 {
                   "kind": "Reference",
@@ -6472,7 +6496,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<T, void, undefined>"
+                  "text": "<T>"
                 },
                 {
                   "kind": "Content",
@@ -6489,7 +6513,7 @@
               "overloadIndex": 1,
               "parameters": [],
               "isOptional": false,
-              "isAbstract": false,
+              "isAbstract": true,
               "name": "[Symbol.iterator]"
             },
             {
@@ -8126,59 +8150,6 @@
             },
             {
               "kind": "Method",
-              "canonicalReference": "polyethylene!PolySyncIterable#indexOf:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "indexOf(func: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IndexedPredicate",
-                  "canonicalReference": "polyethylene!IndexedPredicate:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 5
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "indexOf"
-            },
-            {
-              "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#join:member(1)",
               "docComment": "/**\n * Return the result of joining the elements of `this` with the given `glue`, or `','` if no glue is given.\n *\n * @remarks\n *\n * `null` or `undefined` elements are treated as empty strings.\n *\n * @param glue - The string to use for joining the elements\n *\n * @returns A string concatenating all elements of `this` using the given `glue`\n */\n",
               "excerptTokens": [
@@ -8224,59 +8195,6 @@
               "isOptional": false,
               "isAbstract": false,
               "name": "join"
-            },
-            {
-              "kind": "Method",
-              "canonicalReference": "polyethylene!PolySyncIterable#lastIndexOf:member(1)",
-              "docComment": "",
-              "excerptTokens": [
-                {
-                  "kind": "Content",
-                  "text": "lastIndexOf(func: "
-                },
-                {
-                  "kind": "Reference",
-                  "text": "IndexedPredicate",
-                  "canonicalReference": "polyethylene!IndexedPredicate:type"
-                },
-                {
-                  "kind": "Content",
-                  "text": "<T>"
-                },
-                {
-                  "kind": "Content",
-                  "text": "): "
-                },
-                {
-                  "kind": "Content",
-                  "text": "number"
-                },
-                {
-                  "kind": "Content",
-                  "text": ";"
-                }
-              ],
-              "isStatic": false,
-              "returnTypeTokenRange": {
-                "startIndex": 4,
-                "endIndex": 5
-              },
-              "releaseTag": "Public",
-              "isProtected": false,
-              "overloadIndex": 1,
-              "parameters": [
-                {
-                  "parameterName": "func",
-                  "parameterTypeTokenRange": {
-                    "startIndex": 1,
-                    "endIndex": 3
-                  },
-                  "isOptional": false
-                }
-              ],
-              "isOptional": false,
-              "isAbstract": false,
-              "name": "lastIndexOf"
             },
             {
               "kind": "Method",

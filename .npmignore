@@ -76,4 +76,5 @@ etc/
 .github/
 
 # Tests
-dist/tests/
+dist/mjs/tests/
+dist/cjs/tests/

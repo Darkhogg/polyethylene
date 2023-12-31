@@ -6,6 +6,7 @@ import chaiAsPromised from 'chai-as-promised'
 
 import {collectSync, collectAsync} from './_utils.js'
 
+
 chai.use(chaiAsPromised)
 
 

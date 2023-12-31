@@ -35,12 +35,6 @@ The entry point for this library is the [Poly](./polyethylene.poly.md) namespace
 |  --- | --- |
 |  [Poly](./polyethylene.poly.md) | Main namespace for the creation of [PolySyncIterable](./polyethylene.polysynciterable.md) and [PolyAsyncIterable](./polyethylene.polyasynciterable.md) objects. |
 
-## Variables
-
-|  Variable | Description |
-|  --- | --- |
-|  [baseImpls](./polyethylene.baseimpls.md) |  |
-
 ## Type Aliases
 
 |  Type Alias | Description |

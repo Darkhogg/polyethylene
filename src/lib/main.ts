@@ -17,7 +17,6 @@ import PolyAsyncIterable from './async/poly-iterable.js'
 export default Poly
 export {Poly, PolySyncIterable, PolyAsyncIterable, AsyncIterableBuilder}
 
-export type * from './sync/poly-sync-iterable.js'
 export type * from './async/poly-iterable.js'
 
 export type * from './types.js'

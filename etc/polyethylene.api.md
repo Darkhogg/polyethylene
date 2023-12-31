@@ -30,11 +30,6 @@ export class AsyncIterableBuilder<T> implements AsyncIterable<T> {
     value(obj: T): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BaseImpls" needs to be exported by the entry point main.d.ts
-//
-// @public (undocumented)
-export const baseImpls: BaseImpls;
-
 // @public
 export type ChunkingPredicate<T> = (elem: T, lastElem: T, firstElem: T) => boolean;
 
@@ -61,15 +56,6 @@ export type IndexedRunnable<T> = (elem: T, index: number) => void;
 
 // @public
 export type IndexedTypePredicate<T, U extends T> = (elem: T, index: number) => elem is U;
-
-// Warning: (ae-internal-missing-underscore) The name "IterablePolySyncIterable" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export class IterablePolySyncIterable<T> extends PolySyncIterable<T> {
-    // (undocumented)
-    [Symbol.iterator](): Iterator<T, void, undefined>;
-    constructor(iterable: Iterable<T>);
-}
 
 // @public
 namespace Poly {

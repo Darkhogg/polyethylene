@@ -36,11 +36,13 @@ import PolyAsyncIterable from '../async/poly-iterable.js'
 import type MapSyncIterable from './map-sync-iterable.js'
 import FilterSyncIterable from './filter-sync-iterable.js'
 
-/* default implementatios -- undefined here to prevent circular dependencies */
+/* default implementations -- undefined here to prevent circular dependencies */
+/** @internal */
 interface BaseImpls {
   map: typeof MapSyncIterable.create
   filter: typeof FilterSyncIterable.create
 }
+/** @internal */
 export const baseImpls = {} as BaseImpls
 
 

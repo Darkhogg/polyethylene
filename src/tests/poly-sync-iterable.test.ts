@@ -649,7 +649,7 @@ describe('Sync Iterable', () => {
     const asciiA = 'a'.charCodeAt(0)
 
     it('should return all elements as an object', () => {
-      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n])
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n] as const)
       expect(iter.toObject()).to.deep.equal({a: 0, b: 1, c: 2})
     })
 
@@ -664,7 +664,7 @@ describe('Sync Iterable', () => {
     const asciiA = 'a'.charCodeAt(0)
 
     it('should return all elements as a Map', () => {
-      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n])
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n] as const)
       expect(Object.fromEntries(iter.toMap().entries())).to.deep.equal({a: 0, b: 1, c: 2})
     })
 

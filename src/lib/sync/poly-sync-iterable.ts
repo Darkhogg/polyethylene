@@ -297,7 +297,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
    * for every element of `this`
    */
-  map<const U> (func: IndexedMapping<T, U>): PolySyncIterable<U> {
+  map<U> (func: IndexedMapping<T, U>): PolySyncIterable<U> {
     asserts.isFunction(func)
     return baseImpls.map(this, func)
   }
@@ -316,7 +316,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of
    * `this` and uses it to replace the keys
    */
-  mapKeys<K1, const K2, V> (
+  mapKeys<K1, K2, V> (
     this: PolySyncIterable<[K1, V]>,
     func: IndexedMapping<[K1, V], K2>,
   ): PolySyncIterable<[K2, V]> {
@@ -338,7 +338,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
    * for every element of `this` and using it to replace the values
    */
-  mapValues<K, V1, const V2> (
+  mapValues<K, V1, V2> (
     this: PolySyncIterable<[K, V1]>,
     func: IndexedMapping<[K, V1], V2>,
   ): PolySyncIterable<[K, V2]> {
@@ -394,7 +394,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @returns A new {@link PolySyncIterable} that yields the elements of the subiterables that results from
    * calling `func(element)` for every element of `this`
    */
-  flatMap<const U> (func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U> {
+  flatMap<U> (func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U> {
     return this.map(func).flatten()
   }
 
@@ -822,9 +822,9 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @param init - First element to be passed to the `reducer` function
    * @returns The result to continually call `reducer` with all elements and the previous result
    */
-  reduce<const U> (reducer: IndexedReducer<T, U>, init: U): U
+  reduce<U> (reducer: IndexedReducer<T, U>, init: U): U
 
-  reduce<const U> (reducer: IndexedReducer<T, U>, init: T extends U ? (U | undefined) : U): U {
+  reduce<U> (reducer: IndexedReducer<T, U>, init: T extends U ? (U | undefined) : U): U {
     asserts.isFunction(reducer)
 
     let accumulated: U | undefined = init

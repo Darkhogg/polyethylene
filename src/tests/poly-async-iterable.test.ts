@@ -662,7 +662,7 @@ describe('Async Iterable', () => {
     const asciiA = 'a'.charCodeAt(0)
 
     it('should return all elements as an object', async () => {
-      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n]).async()
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n] as const).async()
       await expect(iter.toObject()).to.eventually.deep.equal({a: 0, b: 1, c: 2})
     })
 
@@ -676,8 +676,8 @@ describe('Async Iterable', () => {
   describe('#toMap', () => {
     const asciiA = 'a'.charCodeAt(0)
 
-    it('should return all elements a an Map', async () => {
-      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n]).async()
+    it('should return all elements as a Map', async () => {
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n] as const).async()
       await expect(iter.toMap().then((map) => Object.fromEntries(map.entries())))
         .to.eventually.deep.equal({a: 0, b: 1, c: 2})
     })

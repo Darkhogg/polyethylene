@@ -9,7 +9,7 @@ Return an iteration of the pairs resulting of calling `func(element)` for every 
 **Signature:**
 
 ```typescript
-mapKeys<K1, const K2, V>(this: PolyAsyncIterable<[K1, V]>, func: AsyncIndexedMapping<[K1, V], K2>, options?: ConcurrencyOptions): PolyAsyncIterable<[K2, V]>;
+mapKeys<K1, K2, V>(this: PolyAsyncIterable<[K1, V]>, func: AsyncIndexedMapping<[K1, V], K2>, options?: ConcurrencyOptions): PolyAsyncIterable<[K2, V]>;
 ```
 
 ## Parameters

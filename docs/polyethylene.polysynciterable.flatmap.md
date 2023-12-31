@@ -9,7 +9,7 @@ Return an iteration of elements of the sub-iterables that result from calling `f
 **Signature:**
 
 ```typescript
-flatMap<const U>(func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U>;
+flatMap<U>(func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U>;
 ```
 
 ## Parameters

@@ -9,7 +9,7 @@ Return an iteration of the pairs resulting of calling `func(element)` for every 
 **Signature:**
 
 ```typescript
-mapKeys<K1, const K2, V>(this: PolySyncIterable<[K1, V]>, func: IndexedMapping<[K1, V], K2>): PolySyncIterable<[K2, V]>;
+mapKeys<K1, K2, V>(this: PolySyncIterable<[K1, V]>, func: IndexedMapping<[K1, V], K2>): PolySyncIterable<[K2, V]>;
 ```
 
 ## Parameters

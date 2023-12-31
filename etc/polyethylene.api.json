@@ -4204,7 +4204,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "flatMap<const U>(func: "
+                  "text": "flatMap<U>(func: "
                 },
                 {
                   "kind": "Reference",
@@ -4694,7 +4694,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "map<const U>(func: "
+                  "text": "map<U>(func: "
                 },
                 {
                   "kind": "Reference",
@@ -4782,7 +4782,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "mapKeys<K1, const K2, V>(this: "
+                  "text": "mapKeys<K1, K2, V>(this: "
                 },
                 {
                   "kind": "Reference",
@@ -4913,7 +4913,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "mapValues<K, V1, const V2>(this: "
+                  "text": "mapValues<K, V1, V2>(this: "
                 },
                 {
                   "kind": "Reference",
@@ -5234,7 +5234,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "reduce<const U>(reducer: "
+                  "text": "reduce<U>(reducer: "
                 },
                 {
                   "kind": "Reference",
@@ -7790,7 +7790,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "flatMap<const U>(func: "
+                  "text": "flatMap<U>(func: "
                 },
                 {
                   "kind": "Reference",
@@ -8179,7 +8179,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "map<const U>(func: "
+                  "text": "map<U>(func: "
                 },
                 {
                   "kind": "Reference",
@@ -8250,7 +8250,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "mapKeys<K1, const K2, V>(this: "
+                  "text": "mapKeys<K1, K2, V>(this: "
                 },
                 {
                   "kind": "Reference",
@@ -8364,7 +8364,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "mapValues<K, V1, const V2>(this: "
+                  "text": "mapValues<K, V1, V2>(this: "
                 },
                 {
                   "kind": "Reference",
@@ -8618,7 +8618,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "reduce<const U>(reducer: "
+                  "text": "reduce<U>(reducer: "
                 },
                 {
                   "kind": "Reference",

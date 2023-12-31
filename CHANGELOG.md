@@ -6,6 +6,16 @@ This file is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.5.1] - 2023-12-31
+
+### Changed:
+  - Fixed documentation for `mapKeys` and `mapValues`
+  - Added `const` to return generic types of `map`, `mapKeys`, `mapValues`, `flatMap` and `reduce`.
+    This should reduce the instances where `as const` is needed before calling method that restrict the `this` type to
+    pairs of elements, such as `toMap` or `toObject`.  This *might* break the types of some existing code if they were
+    relying in generalized inference of literals or arrays.
+
+
 ## [2.5.0] - 2023-12-31
 
 ### Added:
@@ -19,8 +29,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2.4.0] - 2023-07-04
 
 ### Added:
-  - Added `mapKey` method to both iterables
-  - Added `mapValue` method to both iterables
+  - Added `mapKeys` method to both iterables
+  - Added `mapValues` method to both iterables
 
 ### Changed:
   - Added an `options` argument to `PolyAsyncIterable#complete`

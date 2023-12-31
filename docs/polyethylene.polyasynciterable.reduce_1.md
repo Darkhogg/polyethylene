@@ -9,7 +9,7 @@ Returns the result of calling the passed `reducer` for all elements of the itera
 **Signature:**
 
 ```typescript
-reduce<U>(reducer: AsyncIndexedReducer<T, U>, init: U): Promise<U>;
+reduce<const U>(reducer: AsyncIndexedReducer<T, U>, init: U): Promise<U>;
 ```
 
 ## Parameters

@@ -649,7 +649,7 @@ describe('Sync Iterable', () => {
     const asciiA = 'a'.charCodeAt(0)
 
     it('should return all elements as an object', () => {
-      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n] as const)
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n])
       expect(iter.toObject()).to.deep.equal({a: 0, b: 1, c: 2})
     })
 
@@ -664,7 +664,7 @@ describe('Sync Iterable', () => {
     const asciiA = 'a'.charCodeAt(0)
 
     it('should return all elements as a Map', () => {
-      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n] as const)
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n])
       expect(Object.fromEntries(iter.toMap().entries())).to.deep.equal({a: 0, b: 1, c: 2})
     })
 
@@ -715,7 +715,7 @@ describe('Sync Iterable', () => {
 
 
   describe('#findIndex', () => {
-    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6] as const
+    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6]
 
     it('should correctly return the index of the first element for which passed function is true', () => {
       const iter = Poly.from(numbers)
@@ -739,7 +739,7 @@ describe('Sync Iterable', () => {
 
 
   describe('#findLastIndex', () => {
-    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6] as const
+    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6]
 
     it('should correctly return the index of the last element for which passed function is true', () => {
       const iter = Poly.from(numbers)

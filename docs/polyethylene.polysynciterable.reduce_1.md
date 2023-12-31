@@ -9,7 +9,7 @@ Returns the result of calling the passed `reducer` for all elements of the itera
 **Signature:**
 
 ```typescript
-reduce<U>(reducer: IndexedReducer<T, U>, init: U): U;
+reduce<const U>(reducer: IndexedReducer<T, U>, init: U): U;
 ```
 
 ## Parameters

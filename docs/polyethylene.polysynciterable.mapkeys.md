@@ -9,7 +9,7 @@ Return an iteration of the pairs resulting of calling `func(element)` for every 
 **Signature:**
 
 ```typescript
-mapKeys<K1, K2, V>(this: PolySyncIterable<[K1, V]>, func: IndexedMapping<[K1, V], K2>): PolySyncIterable<[K2, V]>;
+mapKeys<K1, const K2, V>(this: PolySyncIterable<[K1, V]>, func: IndexedMapping<[K1, V], K2>): PolySyncIterable<[K2, V]>;
 ```
 
 ## Parameters
@@ -23,7 +23,7 @@ mapKeys<K1, K2, V>(this: PolySyncIterable<[K1, V]>, func: IndexedMapping<[K1, V]
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K2, V\]&gt;
 
-A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the results of calling `func(element)` for every element of `this` and using it to replace the keys
+A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the results of calling `func(element)` for every element of `this` and uses it to replace the keys
 
 ## Remarks
 

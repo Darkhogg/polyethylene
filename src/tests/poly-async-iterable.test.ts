@@ -662,7 +662,7 @@ describe('Async Iterable', () => {
     const asciiA = 'a'.charCodeAt(0)
 
     it('should return all elements as an object', async () => {
-      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n] as const).async()
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n]).async()
       await expect(iter.toObject()).to.eventually.deep.equal({a: 0, b: 1, c: 2})
     })
 
@@ -677,7 +677,7 @@ describe('Async Iterable', () => {
     const asciiA = 'a'.charCodeAt(0)
 
     it('should return all elements a an Map', async () => {
-      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n] as const).async()
+      const iter = Poly.range(3).map((n) => [String.fromCharCode(asciiA + n), n]).async()
       await expect(iter.toMap().then((map) => Object.fromEntries(map.entries())))
         .to.eventually.deep.equal({a: 0, b: 1, c: 2})
     })
@@ -730,7 +730,7 @@ describe('Async Iterable', () => {
 
 
   describe('#findIndex', () => {
-    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6] as const
+    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6]
 
     it('should correctly return the index of the first element for which passed function is true', () => {
       const iter = Poly.from(numbers).async()
@@ -754,7 +754,7 @@ describe('Async Iterable', () => {
 
 
   describe('#findLastIndex', () => {
-    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6] as const
+    const numbers = [1, 4, 2, 3, 8, 7, 1, 5, 0, 11, 6]
 
     it('should correctly return the index of the last element for which passed function is true', () => {
       const iter = Poly.from(numbers).async()

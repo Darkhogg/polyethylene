@@ -346,7 +346,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @returns A new {@link PolyAsyncIterable} that yields the results of calling `func(element)`
    * for every element of `this`
    */
-  map<U> (func: AsyncIndexedMapping<T, U>, options: ConcurrencyOptions = {}): PolyAsyncIterable<U> {
+  map<const U> (func: AsyncIndexedMapping<T, U>, options: ConcurrencyOptions = {}): PolyAsyncIterable<U> {
     asserts.isFunction(func)
     return new PolyAsyncIterable(mapGen(this.#iterable, func, options))
   }
@@ -358,12 +358,14 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @remarks
    * This method is only available for iterations of pairs.
    *
-   * @typeParam U - The return type of `func` and the generic type of the resulting iterable
+   * @typeParam K1 - The key type of the original iterable, as passed to `func`
+   * @typeParam K2 - The key type of the resulting iterable, as returned from `func`
+   * @typeParam V - The value type of the original and resulting iterables, as passed to `func`
    * @param func - A function that takes an element of `this` and returns something else
    * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
    * for every element of `this` and using it to replace the keys
    */
-  mapKeys<K1, K2, V> (
+  mapKeys<K1, const K2, V> (
     this: PolyAsyncIterable<[K1, V]>,
     func: AsyncIndexedMapping<[K1, V], K2>,
     options: ConcurrencyOptions = {},
@@ -381,12 +383,14 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @remarks
    * This method is only available for iterations of pairs.
    *
-   * @typeParam U - The return type of `func` and the generic type of the resulting iterable
+   * @typeParam K - The key type of the original and resulting iterables, as passed to `func`
+   * @typeParam V1 - The value type of the original iterable, as passed to `func`
+   * @typeParam V2 - The value type of the resulting iterable, as returned from `func`
    * @param func - A function that takes an element of `this` and returns something else
    * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
    * for every element of `this` and using it to replace the values
    */
-  mapValues<K, V1, V2> (
+  mapValues<K, V1, const V2> (
     this: PolyAsyncIterable<[K, V1]>,
     func: AsyncIndexedMapping<[K, V1], V2>,
     options: ConcurrencyOptions = {},
@@ -449,7 +453,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @returns A new {@link PolyAsyncIterable} that yields the elements of the subiterables that results from
    * calling `func(element)` for every element of `this`
    */
-  flatMap<U> (
+  flatMap<const U> (
     func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>,
     options?: ConcurrencyOptions,
   ): PolyAsyncIterable<U> {
@@ -918,9 +922,9 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @param init - First element to be passed to the `reducer` function
    * @returns A promise the result to continually call `reducer` with all elements and the previous result
    */
-  async reduce<U> (reducer: AsyncIndexedReducer<T, U>, init: U): Promise<U>
+  async reduce<const U> (reducer: AsyncIndexedReducer<T, U>, init: U): Promise<U>
 
-  async reduce<U> (reducer: AsyncIndexedReducer<T, U>, init?: U): Promise<U> {
+  async reduce<const U> (reducer: AsyncIndexedReducer<T, U>, init?: U): Promise<U> {
     asserts.isFunction(reducer)
 
     let accumulated: U | undefined = init

@@ -4204,7 +4204,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "flatMap<U>(func: "
+                  "text": "flatMap<const U>(func: "
                 },
                 {
                   "kind": "Reference",
@@ -4694,7 +4694,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "map<U>(func: "
+                  "text": "map<const U>(func: "
                 },
                 {
                   "kind": "Reference",
@@ -4778,11 +4778,11 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#mapKeys:member(1)",
-              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the first element of the pair (the *key*) and preserving the second (the *value*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the keys\n */\n",
+              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the first element of the pair (the *key*) and preserving the second (the *value*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K1 - The key type of the original iterable, as passed to `func`\n *\n * @typeParam K2 - The key type of the resulting iterable, as returned from `func`\n *\n * @typeParam V - The value type of the original and resulting iterables, as passed to `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the keys\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "mapKeys<K1, K2, V>(this: "
+                  "text": "mapKeys<K1, const K2, V>(this: "
                 },
                 {
                   "kind": "Reference",
@@ -4909,11 +4909,11 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#mapValues:member(1)",
-              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the second element of the pair (the *value*) and preserving the first (the *key*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the values\n */\n",
+              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the second element of the pair (the *value*) and preserving the first (the *key*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K - The key type of the original and resulting iterables, as passed to `func`\n *\n * @typeParam V1 - The value type of the original iterable, as passed to `func`\n *\n * @typeParam V2 - The value type of the resulting iterable, as returned from `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the values\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "mapValues<K, V1, V2>(this: "
+                  "text": "mapValues<K, V1, const V2>(this: "
                 },
                 {
                   "kind": "Reference",
@@ -5234,7 +5234,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "reduce<U>(reducer: "
+                  "text": "reduce<const U>(reducer: "
                 },
                 {
                   "kind": "Reference",
@@ -7790,7 +7790,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "flatMap<U>(func: "
+                  "text": "flatMap<const U>(func: "
                 },
                 {
                   "kind": "Reference",
@@ -8179,7 +8179,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "map<U>(func: "
+                  "text": "map<const U>(func: "
                 },
                 {
                   "kind": "Reference",
@@ -8246,11 +8246,11 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#mapKeys:member(1)",
-              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the first element of the pair (the *key*) and preserving the second (the *value*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the keys\n */\n",
+              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the first element of the pair (the *key*) and preserving the second (the *value*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K1 - The key type of the original iterable, as passed to `func`\n *\n * @typeParam K2 - The key type of the resulting iterable, as returned from `func`\n *\n * @typeParam V - The value type of the original and resulting iterables, as passed to `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and uses it to replace the keys\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "mapKeys<K1, K2, V>(this: "
+                  "text": "mapKeys<K1, const K2, V>(this: "
                 },
                 {
                   "kind": "Reference",
@@ -8360,11 +8360,11 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#mapValues:member(1)",
-              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the second element of the pair (the *value*) and preserving the first (the *key*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the values\n */\n",
+              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the second element of the pair (the *value*) and preserving the first (the *key*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K - The key type of the original and resulting iterables, as passed to `func`\n *\n * @typeParam V1 - The value type of the original iterable, as passed to `func`\n *\n * @typeParam V2 - The value type of the resulting iterable, as returned from `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the values\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "mapValues<K, V1, V2>(this: "
+                  "text": "mapValues<K, V1, const V2>(this: "
                 },
                 {
                   "kind": "Reference",
@@ -8618,7 +8618,7 @@
               "excerptTokens": [
                 {
                   "kind": "Content",
-                  "text": "reduce<U>(reducer: "
+                  "text": "reduce<const U>(reducer: "
                 },
                 {
                   "kind": "Reference",

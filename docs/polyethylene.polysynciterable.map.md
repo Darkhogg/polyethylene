@@ -9,7 +9,7 @@ Return an iteration of the result of calling `func(element)` for every element i
 **Signature:**
 
 ```typescript
-map<U>(func: IndexedMapping<T, U>): PolySyncIterable<U>;
+map<const U>(func: IndexedMapping<T, U>): PolySyncIterable<U>;
 ```
 
 ## Parameters

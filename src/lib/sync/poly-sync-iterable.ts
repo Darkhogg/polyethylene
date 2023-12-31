@@ -297,7 +297,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
    * for every element of `this`
    */
-  map<U> (func: IndexedMapping<T, U>): PolySyncIterable<U> {
+  map<const U> (func: IndexedMapping<T, U>): PolySyncIterable<U> {
     asserts.isFunction(func)
     return baseImpls.map(this, func)
   }
@@ -309,12 +309,17 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @remarks
    * This method is only available for iterations of pairs.
    *
-   * @typeParam U - The return type of `func` and the generic type of the resulting iterable
+   * @typeParam K1 - The key type of the original iterable, as passed to `func`
+   * @typeParam K2 - The key type of the resulting iterable, as returned from `func`
+   * @typeParam V - The value type of the original and resulting iterables, as passed to `func`
    * @param func - A function that takes an element of `this` and returns something else
-   * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
-   * for every element of `this` and using it to replace the keys
+   * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of
+   * `this` and uses it to replace the keys
    */
-  mapKeys<K1, K2, V> (this: PolySyncIterable<[K1, V]>, func: IndexedMapping<[K1, V], K2>): PolySyncIterable<[K2, V]> {
+  mapKeys<K1, const K2, V> (
+    this: PolySyncIterable<[K1, V]>,
+    func: IndexedMapping<[K1, V], K2>,
+  ): PolySyncIterable<[K2, V]> {
     asserts.isFunction(func)
     return this.map(([k, v], index) => [func([k, v], index), v])
   }
@@ -326,12 +331,17 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @remarks
    * This method is only available for iterations of pairs.
    *
-   * @typeParam U - The return type of `func` and the generic type of the resulting iterable
+   * @typeParam K - The key type of the original and resulting iterables, as passed to `func`
+   * @typeParam V1 - The value type of the original iterable, as passed to `func`
+   * @typeParam V2 - The value type of the resulting iterable, as returned from `func`
    * @param func - A function that takes an element of `this` and returns something else
    * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`
    * for every element of `this` and using it to replace the values
    */
-  mapValues<K, V1, V2> (this: PolySyncIterable<[K, V1]>, func: IndexedMapping<[K, V1], V2>): PolySyncIterable<[K, V2]> {
+  mapValues<K, V1, const V2> (
+    this: PolySyncIterable<[K, V1]>,
+    func: IndexedMapping<[K, V1], V2>,
+  ): PolySyncIterable<[K, V2]> {
     asserts.isFunction(func)
     return this.map(([k, v], index) => [k, func([k, v], index)])
   }
@@ -384,7 +394,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @returns A new {@link PolySyncIterable} that yields the elements of the subiterables that results from
    * calling `func(element)` for every element of `this`
    */
-  flatMap<U> (func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U> {
+  flatMap<const U> (func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U> {
     return this.map(func).flatten()
   }
 
@@ -812,9 +822,9 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @param init - First element to be passed to the `reducer` function
    * @returns The result to continually call `reducer` with all elements and the previous result
    */
-  reduce<U> (reducer: IndexedReducer<T, U>, init: U): U
+  reduce<const U> (reducer: IndexedReducer<T, U>, init: U): U
 
-  reduce<U> (reducer: IndexedReducer<T, U>, init: T extends U ? (U | undefined) : U): U {
+  reduce<const U> (reducer: IndexedReducer<T, U>, init: T extends U ? (U | undefined) : U): U {
     asserts.isFunction(reducer)
 
     let accumulated: U | undefined = init

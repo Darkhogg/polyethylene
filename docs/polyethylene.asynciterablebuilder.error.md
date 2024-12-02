@@ -14,10 +14,39 @@ error(error: Error): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  error | Error | The error to be thrown by the underlying iterable |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+error
+
+
+</td><td>
+
+Error
+
+
+</td><td>
+
+The error to be thrown by the underlying iterable
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 void

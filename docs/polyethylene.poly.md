@@ -14,32 +14,273 @@ export declare namespace Poly
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [asyncFrom(iterableOrFactory)](./polyethylene.poly.asyncfrom.md) | <p>Create a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) object from an iterable, async iterable, or a function that returns iterables (such as a generator function or an async generator function).</p><p>If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->.</p> |
-|  [asyncIterate(func)](./polyethylene.poly.asynciterate.md) | Returns a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that will yield the values returned from calling <code>func</code> with the value last returned, or <code>undefined</code> when called for the first time. |
-|  [asyncIterate(func, initValue)](./polyethylene.poly.asynciterate_1.md) | Returns a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that will yield the values returned from calling <code>func</code> with the value last returned, or <code>initValue</code> when called for the first time. |
-|  [builder()](./polyethylene.poly.builder.md) | Return a new [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->, an iterable object that can be constructed by calling its methods. |
-|  [buildWith(func)](./polyethylene.poly.buildwith.md) | Create a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) by passing the <code>func</code> function an [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md) object. |
-|  [empty()](./polyethylene.poly.empty.md) | Return a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields no elements upon iteration. |
-|  [entries(obj)](./polyethylene.poly.entries.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as <code>Object.entries</code> would. |
-|  [from(iterableOrFactory)](./polyethylene.poly.from.md) | <p>Create a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) object from an iterable, async iterable, or a function that returns iterables (such as a generator function or an async generator function).</p><p>If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->.</p> |
-|  [from(iterableOrFactory)](./polyethylene.poly.from_1.md) | <p>Create a new [PolySyncIterable](./polyethylene.polysynciterable.md) object from an iterable or a function that returns iterables (such as a generator function).</p><p>If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->.</p> |
-|  [from(iterableOrFactory)](./polyethylene.poly.from_2.md) | <p>Create a new [PolySyncIterable](./polyethylene.polysynciterable.md) or [PolyAsyncIterable](./polyethylene.polyasynciterable.md) object from a sync or async iterable or a function that returns sync or async iterables (such as a sync or async generator function).</p><p>If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolySyncIterable](./polyethylene.polysynciterable.md) or [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->.</p><p>Whether the resulting iterable is sync or async depends on the input being sync or async.</p> |
-|  [keys(obj)](./polyethylene.poly.keys.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as <code>Object.keys</code> would. |
-|  [range(to)](./polyethylene.poly.range.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields numbers from 0 up to, but not including, <code>to</code>, with a step of 1. |
-|  [range(from, to)](./polyethylene.poly.range_1.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields numbers from <code>from</code> up to, but not including, <code>to</code>, with a step of 1. |
-|  [range(from, to, step)](./polyethylene.poly.range_2.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields numbers from <code>from</code> up to, but not including, <code>to</code>, with a step of <code>step</code>. |
-|  [repeat(value)](./polyethylene.poly.repeat.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the passed argument forever, without ending. |
-|  [syncFrom(iterableOrFactory)](./polyethylene.poly.syncfrom.md) | <p>Create a new [PolySyncIterable](./polyethylene.polysynciterable.md) object from an iterable or a function that returns iterables (such as a generator function).</p><p>If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->.</p> |
-|  [syncIterate(func)](./polyethylene.poly.synciterate.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that will yield the values returned from calling <code>func</code> with the value last returned, or <code>undefined</code> when called for the first time. |
-|  [syncIterate(func, initValue)](./polyethylene.poly.synciterate_1.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that will yield the values returned from calling <code>func</code> with the value last returned, or <code>initValue</code> when called for the first time. |
-|  [values(obj)](./polyethylene.poly.values.md) | Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as <code>Object.values</code> would. |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[asyncFrom(iterableOrFactory)](./polyethylene.poly.asyncfrom.md)
+
+
+</td><td>
+
+Create a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) object from an iterable, async iterable, or a function that returns iterables (such as a generator function or an async generator function).
+
+If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[asyncIterate(func)](./polyethylene.poly.asynciterate.md)
+
+
+</td><td>
+
+Returns a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that will yield the values returned from calling `func` with the value last returned, or `undefined` when called for the first time.
+
+
+</td></tr>
+<tr><td>
+
+[asyncIterate(func, initValue)](./polyethylene.poly.asynciterate_1.md)
+
+
+</td><td>
+
+Returns a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that will yield the values returned from calling `func` with the value last returned, or `initValue` when called for the first time.
+
+
+</td></tr>
+<tr><td>
+
+[builder()](./polyethylene.poly.builder.md)
+
+
+</td><td>
+
+Return a new [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->, an iterable object that can be constructed by calling its methods.
+
+
+</td></tr>
+<tr><td>
+
+[buildWith(func)](./polyethylene.poly.buildwith.md)
+
+
+</td><td>
+
+Create a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) by passing the `func` function an [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md) object.
+
+
+</td></tr>
+<tr><td>
+
+[empty()](./polyethylene.poly.empty.md)
+
+
+</td><td>
+
+Return a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields no elements upon iteration.
+
+
+</td></tr>
+<tr><td>
+
+[entries(obj)](./polyethylene.poly.entries.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as `Object.entries` would.
+
+
+</td></tr>
+<tr><td>
+
+[from(iterableOrFactory)](./polyethylene.poly.from.md)
+
+
+</td><td>
+
+Create a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) object from an iterable, async iterable, or a function that returns iterables (such as a generator function or an async generator function).
+
+If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[from(iterableOrFactory)](./polyethylene.poly.from_1.md)
+
+
+</td><td>
+
+Create a new [PolySyncIterable](./polyethylene.polysynciterable.md) object from an iterable or a function that returns iterables (such as a generator function).
+
+If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[from(iterableOrFactory)](./polyethylene.poly.from_2.md)
+
+
+</td><td>
+
+Create a new [PolySyncIterable](./polyethylene.polysynciterable.md) or [PolyAsyncIterable](./polyethylene.polyasynciterable.md) object from a sync or async iterable or a function that returns sync or async iterables (such as a sync or async generator function).
+
+If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolySyncIterable](./polyethylene.polysynciterable.md) or [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->.
+
+Whether the resulting iterable is sync or async depends on the input being sync or async.
+
+
+</td></tr>
+<tr><td>
+
+[keys(obj)](./polyethylene.poly.keys.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as `Object.keys` would.
+
+
+</td></tr>
+<tr><td>
+
+[range(to)](./polyethylene.poly.range.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields numbers from 0 up to, but not including, `to`<!-- -->, with a step of 1.
+
+
+</td></tr>
+<tr><td>
+
+[range(from, to)](./polyethylene.poly.range_1.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields numbers from `from` up to, but not including, `to`<!-- -->, with a step of 1.
+
+
+</td></tr>
+<tr><td>
+
+[range(from, to, step)](./polyethylene.poly.range_2.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields numbers from `from` up to, but not including, `to`<!-- -->, with a step of `step`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[repeat(value)](./polyethylene.poly.repeat.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the passed argument forever, without ending.
+
+
+</td></tr>
+<tr><td>
+
+[syncFrom(iterableOrFactory)](./polyethylene.poly.syncfrom.md)
+
+
+</td><td>
+
+Create a new [PolySyncIterable](./polyethylene.polysynciterable.md) object from an iterable or a function that returns iterables (such as a generator function).
+
+If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[syncIterate(func)](./polyethylene.poly.synciterate.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that will yield the values returned from calling `func` with the value last returned, or `undefined` when called for the first time.
+
+
+</td></tr>
+<tr><td>
+
+[syncIterate(func, initValue)](./polyethylene.poly.synciterate_1.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that will yield the values returned from calling `func` with the value last returned, or `initValue` when called for the first time.
+
+
+</td></tr>
+<tr><td>
+
+[values(obj)](./polyethylene.poly.values.md)
+
+
+</td><td>
+
+Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the same elements as `Object.values` would.
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [AsyncIterableFactory](./polyethylene.poly.asynciterablefactory.md) | A function with no arguments that returns an <code>AsyncIterable</code> |
-|  [IterableFactory](./polyethylene.poly.iterablefactory.md) | A function with no arguments that returns an <code>Iterable</code> |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[AsyncIterableFactory](./polyethylene.poly.asynciterablefactory.md)
+
+
+</td><td>
+
+A function with no arguments that returns an `AsyncIterable`
+
+
+</td></tr>
+<tr><td>
+
+[IterableFactory](./polyethylene.poly.iterablefactory.md)
+
+
+</td><td>
+
+A function with no arguments that returns an `Iterable`
+
+
+</td></tr>
+</tbody></table>

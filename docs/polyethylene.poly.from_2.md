@@ -18,10 +18,39 @@ function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIter
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  iterableOrFactory | Iterable&lt;T&gt; \| [IterableFactory](./polyethylene.poly.iterablefactory.md)<!-- -->&lt;T&gt; \| AsyncIterable&lt;T&gt; \| [AsyncIterableFactory](./polyethylene.poly.asynciterablefactory.md)<!-- -->&lt;T&gt; | a sync or async iterable or iterable factory used to create the resulting iterable |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+iterableOrFactory
+
+
+</td><td>
+
+Iterable&lt;T&gt; \| [IterableFactory](./polyethylene.poly.iterablefactory.md)<!-- -->&lt;T&gt; \| AsyncIterable&lt;T&gt; \| [AsyncIterableFactory](./polyethylene.poly.asynciterablefactory.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+a sync or async iterable or iterable factory used to create the resulting iterable
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt; \| [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

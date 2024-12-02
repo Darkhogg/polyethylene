@@ -21,11 +21,90 @@ The constructor for this class is marked as internal. Third-party code should no
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [\[Symbol.asyncIterator\]()](./polyethylene.asynciterablebuilder._symbol.asynciterator_.md) |  | Allows this class to work as a regular <code>AsyncIterable&lt;T&gt;</code> |
-|  [done()](./polyethylene.asynciterablebuilder.done.md) |  | Makes the underlying iterable finish the iteration. |
-|  [error(error)](./polyethylene.asynciterablebuilder.error.md) |  | Makes the underlying iterable throw the given <code>error</code> object. |
-|  [toPolyAsyncIterable()](./polyethylene.asynciterablebuilder.topolyasynciterable.md) |  | Get a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates the elements as determined by calls to <code>this</code> object's [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods. |
-|  [value(obj)](./polyethylene.asynciterablebuilder.value.md) |  | Gives the underlying iterable a new value to be yielded. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[\[Symbol.asyncIterator\]()](./polyethylene.asynciterablebuilder._symbol.asynciterator_.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Allows this class to work as a regular `AsyncIterable<T>`
+
+
+</td></tr>
+<tr><td>
+
+[done()](./polyethylene.asynciterablebuilder.done.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Makes the underlying iterable finish the iteration.
+
+
+</td></tr>
+<tr><td>
+
+[error(error)](./polyethylene.asynciterablebuilder.error.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Makes the underlying iterable throw the given `error` object.
+
+
+</td></tr>
+<tr><td>
+
+[toPolyAsyncIterable()](./polyethylene.asynciterablebuilder.topolyasynciterable.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Get a [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that iterates the elements as determined by calls to `this` object's [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods.
+
+
+</td></tr>
+<tr><td>
+
+[value(obj)](./polyethylene.asynciterablebuilder.value.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Gives the underlying iterable a new value to be yielded.
+
+
+</td></tr>
+</tbody></table>

@@ -14,11 +14,55 @@ filter<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptio
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt; | The function to be called on all elements |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt;
+
+
+</td><td>
+
+The function to be called on all elements
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;

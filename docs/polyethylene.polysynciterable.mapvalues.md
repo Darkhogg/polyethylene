@@ -14,11 +14,53 @@ mapValues<K, V1, V2>(this: PolySyncIterable<[K, V1]>, func: IndexedMapping<[K, V
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K, V1\]&gt; |  |
-|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;\[K, V1\], V2&gt; | A function that takes an element of <code>this</code> and returns something else |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+this
+
+
+</td><td>
+
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K, V1\]&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;\[K, V1\], V2&gt;
+
+
+</td><td>
+
+A function that takes an element of `this` and returns something else
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K, V2\]&gt;

@@ -14,10 +14,39 @@ chunk(num: number): PolyAsyncIterable<Array<T>>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  num | number | Size of the chunks |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+num
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+Size of the chunks
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;

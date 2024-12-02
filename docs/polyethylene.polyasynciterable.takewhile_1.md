@@ -14,10 +14,39 @@ takeWhile(func: AsyncIndexedPredicate<T>): PolyAsyncIterable<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | The function to call on the elements |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+The function to call on the elements
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

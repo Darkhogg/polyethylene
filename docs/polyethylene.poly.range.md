@@ -14,10 +14,39 @@ function range(to: number): PolySyncIterable<number>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  to | number | Exclusive upper bound of the iteration |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+to
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+Exclusive upper bound of the iteration
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;number&gt;

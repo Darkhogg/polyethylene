@@ -14,10 +14,39 @@ join(glue?: string): string;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  glue | string | _(Optional)_ The string to use for joining the elements |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+glue
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The string to use for joining the elements
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 string

@@ -14,11 +14,55 @@ map<U>(func: AsyncIndexedMapping<T, U>, options?: ConcurrencyOptions): PolyAsync
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, U&gt; | A function that takes an element of <code>this</code> and returns something else |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, U&gt;
+
+
+</td><td>
+
+A function that takes an element of `this` and returns something else
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;

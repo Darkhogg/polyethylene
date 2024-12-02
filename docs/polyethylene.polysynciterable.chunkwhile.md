@@ -14,10 +14,39 @@ chunkWhile(func: ChunkingPredicate<T>): PolySyncIterable<Array<T>>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [ChunkingPredicate](./polyethylene.chunkingpredicate.md)<!-- -->&lt;T&gt; | A function that decides if an element is part of the current chunk or initiates a new one |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[ChunkingPredicate](./polyethylene.chunkingpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A function that decides if an element is part of the current chunk or initiates a new one
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;

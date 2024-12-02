@@ -14,10 +14,39 @@ includes(obj: T): boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  obj | T | The element to search in the iteration |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+obj
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+The element to search in the iteration
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 boolean

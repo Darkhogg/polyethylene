@@ -14,10 +14,39 @@ value(obj: T): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  obj | T | The object to be yielded by the underlying iterable |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+obj
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+The object to be yielded by the underlying iterable
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 void

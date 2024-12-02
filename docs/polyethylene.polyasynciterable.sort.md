@@ -14,10 +14,39 @@ sort(func?: Comparator<T>): PolyAsyncIterable<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [Comparator](./polyethylene.comparator.md)<!-- -->&lt;T&gt; | _(Optional)_ A comparator function |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[Comparator](./polyethylene.comparator.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+_(Optional)_ A comparator function
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

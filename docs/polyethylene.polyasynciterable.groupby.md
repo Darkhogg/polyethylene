@@ -14,11 +14,55 @@ groupBy<K>(func: AsyncIndexedMapping<T, K>, options?: ConcurrencyOptions): PolyA
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, K&gt; | A function that returns the grouping key of each element |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, K&gt;
+
+
+</td><td>
+
+A function that returns the grouping key of each element
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, Array&lt;T&gt;\]&gt;

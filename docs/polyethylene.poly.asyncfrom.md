@@ -16,10 +16,39 @@ function asyncFrom<T>(iterableOrFactory: Iterable<T> | IterableFactory<T> | Asyn
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  iterableOrFactory | Iterable&lt;T&gt; \| [IterableFactory](./polyethylene.poly.iterablefactory.md)<!-- -->&lt;T&gt; \| AsyncIterable&lt;T&gt; \| [AsyncIterableFactory](./polyethylene.poly.asynciterablefactory.md)<!-- -->&lt;T&gt; | an async iterable or async iterable factory used to create the resulting async iterable |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+iterableOrFactory
+
+
+</td><td>
+
+Iterable&lt;T&gt; \| [IterableFactory](./polyethylene.poly.iterablefactory.md)<!-- -->&lt;T&gt; \| AsyncIterable&lt;T&gt; \| [AsyncIterableFactory](./polyethylene.poly.asynciterablefactory.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+an async iterable or async iterable factory used to create the resulting async iterable
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

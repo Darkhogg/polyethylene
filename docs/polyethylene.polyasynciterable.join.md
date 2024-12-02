@@ -14,11 +14,55 @@ join(glue?: string, options?: ConcurrencyOptions): Promise<string>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  glue | string | _(Optional)_ The string to use for joining the elements |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+glue
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The string to use for joining the elements
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;string&gt;

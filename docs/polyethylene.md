@@ -12,44 +12,287 @@ The entry point for this library is the [Poly](./polyethylene.poly.md) namespace
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md) | <p>A class that helps with building an [AsyncIterable](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator) from a non-structured source.</p><p>In order to create the iteration, you must call the [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods with appropriate arguments.</p> |
-|  [PolyAsyncIterable](./polyethylene.polyasynciterable.md) | <p>An <code>AsyncIterable&lt;T&gt;</code> with a suite of methods for transforming the iteration into other iterations or to get a single result from it.</p><p>This class works as an async version of [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->, but all methods accept async function where possible and will always return either <code>PolyAsyncIterables</code> or a <code>Promise</code> to a value.</p><p>\#\# Concurrency Many operations of this class accept as a final argument an [options object](./polyethylene.concurrencyoptions.md) than can specify some options for concurrent operations.</p><p>- The <code>concurrency</code> option will specify how many times whatever <code>func</code> you pass is called before waiting for its results. Effectively, this is the number of promises that can be pending at the same time. If not specified, it will default to 0, meaning no concurrency. Must be a non-negative integer. - The <code>bufferSize</code> option will specify the size of the internal buffer used to store the pending and completed promises. Effectively, this is how many results will be prefetched. If not specified, it will default to <code>concurrency</code>, meaning no extra intermediate results are stored. Must be a positive integer greater or equal to <code>concurrency</code>.</p><p>A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the concurrency completely, preventing any values to be requested before actually needed.</p><p>Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than actually requested of the current one, similarly to [PolyAsyncIterable.prefetch()](./polyethylene.polyasynciterable.prefetch.md)<!-- -->.</p> |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)
+
+
+</td><td>
+
+A class that helps with building an [AsyncIterable](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator) from a non-structured source.
+
+In order to create the iteration, you must call the [value](./polyethylene.asynciterablebuilder.value.md)<!-- -->, [error](./polyethylene.asynciterablebuilder.error.md) and [done](./polyethylene.asynciterablebuilder.done.md) methods with appropriate arguments.
+
+
+</td></tr>
+<tr><td>
+
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)
+
+
+</td><td>
+
+An `AsyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single result from it.
+
+This class works as an async version of [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->, but all methods accept async function where possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.
+
+\#\# Concurrency Many operations of this class accept as a final argument an [options object](./polyethylene.concurrencyoptions.md) than can specify some options for concurrent operations.
+
+- The `concurrency` option will specify how many times whatever `func` you pass is called before waiting for its results. Effectively, this is the number of promises that can be pending at the same time. If not specified, it will default to 0, meaning no concurrency. Must be a non-negative integer. - The `bufferSize` option will specify the size of the internal buffer used to store the pending and completed promises. Effectively, this is how many results will be prefetched. If not specified, it will default to `concurrency`<!-- -->, meaning no extra intermediate results are stored. Must be a positive integer greater or equal to `concurrency`<!-- -->.
+
+A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the concurrency completely, preventing any values to be requested before actually needed.
+
+Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than actually requested of the current one, similarly to [PolyAsyncIterable.prefetch()](./polyethylene.polyasynciterable.prefetch.md)<!-- -->.
+
+
+</td></tr>
+</tbody></table>
 
 ## Abstract Classes
 
-|  Abstract Class | Description |
-|  --- | --- |
-|  [PolySyncIterable](./polyethylene.polysynciterable.md) | <p>A <code>SyncIterable&lt;T&gt;</code> with a suite of methods for transforming the iteration into other iterations or to get a single result from it.</p><p>The methods of this class are intended to resemble those of <code>Array</code>, with added utilities where appropriate and made for any kind of iterable.</p> |
+<table><thead><tr><th>
+
+Abstract Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[PolySyncIterable](./polyethylene.polysynciterable.md)
+
+
+</td><td>
+
+A `SyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single result from it.
+
+The methods of this class are intended to resemble those of `Array`<!-- -->, with added utilities where appropriate and made for any kind of iterable.
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | Options for concurrency. |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+Options for concurrency.
+
+
+</td></tr>
+</tbody></table>
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Poly](./polyethylene.poly.md) | Main namespace for the creation of [PolySyncIterable](./polyethylene.polysynciterable.md) and [PolyAsyncIterable](./polyethylene.polyasynciterable.md) objects. |
+<table><thead><tr><th>
+
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Poly](./polyethylene.poly.md)
+
+
+</td><td>
+
+Main namespace for the creation of [PolySyncIterable](./polyethylene.polysynciterable.md) and [PolyAsyncIterable](./polyethylene.polyasynciterable.md) objects.
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [AsyncChunkingPredicate](./polyethylene.asyncchunkingpredicate.md) | A function that receives an element (<code>elem</code>) of the iteration and the first and last element of a chunk, and returns a boolean value or a <code>Promise</code> to a boolean value representing whether <code>elem</code> should be added to the current chunk (if <code>true</code>) or be the start of a new chunk (if <code>false</code>) |
-|  [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and returns a different object or a <code>Promise</code> to a different object |
-|  [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and returns a <code>boolean</code> value or a <code>Promise</code> to a <code>boolean</code> value. |
-|  [AsyncIndexedReducer](./polyethylene.asyncindexedreducer.md) | A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result or a promise to a new accumulated result for the next call or as a final return value. |
-|  [AsyncIndexedRunnable](./polyethylene.asyncindexedrunnable.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and either returns a <code>Promise</code> to nothing or doesn't return anything |
-|  [ChunkingPredicate](./polyethylene.chunkingpredicate.md) | A function that receives an element (<code>elem</code>) of the iteration and the first and last element of a chunk, and returns a boolean value representing whether <code>elem</code> should be added to the current chunk (if <code>true</code>) or be the start of a new chunk (if <code>false</code>) |
-|  [Comparator](./polyethylene.comparator.md) | A function that receives two objects <code>elemA</code> and <code>elemB</code> and returns a number value that is negative if <code>elemA</code> should be sorted before <code>elemB</code>, positive if <code>elemA</code> should be sorted after <code>elemB</code>, or <code>0</code> if they should be sorted at the same position. |
-|  [IndexedMapping](./polyethylene.indexedmapping.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and returns a different object |
-|  [IndexedPredicate](./polyethylene.indexedpredicate.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and returns a <code>boolean</code> value. |
-|  [IndexedReducer](./polyethylene.indexedreducer.md) | A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result for the next call or as a final return value. |
-|  [IndexedRunnable](./polyethylene.indexedrunnable.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and doesn't return anything |
-|  [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md) | A function that receives an object (<code>elem</code>) and its <code>index</code> in the iteration and returns a <code>boolean</code> value indicating if <code>elem</code> is of the generic type <code>U</code> |
-|  [Tuple](./polyethylene.tuple.md) | A tuple of <code>N</code> elements of type <code>T</code>. |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[AsyncChunkingPredicate](./polyethylene.asyncchunkingpredicate.md)
+
+
+</td><td>
+
+A function that receives an element (`elem`<!-- -->) of the iteration and the first and last element of a chunk, and returns a boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk (if `true`<!-- -->) or be the start of a new chunk (if `false`<!-- -->)
+
+
+</td></tr>
+<tr><td>
+
+[AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)
+
+
+</td><td>
+
+A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a different object or a `Promise` to a different object
+
+
+</td></tr>
+<tr><td>
+
+[AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)
+
+
+</td><td>
+
+A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a `boolean` value or a `Promise` to a `boolean` value.
+
+
+</td></tr>
+<tr><td>
+
+[AsyncIndexedReducer](./polyethylene.asyncindexedreducer.md)
+
+
+</td><td>
+
+A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result or a promise to a new accumulated result for the next call or as a final return value.
+
+
+</td></tr>
+<tr><td>
+
+[AsyncIndexedRunnable](./polyethylene.asyncindexedrunnable.md)
+
+
+</td><td>
+
+A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and either returns a `Promise` to nothing or doesn't return anything
+
+
+</td></tr>
+<tr><td>
+
+[ChunkingPredicate](./polyethylene.chunkingpredicate.md)
+
+
+</td><td>
+
+A function that receives an element (`elem`<!-- -->) of the iteration and the first and last element of a chunk, and returns a boolean value representing whether `elem` should be added to the current chunk (if `true`<!-- -->) or be the start of a new chunk (if `false`<!-- -->)
+
+
+</td></tr>
+<tr><td>
+
+[Comparator](./polyethylene.comparator.md)
+
+
+</td><td>
+
+A function that receives two objects `elemA` and `elemB` and returns a number value that is negative if `elemA` should be sorted before `elemB`<!-- -->, positive if `elemA` should be sorted after `elemB`<!-- -->, or `0` if they should be sorted at the same position.
+
+
+</td></tr>
+<tr><td>
+
+[IndexedMapping](./polyethylene.indexedmapping.md)
+
+
+</td><td>
+
+A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a different object
+
+
+</td></tr>
+<tr><td>
+
+[IndexedPredicate](./polyethylene.indexedpredicate.md)
+
+
+</td><td>
+
+A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a `boolean` value.
+
+
+</td></tr>
+<tr><td>
+
+[IndexedReducer](./polyethylene.indexedreducer.md)
+
+
+</td><td>
+
+A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result for the next call or as a final return value.
+
+
+</td></tr>
+<tr><td>
+
+[IndexedRunnable](./polyethylene.indexedrunnable.md)
+
+
+</td><td>
+
+A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and doesn't return anything
+
+
+</td></tr>
+<tr><td>
+
+[IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)
+
+
+</td><td>
+
+A function that receives an object (`elem`<!-- -->) and its `index` in the iteration and returns a `boolean` value indicating if `elem` is of the generic type `U`
+
+
+</td></tr>
+<tr><td>
+
+[Tuple](./polyethylene.tuple.md)
+
+
+</td><td>
+
+A tuple of `N` elements of type `T`<!-- -->.
+
+
+</td></tr>
+</tbody></table>

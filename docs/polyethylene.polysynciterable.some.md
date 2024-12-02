@@ -14,10 +14,39 @@ some(func: IndexedPredicate<T>): boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; | A function to be called on the elements of the iteration |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A function to be called on the elements of the iteration
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 boolean

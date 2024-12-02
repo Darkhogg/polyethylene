@@ -14,10 +14,37 @@ toObject<K extends PropertyKey, V>(this: PolyAsyncIterable<[K, V] | readonly [K,
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, V\] \| readonly \[K, V\]&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+this
+
+
+</td><td>
+
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, V\] \| readonly \[K, V\]&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;Record&lt;K, V&gt;&gt;

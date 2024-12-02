@@ -14,10 +14,37 @@ flatten<U>(this: PolyAsyncIterable<Iterable<U> | AsyncIterable<U>>): PolyAsyncIt
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+this
+
+
+</td><td>
+
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;

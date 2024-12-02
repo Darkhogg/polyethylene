@@ -14,10 +14,39 @@ forEach(func: IndexedRunnable<T>): void;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedRunnable](./polyethylene.indexedrunnable.md)<!-- -->&lt;T&gt; | A function to be called for every element of the iteration |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedRunnable](./polyethylene.indexedrunnable.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A function to be called for every element of the iteration
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 void

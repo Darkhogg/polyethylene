@@ -14,10 +14,37 @@ function keys<K extends PropertyKey>(obj: Record<K, unknown>): PolySyncIterable<
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  obj | Record&lt;K, unknown&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+obj
+
+
+</td><td>
+
+Record&lt;K, unknown&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;K&gt;

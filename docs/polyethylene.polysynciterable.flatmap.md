@@ -14,10 +14,39 @@ flatMap<U>(func: IndexedMapping<T, Iterable<U>>): PolySyncIterable<U>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, Iterable&lt;U&gt;&gt; | A function that takes an element of <code>this</code> and returns an iterable |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, Iterable&lt;U&gt;&gt;
+
+
+</td><td>
+
+A function that takes an element of `this` and returns an iterable
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;

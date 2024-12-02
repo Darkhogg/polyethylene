@@ -14,10 +14,39 @@ toPartitionArrays(func: IndexedPredicate<T>): [Array<T>, Array<T>];
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; | A function that will be called for all elements to split them into the result arrays |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A function that will be called for all elements to split them into the result arrays
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 \[Array&lt;T&gt;, Array&lt;T&gt;\]

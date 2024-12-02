@@ -14,10 +14,37 @@ flatten<U>(this: PolySyncIterable<Iterable<U>>): PolySyncIterable<U>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  this | [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Iterable&lt;U&gt;&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+this
+
+
+</td><td>
+
+[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Iterable&lt;U&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;

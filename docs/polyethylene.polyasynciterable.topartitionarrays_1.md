@@ -14,11 +14,55 @@ toPartitionArrays(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions):
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | A function that will be called for all elements to split them into the result arrays |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A function that will be called for all elements to split them into the result arrays
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;\[Array&lt;T&gt;, Array&lt;T&gt;\]&gt;

@@ -14,11 +14,55 @@ tap(func: AsyncIndexedRunnable<T>, options?: ConcurrencyOptions): PolyAsyncItera
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncIndexedRunnable](./polyethylene.asyncindexedrunnable.md)<!-- -->&lt;T&gt; | A function called for all elements |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedRunnable](./polyethylene.asyncindexedrunnable.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A function called for all elements
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

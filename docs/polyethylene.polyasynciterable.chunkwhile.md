@@ -14,10 +14,39 @@ chunkWhile(func: AsyncChunkingPredicate<T>): PolyAsyncIterable<Array<T>>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncChunkingPredicate](./polyethylene.asyncchunkingpredicate.md)<!-- -->&lt;T&gt; | A function that decides if an element is part of the current chunk or initiates a new one |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncChunkingPredicate](./polyethylene.asyncchunkingpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A function that decides if an element is part of the current chunk or initiates a new one
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;

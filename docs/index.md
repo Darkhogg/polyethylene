@@ -6,7 +6,26 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [polyethylene](./polyethylene.md) | A library for working with iterables and async iterables in a functional style, by transforming the iterations on the fly and getting results from them. |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[polyethylene](./polyethylene.md)
+
+
+</td><td>
+
+A library for working with iterables and async iterables in a functional style, by transforming the iterations on the fly and getting results from them.
+
+
+</td></tr>
+</tbody></table>

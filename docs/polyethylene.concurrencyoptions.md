@@ -14,8 +14,63 @@ export interface ConcurrencyOptions
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [bufferSize?](./polyethylene.concurrencyoptions.buffersize.md) |  | number | _(Optional)_ Maximum amount of intermediate results to store (defaults to twice the concurrency value) |
-|  [concurrency?](./polyethylene.concurrencyoptions.concurrency.md) |  | number | _(Optional)_ Maximum amount of promises to launch at the same time (defaults to 1) |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[bufferSize?](./polyethylene.concurrencyoptions.buffersize.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum amount of intermediate results to store (defaults to twice the concurrency value)
+
+
+</td></tr>
+<tr><td>
+
+[concurrency?](./polyethylene.concurrencyoptions.concurrency.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Maximum amount of promises to launch at the same time (defaults to 1)
+
+
+</td></tr>
+</tbody></table>

@@ -14,12 +14,69 @@ mapValues<K, V1, V2>(this: PolyAsyncIterable<[K, V1]>, func: AsyncIndexedMapping
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  this | [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, V1\]&gt; |  |
-|  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;\[K, V1\], V2&gt; | A function that takes an element of <code>this</code> and returns something else |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+this
+
+
+</td><td>
+
+[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, V1\]&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;\[K, V1\], V2&gt;
+
+
+</td><td>
+
+A function that takes an element of `this` and returns something else
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, V2\]&gt;

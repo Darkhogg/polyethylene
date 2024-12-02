@@ -14,10 +14,39 @@ duplicate<N extends number>(num: N): Tuple<PolyAsyncIterable<T>, N>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  num | N | the number of copies to be returned |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+num
+
+
+</td><td>
+
+N
+
+
+</td><td>
+
+the number of copies to be returned
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Tuple](./polyethylene.tuple.md)<!-- -->&lt;[PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;, N&gt;

@@ -14,10 +14,39 @@ tap(func: IndexedRunnable<T>): PolySyncIterable<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedRunnable](./polyethylene.indexedrunnable.md)<!-- -->&lt;T&gt; | A function called for all elements |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedRunnable](./polyethylene.indexedrunnable.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A function called for all elements
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;

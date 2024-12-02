@@ -14,10 +14,39 @@ map<U>(func: IndexedMapping<T, U>): PolySyncIterable<U>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, U&gt; | A function that takes an element of <code>this</code> and returns something else |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, U&gt;
+
+
+</td><td>
+
+A function that takes an element of `this` and returns something else
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;

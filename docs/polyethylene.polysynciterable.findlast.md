@@ -14,10 +14,39 @@ findLast<U extends T>(func: IndexedTypePredicate<T, U>): U | undefined;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt; | A type predicate called for elements of <code>this</code> |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt;
+
+
+</td><td>
+
+A type predicate called for elements of `this`
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 U \| undefined

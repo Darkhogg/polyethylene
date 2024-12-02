@@ -14,11 +14,55 @@ findLast<U extends T>(func: IndexedTypePredicate<T, U>, options?: ConcurrencyOpt
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt; | A type predicate called for elements of <code>this</code> |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt;
+
+
+</td><td>
+
+A type predicate called for elements of `this`
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;U \| undefined&gt;

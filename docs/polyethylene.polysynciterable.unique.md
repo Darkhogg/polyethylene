@@ -14,10 +14,39 @@ unique(func?: IndexedMapping<T, unknown>): PolySyncIterable<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, unknown&gt; | _(Optional)_ A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, unknown&gt;
+
+
+</td><td>
+
+_(Optional)_ A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used.
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;

@@ -14,10 +14,39 @@ toPartitionArrays<U extends T>(func: IndexedTypePredicate<T, U>): [Array<U>, Arr
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt; | A function that will be called for all elements to split them into the result arrays |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedTypePredicate](./polyethylene.indexedtypepredicate.md)<!-- -->&lt;T, U&gt;
+
+
+</td><td>
+
+A function that will be called for all elements to split them into the result arrays
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 \[Array&lt;U&gt;, Array&lt;Exclude&lt;T, U&gt;&gt;\]

@@ -14,10 +14,39 @@ function buildWith<T>(func: (builder: AsyncIterableBuilder<T>) => void): PolyAsy
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | (builder: [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->&lt;T&gt;) =&gt; void | A function that will receive an object containing the methods <code>value</code>, <code>error</code> and <code>done</code>. |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+(builder: [AsyncIterableBuilder](./polyethylene.asynciterablebuilder.md)<!-- -->&lt;T&gt;) =&gt; void
+
+
+</td><td>
+
+A function that will receive an object containing the methods `value`<!-- -->, `error` and `done`<!-- -->.
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

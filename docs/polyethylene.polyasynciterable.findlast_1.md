@@ -14,11 +14,55 @@ findLast(func: AsyncIndexedPredicate<T>, options?: ConcurrencyOptions): Promise<
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt; | A boolean returning function called for elements of <code>this</code> |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedPredicate](./polyethylene.asyncindexedpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A boolean returning function called for elements of `this`
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;T \| undefined&gt;

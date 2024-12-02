@@ -14,10 +14,39 @@ findIndex(func: IndexedPredicate<T>): number;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; | A boolean returning function called for elements of <code>this</code> |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+A boolean returning function called for elements of `this`
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 number

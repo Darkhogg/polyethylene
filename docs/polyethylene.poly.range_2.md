@@ -14,12 +14,71 @@ function range(from: number, to: number, step?: number): PolySyncIterable<number
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  from | number | Inclusive lower bound of the iteration |
-|  to | number | Exclusive upper bound of the iteration |
-|  step | number | _(Optional)_ Distance between the iterated numbers |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+from
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+Inclusive lower bound of the iteration
+
+
+</td></tr>
+<tr><td>
+
+to
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+Exclusive upper bound of the iteration
+
+
+</td></tr>
+<tr><td>
+
+step
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ Distance between the iterated numbers
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;number&gt;

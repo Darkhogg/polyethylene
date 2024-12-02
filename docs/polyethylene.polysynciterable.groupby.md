@@ -14,10 +14,39 @@ groupBy<K>(func: IndexedMapping<T, K>): PolySyncIterable<[K, Array<T>]>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, K&gt; | A function that returns the grouping key of each element |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedMapping](./polyethylene.indexedmapping.md)<!-- -->&lt;T, K&gt;
+
+
+</td><td>
+
+A function that returns the grouping key of each element
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K, Array&lt;T&gt;\]&gt;

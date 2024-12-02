@@ -14,10 +14,39 @@ function syncIterate<T>(func: (lastValue: T | undefined) => T): PolySyncIterable
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | (lastValue: T \| undefined) =&gt; T | The function that will be called to generate new elements of the iteration |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+(lastValue: T \| undefined) =&gt; T
+
+
+</td><td>
+
+The function that will be called to generate new elements of the iteration
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;

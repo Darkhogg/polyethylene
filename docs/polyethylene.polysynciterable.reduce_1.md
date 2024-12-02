@@ -14,11 +14,55 @@ reduce<U>(reducer: IndexedReducer<T, U>, init: U): U;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  reducer | [IndexedReducer](./polyethylene.indexedreducer.md)<!-- -->&lt;T, U&gt; | A function to call for all elements with the result of a previous call |
-|  init | U | First element to be passed to the <code>reducer</code> function |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+reducer
+
+
+</td><td>
+
+[IndexedReducer](./polyethylene.indexedreducer.md)<!-- -->&lt;T, U&gt;
+
+
+</td><td>
+
+A function to call for all elements with the result of a previous call
+
+
+</td></tr>
+<tr><td>
+
+init
+
+
+</td><td>
+
+U
+
+
+</td><td>
+
+First element to be passed to the `reducer` function
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 U

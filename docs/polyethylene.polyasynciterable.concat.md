@@ -14,10 +14,39 @@ concat<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  other | Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt; | Iterable to be appended |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+other
+
+
+</td><td>
+
+Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;
+
+
+</td><td>
+
+Iterable to be appended
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T \| U&gt;

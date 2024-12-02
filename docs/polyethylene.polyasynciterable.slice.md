@@ -14,11 +14,55 @@ slice(start: number, end?: number): PolyAsyncIterable<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  start | number | The index of the first element returned |
-|  end | number | _(Optional)_ The index of the first element \*not\* returned, inclusive |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+start
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+The index of the first element returned
+
+
+</td></tr>
+<tr><td>
+
+end
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+_(Optional)_ The index of the first element \*not\* returned, inclusive
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

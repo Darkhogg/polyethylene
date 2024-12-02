@@ -14,10 +14,39 @@ function asyncIterate<T>(func: (lastValue: T | undefined) => T | Promise<T>): Po
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | (lastValue: T \| undefined) =&gt; T \| Promise&lt;T&gt; | The function that will be called to generate new elements of the iteration |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+(lastValue: T \| undefined) =&gt; T \| Promise&lt;T&gt;
+
+
+</td><td>
+
+The function that will be called to generate new elements of the iteration
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

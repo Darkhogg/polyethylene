@@ -14,10 +14,39 @@ takeWhile(func: IndexedPredicate<T>): PolySyncIterable<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt; | The function to call on the elements |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[IndexedPredicate](./polyethylene.indexedpredicate.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+The function to call on the elements
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;

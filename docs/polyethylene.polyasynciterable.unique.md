@@ -14,11 +14,55 @@ unique(func?: AsyncIndexedMapping<T, unknown>, options?: ConcurrencyOptions): Po
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, unknown&gt; | _(Optional)_ A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used. |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, unknown&gt;
+
+
+</td><td>
+
+_(Optional)_ A function that returns a \_key\_ used for uniqueness checks. If not passed, an identitity function is used.
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

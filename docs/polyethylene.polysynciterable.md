@@ -17,56 +17,722 @@ export default abstract class PolySyncIterable<T> implements Iterable<T>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [\[Symbol.iterator\]()](./polyethylene.polysynciterable._symbol.iterator_.md) | <code>abstract</code> | Allows this class to work as a regular <code>Iterable&lt;T&gt;</code> |
-|  [append(other)](./polyethylene.polysynciterable.append.md) |  | Return a new iteration that will iterate over <code>this</code>, then over <code>other</code>. |
-|  [async()](./polyethylene.polysynciterable.async.md) |  | Return an async version of this same iteration. |
-|  [chunk(num)](./polyethylene.polysynciterable.chunk.md) |  | Return an iteration of arrays of size <code>num</code> (except possibly the last) containing groupings of elements of <code>this</code> iteration. |
-|  [chunkWhile(func)](./polyethylene.polysynciterable.chunkwhile.md) |  | Return an iteration of arrays with elements of this separated based on the result of calling <code>func(elements)</code>. |
-|  [complete()](./polyethylene.polysynciterable.complete.md) |  | Perform this iteration doing nothing. |
-|  [concat(other)](./polyethylene.polysynciterable.concat.md) |  | Return a new iteration that will iterate over <code>this</code>, then over <code>other</code>. |
-|  [count()](./polyethylene.polysynciterable.count.md) |  | Return the number of elements on this iteration. |
-|  [drop(num)](./polyethylene.polysynciterable.drop.md) |  | Return a new iteration that skips the first <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
-|  [dropLast(num)](./polyethylene.polysynciterable.droplast.md) |  | Return a new iteration that skips the last <code>num</code> elements. If there were less than <code>num</code> elements in the iteration, no elements are yielded. |
-|  [dropWhile(func)](./polyethylene.polysynciterable.dropwhile.md) |  | Return a new iteration that skips the first few elements for which <code>func(element)</code> returns <code>true</code>. |
-|  [duplicate(num)](./polyethylene.polysynciterable.duplicate.md) |  | Returns a tuple containing <code>num</code> iterables that will yield independent copies of the elements yielded by <code>this</code>. |
-|  [every(func)](./polyethylene.polysynciterable.every.md) |  | Returns <code>true</code> if calling <code>func(element)</code> returns <code>true</code> for every element, and <code>false</code> otherwise |
-|  [filter(func)](./polyethylene.polysynciterable.filter.md) |  | Return an iteration of the elements of <code>this</code> for which <code>func(element)</code> returns <code>true</code>. |
-|  [filter(func)](./polyethylene.polysynciterable.filter_1.md) |  | Return an iteration of the elements of <code>this</code> for which <code>func(element)</code> returns <code>true</code>. |
-|  [filterNotNullish()](./polyethylene.polysynciterable.filternotnullish.md) |  | Return an iteration of all the elements as <code>this</code> that aren't <code>null</code> or <code>undefined</code>. |
-|  [find(func)](./polyethylene.polysynciterable.find.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
-|  [find(func)](./polyethylene.polysynciterable.find_1.md) |  | Returns the first element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
-|  [findIndex(func)](./polyethylene.polysynciterable.findindex.md) |  | Returns the index of the first element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
-|  [findLast(func)](./polyethylene.polysynciterable.findlast.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
-|  [findLast(func)](./polyethylene.polysynciterable.findlast_1.md) |  | Returns the last element for which <code>func(element)</code> returns <code>true</code>, or <code>undefined</code> if it never does. |
-|  [findLastIndex(func)](./polyethylene.polysynciterable.findlastindex.md) |  | Returns the index of the last element for which <code>func(element)</code> returns <code>true</code>, or <code>-1</code> if it never does. |
-|  [flat(this)](./polyethylene.polysynciterable.flat.md) |  | Return an iteration of the yielded elements of the sub-iterables. |
-|  [flatMap(func)](./polyethylene.polysynciterable.flatmap.md) |  | Return an iteration of elements of the sub-iterables that result from calling <code>func(element)</code> for every element in <code>this</code>. |
-|  [flatten(this)](./polyethylene.polysynciterable.flatten.md) |  | Return an iteration of the yielded elements of the sub-iterables. |
-|  [forEach(func)](./polyethylene.polysynciterable.foreach.md) |  | Call a function for each element of <code>this</code> iteration. |
-|  [groupBy(func)](./polyethylene.polysynciterable.groupby.md) |  | Return an iteration of group pairs, where the first element is a \_group key\_ and the second is an iterable of all the elements for which <code>func(element)</code> returned the key. |
-|  [includes(obj)](./polyethylene.polysynciterable.includes.md) |  | Returns whether an element is present in this iteration. |
-|  [join(glue)](./polyethylene.polysynciterable.join.md) |  | Return the result of joining the elements of <code>this</code> with the given <code>glue</code>, or <code>','</code> if no glue is given. |
-|  [map(func)](./polyethylene.polysynciterable.map.md) |  | Return an iteration of the result of calling <code>func(element)</code> for every element in <code>this</code>. |
-|  [mapKeys(this, func)](./polyethylene.polysynciterable.mapkeys.md) |  | Return an iteration of the pairs resulting of calling <code>func(element)</code> for every element in <code>this</code> and using it as the first element of the pair (the \*key\*) and preserving the second (the \*value\*). |
-|  [mapValues(this, func)](./polyethylene.polysynciterable.mapvalues.md) |  | Return an iteration of the pairs resulting of calling <code>func(element)</code> for every element in <code>this</code> and using it as the second element of the pair (the \*value\*) and preserving the first (the \*key\*). |
-|  [prepend(other)](./polyethylene.polysynciterable.prepend.md) |  | Return a new iteration that will iterate over <code>other</code>, then over <code>this</code>. |
-|  [reduce(reducer, init)](./polyethylene.polysynciterable.reduce.md) |  | Returns the result of calling the passed <code>reducer</code> for all elements of the iteration and the result of the previous call to <code>reducer</code>, starting by passing <code>init</code> or, if not present, the first element of the iteration. |
-|  [reduce(reducer, init)](./polyethylene.polysynciterable.reduce_1.md) |  | Returns the result of calling the passed <code>reducer</code> for all elements of the iteration and the result of the previous call to <code>reducer</code>, starting by passing <code>init</code>. |
-|  [reverse()](./polyethylene.polysynciterable.reverse.md) |  | Return an iteration of the elements of <code>this</code> in reverse order. |
-|  [slice(start, end)](./polyethylene.polysynciterable.slice.md) |  | Return a new iteration that starts from the <code>start</code>th element (included) and ends at the <code>end</code>th element (excluded) of <code>this</code>. |
-|  [some(func)](./polyethylene.polysynciterable.some.md) |  | Returns <code>true</code> if calling <code>func(element)</code> returns <code>true</code> for at least one element, and <code>false</code> otherwise |
-|  [sort(func)](./polyethylene.polysynciterable.sort.md) |  | Return an iteration of the elements of <code>this</code> sorted according to <code>func</code> |
-|  [take(num)](./polyethylene.polysynciterable.take.md) |  | Return a new iteration that iterates only over the first <code>num</code> elements. If there were less than than <code>num</code> elements in the iteration, all elements are yielded with no additions. |
-|  [takeLast(num)](./polyethylene.polysynciterable.takelast.md) |  | Return a new iteration that iterates only over the last <code>num</code> elements. If there were less than than <code>num</code> elements in the iteration, all elements are yielded with no additions. |
-|  [takeWhile(func)](./polyethylene.polysynciterable.takewhile.md) |  | Return a new iteration that yields the first few elements for which <code>func(element)</code> returns <code>true</code>. |
-|  [takeWhile(func)](./polyethylene.polysynciterable.takewhile_1.md) |  | Return a new iteration that yields the first few elements for which <code>func(element)</code> returns <code>true</code>. |
-|  [tap(func)](./polyethylene.polysynciterable.tap.md) |  | Return an iteration of the same elements as <code>this</code> after calling <code>func(element)</code> for all elements. |
-|  [toArray()](./polyethylene.polysynciterable.toarray.md) |  | Return an array of all elements of this iteration in the same order that were yielded. |
-|  [toMap(this)](./polyethylene.polysynciterable.tomap.md) |  | Return a <code>Map</code> made from the entries of <code>this</code>. This method is roughly equivalent to calling <code>new Map(iter.toArray())</code>. |
-|  [toObject(this)](./polyethylene.polysynciterable.toobject.md) |  | Return an object made from the entries of <code>this</code>. This method is roughly equivalent to calling <code>Object.fromEntires(iter.toArray())</code>. |
-|  [toPartitionArrays(func)](./polyethylene.polysynciterable.topartitionarrays.md) |  | Splits this iteration into two arrays, one with elements for which <code>func(element)</code> returns <code>true</code> (the \_truthy elements\_) and one for which it returns <code>false</code> (the \_falsy elements\_). |
-|  [toPartitionArrays(func)](./polyethylene.polysynciterable.topartitionarrays_1.md) |  | Splits this iteration into two arrays, one with elements for which <code>func(element)</code> returns <code>true</code> (the \_truthy elements\_) and one for which it returns <code>false</code> (the \_falsy elements\_). |
-|  [unique(func)](./polyethylene.polysynciterable.unique.md) |  | Return an iteration of unique elements, where two elements are considered equal if the result of <code>func(element)</code> is the same for both elements. |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[\[Symbol.iterator\]()](./polyethylene.polysynciterable._symbol.iterator_.md)
+
+
+</td><td>
+
+`abstract`
+
+
+</td><td>
+
+Allows this class to work as a regular `Iterable<T>`
+
+
+</td></tr>
+<tr><td>
+
+[append(other)](./polyethylene.polysynciterable.append.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that will iterate over `this`<!-- -->, then over `other`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[async()](./polyethylene.polysynciterable.async.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an async version of this same iteration.
+
+
+</td></tr>
+<tr><td>
+
+[chunk(num)](./polyethylene.polysynciterable.chunk.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of arrays of size `num` (except possibly the last) containing groupings of elements of `this` iteration.
+
+
+</td></tr>
+<tr><td>
+
+[chunkWhile(func)](./polyethylene.polysynciterable.chunkwhile.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of arrays with elements of this separated based on the result of calling `func(elements)`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[complete()](./polyethylene.polysynciterable.complete.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Perform this iteration doing nothing.
+
+
+</td></tr>
+<tr><td>
+
+[concat(other)](./polyethylene.polysynciterable.concat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that will iterate over `this`<!-- -->, then over `other`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[count()](./polyethylene.polysynciterable.count.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return the number of elements on this iteration.
+
+
+</td></tr>
+<tr><td>
+
+[drop(num)](./polyethylene.polysynciterable.drop.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that skips the first `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.
+
+
+</td></tr>
+<tr><td>
+
+[dropLast(num)](./polyethylene.polysynciterable.droplast.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that skips the last `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.
+
+
+</td></tr>
+<tr><td>
+
+[dropWhile(func)](./polyethylene.polysynciterable.dropwhile.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that skips the first few elements for which `func(element)` returns `true`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[duplicate(num)](./polyethylene.polysynciterable.duplicate.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns a tuple containing `num` iterables that will yield independent copies of the elements yielded by `this`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[every(func)](./polyethylene.polysynciterable.every.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns `true` if calling `func(element)` returns `true` for every element, and `false` otherwise
+
+
+</td></tr>
+<tr><td>
+
+[filter(func)](./polyethylene.polysynciterable.filter.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the elements of `this` for which `func(element)` returns `true`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[filter(func)](./polyethylene.polysynciterable.filter_1.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the elements of `this` for which `func(element)` returns `true`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[filterNotNullish()](./polyethylene.polysynciterable.filternotnullish.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of all the elements as `this` that aren't `null` or `undefined`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[find(func)](./polyethylene.polysynciterable.find.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns the first element for which `func(element)` returns `true`<!-- -->, or `undefined` if it never does.
+
+
+</td></tr>
+<tr><td>
+
+[find(func)](./polyethylene.polysynciterable.find_1.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns the first element for which `func(element)` returns `true`<!-- -->, or `undefined` if it never does.
+
+
+</td></tr>
+<tr><td>
+
+[findIndex(func)](./polyethylene.polysynciterable.findindex.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns the index of the first element for which `func(element)` returns `true`<!-- -->, or `-1` if it never does.
+
+
+</td></tr>
+<tr><td>
+
+[findLast(func)](./polyethylene.polysynciterable.findlast.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns the last element for which `func(element)` returns `true`<!-- -->, or `undefined` if it never does.
+
+
+</td></tr>
+<tr><td>
+
+[findLast(func)](./polyethylene.polysynciterable.findlast_1.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns the last element for which `func(element)` returns `true`<!-- -->, or `undefined` if it never does.
+
+
+</td></tr>
+<tr><td>
+
+[findLastIndex(func)](./polyethylene.polysynciterable.findlastindex.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns the index of the last element for which `func(element)` returns `true`<!-- -->, or `-1` if it never does.
+
+
+</td></tr>
+<tr><td>
+
+[flat(this)](./polyethylene.polysynciterable.flat.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the yielded elements of the sub-iterables.
+
+
+</td></tr>
+<tr><td>
+
+[flatMap(func)](./polyethylene.polysynciterable.flatmap.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of elements of the sub-iterables that result from calling `func(element)` for every element in `this`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[flatten(this)](./polyethylene.polysynciterable.flatten.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the yielded elements of the sub-iterables.
+
+
+</td></tr>
+<tr><td>
+
+[forEach(func)](./polyethylene.polysynciterable.foreach.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Call a function for each element of `this` iteration.
+
+
+</td></tr>
+<tr><td>
+
+[groupBy(func)](./polyethylene.polysynciterable.groupby.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of group pairs, where the first element is a \_group key\_ and the second is an iterable of all the elements for which `func(element)` returned the key.
+
+
+</td></tr>
+<tr><td>
+
+[includes(obj)](./polyethylene.polysynciterable.includes.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns whether an element is present in this iteration.
+
+
+</td></tr>
+<tr><td>
+
+[join(glue)](./polyethylene.polysynciterable.join.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return the result of joining the elements of `this` with the given `glue`<!-- -->, or `','` if no glue is given.
+
+
+</td></tr>
+<tr><td>
+
+[map(func)](./polyethylene.polysynciterable.map.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the result of calling `func(element)` for every element in `this`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[mapKeys(this, func)](./polyethylene.polysynciterable.mapkeys.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the first element of the pair (the \*key\*) and preserving the second (the \*value\*).
+
+
+</td></tr>
+<tr><td>
+
+[mapValues(this, func)](./polyethylene.polysynciterable.mapvalues.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the second element of the pair (the \*value\*) and preserving the first (the \*key\*).
+
+
+</td></tr>
+<tr><td>
+
+[prepend(other)](./polyethylene.polysynciterable.prepend.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that will iterate over `other`<!-- -->, then over `this`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[reduce(reducer, init)](./polyethylene.polysynciterable.reduce.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the previous call to `reducer`<!-- -->, starting by passing `init` or, if not present, the first element of the iteration.
+
+
+</td></tr>
+<tr><td>
+
+[reduce(reducer, init)](./polyethylene.polysynciterable.reduce_1.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the previous call to `reducer`<!-- -->, starting by passing `init`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[reverse()](./polyethylene.polysynciterable.reverse.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the elements of `this` in reverse order.
+
+
+</td></tr>
+<tr><td>
+
+[slice(start, end)](./polyethylene.polysynciterable.slice.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that starts from the `start`<!-- -->th element (included) and ends at the `end`<!-- -->th element (excluded) of `this`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[some(func)](./polyethylene.polysynciterable.some.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Returns `true` if calling `func(element)` returns `true` for at least one element, and `false` otherwise
+
+
+</td></tr>
+<tr><td>
+
+[sort(func)](./polyethylene.polysynciterable.sort.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the elements of `this` sorted according to `func`
+
+
+</td></tr>
+<tr><td>
+
+[take(num)](./polyethylene.polysynciterable.take.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that iterates only over the first `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.
+
+
+</td></tr>
+<tr><td>
+
+[takeLast(num)](./polyethylene.polysynciterable.takelast.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that iterates only over the last `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.
+
+
+</td></tr>
+<tr><td>
+
+[takeWhile(func)](./polyethylene.polysynciterable.takewhile.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that yields the first few elements for which `func(element)` returns `true`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[takeWhile(func)](./polyethylene.polysynciterable.takewhile_1.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a new iteration that yields the first few elements for which `func(element)` returns `true`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[tap(func)](./polyethylene.polysynciterable.tap.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of the same elements as `this` after calling `func(element)` for all elements.
+
+
+</td></tr>
+<tr><td>
+
+[toArray()](./polyethylene.polysynciterable.toarray.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an array of all elements of this iteration in the same order that were yielded.
+
+
+</td></tr>
+<tr><td>
+
+[toMap(this)](./polyethylene.polysynciterable.tomap.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return a `Map` made from the entries of `this`<!-- -->. This method is roughly equivalent to calling `new Map(iter.toArray())`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[toObject(this)](./polyethylene.polysynciterable.toobject.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an object made from the entries of `this`<!-- -->. This method is roughly equivalent to calling `Object.fromEntires(iter.toArray())`<!-- -->.
+
+
+</td></tr>
+<tr><td>
+
+[toPartitionArrays(func)](./polyethylene.polysynciterable.topartitionarrays.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the \_truthy elements\_) and one for which it returns `false` (the \_falsy elements\_).
+
+
+</td></tr>
+<tr><td>
+
+[toPartitionArrays(func)](./polyethylene.polysynciterable.topartitionarrays_1.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the \_truthy elements\_) and one for which it returns `false` (the \_falsy elements\_).
+
+
+</td></tr>
+<tr><td>
+
+[unique(func)](./polyethylene.polysynciterable.unique.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is the same for both elements.
+
+
+</td></tr>
+</tbody></table>

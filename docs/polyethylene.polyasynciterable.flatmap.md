@@ -14,11 +14,55 @@ flatMap<U>(func: AsyncIndexedMapping<T, Iterable<U> | AsyncIterable<U>>, options
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  func | [AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;&gt; | A function that takes an element of <code>this</code> and returns an iterable |
-|  options | [ConcurrencyOptions](./polyethylene.concurrencyoptions.md) | _(Optional)_ Options for concurrency of this operation |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+func
+
+
+</td><td>
+
+[AsyncIndexedMapping](./polyethylene.asyncindexedmapping.md)<!-- -->&lt;T, Iterable&lt;U&gt; \| AsyncIterable&lt;U&gt;&gt;
+
+
+</td><td>
+
+A function that takes an element of `this` and returns an iterable
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[ConcurrencyOptions](./polyethylene.concurrencyoptions.md)
+
+
+</td><td>
+
+_(Optional)_ Options for concurrency of this operation
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;U&gt;

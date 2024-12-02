@@ -9,7 +9,7 @@ Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the
 **Signature:**
 
 ```typescript
-function keys<K extends string | number | symbol>(obj: Record<K, unknown>): PolySyncIterable<K>;
+function keys<K extends PropertyKey>(obj: Record<K, unknown>): PolySyncIterable<K>;
 ```
 
 ## Parameters

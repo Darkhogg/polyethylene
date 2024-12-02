@@ -9,14 +9,14 @@ Returns a [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the
 **Signature:**
 
 ```typescript
-function values<V>(obj: Record<string | number | symbol, V>): PolySyncIterable<V>;
+function values<V, K extends PropertyKey = PropertyKey>(obj: Record<K, V>): PolySyncIterable<V>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  obj | Record&lt;string \| number \| symbol, V&gt; |  |
+|  obj | Record&lt;K, V&gt; |  |
 
 **Returns:**
 

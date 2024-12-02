@@ -221,7 +221,7 @@ export namespace Poly {
    *
    * @public
    */
-  export function entries<K extends string | number | symbol, V> (
+  export function entries<K extends PropertyKey, V> (
     obj: Record<K, V>,
   ): PolySyncIterable<[K, V]> {
     return syncFrom(function * () {
@@ -241,7 +241,7 @@ export namespace Poly {
    *
    * @public
    */
-  export function keys<K extends string | number | symbol> (
+  export function keys<K extends PropertyKey> (
     obj: Record<K, unknown>,
   ): PolySyncIterable<K> {
     return syncFrom(function * () {
@@ -261,8 +261,8 @@ export namespace Poly {
    *
    * @public
    */
-  export function values<V> (
-    obj: Record<string | number | symbol, V>,
+  export function values<V, K extends PropertyKey = PropertyKey> (
+    obj: Record<K, V>,
   ): PolySyncIterable<V> {
     return syncFrom(function * () {
       for (const key in obj) {
@@ -455,3 +455,10 @@ export namespace Poly {
     })
   }
 }
+
+
+const obj: {[key: string]: number} = {}
+
+const a = Poly.values(obj)
+const b = Poly.keys(obj)
+const c = Poly.entries(obj)

@@ -6,6 +6,11 @@ This file is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [2.5.3] - 2024-12-02
+
+### Fixed:
+  - Updated types for `Poly.values` to prevent type errors on certain configurations.
+
 ## [2.5.2] - 2023-12-31
 
 ### Fixed:

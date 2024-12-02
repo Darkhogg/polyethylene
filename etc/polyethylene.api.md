@@ -66,12 +66,12 @@ namespace Poly {
     function builder<T>(): AsyncIterableBuilder<T>;
     function buildWith<T>(func: (builder: AsyncIterableBuilder<T>) => void): PolyAsyncIterable<T>;
     function empty<T = never>(): PolySyncIterable<T>;
-    function entries<K extends string | number | symbol, V>(obj: Record<K, V>): PolySyncIterable<[K, V]>;
+    function entries<K extends PropertyKey, V>(obj: Record<K, V>): PolySyncIterable<[K, V]>;
     function from<T>(iterableOrFactory: AsyncIterable<T> | AsyncIterableFactory<T>): PolyAsyncIterable<T>;
     function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T>): PolySyncIterable<T>;
     function from<T>(iterableOrFactory: Iterable<T> | IterableFactory<T> | AsyncIterable<T> | AsyncIterableFactory<T>): PolySyncIterable<T> | PolyAsyncIterable<T>;
     type IterableFactory<T> = () => Iterable<T>;
-    function keys<K extends string | number | symbol>(obj: Record<K, unknown>): PolySyncIterable<K>;
+    function keys<K extends PropertyKey>(obj: Record<K, unknown>): PolySyncIterable<K>;
     function range(to: number): PolySyncIterable<number>;
     function range(from: number, to: number): PolySyncIterable<number>;
     function range(from: number, to: number, step?: number): PolySyncIterable<number>;
@@ -79,14 +79,14 @@ namespace Poly {
     function syncFrom<T>(iterableOrFactory: Iterable<T> | IterableFactory<T>): PolySyncIterable<T>;
     function syncIterate<T>(func: (lastValue: T | undefined) => T): PolySyncIterable<T>;
     function syncIterate<T>(func: (lastValue: T) => T, initValue: T): PolySyncIterable<T>;
-    function values<V>(obj: Record<string | number | symbol, V>): PolySyncIterable<V>;
+    function values<V, K extends PropertyKey = PropertyKey>(obj: Record<K, V>): PolySyncIterable<V>;
 }
 export { Poly }
 export default Poly;
 
 // @public
 export class PolyAsyncIterable<T> implements AsyncIterable<T> {
-    [Symbol.asyncIterator](): AsyncIterator<T, any, undefined>;
+    [Symbol.asyncIterator](): AsyncIterator<T, any, any>;
     // @internal
     constructor(iterable: AsyncIterable<T>);
     append<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;

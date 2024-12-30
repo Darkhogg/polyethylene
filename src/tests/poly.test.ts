@@ -21,6 +21,13 @@ describe('Poly', () => {
       expect(iter[Symbol.iterator]).to.exist
     })
 
+    it('should return an iterable if given a string', () => {
+      const obj = 'foo'
+
+      const iter = Poly.syncFrom(obj)
+      expect(iter[Symbol.iterator]).to.exist
+    })
+
     it('should return an iterable if given an iterable factory', () => {
       function * gen () {}
 
@@ -64,6 +71,13 @@ describe('Poly', () => {
       const obj = {
         * [Symbol.iterator] (): Iterator<unknown> {},
       }
+
+      const iter = Poly.asyncFrom(obj)
+      expect(iter[Symbol.asyncIterator]).to.exist
+    })
+
+    it('should return an async iterable if given a string', () => {
+      const obj = 'foo'
 
       const iter = Poly.asyncFrom(obj)
       expect(iter[Symbol.asyncIterator]).to.exist
@@ -117,6 +131,13 @@ describe('Poly', () => {
       const obj = {
         * [Symbol.iterator] (): Iterator<unknown> {},
       }
+
+      const iter = Poly.from(obj)
+      expect(iter[Symbol.iterator]).to.exist
+    })
+
+    it('should return a sync iterable if given a string', () => {
+      const obj = 'foo'
 
       const iter = Poly.from(obj)
       expect(iter[Symbol.iterator]).to.exist

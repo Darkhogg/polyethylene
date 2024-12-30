@@ -16,11 +16,11 @@ export function isNotNullish<T> (obj: T): obj is NonNullable<T> {
 
 
 export function isSyncIterable<T> (obj: unknown): obj is Iterable<T> {
-  return typeof obj == 'object' && obj != null && Symbol.iterator in obj
+  return obj != null && Symbol.iterator in Object(obj)
 }
 
 export function isAsyncIterable<T> (obj: unknown): obj is AsyncIterable<T> {
-  return typeof obj == 'object' && obj != null && Symbol.asyncIterator in obj
+  return obj != null && Symbol.asyncIterator in Object(obj)
 }
 
 export const asserts = {

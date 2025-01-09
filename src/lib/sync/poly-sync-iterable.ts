@@ -277,9 +277,10 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.
    *
    * @remarks
-   * This function is a shortcut to calling {@link PolySyncIterable.filter.(:FILTER_TYPEPRED)} with a type predicate
-   * function that correctly filters out `null` and `undefined` values from the iteration.  Note that other falsy values
-   * will remain in the iteration, and that the return value is correctly typed to exclude `null` and `undefined`.
+   * This function is a shortcut to calling {@link PolySyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type
+   * predicate function that correctly filters out `null` and `undefined` values from the iteration.  Note that other
+   * falsy values will remain in the iteration, and that the return value is correctly typed to exclude
+   * `null` and `undefined`.
    *
    * @returns A new {@link PolySyncIterable} that yields the same elements as `this`
    * except for `null` or `undefined` values

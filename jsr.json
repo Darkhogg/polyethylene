@@ -1,0 +1,13 @@
+{
+  "name": "@dani/polyethylene",
+  "version": "2.5.4",
+  "license": "MIT",
+  "exports": "./src/lib/main.ts",
+  "publish": {
+    "exclude": [
+      "docs",
+      "etc",
+      "src/tests"
+    ]
+  }
+}

@@ -168,5 +168,7 @@ export type Comparator<T> = (elemA: T, elemB: T) => number
  *
  * @typeParam T - The type of elements of the tuple
  * @typeParam N - The number of elements in this tuple
+ *
+ * @public
  */
 export type Tuple<T, N extends number> = [T, ...T[]] & { length: N };

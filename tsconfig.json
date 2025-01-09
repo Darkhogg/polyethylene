@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true,
+    "inlineSourceMap": true,
     "strict": true,
     "incremental": true
   },

@@ -591,7 +591,7 @@ Return an iteration of the elements of `this` sorted according to `func`
 
 </td><td>
 
-Return a new iteration that iterates only over the first `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.
+Return a new iteration that iterates only over the first `num` elements. If there were less than `num` elements in the iteration, all elements are yielded with no additions.
 
 
 </td></tr>
@@ -605,7 +605,7 @@ Return a new iteration that iterates only over the first `num` elements. If ther
 
 </td><td>
 
-Return a new iteration that iterates only over the last `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.
+Return a new iteration that iterates only over the last `num` elements. If there were less than `num` elements in the iteration, all elements are yielded with no additions.
 
 
 </td></tr>

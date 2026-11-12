@@ -52,7 +52,7 @@ Iterable to be appended
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T \| U&gt;
 
-a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the elements of `this` and then the elements of `other`
+a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the elements of `this` and then the elements of `other`
 
 ## Remarks
 

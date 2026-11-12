@@ -4,7 +4,7 @@
 
 ## PolySyncIterable.take() method
 
-Return a new iteration that iterates only over the first `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.
+Return a new iteration that iterates only over the first `num` elements. If there were less than `num` elements in the iteration, all elements are yielded with no additions.
 
 **Signature:**
 
@@ -52,5 +52,5 @@ _(Optional)_ The number of elements to yield
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
 
-a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the first `num` elements elements of `this`
+a new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the first `num` elements of `this`
 

@@ -216,7 +216,9 @@ export namespace Poly {
   /**
    * Returns a {@link PolySyncIterable} that yields the same elements as `Object.entries` would.
    *
-   * @typeParam T - Type of the resulting iterable
+   * @typeParam K - Type of the keys of the passed object
+   * @typeParam V - Type of the values of the passed object
+   * @param obj - The object whose entries will be iterated
    * @returns An iterable that yields the entries of the passed object
    *
    * @public
@@ -236,7 +238,8 @@ export namespace Poly {
   /**
    * Returns a {@link PolySyncIterable} that yields the same elements as `Object.keys` would.
    *
-   * @typeParam T - Type of the resulting iterable
+   * @typeParam K - Type of the keys of the passed object
+   * @param obj - The object whose keys will be iterated
    * @returns An iterable that yields the keys of the passed object
    *
    * @public
@@ -256,7 +259,9 @@ export namespace Poly {
   /**
    * Returns a {@link PolySyncIterable} that yields the same elements as `Object.values` would.
    *
-   * @typeParam T - Type of the resulting iterable
+   * @typeParam V - Type of the values of the passed object
+   * @typeParam K - Type of the keys of the passed object
+   * @param obj - The object whose values will be iterated
    * @returns An iterable that yields the values of the passed object
    *
    * @public
@@ -353,7 +358,7 @@ export namespace Poly {
    * Note that there is no way of yielding a different value to that passed to the next function call, and that the
    * resulting iterable will not end.  If this is undesired, either use some of the operators on the resulting iterable
    * (such as {@link PolySyncIterable.map | map} or {@link PolySyncIterable.take | take}
-   * / {@link PolySyncIterable.take | takeWhile}) or use a different approach to create the iterable.
+   * / {@link PolySyncIterable.(takeWhile:2) | takeWhile}) or use a different approach to create the iterable.
    *
    * @typeParam T - The type of the interable and return type of `func`
    * @param func - The function that will be called to generate new elements of the iteration
@@ -375,7 +380,7 @@ export namespace Poly {
    * Note that there is no way of yielding a different value to that passed to the next function call, and that the
    * resulting iterable will not end.  If this is undesired, either use some of the operators on the resulting iterable
    * (such as {@link PolySyncIterable.map | map} or {@link PolySyncIterable.take | take}
-   * / {@link PolySyncIterable.take | takeWhile}) or use a different approach to create the iterable.
+   * / {@link PolySyncIterable.(takeWhile:2) | takeWhile}) or use a different approach to create the iterable.
    *
    * @typeParam T - The type of the interable and return type of `func`
    * @param func - The function that will be called to generate new elements of the iteration
@@ -410,7 +415,7 @@ export namespace Poly {
    * Note that there is no way of yielding a different value to that passed to the next function call, and that the
    * resulting iterable will not end.  If this is undesired, either use some of the operators on the resulting iterable
    * (such as {@link PolyAsyncIterable.map | map} or {@link PolyAsyncIterable.take | take}
-   * / {@link PolyAsyncIterable.take | takeWhile}) or use a different approach to create the iterable.
+   * / {@link PolyAsyncIterable.(takeWhile:2) | takeWhile}) or use a different approach to create the iterable.
    *
    * @typeParam T - The type of the interable and return type of `func`
    * @param func - The function that will be called to generate new elements of the iteration
@@ -432,7 +437,7 @@ export namespace Poly {
    * Note that there is no way of yielding a different value to that passed to the next function call, and that the
    * resulting iterable will not end.  If this is undesired, either use some of the operators on the resulting iterable
    * (such as {@link PolyAsyncIterable.map | map} or {@link PolyAsyncIterable.take | take}
-   * / {@link PolyAsyncIterable.take | takeWhile}) or use a different approach to create the iterable.
+   * / {@link PolyAsyncIterable.(takeWhile:2) | takeWhile}) or use a different approach to create the iterable.
    *
    * @typeParam T - The type of the interable and return type of `func`
    * @param func - The function that will be called to generate new elements of the iteration

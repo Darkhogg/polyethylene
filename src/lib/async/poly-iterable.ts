@@ -117,7 +117,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * Note that after calling this mehtod, more elements than strictly needed might be requested from the previous
    * iterable, triggering any potential side effects.
    *
-   * @returns a new {@link PolyAsyncIterable} that prefetched the iterated elementsd
+   * @returns a new {@link PolyAsyncIterable} that prefetches the iterated elements
    */
   prefetch (): PolyAsyncIterable<T> {
     return new PolyAsyncIterable(prefetchGen(this.#iterable))
@@ -147,7 +147,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @typeParam U - Type of the elements to be appended
    * @param other - Iterable to be appended
-   * @returns a new {@link PolySyncIterable} that yields the elements of `this` and then the elements of `other`
+   * @returns a new {@link PolyAsyncIterable} that yields the elements of `this` and then the elements of `other`
    */
   concat<U> (other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U> {
     return this.append(other)
@@ -183,11 +183,11 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
   }
 
   /**
-   * Return a new iteration that iterates only over the first `num` elements.  If there were less than than `num`
+   * Return a new iteration that iterates only over the first `num` elements.  If there were less than `num`
    * elements in the iteration, all elements are yielded with no additions.
    *
    * @param num - The number of elements to yield
-   * @returns a new {@link PolyAsyncIterable} that yields the first `num` elements elements of `this`
+   * @returns a new {@link PolyAsyncIterable} that yields the first `num` elements of `this`
    */
   take (num: number): PolyAsyncIterable<T> {
     asserts.isNonNegativeInteger(num)
@@ -212,7 +212,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
   }
 
   /**
-   * Return a new iteration that iterates only over the last `num` elements.  If there were less than than `num`
+   * Return a new iteration that iterates only over the last `num` elements.  If there were less than `num`
    * elements in the iteration, all elements are yielded with no additions.
    *
    * @remarks
@@ -220,7 +220,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * and so elements effectively get delayed until the iteration ends.
    *
    * @param num - The number of elements to yield
-   * @returns a new {@link PolyAsyncIterable} that yields the last `num` elements elements of `this`
+   * @returns a new {@link PolyAsyncIterable} that yields the last `num` elements of `this`
    */
   takeLast (num: number): PolyAsyncIterable<T> {
     asserts.isNonNegativeInteger(num)
@@ -299,8 +299,6 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * @param options - Options for concurrency of this operation
    * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true, correctly
    * narrowed to the type asserted by `func`
-   *
-   * {@label FILTER_TYPEPRED}
    */
   filter<U extends T> (func: IndexedTypePredicate<T, U>, options?: ConcurrencyOptions): PolyAsyncIterable<U>
 
@@ -325,7 +323,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.
    *
    * @remarks
-   * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type
+   * This function is a shortcut to calling {@link PolyAsyncIterable.(filter:1) | filter} with a type
    * predicate function that correctly filters out `null` and `undefined` values from the iteration.  Note that other
    * falsy values will remain in the iteration, and that the return value is correctly typed to exclude
    * `null` and `undefined`.
@@ -1058,8 +1056,8 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
         bufferElem.pending -= 1
         yield bufferItem.value
 
-        const fistBufferItem = await buffer[0].item
-        while (buffer.length > 0 && buffer[0].pending <= 0 && !fistBufferItem.done) {
+        const firstBufferItem = await buffer[0].item
+        while (buffer.length > 0 && buffer[0].pending <= 0 && !firstBufferItem.done) {
           buffer.shift()
           offsIndex += 1
         }

@@ -42,6 +42,8 @@ Record&lt;K, unknown&gt;
 
 </td><td>
 
+The object whose keys will be iterated
+
 
 </td></tr>
 </tbody></table>

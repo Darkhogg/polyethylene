@@ -139,11 +139,11 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
   }
 
   /**
-   * Return a new iteration that iterates only over the first `num` elements.  If there were less than than `num`
+   * Return a new iteration that iterates only over the first `num` elements.  If there were less than `num`
    * elements in the iteration, all elements are yielded with no additions.
    *
    * @param num - The number of elements to yield
-   * @returns a new {@link PolySyncIterable} that yields the first `num` elements elements of `this`
+   * @returns a new {@link PolySyncIterable} that yields the first `num` elements of `this`
    */
   take (num: number = 0): PolySyncIterable<T> {
     asserts.isNonNegativeInteger(num)
@@ -168,7 +168,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
   }
 
   /**
-   * Return a new iteration that iterates only over the last `num` elements.  If there were less than than `num`
+   * Return a new iteration that iterates only over the last `num` elements.  If there were less than `num`
    * elements in the iteration, all elements are yielded with no additions.
    *
    * @remarks
@@ -176,7 +176,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * and so elements effectively get delayed until the iteration ends.
    *
    * @param num - The number of elements to yield
-   * @returns a new {@link PolySyncIterable} that yields the last `num` elements elements of `this`
+   * @returns a new {@link PolySyncIterable} that yields the last `num` elements of `this`
    */
   takeLast (num: number = 0): PolySyncIterable<T> {
     asserts.isNonNegativeInteger(num)
@@ -254,8 +254,6 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * @param func - The function to be called on all elements
    * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true, correctly
    * narrowed to the type asserted by `func`
-   *
-   * {@label FILTER_TYPEPRED}
    */
   filter<U extends T> (func: IndexedTypePredicate<T, U>): PolySyncIterable<U>
 
@@ -277,7 +275,7 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
    * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.
    *
    * @remarks
-   * This function is a shortcut to calling {@link PolySyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type
+   * This function is a shortcut to calling {@link PolySyncIterable.(filter:1) | filter} with a type
    * predicate function that correctly filters out `null` and `undefined` values from the iteration.  Note that other
    * falsy values will remain in the iteration, and that the return value is correctly typed to exclude
    * `null` and `undefined`.

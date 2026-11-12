@@ -42,6 +42,8 @@ Record&lt;K, V&gt;
 
 </td><td>
 
+The object whose values will be iterated
+
 
 </td></tr>
 </tbody></table>

@@ -4,7 +4,7 @@
 
 ## PolyAsyncIterable.takeLast() method
 
-Return a new iteration that iterates only over the last `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.
+Return a new iteration that iterates only over the last `num` elements. If there were less than `num` elements in the iteration, all elements are yielded with no additions.
 
 **Signature:**
 
@@ -52,7 +52,7 @@ The number of elements to yield
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;
 
-a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the last `num` elements elements of `this`
+a new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields the last `num` elements of `this`
 
 ## Remarks
 

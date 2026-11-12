@@ -58,5 +58,5 @@ an infinite iterable that yields the return values from calling `func` repeatedl
 
 `func` will be called initially with `undefined`<!-- -->. After that, each element returned by calling it will be yielded as part of the resulting iterable and then passed to next call to `func`<!-- -->.
 
-Note that there is no way of yielding a different value to that passed to the next function call, and that the resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable (such as [map](./polyethylene.polysynciterable.map.md) or [take](./polyethylene.polysynciterable.take.md) / [takeWhile](./polyethylene.polysynciterable.take.md)<!-- -->) or use a different approach to create the iterable.
+Note that there is no way of yielding a different value to that passed to the next function call, and that the resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable (such as [map](./polyethylene.polysynciterable.map.md) or [take](./polyethylene.polysynciterable.take.md) / [takeWhile](./polyethylene.polysynciterable.takewhile_1.md)<!-- -->) or use a different approach to create the iterable.
 

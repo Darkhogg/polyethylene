@@ -54,7 +54,6 @@ The function to be called on all elements
 
 A new [PolySyncIterable](./polyethylene.polysynciterable.md) with only elements for which `func(element)` returned true, correctly narrowed to the type asserted by `func`
 
-
 ## Remarks
 
 Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`<!-- -->.

@@ -19,5 +19,5 @@ A new [PolySyncIterable](./polyethylene.polysynciterable.md) that yields the sam
 
 ## Remarks
 
-This function is a shortcut to calling  with a type predicate function that correctly filters out `null` and `undefined` values from the iteration. Note that other falsy values will remain in the iteration, and that the return value is correctly typed to exclude `null` and `undefined`<!-- -->.
+This function is a shortcut to calling [filter](./polyethylene.polysynciterable.filter.md) with a type predicate function that correctly filters out `null` and `undefined` values from the iteration. Note that other falsy values will remain in the iteration, and that the return value is correctly typed to exclude `null` and `undefined`<!-- -->.
 

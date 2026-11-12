@@ -1,7 +1,7 @@
-import PolySyncIterable, {IterablePolySyncIterable, baseImpls} from './poly-sync-iterable.js'
+import PolySyncIterable, {IterablePolySyncIterable, baseImpls} from './poly-sync-iterable.ts'
 
-import FilterSyncIterable from './filter-sync-iterable.js'
-import MapSyncIterable from './map-sync-iterable.js'
+import FilterSyncIterable from './filter-sync-iterable.ts'
+import MapSyncIterable from './map-sync-iterable.ts'
 
 baseImpls.map = MapSyncIterable.create
 baseImpls.filter = FilterSyncIterable.create

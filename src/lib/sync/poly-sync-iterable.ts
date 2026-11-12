@@ -8,7 +8,7 @@ import type {
   IndexedRunnable,
   IndexedTypePredicate,
   Tuple,
-} from '../types.js'
+} from '../types.ts'
 
 import {
   appendGen,
@@ -28,13 +28,13 @@ import {
   takeWhileGen,
   tapGen,
   uniqueGen,
-} from './generators.js'
+} from './generators.ts'
 
-import {comparator, asserts, identity, isNotNullish} from '../utils.js'
-import PolyAsyncIterable from '../async/poly-iterable.js'
+import {comparator, asserts, identity, isNotNullish} from '../utils.ts'
+import PolyAsyncIterable from '../async/poly-iterable.ts'
 
-import type MapSyncIterable from './map-sync-iterable.js'
-import FilterSyncIterable from './filter-sync-iterable.js'
+import type MapSyncIterable from './map-sync-iterable.ts'
+import FilterSyncIterable from './filter-sync-iterable.ts'
 
 /* default implementations -- undefined here to prevent circular dependencies */
 /** @internal */

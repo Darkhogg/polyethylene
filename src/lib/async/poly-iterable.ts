@@ -7,10 +7,10 @@ import {
   Comparator,
   IndexedTypePredicate,
   Tuple,
-} from '../types.js'
+} from '../types.ts'
 
-import {comparator, asserts, asyncIdentity, isNotNullish} from '../utils.js'
-import {ConcurrentMapper} from './concurrency.js'
+import {comparator, asserts, asyncIdentity, isNotNullish} from '../utils.ts'
+import {ConcurrentMapper} from './concurrency.ts'
 import {
   appendGen,
   chunkGen,
@@ -28,10 +28,10 @@ import {
   takeWhileGen,
   tapGen,
   uniqueGen,
-} from './generators.js'
+} from './generators.ts'
 
 // eslint-disable-next-line no-unused-vars -- here for documentation
-import type PolySyncIterable from '../sync/poly-sync-iterable.js'
+import type PolySyncIterable from '../sync/poly-sync-iterable.ts'
 
 /**
  * Options for concurrency.

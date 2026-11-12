@@ -5,7 +5,7 @@ import {
   IndexedPredicate,
   IndexedRunnable,
   IndexedTypePredicate,
-} from '../types.js'
+} from '../types.ts'
 
 export function * appendGen<T, U> (iterA: Iterable<T>, iterB: Iterable<U>): Iterable<T | U> {
   yield * iterA

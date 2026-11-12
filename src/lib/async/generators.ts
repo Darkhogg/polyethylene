@@ -5,9 +5,9 @@ import {
   AsyncIndexedRunnable,
   Comparator,
   IndexedTypePredicate,
-} from '../types.js'
-import {ConcurrentMapper} from './concurrency.js'
-import {ConcurrencyOptions} from './poly-iterable.js'
+} from '../types.ts'
+import {ConcurrentMapper} from './concurrency.ts'
+import {ConcurrencyOptions} from './poly-iterable.ts'
 
 export function prefetchGen<T> (iterable: AsyncIterable<T>): AsyncIterable<T> {
   const it = iterable[Symbol.asyncIterator]()

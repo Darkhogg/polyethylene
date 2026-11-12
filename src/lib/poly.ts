@@ -1,7 +1,7 @@
-import AsyncIterableBuilder from './builder.js'
-import PolyAsyncIterable from './async/poly-iterable.js'
-import {PolySyncIterable, IterablePolySyncIterable} from './sync/main.js'
-import {isAsyncIterable, isSyncIterable} from './utils.js'
+import AsyncIterableBuilder from './builder.ts'
+import PolyAsyncIterable from './async/poly-iterable.ts'
+import {PolySyncIterable, IterablePolySyncIterable} from './sync/main.ts'
+import {isAsyncIterable, isSyncIterable} from './utils.ts'
 
 
 function * rangeUp (from: number, to: number, step: number): Iterable<number> {

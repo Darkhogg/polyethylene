@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-expressions */
-import Poly from '../lib/main.js'
+import Poly from '../lib/main.ts'
 
 import chai, {expect} from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 
-import {collectSync, collectAsync} from './_utils.js'
+import {collectSync, collectAsync} from './_utils.ts'
 
 
 chai.use(chaiAsPromised)

@@ -1,4 +1,4 @@
-import type {ConcurrencyOptions} from './poly-iterable.js'
+import type {ConcurrencyOptions} from './poly-iterable.ts'
 
 export interface ConcurrentMapperItem<T, U> {
   original: T,

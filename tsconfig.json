@@ -5,6 +5,7 @@
     "module": "nodenext",
     "outDir": "dist/mjs/",
     "moduleResolution": "nodenext",
+    "rewriteRelativeImportExtensions": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,

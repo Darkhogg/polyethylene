@@ -1,4 +1,4 @@
-import PolyAsyncIterable from './async/poly-iterable.js'
+import PolyAsyncIterable from './async/poly-iterable.ts'
 
 interface PendingPromiseFuncs<T> {
   resolve: (value: IteratorResult<T>) => void,

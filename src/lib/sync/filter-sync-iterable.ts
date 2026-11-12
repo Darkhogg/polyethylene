@@ -1,5 +1,5 @@
-import {IndexedPredicate} from '../types.js'
-import PolySyncIterable from './poly-sync-iterable.js'
+import {IndexedPredicate} from '../types.ts'
+import PolySyncIterable from './poly-sync-iterable.ts'
 
 
 class FilterSyncIterator<T> implements Iterator<T> {

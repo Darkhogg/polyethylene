@@ -1,6 +1,6 @@
-import {IndexedMapping} from '../types.js'
-import {asserts} from '../utils.js'
-import PolySyncIterable from './poly-sync-iterable.js'
+import {IndexedMapping} from '../types.ts'
+import {asserts} from '../utils.ts'
+import PolySyncIterable from './poly-sync-iterable.ts'
 
 
 class MapSyncIterator<TOrig, TMapped> implements Iterator<TMapped> {

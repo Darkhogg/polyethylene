@@ -8,18 +8,18 @@
  *
  * @packageDocumentation
  */
-import {Poly} from './poly.js'
+import {Poly} from './poly.ts'
 
-import AsyncIterableBuilder from './builder.js'
-import {PolySyncIterable} from './sync/main.js'
-import PolyAsyncIterable from './async/poly-iterable.js'
+import AsyncIterableBuilder from './builder.ts'
+import {PolySyncIterable} from './sync/main.ts'
+import PolyAsyncIterable from './async/poly-iterable.ts'
 
 export default Poly
 export {Poly, PolySyncIterable, PolyAsyncIterable, AsyncIterableBuilder}
 
-export type * from './async/poly-iterable.js'
+export type * from './async/poly-iterable.ts'
 
-export type * from './types.js'
+export type * from './types.ts'
 
 /* top-level `this` is `module.exports` in CommonJS and always `undefined` in ES modules */
 if (this !== undefined && typeof process !== 'undefined' && typeof process.emitWarning === 'function') {

@@ -1,5 +1,5 @@
 import Benchmark from 'benchmark'
-import Poly, {PolySyncIterable} from '../lib/main.js'
+import Poly, {PolySyncIterable} from '../lib/main.ts'
 
 
 const NAME_ARRAY = 'Array#map'

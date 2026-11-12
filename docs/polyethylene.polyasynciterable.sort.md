@@ -47,6 +47,7 @@ _(Optional)_ A comparator function
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

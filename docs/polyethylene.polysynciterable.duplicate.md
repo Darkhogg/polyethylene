@@ -47,6 +47,7 @@ the number of copies to be returned
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Tuple](./polyethylene.tuple.md)<!-- -->&lt;[PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;, N&gt;

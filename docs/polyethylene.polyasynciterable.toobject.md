@@ -45,6 +45,7 @@ this
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;Record&lt;K, V&gt;&gt;

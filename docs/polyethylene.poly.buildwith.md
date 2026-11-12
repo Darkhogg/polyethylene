@@ -47,6 +47,7 @@ A function that will receive an object containing the methods `value`<!-- -->, `
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

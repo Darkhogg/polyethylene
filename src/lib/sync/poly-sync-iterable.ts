@@ -830,14 +830,20 @@ export default abstract class PolySyncIterable<T> implements Iterable<T> {
 
     let accumulated: U | undefined = init
     let isFirst = (accumulated === undefined)
-    let idx = 0
 
+    let idx = 0
     for (const elem of this) {
-      accumulated = isFirst ? (elem as unknown as U) : reducer(accumulated as U, elem, idx++)
+      accumulated = isFirst ? (elem as unknown as U) : reducer(accumulated!, elem, idx)
+
       isFirst = false
+      idx++
     }
 
-    return accumulated as U
+    if (isFirst) {
+      throw new TypeError('Reduce of empty iteration with no initial value')
+    }
+
+    return accumulated!
   }
 
   /**

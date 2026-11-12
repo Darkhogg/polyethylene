@@ -63,6 +63,7 @@ _(Optional)_ Options for concurrency of this operation
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;T \| undefined&gt;

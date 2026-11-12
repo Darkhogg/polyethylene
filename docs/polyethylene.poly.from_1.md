@@ -49,6 +49,7 @@ an iterable or iterable factory used to create the resulting iterable
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;

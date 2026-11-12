@@ -47,6 +47,7 @@ Iterable to be prepended
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T \| U&gt;

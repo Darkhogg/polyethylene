@@ -47,6 +47,7 @@ The function that will be called to generate new elements of the iteration
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;

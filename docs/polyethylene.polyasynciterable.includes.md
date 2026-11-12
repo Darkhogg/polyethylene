@@ -47,6 +47,7 @@ The element to search in the iteration
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;boolean&gt;

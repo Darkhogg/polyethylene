@@ -1,5 +1,10 @@
 import PolyAsyncIterable from './async/poly-iterable.js'
 
+interface PendingPromiseFuncs<T> {
+  resolve: (value: IteratorResult<T>) => void,
+  reject: (err: Error) => void
+}
+
 /**
  * A class that helps with building an
  * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator | AsyncIterable}
@@ -12,10 +17,7 @@ import PolyAsyncIterable from './async/poly-iterable.js'
  * @public
  */
 export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
-  private _currentPromiseFuncs?: {
-    resolve: (value: IteratorResult<T>) => void,
-    reject: (err: Error) => void
-  }
+  private _pendingPromiseFuncs: Array<PendingPromiseFuncs<T>> = []
 
   private _pendingValues: Array<T> = []
   private _pendingError?: Error
@@ -24,6 +26,15 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
   /** @internal */
   // eslint-disable-next-line @typescript-eslint/no-useless-constructor -- we need it for docs
   constructor () {}
+
+  /**
+   * Finalize this iteration by resolving all pending promises as *done*
+   */
+  #finalize (): void {
+    while (this._pendingPromiseFuncs.length) {
+      this._pendingPromiseFuncs.shift()!.resolve({done: true, value: undefined})
+    }
+  }
 
   /**
    * Gives the underlying iterable a new value to be yielded.
@@ -43,9 +54,9 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
       return
     }
 
-    if (this._currentPromiseFuncs) {
-      this._currentPromiseFuncs.resolve({value: obj})
-      this._currentPromiseFuncs = undefined
+    const funcs = this._pendingPromiseFuncs.shift()
+    if (funcs != null) {
+      funcs.resolve({value: obj})
       return
     }
 
@@ -70,13 +81,14 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
     }
 
     this._pendingDone = true
-    if (this._currentPromiseFuncs) {
-      this._currentPromiseFuncs.reject(error)
-      this._currentPromiseFuncs = undefined
-      return
+    this._pendingError = error
+
+    const funcs = this._pendingPromiseFuncs.shift()
+    if (funcs != null) {
+      funcs.reject(error)
     }
 
-    this._pendingError = error
+    this.#finalize()
   }
 
   /**
@@ -94,12 +106,14 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
       return
     }
 
-    if (this._currentPromiseFuncs) {
-      this._currentPromiseFuncs.resolve({done: true, value: undefined})
-      this._currentPromiseFuncs = undefined
+    this._pendingDone = true
+
+    const funcs = this._pendingPromiseFuncs.shift()
+    if (funcs != null) {
+      funcs.resolve({done: true, value: undefined})
     }
 
-    this._pendingDone = true
+    this.#finalize()
   }
 
   /**
@@ -127,15 +141,16 @@ export default class AsyncIterableBuilder<T> implements AsyncIterable<T> {
           return Promise.resolve({done: false, value: outerThis._pendingValues.shift()!})
         }
         if (outerThis._pendingError) {
+          const error = outerThis._pendingError
           outerThis._pendingError = undefined
-          return Promise.reject(outerThis._pendingError)
+          return Promise.reject(error)
         }
         if (outerThis._pendingDone) {
           return Promise.resolve({done: true, value: undefined})
         }
 
-        return new Promise((accept, reject) => {
-          outerThis._currentPromiseFuncs = {resolve: accept, reject}
+        return new Promise((resolve, reject) => {
+          outerThis._pendingPromiseFuncs.push({resolve, reject})
         })
       },
     }

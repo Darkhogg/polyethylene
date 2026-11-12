@@ -47,6 +47,7 @@ A function to be called for every element of the iteration
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 void

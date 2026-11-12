@@ -51,6 +51,7 @@ a sync or async iterable or iterable factory used to create the resulting iterab
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt; \| [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

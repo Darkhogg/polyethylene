@@ -47,6 +47,7 @@ A boolean returning function called for elements of `this`
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 number

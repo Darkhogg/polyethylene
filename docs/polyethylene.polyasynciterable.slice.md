@@ -63,6 +63,7 @@ _(Optional)_ The index of the first element \*not\* returned, inclusive
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

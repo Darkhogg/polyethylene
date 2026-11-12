@@ -61,6 +61,7 @@ T
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

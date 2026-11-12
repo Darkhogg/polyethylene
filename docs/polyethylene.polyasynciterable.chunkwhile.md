@@ -47,6 +47,7 @@ A function that decides if an element is part of the current chunk or initiates 
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;
@@ -57,7 +58,7 @@ A new [PolyAsyncIterable](./polyethylene.polyasynciterable.md) that yields array
 
 The chunking process works by keeping an open \_current chunk\_ and calling `func` to decide whether the next element of the iteration will be part of the \_current chunk\_ or if it will be part of a new chunk.
 
-To do this, `func` will be called for every element of the iteration except the first, which will automatically become part of the first chunk. If `func` returns `true`<!-- -->, the element will be part of the current chunk, and if it returns `false`<!-- -->, the \_current chunk\_ is closed and the element becomes the first element if the new \_current chunk\_. The arguments passed to `func` will be, in order: - `elem` - The element being currently processed - `lastElem` - The last element that was added to the current chunk - `firstElem` - The first element of the current chunk (might be the same as `lastElem`<!-- -->)
+To do this, `func` will be called for every element of the iteration except the first, which will automatically become part of the first chunk. If `func` returns `true`<!-- -->, the element will be part of the current chunk, and if it returns `false`<!-- -->, the \_current chunk\_ is closed and the element becomes the first element if the new \_current chunk\_. The arguments passed to `func` will be, in order:  - `elem` - The element being currently processed  - `lastElem` - The last element that was added to the current chunk  - `firstElem` - The first element of the current chunk (might be the same as `lastElem`<!-- -->)
 
 All elements will be part of a chunk, and no chunk will ever be empty.
 

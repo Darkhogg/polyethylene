@@ -47,6 +47,7 @@ The object to be yielded by the underlying iterable
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 void

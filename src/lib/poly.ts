@@ -455,10 +455,3 @@ export namespace Poly {
     })
   }
 }
-
-
-const obj: {[key: string]: number} = {}
-
-const a = Poly.values(obj)
-const b = Poly.keys(obj)
-const c = Poly.entries(obj)

@@ -54,11 +54,19 @@ export async function * dropGen<T> (iter: AsyncIterable<T>, num: number): AsyncI
 
 export async function * takeGen<T> (iter: AsyncIterable<T>, num: number): AsyncIterable<T> {
   let rem = num
-  for await (const elem of iter) {
-    if (rem-- <= 0) {
-      return
+  const it = iter[Symbol.asyncIterator]()
+
+  try {
+    while (rem > 0) {
+      const {value, done} = await it.next()
+      if (done) {
+        return
+      }
+      yield value
+      rem--
     }
-    yield elem
+  } finally {
+    it.return?.()
   }
 }
 

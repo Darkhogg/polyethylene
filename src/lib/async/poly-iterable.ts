@@ -89,7 +89,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
    *
    * @returns an async iterable that will yield the same elements as the iterable used to create this instance
    */
-  [Symbol.asyncIterator] () {
+  [Symbol.asyncIterator] (): AsyncIterator<T> {
     return this.#iterable[Symbol.asyncIterator]()
   }
 
@@ -1036,7 +1036,7 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
     const it = this[Symbol.asyncIterator]()
 
     let offsIndex = 0 // index offset for when the buffer is shrunk
-    const buffer: Array<{item: IteratorResult<T, never>, pending: number}> = []
+    const buffer: Array<{item: Promise<IteratorResult<T, unknown>>, pending: number}> = []
 
     async function * generator (): AsyncIterable<T> {
       let currIndex = 0
@@ -1044,19 +1044,22 @@ export default class PolyAsyncIterable<T> implements AsyncIterable<T> {
         const index = currIndex - offsIndex
 
         if (buffer[index] == null) {
-          const item = await it.next() as IteratorResult<T, never>
+          const item = it.next()
           buffer[index] = {item, pending: num}
         }
 
-        if (buffer[index].item.done) {
+        const bufferElem = buffer[index]
+        const bufferItem = await bufferElem.item
+        if (bufferItem.done) {
           return
         }
 
         currIndex += 1
-        buffer[index].pending -= 1
-        yield buffer[index].item.value
+        bufferElem.pending -= 1
+        yield bufferItem.value
 
-        while (buffer.length > 0 && buffer[0].pending <= 0 && !buffer[0].item.done) {
+        const fistBufferItem = await buffer[0].item
+        while (buffer.length > 0 && buffer[0].pending <= 0 && !fistBufferItem.done) {
           buffer.shift()
           offsIndex += 1
         }

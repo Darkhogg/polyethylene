@@ -47,6 +47,7 @@ A function that will be called for all elements to split them into the result ar
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 \[Array&lt;T&gt;, Array&lt;T&gt;\]

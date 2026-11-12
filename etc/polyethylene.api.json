@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.49.1",
+    "toolVersion": "7.60.1",
     "schemaVersion": 1011,
     "oldestForwardsCompatibleVersion": 1001,
     "tsdocConfig": {
@@ -115,6 +115,22 @@
           "syntaxKind": "modifier"
         },
         {
+          "tagName": "@jsx",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxRuntime",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxFrag",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@jsxImportSource",
+          "syntaxKind": "block"
+        },
+        {
           "tagName": "@betaDocumentation",
           "syntaxKind": "modifier"
         },
@@ -162,7 +178,7 @@
   },
   "kind": "Package",
   "canonicalReference": "polyethylene!",
-  "docComment": "/**\n * A library for working with iterables and async iterables in a functional style, by transforming the iterations on the fly and getting results from them.\n *\n * @remarks\n *\n * The entry point for this library is the {@link Poly} namespace, and the main iterable classes are {@link PolySyncIterable} and {@link PolyAsyncIterable}.\n *\n * @packageDocumentation\n */\n",
+  "docComment": "/**\n * A library for working with iterables and async iterables in a functional style, by transforming the iterations on\n * the fly and getting results from them.\n *\n * @remarks\n *\n * The entry point for this library is the {@link Poly} namespace, and the main iterable classes are\n * {@link PolySyncIterable} and {@link PolyAsyncIterable}.\n *\n * @packageDocumentation\n */\n",
   "name": "polyethylene",
   "preserveMemberOrder": false,
   "members": [
@@ -175,7 +191,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncChunkingPredicate:type",
-          "docComment": "/**\n * A function that receives an element (`elem`) of the iteration and the first and last element of a chunk, and returns a boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk (if `true`) or be the start of a new chunk (if `false`)\n *\n * @param elem - An element of the iteration\n *\n * @param lastElem - The last element of the current chunk\n *\n * @param firstElem - The first element of the current chunk\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns A boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk (`true`) or be the start of a new chunk (`false`)\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives an element (`elem`) of the iteration and the first and last element of a chunk, and returns\n * a boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the current chunk\n * (if `true`) or be the start of a new chunk (if `false`)\n *\n * @param elem - An element of the iteration\n *\n * @param lastElem - The last element of the current chunk\n *\n * @param firstElem - The first element of the current chunk\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns A boolean value or a `Promise` to a boolean value representing whether `elem` should be added to the\n * current chunk (`true`) or be the start of a new chunk (`false`)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -223,7 +239,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncIndexedMapping:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a different object or a `Promise` to a different object\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The return type of the function\n *\n * @returns Some other value or a `Promise` to some other value\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a different object or a\n * `Promise` to a different object\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The return type of the function\n *\n * @returns Some other value or a `Promise` to some other value\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -282,7 +298,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncIndexedPredicate:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value or a `Promise` to a `boolean` value.\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns A `boolean` value or a `Promise` to a `boolean` value\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value or a\n * `Promise` to a `boolean` value.\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns A `boolean` value or a `Promise` to a `boolean` value\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -330,7 +346,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncIndexedReducer:type",
-          "docComment": "/**\n * A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result or a promise to a new accumulated result for the next call or as a final return value.\n *\n * @param acc - The previously accumulated value\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the iteration elements\n *\n * @typeParam U - The type of the accumulated result\n *\n * @returns The new accumulated result or a promise to the new accumulated result\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result or\n * a promise to a new accumulated result for the next call or as a final return value.\n *\n * @param acc - The previously accumulated value\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the iteration elements\n *\n * @typeParam U - The type of the accumulated result\n *\n * @returns The new accumulated result or a promise to the new accumulated result\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -389,7 +405,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!AsyncIndexedRunnable:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and either returns a `Promise` to nothing or doesn't return anything\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns a `Promise` to an ignored value or nothing\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and either returns a `Promise` to\n * nothing or doesn't return anything\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @returns a `Promise` to an ignored value or nothing\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -437,7 +453,7 @@
         {
           "kind": "Class",
           "canonicalReference": "polyethylene!AsyncIterableBuilder:class",
-          "docComment": "/**\n * A class that helps with building an {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator | AsyncIterable} from a non-structured source.\n *\n * In order to create the iteration, you must call the {@link AsyncIterableBuilder.value | value}, {@link AsyncIterableBuilder.error | error} and {@link AsyncIterableBuilder.done | done} methods with appropriate arguments.\n *\n * @remarks\n *\n * The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `AsyncIterableBuilder` class.\n *\n * @public\n */\n",
+          "docComment": "/**\n * A class that helps with building an\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Symbol/asyncIterator | AsyncIterable}\n * from a non-structured source.\n *\n * In order to create the iteration, you must call the {@link AsyncIterableBuilder.value | value},\n * {@link AsyncIterableBuilder.error | error} and {@link AsyncIterableBuilder.done | done} methods with\n * appropriate arguments.\n *\n * @remarks\n *\n * The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `AsyncIterableBuilder` class.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -524,7 +540,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!AsyncIterableBuilder#done:member(1)",
-              "docComment": "/**\n * Makes the underlying iterable finish the iteration.\n *\n * @remarks\n *\n * Any values that were given with {@link AsyncIterableBuilder.value | value} will be yielded before the iteration ends.\n *\n * Calling {@link AsyncIterableBuilder.value | value} or {@link AsyncIterableBuilder.error | error} after calling this method or calling this method after calling {@link AsyncIterableBuilder.error | error} will act as a no-op.\n */\n",
+              "docComment": "/**\n * Makes the underlying iterable finish the iteration.\n *\n * @remarks\n *\n * Any values that were given with {@link AsyncIterableBuilder.value | value} will be yielded\n * before the iteration ends.\n *\n * Calling {@link AsyncIterableBuilder.value | value} or {@link AsyncIterableBuilder.error | error} after calling this\n * method or calling this method after calling {@link AsyncIterableBuilder.error | error} will act as a no-op.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -555,7 +571,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!AsyncIterableBuilder#error:member(1)",
-              "docComment": "/**\n * Makes the underlying iterable throw the given `error` object.\n *\n * @remarks\n *\n * Any values that were given with {@link AsyncIterableBuilder.value | value} will be yielded before the error is thrown.\n *\n * Calling {@link AsyncIterableBuilder.value | value} or {@link AsyncIterableBuilder.done | done} after calling this method or calling this method after calling {@link AsyncIterableBuilder.done | done} will act as a no-op.\n *\n * @param error - The error to be thrown by the underlying iterable\n */\n",
+              "docComment": "/**\n * Makes the underlying iterable throw the given `error` object.\n *\n * @remarks\n *\n * Any values that were given with {@link AsyncIterableBuilder.value | value} will be yielded before the error is\n * thrown.\n *\n * Calling {@link AsyncIterableBuilder.value | value} or {@link AsyncIterableBuilder.done | done} after calling this\n * method or calling this method after calling {@link AsyncIterableBuilder.done | done} will act as a no-op.\n *\n * @param error - The error to be thrown by the underlying iterable\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -604,7 +620,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!AsyncIterableBuilder#toPolyAsyncIterable:member(1)",
-              "docComment": "/**\n * Get a {@link PolyAsyncIterable} that iterates the elements as determined by calls to `this` object's {@link AsyncIterableBuilder.value | value}, {@link AsyncIterableBuilder.error | error} and {@link AsyncIterableBuilder.done | done} methods.\n *\n * @returns A {@link PolyAsyncIterable} that yields elements as determined by the calls to `this`' methods\n */\n",
+              "docComment": "/**\n * Get a {@link PolyAsyncIterable} that iterates the elements as determined by calls to `this` object's\n * {@link AsyncIterableBuilder.value | value}, {@link AsyncIterableBuilder.error | error} and\n * {@link AsyncIterableBuilder.done | done} methods.\n *\n * @returns A {@link PolyAsyncIterable} that yields elements as determined by the calls to `this`' methods\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -640,7 +656,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!AsyncIterableBuilder#value:member(1)",
-              "docComment": "/**\n * Gives the underlying iterable a new value to be yielded.\n *\n * @remarks\n *\n * Objects given for iteration will be buffered until they are requested, and are guaranteed to be yielded before errors and before finishing the iteration.\n *\n * If this method is called after {@link AsyncIterableBuilder.error | error} or {@link AsyncIterableBuilder.done | done}, the given object is ignored.\n *\n * @param obj - The object to be yielded by the underlying iterable\n */\n",
+              "docComment": "/**\n * Gives the underlying iterable a new value to be yielded.\n *\n * @remarks\n *\n * Objects given for iteration will be buffered until they are requested, and are guaranteed to be yielded before\n * errors and before finishing the iteration.\n *\n * If this method is called after {@link AsyncIterableBuilder.error | error}\n * or {@link AsyncIterableBuilder.done | done},\n * the given object is ignored.\n *\n * @param obj - The object to be yielded by the underlying iterable\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -696,7 +712,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!ChunkingPredicate:type",
-          "docComment": "/**\n * A function that receives an element (`elem`) of the iteration and the first and last element of a chunk, and returns a boolean value representing whether `elem` should be added to the current chunk (if `true`) or be the start of a new chunk (if `false`)\n *\n * @param elem - An element of the iteration\n *\n * @param lastElem - The last element of the current chunk\n *\n * @param firstElem - The first element of the current chunk\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns Whether `elem` should be added to the current chunk (`true`) or be the start of a new chunk (`false`)\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives an element (`elem`) of the iteration and the first and last element of a chunk, and returns\n * a boolean value representing whether `elem` should be added to the current chunk (if `true`) or be the start of a new\n * chunk (if `false`)\n *\n * @param elem - An element of the iteration\n *\n * @param lastElem - The last element of the current chunk\n *\n * @param firstElem - The first element of the current chunk\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns Whether `elem` should be added to the current chunk (`true`) or be the start of a new chunk (`false`)\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -735,7 +751,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!Comparator:type",
-          "docComment": "/**\n * A function that receives two objects `elemA` and `elemB` and returns a number value that is negative if `elemA` should be sorted before `elemB`, positive if `elemA` should be sorted after `elemB`, or `0` if they should be sorted at the same position.\n *\n * @param elemA - the first element\n *\n * @param elemB - the second element\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns A number representing the sorting of `elemA` and `elemB` with respect to each other, as defined above\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives two objects `elemA` and `elemB` and returns a number value that is negative if `elemA`\n * should be sorted before `elemB`, positive if `elemA` should be sorted after `elemB`, or `0` if they should be sorted\n * at the same position.\n *\n * @param elemA - the first element\n *\n * @param elemB - the second element\n *\n * @typeParam T - The type of the iteration elements\n *\n * @returns A number representing the sorting of `elemA` and `elemB` with respect to each other, as defined above\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -935,7 +951,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!IndexedReducer:type",
-          "docComment": "/**\n * A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result for the next call or as a final return value.\n *\n * @param acc - The previously accumulated value\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the iteration elements\n *\n * @typeParam U - The type of the accumulated result\n *\n * @returns The new accumulated result\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives an accumulated result, an element of an iteration, and returns a new accumulated result\n * for the next call or as a final return value.\n *\n * @param acc - The previously accumulated value\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the iteration elements\n *\n * @typeParam U - The type of the accumulated result\n *\n * @returns The new accumulated result\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1024,7 +1040,7 @@
         {
           "kind": "TypeAlias",
           "canonicalReference": "polyethylene!IndexedTypePredicate:type",
-          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value indicating if `elem` is of the generic type `U`\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The type asserted by this function\n *\n * @returns A `boolean` value indicating if `elem` is of type `U`\n *\n * @public\n */\n",
+          "docComment": "/**\n * A function that receives an object (`elem`) and its `index` in the iteration and returns a `boolean` value indicating\n * if `elem` is of the generic type `U`\n *\n * @param elem - An element of the iteration\n *\n * @param index - The index of `elem` in the iteration\n *\n * @typeParam T - The type of the `elem` argument\n *\n * @typeParam U - The type asserted by this function\n *\n * @returns A `boolean` value indicating if `elem` is of type `U`\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1106,7 +1122,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.asyncFrom:function(1)",
-              "docComment": "/**\n * Create a new {@link PolyAsyncIterable} object from an iterable, async iterable, or a function that returns iterables (such as a generator function or an async generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting {@link PolyAsyncIterable}.\n *\n * @param iterableOrFactory - an async iterable or async iterable factory used to create the resulting async iterable\n *\n * @typeParam T - The type of the resulting async iterable\n *\n * @returns A {@link PolyAsyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
+              "docComment": "/**\n * Create a new {@link PolyAsyncIterable} object from an iterable, async iterable, or a function that returns\n * iterables (such as a generator function or an async generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to\n * create the resulting {@link PolyAsyncIterable}.\n *\n * @param iterableOrFactory - an async iterable or async iterable factory used to create the resulting async iterable\n *\n * @typeParam T - The type of the resulting async iterable\n *\n * @returns A {@link PolyAsyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1247,7 +1263,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.asyncIterate:function(1)",
-              "docComment": "/**\n * Returns a {@link PolyAsyncIterable} that will yield the values returned from calling `func` with the value last returned, or `undefined` when called for the first time.\n *\n * @remarks\n *\n * `func` will be called initially with `undefined`. After that, each element returned by calling it will be yielded as part of the resulting iterable and then passed to next call to `func`.\n *\n * Note that there is no way of yielding a different value to that passed to the next function call, and that the resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable (such as {@link PolyAsyncIterable.map | map} or {@link PolyAsyncIterable.take | take} / {@link PolyAsyncIterable.take | takeWhile}) or use a different approach to create the iterable.\n *\n * @param func - The function that will be called to generate new elements of the iteration\n *\n * @typeParam T - The type of the interable and return type of `func`\n *\n * @returns an infinite iterable that yields the return values from calling `func` repeatedly\n *\n * @public\n */\n",
+              "docComment": "/**\n * Returns a {@link PolyAsyncIterable} that will yield the values returned from calling `func` with the value last\n * returned, or `undefined` when called for the first time.\n *\n * @remarks\n *\n * `func` will be called initially with `undefined`. After that, each element returned by calling it will be yielded\n * as part of the resulting iterable and then passed to next call to `func`.\n *\n * Note that there is no way of yielding a different value to that passed to the next function call, and that the\n * resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable\n * (such as {@link PolyAsyncIterable.map | map} or {@link PolyAsyncIterable.take | take}\n * / {@link PolyAsyncIterable.take | takeWhile}) or use a different approach to create the iterable.\n *\n * @param func - The function that will be called to generate new elements of the iteration\n *\n * @typeParam T - The type of the interable and return type of `func`\n *\n * @returns an infinite iterable that yields the return values from calling `func` repeatedly\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1318,7 +1334,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.asyncIterate:function(2)",
-              "docComment": "/**\n * Returns a {@link PolyAsyncIterable} that will yield the values returned from calling `func` with the value last returned, or `initValue` when called for the first time.\n *\n * @remarks\n *\n * `func` will be called initially with `initValue`. After that, each element returned by calling it will be yielded as part of the resulting iterable and then passed to next call to `func`. Note that `initValue` will not be part of the iteration.\n *\n * Note that there is no way of yielding a different value to that passed to the next function call, and that the resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable (such as {@link PolyAsyncIterable.map | map} or {@link PolyAsyncIterable.take | take} / {@link PolyAsyncIterable.take | takeWhile}) or use a different approach to create the iterable.\n *\n * @param func - The function that will be called to generate new elements of the iteration\n *\n * @typeParam T - The type of the interable and return type of `func`\n *\n * @returns an infinite iterable that yields the return values from calling `func` repeatedly\n *\n * @public\n */\n",
+              "docComment": "/**\n * Returns a {@link PolyAsyncIterable} that will yield the values returned from calling `func` with the value last\n * returned, or `initValue` when called for the first time.\n *\n * @remarks\n *\n * `func` will be called initially with `initValue`. After that, each element returned by calling it will be yielded\n * as part of the resulting iterable and then passed to next call to `func`. Note that `initValue` will not be\n * part of the iteration.\n *\n * Note that there is no way of yielding a different value to that passed to the next function call, and that the\n * resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable\n * (such as {@link PolyAsyncIterable.map | map} or {@link PolyAsyncIterable.take | take}\n * / {@link PolyAsyncIterable.take | takeWhile}) or use a different approach to create the iterable.\n *\n * @param func - The function that will be called to generate new elements of the iteration\n *\n * @typeParam T - The type of the interable and return type of `func`\n *\n * @returns an infinite iterable that yields the return values from calling `func` repeatedly\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1405,7 +1421,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.builder:function(1)",
-              "docComment": "/**\n * Return a new {@link AsyncIterableBuilder}, an iterable object that can be constructed by calling its methods.\n *\n * @remarks\n *\n * This method for creating iterables should only be used as last resort if other functions are not enough. In particular, before using this method, see if {@link Poly.buildWith} works for you.\n *\n * @typeParam T - The type of the resulting builder\n *\n * @public\n */\n",
+              "docComment": "/**\n * Return a new {@link AsyncIterableBuilder}, an iterable object that can be constructed by calling its methods.\n *\n * @remarks\n *\n * This method for creating iterables should only be used as last resort if other functions are not enough.\n * In particular, before using this method, see if {@link Poly.buildWith} works for you.\n *\n * @typeParam T - The type of the resulting builder\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1661,7 +1677,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.from:function(1)",
-              "docComment": "/**\n * Create a new {@link PolyAsyncIterable} object from an iterable, async iterable, or a function that returns iterables (such as a generator function or an async generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting {@link PolyAsyncIterable}.\n *\n * @param iterableOrFactory - an async iterable or async iterable factory used to create the resulting async iterable\n *\n * @typeParam T - The type of the resulting async iterable\n *\n * @returns A {@link PolyAsyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
+              "docComment": "/**\n * Create a new {@link PolyAsyncIterable} object from an iterable, async iterable, or a function that returns\n * iterables (such as a generator function or an async generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to\n * create the resulting {@link PolyAsyncIterable}.\n *\n * @param iterableOrFactory - an async iterable or async iterable factory used to create the resulting async iterable\n *\n * @typeParam T - The type of the resulting async iterable\n *\n * @returns A {@link PolyAsyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1737,7 +1753,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.from:function(2)",
-              "docComment": "/**\n * Create a new {@link PolySyncIterable} object from an iterable or a function that returns iterables (such as a generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting {@link PolySyncIterable}.\n *\n * @param iterableOrFactory - an iterable or iterable factory used to create the resulting iterable\n *\n * @typeParam T - The type of the resulting iterable\n *\n * @returns A {@link PolySyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
+              "docComment": "/**\n * Create a new {@link PolySyncIterable} object from an iterable or a function that returns iterables (such as a\n * generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to\n * create the resulting {@link PolySyncIterable}.\n *\n * @param iterableOrFactory - an iterable or iterable factory used to create the resulting iterable\n *\n * @typeParam T - The type of the resulting iterable\n *\n * @returns A {@link PolySyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -1813,7 +1829,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.from:function(3)",
-              "docComment": "/**\n * Create a new {@link PolySyncIterable} or {@link PolyAsyncIterable} object from a sync or async iterable or a function that returns sync or async iterables (such as a sync or async generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting {@link PolySyncIterable} or {@link PolyAsyncIterable}.\n *\n * Whether the resulting iterable is sync or async depends on the input being sync or async.\n *\n * @param iterableOrFactory - a sync or async iterable or iterable factory used to create the resulting iterable\n *\n * @typeParam T - The type of the resulting iterable\n *\n * @returns A {@link PolySyncIterable} or {@link PolyAsyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
+              "docComment": "/**\n * Create a new {@link PolySyncIterable} or {@link PolyAsyncIterable} object from a sync or async iterable or a\n * function that returns sync or async iterables (such as a sync or async generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to\n * create the resulting {@link PolySyncIterable} or {@link PolyAsyncIterable}.\n *\n * Whether the resulting iterable is sync or async depends on the input being sync or async.\n *\n * @param iterableOrFactory - a sync or async iterable or iterable factory used to create the resulting iterable\n *\n * @typeParam T - The type of the resulting iterable\n *\n * @returns A {@link PolySyncIterable} or {@link PolyAsyncIterable} that iterates over the same elements as the\n * passed iterable\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2088,7 +2104,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.range:function(2)",
-              "docComment": "/**\n * Returns a {@link PolySyncIterable} that yields numbers from `from` up to, but not including, `to`, with a step of 1.\n *\n * @param from - Inclusive lower bound of the iteration\n *\n * @param to - Exclusive upper bound of the iteration\n *\n * @returns - An iterable over the numbers from `from` to `to` with a step of 1\n *\n * @public\n */\n",
+              "docComment": "/**\n * Returns a {@link PolySyncIterable} that yields numbers from `from` up to, but not including, `to`,\n * with a step of 1.\n *\n * @param from - Inclusive lower bound of the iteration\n *\n * @param to - Exclusive upper bound of the iteration\n *\n * @returns - An iterable over the numbers from `from` to `to` with a step of 1\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2153,7 +2169,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.range:function(3)",
-              "docComment": "/**\n * Returns a {@link PolySyncIterable} that yields numbers from `from` up to, but not including, `to`, with a step of `step`.\n *\n * @param from - Inclusive lower bound of the iteration\n *\n * @param to - Exclusive upper bound of the iteration\n *\n * @param step - Distance between the iterated numbers\n *\n * @returns - An iterable over the numbers from `from` to `to` with a step of `step`\n *\n * @public\n */\n",
+              "docComment": "/**\n * Returns a {@link PolySyncIterable} that yields numbers from `from` up to, but not including, `to`, with a step of\n * `step`.\n *\n * @param from - Inclusive lower bound of the iteration\n *\n * @param to - Exclusive upper bound of the iteration\n *\n * @param step - Distance between the iterated numbers\n *\n * @returns - An iterable over the numbers from `from` to `to` with a step of `step`\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2296,7 +2312,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.syncFrom:function(1)",
-              "docComment": "/**\n * Create a new {@link PolySyncIterable} object from an iterable or a function that returns iterables (such as a generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to create the resulting {@link PolySyncIterable}.\n *\n * @param iterableOrFactory - an iterable or iterable factory used to create the resulting iterable\n *\n * @typeParam T - The type of the resulting iterable\n *\n * @returns A {@link PolySyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
+              "docComment": "/**\n * Create a new {@link PolySyncIterable} object from an iterable or a function that returns iterables (such as a\n * generator function).\n *\n * If the passed argument is a function, it will be called with no arguments and its return value will be used to\n * create the resulting {@link PolySyncIterable}.\n *\n * @param iterableOrFactory - an iterable or iterable factory used to create the resulting iterable\n *\n * @typeParam T - The type of the resulting iterable\n *\n * @returns A {@link PolySyncIterable} that iterates over the same elements as the passed iterable\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2372,7 +2388,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.syncIterate:function(1)",
-              "docComment": "/**\n * Returns a {@link PolySyncIterable} that will yield the values returned from calling `func` with the value last returned, or `undefined` when called for the first time.\n *\n * @remarks\n *\n * `func` will be called initially with `undefined`. After that, each element returned by calling it will be yielded as part of the resulting iterable and then passed to next call to `func`.\n *\n * Note that there is no way of yielding a different value to that passed to the next function call, and that the resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable (such as {@link PolySyncIterable.map | map} or {@link PolySyncIterable.take | take} / {@link PolySyncIterable.take | takeWhile}) or use a different approach to create the iterable.\n *\n * @param func - The function that will be called to generate new elements of the iteration\n *\n * @typeParam T - The type of the interable and return type of `func`\n *\n * @returns an infinite iterable that yields the return values from calling `func` repeatedly\n *\n * @public\n */\n",
+              "docComment": "/**\n * Returns a {@link PolySyncIterable} that will yield the values returned from calling `func` with the value last\n * returned, or `undefined` when called for the first time.\n *\n * @remarks\n *\n * `func` will be called initially with `undefined`. After that, each element returned by calling it will be yielded\n * as part of the resulting iterable and then passed to next call to `func`.\n *\n * Note that there is no way of yielding a different value to that passed to the next function call, and that the\n * resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable\n * (such as {@link PolySyncIterable.map | map} or {@link PolySyncIterable.take | take}\n * / {@link PolySyncIterable.take | takeWhile}) or use a different approach to create the iterable.\n *\n * @param func - The function that will be called to generate new elements of the iteration\n *\n * @typeParam T - The type of the interable and return type of `func`\n *\n * @returns an infinite iterable that yields the return values from calling `func` repeatedly\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2434,7 +2450,7 @@
             {
               "kind": "Function",
               "canonicalReference": "polyethylene!Poly.syncIterate:function(2)",
-              "docComment": "/**\n * Returns a {@link PolySyncIterable} that will yield the values returned from calling `func` with the value last returned, or `initValue` when called for the first time.\n *\n * @remarks\n *\n * `func` will be called initially with `initValue`. After that, each element returned by calling it will be yielded as part of the resulting iterable and then passed to next call to `func`. Note that `initValue` will not be part of the iteration.\n *\n * Note that there is no way of yielding a different value to that passed to the next function call, and that the resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable (such as {@link PolySyncIterable.map | map} or {@link PolySyncIterable.take | take} / {@link PolySyncIterable.take | takeWhile}) or use a different approach to create the iterable.\n *\n * @param func - The function that will be called to generate new elements of the iteration\n *\n * @typeParam T - The type of the interable and return type of `func`\n *\n * @returns an infinite iterable that yields the return values from calling `func` repeatedly\n *\n * @public\n */\n",
+              "docComment": "/**\n * Returns a {@link PolySyncIterable} that will yield the values returned from calling `func` with the value last\n * returned, or `initValue` when called for the first time.\n *\n * @remarks\n *\n * `func` will be called initially with `initValue`. After that, each element returned by calling it will be yielded\n * as part of the resulting iterable and then passed to next call to `func`. Note that `initValue` will not be\n * part of the iteration.\n *\n * Note that there is no way of yielding a different value to that passed to the next function call, and that the\n * resulting iterable will not end. If this is undesired, either use some of the operators on the resulting iterable\n * (such as {@link PolySyncIterable.map | map} or {@link PolySyncIterable.take | take}\n * / {@link PolySyncIterable.take | takeWhile}) or use a different approach to create the iterable.\n *\n * @param func - The function that will be called to generate new elements of the iteration\n *\n * @typeParam T - The type of the interable and return type of `func`\n *\n * @returns an infinite iterable that yields the return values from calling `func` repeatedly\n *\n * @public\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2610,7 +2626,7 @@
         {
           "kind": "Class",
           "canonicalReference": "polyethylene!PolyAsyncIterable:class",
-          "docComment": "/**\n * An `AsyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single result from it.\n *\n * This class works as an async version of {@link PolySyncIterable}, but all methods accept async function where possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.\n *\n * ## Concurrency Many operations of this class accept as a final argument an {@link ConcurrencyOptions | options object} than can specify some options for concurrent operations.\n *\n * - The `concurrency` option will specify how many times whatever `func` you pass is called before waiting for its results. Effectively, this is the number of promises that can be pending at the same time. If not specified, it will default to 0, meaning no concurrency. Must be a non-negative integer. - The `bufferSize` option will specify the size of the internal buffer used to store the pending and completed promises. Effectively, this is how many results will be prefetched. If not specified, it will default to `concurrency`, meaning no extra intermediate results are stored. Must be a positive integer greater or equal to `concurrency`.\n *\n * A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the concurrency completely, preventing any values to be requested before actually needed.\n *\n * Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than actually requested of the current one, similarly to {@link PolyAsyncIterable.prefetch}.\n *\n * @remarks\n *\n * The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `PolyAsyncIterable` class.\n *\n * @public\n */\n",
+          "docComment": "/**\n * An `AsyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a\n * single result from it.\n *\n * This class works as an async version of {@link PolySyncIterable}, but all methods accept async function where\n * possible and will always return either `PolyAsyncIterables` or a `Promise` to a value.\n *\n * ## Concurrency\n * Many operations of this class accept as a final argument an {@link ConcurrencyOptions | options object} than can\n * specify some options for concurrent operations.\n *\n * - The `concurrency` option will specify how many times whatever `func` you pass is called before waiting for its\n * results. Effectively, this is the number of promises that can be pending at the same time. If not specified, it\n * will default to 0, meaning no concurrency. Must be a non-negative integer.\n * - The `bufferSize` option will specify the size of the internal buffer used to store the pending and completed\n * promises. Effectively, this is how many results will be prefetched. If not specified, it will default to\n * `concurrency`, meaning no extra intermediate results are stored. Must be a positive integer greater or equal to\n * `concurrency`.\n *\n * A concurrency value of 0 acts the same as a 1 concurrency-wise, but disables the concurrency completely, preventing\n * any values to be requested before actually needed.\n *\n * Specifying concurrency greater or equal to 1 will make more elements be requested of the previous iterator than\n * actually requested of the current one, similarly to {@link PolyAsyncIterable.prefetch}.\n *\n * @remarks\n *\n * The constructor for this class is marked as internal. Third-party code should not call the constructor directly or create subclasses that extend the `PolyAsyncIterable` class.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -2674,7 +2690,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": "<T, any, any>"
+                  "text": "<T>"
                 },
                 {
                   "kind": "Content",
@@ -2697,7 +2713,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#append:member(1)",
-              "docComment": "/**\n * Return a new iteration that will iterate over `this`, then over `other`.\n *\n * @remarks\n *\n * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the types of two distinct iterables.\n *\n * @param other - Iterable to be appended\n *\n * @typeParam U - Type of the elements to be appended\n *\n * @returns a new {@link PolyAsyncIterable} that yields the elements of `this` and then the elements of `other`\n */\n",
+              "docComment": "/**\n * Return a new iteration that will iterate over `this`, then over `other`.\n *\n * @remarks\n *\n * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the\n * types of two distinct iterables.\n *\n * @param other - Iterable to be appended\n *\n * @typeParam U - Type of the elements to be appended\n *\n * @returns a new {@link PolyAsyncIterable} that yields the elements of `this` and then the elements of `other`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2777,7 +2793,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#async:member(1)",
-              "docComment": "/**\n * Return `this`.\n *\n * @remarks\n *\n * This method is present in this class for compatibility with {@link PolySyncIterable.async}, but it's never necessary to call it for anything.\n *\n * @returns A {@link PolyAsyncIterable} that yields the same elements as `this`\n */\n",
+              "docComment": "/**\n * Return `this`.\n *\n * @remarks\n *\n * This method is present in this class for compatibility with {@link PolySyncIterable.async}, but it's never\n * necessary to call it for anything.\n *\n * @returns A {@link PolyAsyncIterable} that yields the same elements as `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2813,7 +2829,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#chunk:member(1)",
-              "docComment": "/**\n * Return an iteration of arrays of size `num` (except possibly the last) containing groupings of elements of `this` iteration.\n *\n * @remarks\n *\n * All chunks except possibly the last one will have exactly `num` elements. The last chunk will have less elements if the number of elements in the iteration is not divisible by `num`. No chunk will ever be returned empty or have more than `num` elements.\n *\n * @param num - Size of the chunks\n *\n * @returns A new {@link PolyAsyncIterable} that yields arrays of size `num` (except possibly the last) containing groupings of elements of `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of arrays of size `num` (except possibly the last) containing\n * groupings of elements of `this` iteration.\n *\n * @remarks\n *\n * All chunks except possibly the last one will have exactly `num` elements. The last chunk will have less elements\n * if the number of elements in the iteration is not divisible by `num`. No chunk will ever be returned empty or\n * have more than `num` elements.\n *\n * @param num - Size of the chunks\n *\n * @returns A new {@link PolyAsyncIterable} that yields arrays of size `num` (except possibly the last) containing\n * groupings of elements of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -2875,7 +2891,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#chunkWhile:member(1)",
-              "docComment": "/**\n * Return an iteration of arrays with elements of this separated based on the result of calling `func(elements)`.\n *\n * @remarks\n *\n * The chunking process works by keeping an open _current chunk_ and calling `func` to decide whether the next element of the iteration will be part of the _current chunk_ or if it will be part of a new chunk.\n *\n * To do this, `func` will be called for every element of the iteration except the first, which will automatically become part of the first chunk. If `func` returns `true`, the element will be part of the current chunk, and if it returns `false`, the _current chunk_ is closed and the element becomes the first element if the new _current chunk_. The arguments passed to `func` will be, in order: - `elem` - The element being currently processed - `lastElem` - The last element that was added to the current chunk - `firstElem` - The first element of the current chunk (might be the same as `lastElem`)\n *\n * All elements will be part of a chunk, and no chunk will ever be empty.\n *\n * @param func - A function that decides if an element is part of the current chunk or initiates a new one\n *\n * @returns A new {@link PolyAsyncIterable} that yields arrays with the elements of `this` as separated by `func`\n */\n",
+              "docComment": "/**\n * Return an iteration of arrays with elements of this separated based on the result of calling `func(elements)`.\n *\n * @remarks\n *\n * The chunking process works by keeping an open _current chunk_ and calling `func` to decide whether the next\n * element of the iteration will be part of the _current chunk_ or if it will be part of a new chunk.\n *\n * To do this, `func` will be called for every element of the iteration except the first, which will automatically\n * become part of the first chunk. If `func` returns `true`, the element will be part of the current chunk, and\n * if it returns `false`, the _current chunk_ is closed and the element becomes the first element if the new\n * _current chunk_.\n * The arguments passed to `func` will be, in order:\n *  - `elem` - The element being currently processed\n *  - `lastElem` - The last element that was added to the current chunk\n *  - `firstElem` - The first element of the current chunk (might be the same as `lastElem`)\n *\n * All elements will be part of a chunk, and no chunk will ever be empty.\n *\n * @param func - A function that decides if an element is part of the current chunk or initiates a new one\n *\n * @returns A new {@link PolyAsyncIterable} that yields arrays with the elements of `this` as separated by `func`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3112,7 +3128,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#drop:member(1)",
-              "docComment": "/**\n * Return a new iteration that skips the first `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this`, except for the first `num` elements\n */\n",
+              "docComment": "/**\n * Return a new iteration that skips the first `num` elements. If there were less than `num` elements in the\n * iteration, no elements are yielded.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this`, except for the first\n * `num` elements\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3165,7 +3181,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#dropLast:member(1)",
-              "docComment": "/**\n * Return a new iteration that skips the last `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.\n *\n * @remarks\n *\n * The returned iteration keeps a buffer of `num` elements internally in order to skip those if the iteration ends, and so elements effectively get delayed by `num` elements.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this`, except for the last `num` elements\n */\n",
+              "docComment": "/**\n * Return a new iteration that skips the last `num` elements. If there were less than `num` elements in the\n * iteration, no elements are yielded.\n *\n * @remarks\n *\n * The returned iteration keeps a buffer of `num` elements internally in order to skip those if the iteration ends,\n * and so elements effectively get delayed by `num` elements.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this`, except for the last\n * `num` elements\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3218,7 +3234,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#dropWhile:member(1)",
-              "docComment": "/**\n * Return a new iteration that skips the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this`, excepts the first few for which`func(element)` returns `true`\n */\n",
+              "docComment": "/**\n * Return a new iteration that skips the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this`, excepts the first few for\n * which`func(element)` returns `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3276,7 +3292,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#duplicate:member(1)",
-              "docComment": "/**\n * Returns a tuple containing `num` iterables that will yield independent copies of the elements yielded by `this`.\n *\n * @remarks\n *\n * Note that, as with every other method of this class, this instance is unusable after calling this method.\n *\n * In order to provide a truly independent iteration for all returned iterables, a buffer is kept, which can grow as big as the whole iteration in certain circumstances. The buffer is filled as fast as the fastest iterable requests new items, and emptied as fast as the slowest iterable consumes those items.\n *\n * @param num - the number of copies to be returned\n *\n * @returns An array of `num` elements containing independent copies of this iterable\n */\n",
+              "docComment": "/**\n * Returns a tuple containing `num` iterables that will yield independent\n * copies of the elements yielded by `this`.\n *\n * @remarks\n *\n * Note that, as with every other method of this class, this instance is unusable after calling this method.\n *\n * In order to provide a truly independent iteration for all returned iterables, a buffer is kept, which can grow as\n * big as the whole iteration in certain circumstances. The buffer is filled as fast as the fastest iterable requests\n * new items, and emptied as fast as the slowest iterable consumes those items.\n *\n * @param num - the number of copies to be returned\n *\n * @returns An array of `num` elements containing independent copies of this iterable\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3434,7 +3450,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#filter:member(1)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true, correctly narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolyAsyncIterable} with only elements for which `func(element)` returned true, correctly\n * narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3605,7 +3621,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#filterNotNullish:member(1)",
-              "docComment": "/**\n * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.\n *\n * @remarks\n *\n * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type predicate function that correctly filters out `null` and `undefined` values from the iteration. Note that other falsy values will remain in the iteration, and that the return value is correctly typed to exclude `null` and `undefined`.\n *\n * @returns A new {@link PolyAsyncIterable} that yields the same elements as `this` except for `null` or `undefined` values\n */\n",
+              "docComment": "/**\n * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.\n *\n * @remarks\n *\n * This function is a shortcut to calling {@link PolyAsyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type\n * predicate function that correctly filters out `null` and `undefined` values from the iteration. Note that other\n * falsy values will remain in the iteration, and that the return value is correctly typed to exclude\n * `null` and `undefined`.\n *\n * @returns A new {@link PolyAsyncIterable} that yields the same elements as `this`\n * except for `null` or `undefined` values\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -3821,7 +3837,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#findIndex:member(1)",
-              "docComment": "/**\n * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise the index of the first element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities,\n * but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise the index of the first element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4067,7 +4083,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#findLastIndex:member(1)",
-              "docComment": "/**\n * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise the index of the last element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities,\n * but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise the index of the last element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4231,7 +4247,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#flatMap:member(1)",
-              "docComment": "/**\n * Return an iteration of elements of the sub-iterables that result from calling `func(element)` for every element in `this`.\n *\n * @remarks\n *\n * This method is equivalent to calling {@link PolyAsyncIterable.map | map(func)} and then {@link PolyAsyncIterable.flatten | flatten()}\n *\n * @param func - A function that takes an element of `this` and returns an iterable\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type of the sub-iterables returned by `func`\n *\n * @returns A new {@link PolyAsyncIterable} that yields the elements of the subiterables that results from calling `func(element)` for every element of `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of elements of the sub-iterables that result from calling `func(element)`\n * for every element in `this`.\n *\n * @remarks\n *\n * This method is equivalent to calling {@link PolyAsyncIterable.map | map(func)}\n * and then {@link PolyAsyncIterable.flatten | flatten()}\n *\n * @param func - A function that takes an element of `this` and returns an iterable\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type of the sub-iterables returned by `func`\n *\n * @returns A new {@link PolyAsyncIterable} that yields the elements of the subiterables that results from\n * calling `func(element)` for every element of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4501,7 +4517,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#groupBy:member(1)",
-              "docComment": "/**\n * Return an iteration of group pairs, where the first element is a _group key_ and the second is an iterable of all the elements for which `func(element)` returned the key.\n *\n * @remarks\n *\n * This method is intended to be combined with {@link PolyAsyncIterable.toObject | toObject} or {@link PolyAsyncIterable.toMap | toMap}, thus behaving like {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy | Array.groupBy} and {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap | Array.groupByToMap} respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.\n *\n * @param func - A function that returns the grouping key of each element\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam K - Type of the keys used to group elements\n *\n * @returns A new {@link PolyAsyncIterable} of group pairs with the key and the group\n */\n",
+              "docComment": "/**\n * Return an iteration of group pairs, where the first element is a _group key_ and the second is an iterable of all\n * the elements for which `func(element)` returned the key.\n *\n * @remarks\n *\n * This method is intended to be combined with {@link PolyAsyncIterable.toObject | toObject}\n * or {@link PolyAsyncIterable.toMap | toMap}, thus behaving like\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy | Array.groupBy} and\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap | Array.groupByToMap}\n * respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.\n *\n * @param func - A function that returns the grouping key of each element\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam K - Type of the keys used to group elements\n *\n * @returns A new {@link PolyAsyncIterable} of group pairs with the key and the group\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4721,7 +4737,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#map:member(1)",
-              "docComment": "/**\n * Return an iteration of the result of calling `func(element)` for every element in `this`.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolyAsyncIterable} that yields the results of calling `func(element)` for every element of `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of the result of calling `func(element)` for every element in `this`.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolyAsyncIterable} that yields the results of calling `func(element)`\n * for every element of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4809,7 +4825,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#mapKeys:member(1)",
-              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the first element of the pair (the *key*) and preserving the second (the *value*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K1 - The key type of the original iterable, as passed to `func`\n *\n * @typeParam K2 - The key type of the resulting iterable, as returned from `func`\n *\n * @typeParam V - The value type of the original and resulting iterables, as passed to `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the keys\n */\n",
+              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as\n * the first element of the pair (the *key*) and preserving the second (the *value*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K1 - The key type of the original iterable, as passed to `func`\n *\n * @typeParam K2 - The key type of the resulting iterable, as returned from `func`\n *\n * @typeParam V - The value type of the original and resulting iterables, as passed to `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`\n * for every element of `this` and using it to replace the keys\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -4940,7 +4956,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#mapValues:member(1)",
-              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the second element of the pair (the *value*) and preserving the first (the *key*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K - The key type of the original and resulting iterables, as passed to `func`\n *\n * @typeParam V1 - The value type of the original iterable, as passed to `func`\n *\n * @typeParam V2 - The value type of the resulting iterable, as returned from `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the values\n */\n",
+              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as\n * the second element of the pair (the *value*) and preserving the first (the *key*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K - The key type of the original and resulting iterables, as passed to `func`\n *\n * @typeParam V1 - The value type of the original iterable, as passed to `func`\n *\n * @typeParam V2 - The value type of the resulting iterable, as returned from `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`\n * for every element of `this` and using it to replace the values\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5071,7 +5087,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#prefetch:member(1)",
-              "docComment": "/**\n * Return the same iteration, but with its elements requested with anticipation to allow for asynchronous operations to begin and reduce wait times.\n *\n * @remarks\n *\n * When yielding an element of this iterable, the next one will be also requested internally, so that any asynchronous operations are started before their results are needed.\n *\n * Note that after calling this mehtod, more elements than strictly needed might be requested from the previous iterable, triggering any potential side effects.\n *\n * @returns a new {@link PolyAsyncIterable} that prefetched the iterated elementsd\n */\n",
+              "docComment": "/**\n * Return the same iteration, but with its elements requested with anticipation to allow for asynchronous operations\n * to begin and reduce wait times.\n *\n * @remarks\n *\n * When yielding an element of this iterable, the next one will be also requested internally, so that any\n * asynchronous operations are started before their results are needed.\n *\n * Note that after calling this mehtod, more elements than strictly needed might be requested from the previous\n * iterable, triggering any potential side effects.\n *\n * @returns a new {@link PolyAsyncIterable} that prefetched the iterated elementsd\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5107,7 +5123,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#prepend:member(1)",
-              "docComment": "/**\n * Return a new iteration that will iterate over `other`, then over `this`.\n *\n * @remarks\n *\n * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the types of two distinct iterables.\n *\n * @param other - Iterable to be prepended\n *\n * @typeParam U - Type of the elements to be prepended\n *\n * @returns a new {@link PolyAsyncIterable} that yields the elements of `other` and then the elements of `this`\n */\n",
+              "docComment": "/**\n * Return a new iteration that will iterate over `other`, then over `this`.\n *\n * @remarks\n *\n * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the\n * types of two distinct iterables.\n *\n * @param other - Iterable to be prepended\n *\n * @typeParam U - Type of the elements to be prepended\n *\n * @returns a new {@link PolyAsyncIterable} that yields the elements of `other` and then the elements of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5187,7 +5203,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#reduce:member(1)",
-              "docComment": "/**\n * Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the previous call to `reducer`, starting by passing `init` or, if not present, the first element of the iteration.\n *\n * @remarks\n *\n * If the `init` argument is not present, at least one element must be present in the iteration, else an error will be thrown\n *\n * `reducer` will be called with the accumulated result, the next element of the iteration, and the index of the iteration. The resolved return value will be the value passed to the next call as the first argument, or the value returned if no more elements remain.\n *\n * @param reducer - A function to call for all elements with the result of a previous call\n *\n * @param init - First element to be passed to the `reducer` function\n *\n * @returns A promise the result to continually call `reducer` with all elements and the previous result\n */\n",
+              "docComment": "/**\n * Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the\n * previous call to `reducer`, starting by passing `init` or, if not present, the first element of the iteration.\n *\n * @remarks\n *\n * If the `init` argument is not present, at least one element must be present in the iteration, else an error will\n * be thrown\n *\n * `reducer` will be called with the accumulated result, the next element of the iteration, and the index of the\n * iteration. The resolved return value will be the value passed to the next call as the first argument, or the\n * value returned if no more elements remain.\n *\n * @param reducer - A function to call for all elements with the result of a previous call\n *\n * @param init - First element to be passed to the `reducer` function\n *\n * @returns A promise the result to continually call `reducer` with all elements and the previous result\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5261,7 +5277,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#reduce:member(2)",
-              "docComment": "/**\n * Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the previous call to `reducer`, starting by passing `init`.\n *\n * @remarks\n *\n * `reducer` will be called with the accumulated result, the next element of the iteration, and the index of the iteration. The resolved return value will be the value passed to the next call as the first argument, or the value returned if no more elements remain.\n *\n * @param reducer - A function to call for all elements with the result of a previous call\n *\n * @param init - First element to be passed to the `reducer` function\n *\n * @returns A promise the result to continually call `reducer` with all elements and the previous result\n */\n",
+              "docComment": "/**\n * Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the\n * previous call to `reducer`, starting by passing `init`.\n *\n * @remarks\n *\n * `reducer` will be called with the accumulated result, the next element of the iteration, and the index of the\n * iteration. The resolved return value will be the value passed to the next call as the first argument, or the\n * value returned if no more elements remain.\n *\n * @param reducer - A function to call for all elements with the result of a previous call\n *\n * @param init - First element to be passed to the `reducer` function\n *\n * @returns A promise the result to continually call `reducer` with all elements and the previous result\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5384,7 +5400,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#slice:member(1)",
-              "docComment": "/**\n * Return a new iteration that starts from the `start`th element (included) and ends at the `end`th element (excluded) of `this`.\n *\n * @remarks\n *\n * Both `start` and `end` allow for negative values, in which case they refer to the nth-to-last element, with n being the absolute value of the argument. `end` might also be `undefined`, in which case the iteration is not shortened on the end side, yielding up to the end, including the last element. This mimics the behaviour of {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice | Array.slice}.\n *\n * This function will likely need a buffer, effectively delaying the yielding of elements for a while.\n *\n * @param start - The index of the first element returned\n *\n * @param end - The index of the first element *not* returned, inclusive\n *\n * @returns a new {@link PolyAsyncIterable} that yields the elements going that starts from the `start`th element (included) and ends at the `end`th element (excluded) of `this`\n */\n",
+              "docComment": "/**\n * Return a new iteration that starts from the `start`th element (included)\n * and ends at the `end`th element (excluded) of `this`.\n *\n * @remarks\n *\n * Both `start` and `end` allow for negative values, in which case they refer to the nth-to-last element,\n * with n being the absolute value of the argument. `end` might also be `undefined`, in which case the iteration is\n * not shortened on the end side, yielding up to the end, including the last element.\n * This mimics the behaviour of {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice | Array.slice}.\n *\n * This function will likely need a buffer, effectively delaying the yielding of elements for a while.\n *\n * @param start - The index of the first element returned\n *\n * @param end - The index of the first element *not* returned, inclusive\n *\n * @returns a new {@link PolyAsyncIterable} that yields the elements going that starts from the `start`th element\n * (included) and ends at the `end`th element (excluded) of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5528,7 +5544,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#sort:member(1)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` sorted according to `func`\n *\n * @remarks\n *\n * The sort function `func` is used to call {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort} on an array of all the elements. However, the default comparator function will sort elements according to the `<` and `>` operators defined on their own type, of always sorting lexicagraphically like {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort} does.\n *\n * This method will buffer _all_ elements of the iteration, and yield them all at once at the end\n *\n * @param func - A comparator function\n *\n * @returns A new {@link PolyAsyncIterable} that yields the elements of `this` sorted according to `func`\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` sorted according to `func`\n *\n * @remarks\n *\n * The sort function `func` is used to call\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort}\n * on an array of all the elements.\n * However, the default comparator function will sort elements according to the `<` and `>` operators defined on\n * their own type, of always sorting lexicagraphically like\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort}\n * does.\n *\n * This method will buffer _all_ elements of the iteration, and yield them all at once at the end\n *\n * @param func - A comparator function\n *\n * @returns A new {@link PolyAsyncIterable} that yields the elements of `this` sorted according to `func`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5586,7 +5602,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#take:member(1)",
-              "docComment": "/**\n * Return a new iteration that iterates only over the first `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.\n *\n * @param num - The number of elements to yield\n *\n * @returns a new {@link PolyAsyncIterable} that yields the first `num` elements elements of `this`\n */\n",
+              "docComment": "/**\n * Return a new iteration that iterates only over the first `num` elements. If there were less than than `num`\n * elements in the iteration, all elements are yielded with no additions.\n *\n * @param num - The number of elements to yield\n *\n * @returns a new {@link PolyAsyncIterable} that yields the first `num` elements elements of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5639,7 +5655,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#takeLast:member(1)",
-              "docComment": "/**\n * Return a new iteration that iterates only over the last `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.\n *\n * @remarks\n *\n * The returned iteration keeps a buffer of `num` elements internally in order to know which elements to keep. and so elements effectively get delayed until the iteration ends.\n *\n * @param num - The number of elements to yield\n *\n * @returns a new {@link PolyAsyncIterable} that yields the last `num` elements elements of `this`\n */\n",
+              "docComment": "/**\n * Return a new iteration that iterates only over the last `num` elements. If there were less than than `num`\n * elements in the iteration, all elements are yielded with no additions.\n *\n * @remarks\n *\n * The returned iteration keeps a buffer of `num` elements internally in order to know which elements to keep.\n * and so elements effectively get delayed until the iteration ends.\n *\n * @param num - The number of elements to yield\n *\n * @returns a new {@link PolyAsyncIterable} that yields the last `num` elements elements of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5692,7 +5708,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#takeWhile:member(1)",
-              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this` as long as `func(element)` returns `true`, correctly narrowed to the type asserted by `func`\n */\n",
+              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this` as long as `func(element)`\n * returns `true`, correctly narrowed to the type asserted by `func`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5771,7 +5787,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#takeWhile:member(2)",
-              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this` as long as `func(element)` returns `true`\n */\n",
+              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolyAsyncIterable} that yields the same the elements of `this` as long as `func(element)`\n * returns `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -5949,7 +5965,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#toMap:member(1)",
-              "docComment": "/**\n * Return a `Map` made from the entries of `this`. This method is roughly equivalent to calling `new Map(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs where the first component is a valid object key type.\n *\n * @returns A promise to a `Map` composed of the entries yielded by this iterable.\n */\n",
+              "docComment": "/**\n * Return a `Map` made from the entries of `this`.\n * This method is roughly equivalent to calling `new Map(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs where the first component is a valid object key type.\n *\n * @returns A promise to a `Map` composed of the entries yielded by this iterable.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6040,7 +6056,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#toObject:member(1)",
-              "docComment": "/**\n * Return an object made from the entries of `this`. This method is roughly equivalent to calling `Object.fromEntires(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs where the first component is a valid object key type.\n *\n * @returns A promise to an object composed of the entries yielded by this iterable.\n */\n",
+              "docComment": "/**\n * Return an object made from the entries of `this`.\n * This method is roughly equivalent to calling `Object.fromEntires(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs where the first component is a valid object key type.\n *\n * @returns A promise to an object composed of the entries yielded by this iterable.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6140,7 +6156,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#toPartitionArrays:member(1)",
-              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @remarks\n *\n * The array of _truthy elements_ has its element type narrowed to the type asserted by `func`.\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and the array of values for which `func` returned `false` as the second element.\n */\n",
+              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy\n * elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @remarks\n *\n * The array of _truthy elements_ has its element type narrowed to the type asserted by `func`.\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @param options - Options for concurrency of this operation\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and\n * the array of values for which `func` returned `false` as the second element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6263,7 +6279,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#toPartitionArrays:member(2)",
-              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and the array of values for which `func` returned `false` as the second element.\n */\n",
+              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy\n * elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A promise to a tuple with the array of values for which `func` returned `true` as the first element, and\n * the array of values for which `func` returned `false` as the second element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6356,7 +6372,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolyAsyncIterable#unique:member(1)",
-              "docComment": "/**\n * Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is the same for both elements.\n *\n * @remarks\n *\n * Note that the first element seen with a specific key is always the one yielded, and every other element afterwards is ignored.\n *\n * If no key-mapping function is given, the elements theselves are used as keys. This is likely _not_ what you want in most situations unless elements are primitive types.\n *\n * @param func - A function that returns a _key_ used for uniqueness checks. If not passed, an identitity function is used.\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A new {@link PolyAsyncIterable} only elements for which `func(element)` returns a value that hasn't been seen before\n */\n",
+              "docComment": "/**\n * Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is\n * the same for both elements.\n *\n * @remarks\n *\n * Note that the first element seen with a specific key is always the one yielded, and every other element afterwards\n * is ignored.\n *\n * If no key-mapping function is given, the elements theselves are used as keys.\n * This is likely _not_ what you want in most situations unless elements are primitive types.\n *\n * @param func - A function that returns a _key_ used for uniqueness checks.\n * If not passed, an identitity function is used.\n *\n * @param options - Options for concurrency of this operation\n *\n * @returns A new {@link PolyAsyncIterable} only elements for which `func(element)` returns a value that hasn't\n * been seen before\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6439,7 +6455,7 @@
         {
           "kind": "Class",
           "canonicalReference": "polyethylene!PolySyncIterable:class",
-          "docComment": "/**\n * A `SyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single result from it.\n *\n * The methods of this class are intended to resemble those of `Array`, with added utilities where appropriate and made for any kind of iterable.\n *\n * @public\n */\n",
+          "docComment": "/**\n * A `SyncIterable<T>` with a suite of methods for transforming the iteration into other iterations or to get a single\n * result from it.\n *\n * The methods of this class are intended to resemble those of `Array`, with added utilities where appropriate and made\n * for any kind of iterable.\n *\n * @public\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -6526,7 +6542,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#append:member(1)",
-              "docComment": "/**\n * Return a new iteration that will iterate over `this`, then over `other`.\n *\n * @remarks\n *\n * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the types of two distinct iterables.\n *\n * @param other - Iterable to be appended\n *\n * @typeParam U - Type of the elements to be appended\n *\n * @returns a new {@link PolySyncIterable} that yields the elements of `this` and then the elements of `other`\n */\n",
+              "docComment": "/**\n * Return a new iteration that will iterate over `this`, then over `other`.\n *\n * @remarks\n *\n * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the\n * types of two distinct iterables.\n *\n * @param other - Iterable to be appended\n *\n * @typeParam U - Type of the elements to be appended\n *\n * @returns a new {@link PolySyncIterable} that yields the elements of `this` and then the elements of `other`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6633,7 +6649,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#chunk:member(1)",
-              "docComment": "/**\n * Return an iteration of arrays of size `num` (except possibly the last) containing groupings of elements of `this` iteration.\n *\n * @remarks\n *\n * All chunks except possibly the last one will have exactly `num` elements. The last chunk will have less elements if the number of elements in the iteration is not divisible by `num`. No chunk will ever be returned empty or have more than `num` elements.\n *\n * @param num - Size of the chunks\n *\n * @returns A new {@link PolySyncIterable} that yields arrays of size `num` (except possibly the last) containing groupings of elements of `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of arrays of size `num` (except possibly the last) containing\n * groupings of elements of `this` iteration.\n *\n * @remarks\n *\n * All chunks except possibly the last one will have exactly `num` elements. The last chunk will have less elements\n * if the number of elements in the iteration is not divisible by `num`. No chunk will ever be returned empty or\n * have more than `num` elements.\n *\n * @param num - Size of the chunks\n *\n * @returns A new {@link PolySyncIterable} that yields arrays of size `num` (except possibly the last) containing\n * groupings of elements of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6695,7 +6711,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#chunkWhile:member(1)",
-              "docComment": "/**\n * Return an iteration of arrays with elements of this separated based on the result of calling `func(elements)`.\n *\n * @remarks\n *\n * The chunking process works by keeping an open _current chunk_ and calling `func` to decide whether the next element of the iteration will be part of the _current chunk_ or if it will be part of a new chunk.\n *\n * To do this, `func` will be called for every element of the iteration except the first, which will automatically become part of the first chunk. If `func` returns `true`, the element will be part of the current chunk, and if it returns `false`, the _current chunk_ is closed and the element becomes the first element if the new _current chunk_. The arguments passed to `func` will be, in order: - `elem` - The element being currently processed - `lastElem` - The last element that was added to the current chunk - `firstElem` - The first element of the current chunk (might be the same as `lastElem`)\n *\n * All elements will be part of a chunk, and no chunk will ever be empty.\n *\n * @param func - A function that decides if an element is part of the current chunk or initiates a new one\n *\n * @returns A new {@link PolySyncIterable} that yields arrays with the elements of `this` as separated by `func`\n */\n",
+              "docComment": "/**\n * Return an iteration of arrays with elements of this separated based on the result of calling `func(elements)`.\n *\n * @remarks\n *\n * The chunking process works by keeping an open _current chunk_ and calling `func` to decide whether the next\n * element of the iteration will be part of the _current chunk_ or if it will be part of a new chunk.\n *\n * To do this, `func` will be called for every element of the iteration except the first, which will automatically\n * become part of the first chunk. If `func` returns `true`, the element will be part of the current chunk, and\n * if it returns `false`, the _current chunk_ is closed and the element becomes the first element if the new\n * _current chunk_.\n * The arguments passed to `func` will be, in order:\n *  - `elem` - The element being currently processed\n *  - `lastElem` - The last element that was added to the current chunk\n *  - `firstElem` - The first element of the current chunk (might be the same as `lastElem`)\n *\n * All elements will be part of a chunk, and no chunk will ever be empty.\n *\n * @param func - A function that decides if an element is part of the current chunk or initiates a new one\n *\n * @returns A new {@link PolySyncIterable} that yields arrays with the elements of `this` as separated by `func`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6895,7 +6911,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#drop:member(1)",
-              "docComment": "/**\n * Return a new iteration that skips the first `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this`, except for the first `num` elements\n */\n",
+              "docComment": "/**\n * Return a new iteration that skips the first `num` elements. If there were less than `num` elements in the\n * iteration, no elements are yielded.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this`, except for the first\n * `num` elements\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -6948,7 +6964,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#dropLast:member(1)",
-              "docComment": "/**\n * Return a new iteration that skips the last `num` elements. If there were less than `num` elements in the iteration, no elements are yielded.\n *\n * @remarks\n *\n * The returned iteration keeps a buffer of `num` elements internally in order to skip those if the iteration ends, and so elements effectively get delayed by `num` elements.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this`, except for the last `num` elements\n */\n",
+              "docComment": "/**\n * Return a new iteration that skips the last `num` elements. If there were less than `num` elements in the\n * iteration, no elements are yielded.\n *\n * @remarks\n *\n * The returned iteration keeps a buffer of `num` elements internally in order to skip those if the iteration ends,\n * and so elements effectively get delayed by `num` elements.\n *\n * @param num - The number of elements to skip\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this`, except for the last\n * `num` elements\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -7001,7 +7017,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#dropWhile:member(1)",
-              "docComment": "/**\n * Return a new iteration that skips the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this`, excepts the first few for which`func(element)` returns `true`\n */\n",
+              "docComment": "/**\n * Return a new iteration that skips the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this`, excepts the first few for\n * which`func(element)` returns `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -7059,7 +7075,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#duplicate:member(1)",
-              "docComment": "/**\n * Returns a tuple containing `num` iterables that will yield independent copies of the elements yielded by `this`.\n *\n * @remarks\n *\n * Note that, as with every other method of this class, this instance is unusable after calling this method.\n *\n * In order to provide a truly independent iteration for all returned iterables, a buffer is kept, which can grow as big as the whole iteration in certain circumstances. The buffer is filled as fast as the fastest iterable requests new items, and emptied as fast as the slowest iterable requests new items.\n *\n * Note that for synchronous iterations, it's common to end up with a full buffer if the returned duplicated elements are used in sequence. In this situation, it might be more useful to simply convert the iteration to an array and pass it around, rather than pay the overhead of this method.\n *\n * @param num - the number of copies to be returned\n *\n * @returns An array of `num` elements containing independent copies of this iterable\n */\n",
+              "docComment": "/**\n * Returns a tuple containing `num` iterables that will yield independent\n * copies of the elements yielded by `this`.\n *\n * @remarks\n *\n * Note that, as with every other method of this class, this instance is unusable after calling this method.\n *\n * In order to provide a truly independent iteration for all returned iterables, a buffer is kept, which can grow as\n * big as the whole iteration in certain circumstances. The buffer is filled as fast as the fastest iterable requests\n * new items, and emptied as fast as the slowest iterable requests new items.\n *\n * Note that for synchronous iterations, it's common to end up with a full buffer if the returned duplicated elements\n * are used in sequence. In this situation, it might be more useful to simply convert the iteration to an array and\n * pass it around, rather than pay the overhead of this method.\n *\n * @param num - the number of copies to be returned\n *\n * @returns An array of `num` elements containing independent copies of this iterable\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -7195,7 +7211,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#filter:member(1)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true, correctly narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to be called on all elements\n *\n * @typeParam U - The type asserted by `func`, if any\n *\n * @returns A new {@link PolySyncIterable} with only elements for which `func(element)` returned true, correctly\n * narrowed to the type asserted by `func`\n *\n * {@label FILTER_TYPEPRED}\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -7332,7 +7348,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#filterNotNullish:member(1)",
-              "docComment": "/**\n * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.\n *\n * @remarks\n *\n * This function is a shortcut to calling {@link PolySyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type predicate function that correctly filters out `null` and `undefined` values from the iteration. Note that other falsy values will remain in the iteration, and that the return value is correctly typed to exclude `null` and `undefined`.\n *\n * @returns A new {@link PolySyncIterable} that yields the same elements as `this` except for `null` or `undefined` values\n */\n",
+              "docComment": "/**\n * Return an iteration of all the elements as `this` that aren't `null` or `undefined`.\n *\n * @remarks\n *\n * This function is a shortcut to calling {@link PolySyncIterable.filter.(:FILTER_TYPEPRED) filter} with a type\n * predicate function that correctly filters out `null` and `undefined` values from the iteration. Note that other\n * falsy values will remain in the iteration, and that the return value is correctly typed to exclude\n * `null` and `undefined`.\n *\n * @returns A new {@link PolySyncIterable} that yields the same elements as `this`\n * except for `null` or `undefined` values\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -7504,7 +7520,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#findIndex:member(1)",
-              "docComment": "/**\n * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns The index of the first element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the index of the first element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on elements of this iteration until it returns `true`, and then not called again.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities,\n * but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns The index of the first element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -7684,7 +7700,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#findLastIndex:member(1)",
-              "docComment": "/**\n * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities, but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns The index of the last element of the iteration for which `func` returned `true`\n */\n",
+              "docComment": "/**\n * Returns the index of the last element for which `func(element)` returns `true`, or `-1` if it never does.\n *\n * @remarks\n *\n * `func` will be called on *all* of this iteration, and the result will not be returned until the iteration ends.\n *\n * Note that this method is rather useless given that iterables are single-use and have no indexing capabilities,\n * but it's here for completion and consistency with `Array`.\n *\n * @param func - A boolean returning function called for elements of `this`\n *\n * @returns The index of the last element of the iteration for which `func` returned `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -7817,7 +7833,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#flatMap:member(1)",
-              "docComment": "/**\n * Return an iteration of elements of the sub-iterables that result from calling `func(element)` for every element in `this`.\n *\n * @remarks\n *\n * This method is equivalent to calling {@link PolySyncIterable.map | map(func)} and then {@link PolySyncIterable.flatten | flatten()}\n *\n * @param func - A function that takes an element of `this` and returns an iterable\n *\n * @typeParam U - The type of the sub-iterables returned by `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the elements of the subiterables that results from calling `func(element)` for every element of `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of elements of the sub-iterables that result from calling `func(element)`\n * for every element in `this`.\n *\n * @remarks\n *\n * This method is equivalent to calling {@link PolySyncIterable.map | map(func)}\n * and then {@link PolySyncIterable.flatten | flatten()}\n *\n * @param func - A function that takes an element of `this` and returns an iterable\n *\n * @typeParam U - The type of the sub-iterables returned by `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the elements of the subiterables that results from\n * calling `func(element)` for every element of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8030,7 +8046,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#groupBy:member(1)",
-              "docComment": "/**\n * Return an iteration of group pairs, where the first element is a _group key_ and the second is an iterable of all the elements for which `func(element)` returned the key.\n *\n * @remarks\n *\n * This method is intended to be combined with {@link PolySyncIterable.toObject | toObject} or {@link PolySyncIterable.toMap | toMap}, thus behaving like {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy | Array.groupBy} and {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap | Array.groupByToMap} respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.\n *\n * @param func - A function that returns the grouping key of each element\n *\n * @typeParam K - Type of the keys used to group elements\n *\n * @returns A new {@link PolySyncIterable} of group pairs with the key and the group\n */\n",
+              "docComment": "/**\n * Return an iteration of group pairs, where the first element is a _group key_ and the second is an iterable of all\n * the elements for which `func(element)` returned the key.\n *\n * @remarks\n *\n * This method is intended to be combined with {@link PolySyncIterable.toObject | toObject}\n * or {@link PolySyncIterable.toMap | toMap}, thus behaving like\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy | Array.groupBy} and\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/groupByToMap | Array.groupByToMap}\n * respectively, but without losing the ablity to further process the iteration, such as by mapping, filtering, etc.\n *\n * @param func - A function that returns the grouping key of each element\n *\n * @typeParam K - Type of the keys used to group elements\n *\n * @returns A new {@link PolySyncIterable} of group pairs with the key and the group\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8206,7 +8222,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#map:member(1)",
-              "docComment": "/**\n * Return an iteration of the result of calling `func(element)` for every element in `this`.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this`\n */\n",
+              "docComment": "/**\n * Return an iteration of the result of calling `func(element)` for every element in `this`.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam U - The return type of `func` and the generic type of the resulting iterable\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`\n * for every element of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8277,7 +8293,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#mapKeys:member(1)",
-              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the first element of the pair (the *key*) and preserving the second (the *value*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K1 - The key type of the original iterable, as passed to `func`\n *\n * @typeParam K2 - The key type of the resulting iterable, as returned from `func`\n *\n * @typeParam V - The value type of the original and resulting iterables, as passed to `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and uses it to replace the keys\n */\n",
+              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as\n * the first element of the pair (the *key*) and preserving the second (the *value*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K1 - The key type of the original iterable, as passed to `func`\n *\n * @typeParam K2 - The key type of the resulting iterable, as returned from `func`\n *\n * @typeParam V - The value type of the original and resulting iterables, as passed to `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of\n * `this` and uses it to replace the keys\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8391,7 +8407,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#mapValues:member(1)",
-              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as the second element of the pair (the *value*) and preserving the first (the *key*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K - The key type of the original and resulting iterables, as passed to `func`\n *\n * @typeParam V1 - The value type of the original iterable, as passed to `func`\n *\n * @typeParam V2 - The value type of the resulting iterable, as returned from `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)` for every element of `this` and using it to replace the values\n */\n",
+              "docComment": "/**\n * Return an iteration of the pairs resulting of calling `func(element)` for every element in `this` and using it as\n * the second element of the pair (the *value*) and preserving the first (the *key*).\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @param func - A function that takes an element of `this` and returns something else\n *\n * @typeParam K - The key type of the original and resulting iterables, as passed to `func`\n *\n * @typeParam V1 - The value type of the original iterable, as passed to `func`\n *\n * @typeParam V2 - The value type of the resulting iterable, as returned from `func`\n *\n * @returns A new {@link PolySyncIterable} that yields the results of calling `func(element)`\n * for every element of `this` and using it to replace the values\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8505,7 +8521,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#prepend:member(1)",
-              "docComment": "/**\n * Return a new iteration that will iterate over `other`, then over `this`.\n *\n * @remarks\n *\n * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the types of two distinct iterables.\n *\n * @param other - Iterable to be prepended\n *\n * @typeParam U - Type of the elements to be prepended\n *\n * @returns a new {@link PolySyncIterable} that yields the elements of `other` and then the elements of `this`\n */\n",
+              "docComment": "/**\n * Return a new iteration that will iterate over `other`, then over `this`.\n *\n * @remarks\n *\n * The resulting iteration is of the combined generic type of `this` and `other`, allowing this method to merge the\n * types of two distinct iterables.\n *\n * @param other - Iterable to be prepended\n *\n * @typeParam U - Type of the elements to be prepended\n *\n * @returns a new {@link PolySyncIterable} that yields the elements of `other` and then the elements of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8576,7 +8592,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#reduce:member(1)",
-              "docComment": "/**\n * Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the previous call to `reducer`, starting by passing `init` or, if not present, the first element of the iteration.\n *\n * @remarks\n *\n * If the `init` argument is not present, at least one element must be present in the iteration, else an error will be thrown\n *\n * `reducer` will be called with the accumulated result, the next element of the iteration, and the index of the iteration. The resolved return value will be the value passed to the next call as the first argument, or the value returned if no more elements remain.\n *\n * @param reducer - A function to call for all elements with the result of a previous call\n *\n * @param init - First element to be passed to the `reducer` function\n *\n * @returns The result to continually call `reducer` with all elements and the previous result\n */\n",
+              "docComment": "/**\n * Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the\n * previous call to `reducer`, starting by passing `init` or, if not present, the first element of the iteration.\n *\n * @remarks\n *\n * If the `init` argument is not present, at least one element must be present in the iteration, else an error will\n * be thrown\n *\n * `reducer` will be called with the accumulated result, the next element of the iteration, and the index of the\n * iteration. The resolved return value will be the value passed to the next call as the first argument, or the\n * value returned if no more elements remain.\n *\n * @param reducer - A function to call for all elements with the result of a previous call\n *\n * @param init - First element to be passed to the `reducer` function\n *\n * @returns The result to continually call `reducer` with all elements and the previous result\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8645,7 +8661,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#reduce:member(2)",
-              "docComment": "/**\n * Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the previous call to `reducer`, starting by passing `init`.\n *\n * @remarks\n *\n * `reducer` will be called with the accumulated result, the next element of the iteration, and the index of the iteration. The resolved return value will be the value passed to the next call as the first argument, or the value returned if no more elements remain.\n *\n * @param reducer - A function to call for all elements with the result of a previous call\n *\n * @param init - First element to be passed to the `reducer` function\n *\n * @returns The result to continually call `reducer` with all elements and the previous result\n */\n",
+              "docComment": "/**\n * Returns the result of calling the passed `reducer` for all elements of the iteration and the result of the\n * previous call to `reducer`, starting by passing `init`.\n *\n * @remarks\n *\n * `reducer` will be called with the accumulated result, the next element of the iteration, and the index of the\n * iteration. The resolved return value will be the value passed to the next call as the first argument, or the\n * value returned if no more elements remain.\n *\n * @param reducer - A function to call for all elements with the result of a previous call\n *\n * @param init - First element to be passed to the `reducer` function\n *\n * @returns The result to continually call `reducer` with all elements and the previous result\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8763,7 +8779,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#slice:member(1)",
-              "docComment": "/**\n * Return a new iteration that starts from the `start`th element (included) and ends at the `end`th element (excluded) of `this`.\n *\n * @remarks\n *\n * Both `start` and `end` allow for negative values, in which case they refer to the nth-to-last element, with n being the absolute value of the argument. `end` might also be `undefined`, in which case the iteration is not shortened on the end side, yielding up to the end, including the last element. This mimics the behaviour of {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice | Array.slice}.\n *\n * This function will likely need a buffer, effectively delaying the yielding of elements for a while.\n *\n * @param start - The index of the first element returned\n *\n * @param end - The index of the first element *not* returned, inclusive\n *\n * @returns a new {@link PolySyncIterable} that yields the elements going that starts from the `start`th element (included) and ends at the `end`th element (excluded) of `this`\n */\n",
+              "docComment": "/**\n * Return a new iteration that starts from the `start`th element (included)\n * and ends at the `end`th element (excluded) of `this`.\n *\n * @remarks\n *\n * Both `start` and `end` allow for negative values, in which case they refer to the nth-to-last element,\n * with n being the absolute value of the argument. `end` might also be `undefined`, in which case the iteration is\n * not shortened on the end side, yielding up to the end, including the last element.\n * This mimics the behaviour of {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/slice | Array.slice}.\n *\n * This function will likely need a buffer, effectively delaying the yielding of elements for a while.\n *\n * @param start - The index of the first element returned\n *\n * @param end - The index of the first element *not* returned, inclusive\n *\n * @returns a new {@link PolySyncIterable} that yields the elements going that starts from the `start`th element\n * (included) and ends at the `end`th element (excluded) of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8885,7 +8901,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#sort:member(1)",
-              "docComment": "/**\n * Return an iteration of the elements of `this` sorted according to `func`\n *\n * @remarks\n *\n * The sort function `func` is used to call {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort} on an array of all the elements. However, the default comparator function will sort elements according to the `<` and `>` operators defined on their own type, of always sorting lexicagraphically like {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort} does.\n *\n * This method will buffer _all_ elements of the iteration, and yield them all at once at the end\n *\n * @param func - A comparator function\n *\n * @returns A new {@link PolySyncIterable} that yields the elements of `this` sorted according to `func`\n */\n",
+              "docComment": "/**\n * Return an iteration of the elements of `this` sorted according to `func`\n *\n * @remarks\n *\n * The sort function `func` is used to call\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort}\n * on an array of all the elements.\n * However, the default comparator function will sort elements according to the `<` and `>` operators defined on\n * their own type, of always sorting lexicagraphically like\n * {@link https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array/sort | Array.sort}\n * does.\n *\n * This method will buffer _all_ elements of the iteration, and yield them all at once at the end\n *\n * @param func - A comparator function\n *\n * @returns A new {@link PolySyncIterable} that yields the elements of `this` sorted according to `func`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8943,7 +8959,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#take:member(1)",
-              "docComment": "/**\n * Return a new iteration that iterates only over the first `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.\n *\n * @param num - The number of elements to yield\n *\n * @returns a new {@link PolySyncIterable} that yields the first `num` elements elements of `this`\n */\n",
+              "docComment": "/**\n * Return a new iteration that iterates only over the first `num` elements. If there were less than than `num`\n * elements in the iteration, all elements are yielded with no additions.\n *\n * @param num - The number of elements to yield\n *\n * @returns a new {@link PolySyncIterable} that yields the first `num` elements elements of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -8996,7 +9012,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#takeLast:member(1)",
-              "docComment": "/**\n * Return a new iteration that iterates only over the last `num` elements. If there were less than than `num` elements in the iteration, all elements are yielded with no additions.\n *\n * @remarks\n *\n * The returned iteration keeps a buffer of `num` elements internally in order to know which elements to keep. and so elements effectively get delayed until the iteration ends.\n *\n * @param num - The number of elements to yield\n *\n * @returns a new {@link PolySyncIterable} that yields the last `num` elements elements of `this`\n */\n",
+              "docComment": "/**\n * Return a new iteration that iterates only over the last `num` elements. If there were less than than `num`\n * elements in the iteration, all elements are yielded with no additions.\n *\n * @remarks\n *\n * The returned iteration keeps a buffer of `num` elements internally in order to know which elements to keep.\n * and so elements effectively get delayed until the iteration ends.\n *\n * @param num - The number of elements to yield\n *\n * @returns a new {@link PolySyncIterable} that yields the last `num` elements elements of `this`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9049,7 +9065,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#takeWhile:member(1)",
-              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this` as long as `func(element)` returns `true`, correctly narrowed to the type asserted by `func`\n */\n",
+              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @remarks\n *\n * Because the `func` argument is a type predicate, the result iteration will have the type asserted by `func`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this` as long as `func(element)`\n * returns `true`, correctly narrowed to the type asserted by `func`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9128,7 +9144,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#takeWhile:member(2)",
-              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this` as long as `func(element)` returns `true`\n */\n",
+              "docComment": "/**\n * Return a new iteration that yields the first few elements for which `func(element)` returns `true`.\n *\n * @param func - The function to call on the elements\n *\n * @returns a new {@link PolySyncIterable} that yields the same the elements of `this` as long as `func(element)`\n * returns `true`\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9280,7 +9296,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#toMap:member(1)",
-              "docComment": "/**\n * Return a `Map` made from the entries of `this`. This method is roughly equivalent to calling `new Map(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @returns A `Map` composed of the entries yielded by this iterable.\n */\n",
+              "docComment": "/**\n * Return a `Map` made from the entries of `this`.\n * This method is roughly equivalent to calling `new Map(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs.\n *\n * @returns A `Map` composed of the entries yielded by this iterable.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9362,7 +9378,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#toObject:member(1)",
-              "docComment": "/**\n * Return an object made from the entries of `this`. This method is roughly equivalent to calling `Object.fromEntires(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs where the first component is a valid object key type.\n *\n * @returns An object composed of the entries yielded by this iterable.\n */\n",
+              "docComment": "/**\n * Return an object made from the entries of `this`.\n * This method is roughly equivalent to calling `Object.fromEntires(iter.toArray())`.\n *\n * @remarks\n *\n * This method is only available for iterations of pairs where the first component is a valid object key type.\n *\n * @returns An object composed of the entries yielded by this iterable.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9453,7 +9469,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#toPartitionArrays:member(1)",
-              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @remarks\n *\n * The array of _truthy elements_ has its element type narrowed to the type asserted by `func`.\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A tuple with the array of values for which `func` returned `true` as the first element, and the array of values for which `func` returned `false` as the second element.\n */\n",
+              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy\n * elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @remarks\n *\n * The array of _truthy elements_ has its element type narrowed to the type asserted by `func`.\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @typeParam U - The type asserted by `func`\n *\n * @returns A tuple with the array of values for which `func` returned `true` as the first element, and the array of\n * values for which `func` returned `false` as the second element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9554,7 +9570,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#toPartitionArrays:member(2)",
-              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @returns A tuple with the array of values for which `func` returned `true` as the first element, and the array of values for which `func` returned `false` as the second element.\n */\n",
+              "docComment": "/**\n * Splits this iteration into two arrays, one with elements for which `func(element)` returns `true` (the _truthy\n * elements_) and one for which it returns `false` (the _falsy elements_).\n *\n * @param func - A function that will be called for all elements to split them into the result arrays\n *\n * @returns A tuple with the array of values for which `func` returned `true` as the first element, and the array of\n * values for which `func` returned `false` as the second element.\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
@@ -9625,7 +9641,7 @@
             {
               "kind": "Method",
               "canonicalReference": "polyethylene!PolySyncIterable#unique:member(1)",
-              "docComment": "/**\n * Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is the same for both elements.\n *\n * @remarks\n *\n * Note that the first element seen with a specific key is always the one yielded, and every other element afterwards is ignored.\n *\n * If no key-mapping function is given, the elements theselves are used as keys. This is likely _not_ what you want in most situations unless elements are primitive types.\n *\n * @param func - A function that returns a _key_ used for uniqueness checks. If not passed, an identitity function is used.\n *\n * @returns A new {@link PolySyncIterable} only elements for which `func(element)` returns a value that hasn't been seen before\n */\n",
+              "docComment": "/**\n * Return an iteration of unique elements, where two elements are considered equal if the result of `func(element)` is\n * the same for both elements.\n *\n * @remarks\n *\n * Note that the first element seen with a specific key is always the one yielded, and every other element afterwards\n * is ignored.\n *\n * If no key-mapping function is given, the elements theselves are used as keys.\n * This is likely _not_ what you want in most situations unless elements are primitive types.\n *\n * @param func - A function that returns a _key_ used for uniqueness checks.\n * If not passed, an identitity function is used.\n *\n * @returns A new {@link PolySyncIterable} only elements for which `func(element)` returns a value that hasn't\n * been seen before\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",

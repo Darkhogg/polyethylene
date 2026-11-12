@@ -955,6 +955,29 @@ describe('Async Iterable', () => {
       expect(result).to.deep.equal(EXPANDED)
     })
 
+    it('should work if dupes are consumed concurrently but simultanously', async () => {
+      const dupes = Poly.asyncFrom(iter).duplicate(TIMES)
+      const result = await Promise.all(dupes.map((dupe) => dupe.toArray()))
+
+      expect(result).to.deep.equal(Array(TIMES).fill(VALUES))
+    })
+
+    it('should work if dupes are consumed concurrently at different speeds', async () => {
+      const builder = Poly.builder<number>()
+      const [itA, itB] = builder.toPolyAsyncIterable().duplicate(2).map((dupe) => dupe[Symbol.asyncIterator]())
+
+      builder.value(1)
+      await itA.next()
+      const nextA = itA.next()
+      await itB.next()
+      const nextB = itB.next()
+      await delay(0)
+      builder.value(2)
+
+      await expect(nextA).to.eventually.deep.equal({done: false, value: 2})
+      await expect(nextB).to.eventually.deep.equal({done: false, value: 2})
+    })
+
     it('should throw if passed something other than a number', () => {
       expect(() => Poly.asyncFrom([]).duplicate('foo' as any)).to.throw()
     })

@@ -45,6 +45,7 @@ Record&lt;K, unknown&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;K&gt;

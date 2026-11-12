@@ -63,6 +63,7 @@ _(Optional)_ Options for concurrency of this operation
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;\[K, Array&lt;T&gt;\]&gt;

@@ -20,3 +20,11 @@ export {Poly, PolySyncIterable, PolyAsyncIterable, AsyncIterableBuilder}
 export type * from './async/poly-iterable.js'
 
 export type * from './types.js'
+
+/* top-level `this` is `module.exports` in CommonJS and always `undefined` in ES modules */
+if (this !== undefined && typeof process !== 'undefined' && typeof process.emitWarning === 'function') {
+  process.emitWarning(
+    'CommonJS support for polyethylene is deprecated and will be removed in a future major version. ',
+    {type: 'DeprecationWarning', code: 'POLYETHYLENE_COMMONJS'},
+  )
+}

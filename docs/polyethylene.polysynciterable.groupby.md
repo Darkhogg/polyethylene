@@ -47,6 +47,7 @@ A function that returns the grouping key of each element
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;\[K, Array&lt;T&gt;\]&gt;

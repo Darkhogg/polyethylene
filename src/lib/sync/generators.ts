@@ -28,11 +28,19 @@ export function * dropGen<T> (iter: Iterable<T>, num: number): Iterable<T> {
 
 export function * takeGen<T> (iter: Iterable<T>, num: number): Iterable<T> {
   let rem = num
-  for (const elem of iter) {
-    if (rem-- <= 0) {
-      return
+  const it = iter[Symbol.iterator]()
+
+  try {
+    while (rem > 0) {
+      const {value, done} = it.next()
+      if (done) {
+        return
+      }
+      yield value
+      rem--
     }
-    yield elem
+  } finally {
+    it.return?.()
   }
 }
 

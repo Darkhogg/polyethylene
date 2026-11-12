@@ -9,11 +9,11 @@ Allows this class to work as a regular `AsyncIterable<T>`
 **Signature:**
 
 ```typescript
-[Symbol.asyncIterator](): AsyncIterator<T, any, any>;
+[Symbol.asyncIterator](): AsyncIterator<T>;
 ```
 **Returns:**
 
-AsyncIterator&lt;T, any, any&gt;
+AsyncIterator&lt;T&gt;
 
 an async iterable that will yield the same elements as the iterable used to create this instance
 

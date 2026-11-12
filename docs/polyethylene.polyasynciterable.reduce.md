@@ -63,6 +63,7 @@ _(Optional)_ First element to be passed to the `reducer` function
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;T&gt;

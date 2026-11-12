@@ -3,7 +3,6 @@ import PolySyncIterable, {IterablePolySyncIterable, baseImpls} from './poly-sync
 import FilterSyncIterable from './filter-sync-iterable.js'
 import MapSyncIterable from './map-sync-iterable.js'
 
-// baseImpls.map = (iter, func) => new IterablePolySyncIterable(mapGen(iter, func)) as any
 baseImpls.map = MapSyncIterable.create
 baseImpls.filter = FilterSyncIterable.create
 

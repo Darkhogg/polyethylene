@@ -74,3 +74,4 @@ _(Optional)_ Maximum amount of promises to launch at the same time (defaults to 
 
 </td></tr>
 </tbody></table>
+

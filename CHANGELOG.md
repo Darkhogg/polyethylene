@@ -9,7 +9,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## UNRELEASED
 
 ### Changed:
-  - Prepared for JSR publishing
+  - Prepared for JSR publishing.
+  - `PolySyncIterable#reduce` now throws a `TypeError` when called on an empty iteration with no initial value, the
+    same as `PolyAsyncIterable#reduce` and `Array#reduce`, instead of returning `undefined`.
+
+### Deprecated:
+  - Deprecated CommonJS support.
+
+### Fixed:
+  - Fixed `take` (and `slice` with a non-negative `end`) consuming one more element than needed from the original
+    iteration, which could make async iterations hang waiting for an element that never comes.
+  - Fixed `PolyAsyncIterable#duplicate` not working correctly when elements were iterated concurrently.
+  - Fixed `PolySyncIterable#reduce` passing wrong indices to the reducer when called with no initial value.
+  - Fixed `PolySyncIterable#map` sometimes not throwing immediately when called with a non-function.
+  - Fixed `AsyncIterableBuilder#error` (and `Poly.buildWith`) making the iteration throw `undefined` instead of the given error.
+  - Fixed `AsyncIterableBuilder` (and `Poly.buildWith`) not working correctly when iterating concurrently.
+  - Fixed invalid `concurrency` and `bufferSize` options not failing properly.
 
 ## [2.5.4] - 2024-12-30
 

@@ -47,6 +47,7 @@ A function to be called on the elements of the iteration
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 boolean

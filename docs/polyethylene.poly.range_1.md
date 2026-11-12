@@ -63,6 +63,7 @@ Exclusive upper bound of the iteration
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;number&gt;

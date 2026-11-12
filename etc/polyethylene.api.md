@@ -86,7 +86,7 @@ export default Poly;
 
 // @public
 export class PolyAsyncIterable<T> implements AsyncIterable<T> {
-    [Symbol.asyncIterator](): AsyncIterator<T, any, any>;
+    [Symbol.asyncIterator](): AsyncIterator<T>;
     // @internal
     constructor(iterable: AsyncIterable<T>);
     append<U>(other: Iterable<U> | AsyncIterable<U>): PolyAsyncIterable<T | U>;

@@ -47,6 +47,7 @@ Size of the chunks
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;

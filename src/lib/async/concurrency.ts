@@ -40,7 +40,8 @@ export class ConcurrentMapper<T, U> implements AsyncIterableIterator<ConcurrentM
     const concurrency = Math.floor(options.concurrency ?? 0)
     const bufferSize = Math.floor(options.bufferSize ?? Math.max(concurrency, 1))
 
-    if (concurrency < 0) throw new TypeError('concurrency must be >= 0')
+    if (!Number.isInteger(concurrency) || concurrency < 0) throw new TypeError('concurrency must be >= 0')
+    if (!Number.isFinite(bufferSize) || bufferSize <= 0) throw new TypeError('buffer size must be > 0')
     if (bufferSize < concurrency) throw new TypeError('buffer size must be >= concurrency')
 
     this.#iterator = iteratorOrIterable[Symbol.asyncIterator]()

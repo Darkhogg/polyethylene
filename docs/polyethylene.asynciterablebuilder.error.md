@@ -47,6 +47,7 @@ The error to be thrown by the underlying iterable
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 void

@@ -47,6 +47,7 @@ _(Optional)_ The string to use for joining the elements
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 string

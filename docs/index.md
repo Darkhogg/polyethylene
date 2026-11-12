@@ -29,3 +29,4 @@ A library for working with iterables and async iterables in a functional style, 
 
 </td></tr>
 </tbody></table>
+

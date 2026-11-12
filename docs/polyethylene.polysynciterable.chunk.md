@@ -47,6 +47,7 @@ _(Optional)_ Size of the chunks
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;Array&lt;T&gt;&gt;

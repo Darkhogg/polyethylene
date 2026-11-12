@@ -9,6 +9,22 @@ import {collectSync, collectAsync} from './_utils.js'
 
 chai.use(chaiAsPromised)
 
+export async function collectAsyncConcurrent<T> (iter: AsyncIterable<T>, max: number = 100): Promise<Array<T>> {
+  const it = iter[Symbol.asyncIterator]()
+
+  const promises = Array(max).fill(null).map(() => it.next())
+  const values: Array<T> = []
+
+  for (const promise of promises) {
+    const {done, value} = await promise
+    if (done) break
+
+    values.push(value)
+  }
+
+  return values
+}
+
 
 describe('Poly', () => {
   describe('.syncFrom', () => {
@@ -348,10 +364,10 @@ describe('Poly', () => {
     ['builder', fromTimeoutsWithBuilder],
     ['build', fromTimeoutsWithBuild],
   ] as const
-  BUILDING_FUNCS.forEach(([name, fromTimeous]) => {
+  BUILDING_FUNCS.forEach(([name, fromTimeouts]) => {
     describe(`.${name}`, () => {
       it('should work for fully sync iterations', async () => {
-        const iter = fromTimeous([
+        const iter = fromTimeouts([
           ['a', 0],
           ['b', 0],
           [undefined, 0],
@@ -363,7 +379,8 @@ describe('Poly', () => {
       })
 
       it('should work for fully sync iteration errors', async () => {
-        const iter = fromTimeous([
+        const iter = fromTimeouts([
+          ['a', 0],
           [new Error(), 0],
           ['X', 0],
         ])
@@ -372,7 +389,7 @@ describe('Poly', () => {
       })
 
       it('should work for sync empty iterations', async () => {
-        const iter = fromTimeous([
+        const iter = fromTimeouts([
           [undefined, 0],
           ['X', 0],
           [new Error(), 0],
@@ -383,7 +400,7 @@ describe('Poly', () => {
       })
 
       it('should work for semi-async iterations', async () => {
-        const iter = fromTimeous([
+        const iter = fromTimeouts([
           ['a', 0],
           ['b', 0],
           ['c', 10],
@@ -399,7 +416,7 @@ describe('Poly', () => {
       })
 
       it('should work for semi-async iteration errors', async () => {
-        const iter = fromTimeous([
+        const iter = fromTimeouts([
           ['a', 0],
           ['b', 0],
           [new Error(), 10],
@@ -411,7 +428,7 @@ describe('Poly', () => {
       })
 
       it('should work for async iterations', async () => {
-        const iter = fromTimeous([
+        const iter = fromTimeouts([
           ['a', 0],
           ['b', 5],
           ['c', 10],
@@ -427,7 +444,7 @@ describe('Poly', () => {
       })
 
       it('should work for async iteration errors', async () => {
-        const iter = fromTimeous([
+        const iter = fromTimeouts([
           ['a', 0],
           ['b', 5],
           [new Error(), 10],
@@ -439,7 +456,7 @@ describe('Poly', () => {
       })
 
       it('should work for async empty iterations', async () => {
-        const iter = fromTimeous([
+        const iter = fromTimeouts([
           [undefined, 5],
           ['X', 10],
           [new Error(), 15],
@@ -447,6 +464,69 @@ describe('Poly', () => {
 
         const expected: Array<unknown> = []
         await expect(collectAsync(iter, expected.length)).to.eventually.deep.equal(expected)
+      })
+
+      it('should work when calling next() concurrently', async () => {
+        const iter = fromTimeouts([
+          ['a', 5],
+          ['b', 10],
+          ['c', 15],
+          [undefined, 20],
+          ['X', 25],
+        ])
+
+        const expected = ['a', 'b', 'c']
+        await expect(collectAsyncConcurrent(iter, expected.length)).to.eventually.deep.equal(expected)
+      })
+
+      it('should work when calling next() concurrently with errors', async () => {
+        const iter = fromTimeouts([
+          ['a', 5],
+          ['b', 10],
+          [new Error(), 15],
+        ])
+
+        await expect(collectAsyncConcurrent(iter, 3)).to.be.rejected
+      })
+
+      it('should resolve every returned next() promise', async () => {
+        const iter = fromTimeouts([
+          ['a', 5],
+          ['b', 10],
+          [undefined, 20],
+          ['X', 25],
+        ])
+
+        const it = iter[Symbol.asyncIterator]()
+        const aProm = it.next()
+        const bProm = it.next()
+        const endProm = it.next()
+        const afterProm = it.next()
+
+        await expect(aProm).to.eventually.deep.equal({value: 'a'})
+        await expect(bProm).to.eventually.deep.equal({value: 'b'})
+        await expect(endProm).to.eventually.deep.equal({done: true, value: undefined})
+        await expect(afterProm).to.eventually.be.ok
+      })
+
+      it('should resolve every returned next() promise with errors', async () => {
+        const iter = fromTimeouts([
+          ['a', 5],
+          ['b', 10],
+          [new Error(), 20],
+          ['X', 25],
+        ])
+
+        const it = iter[Symbol.asyncIterator]()
+        const aProm = it.next()
+        const bProm = it.next()
+        const errProm = it.next()
+        const afterProm = it.next()
+
+        await expect(aProm).to.eventually.deep.equal({value: 'a'})
+        await expect(bProm).to.eventually.deep.equal({value: 'b'})
+        await expect(errProm).to.be.rejected
+        await expect(afterProm).to.eventually.be.ok
       })
     })
   })

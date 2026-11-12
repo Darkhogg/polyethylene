@@ -47,6 +47,7 @@ The function to call on the elements
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;

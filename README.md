@@ -4,7 +4,8 @@ Polyethylene is a wrapping layer around iterators and async iterators that lets 
 functional operators in a similar way you do with arrays but without the memory overhead or having
 to wait for an asynchronous iteration to end.
 
-[![Version](https://img.shields.io/npm/v/polyethylene.svg)](https://www.npmjs.com/package/polyethylene)
+[![npm](https://img.shields.io/npm/v/polyethylene.svg)](https://www.npmjs.com/package/polyethylene)
+[![jsr](https://img.shields.io/jsr/v/%40dani/polyethylene)](https://jsr.io/@dani/polyethylene)
 [![Tests](https://img.shields.io/github/actions/workflow/status/darkhogg/polyethylene/test.yaml?branch=main)](https://github.com/Darkhogg/polyethylene/actions/workflows/test.yaml?query=branch%3Amain)
 [![](https://img.shields.io/github/license/Darkhogg/polyethylene)][license]
 
@@ -33,6 +34,8 @@ await Poly.asyncFrom(findUsers())
 ```
 
 ### CommonJS
+
+> **Deprecated:** CommonJS support is deprecated as of `2.6.0` and will be removed in a future release.
 
 This package is designed as an ECMAScript Module from the get go, but since 2.1.0 a CommonJS version is provided.
 

@@ -49,6 +49,7 @@ an async iterable or async iterable factory used to create the resulting async i
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolyAsyncIterable](./polyethylene.polyasynciterable.md)<!-- -->&lt;T&gt;

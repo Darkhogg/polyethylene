@@ -1,4 +1,5 @@
 import {IndexedMapping} from '../types.js'
+import {asserts} from '../utils.js'
 import PolySyncIterable from './poly-sync-iterable.js'
 
 
@@ -45,6 +46,7 @@ export default class MapSyncIterable<TOrig, TMapped> extends PolySyncIterable<TM
   }
 
   override map<U> (func: IndexedMapping<TMapped, U>): PolySyncIterable<U> {
+    asserts.isFunction(func)
     return new MapSyncIterable(this.#iterable, combinedIndexedMapping(this.#mapper, func))
   }
 }

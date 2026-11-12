@@ -47,6 +47,7 @@ A type predicate called for elements of `this`
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 U \| undefined

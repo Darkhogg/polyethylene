@@ -47,6 +47,7 @@ A function that takes an element of `this` and returns an iterable
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;U&gt;

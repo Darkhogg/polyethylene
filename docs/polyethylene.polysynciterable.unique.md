@@ -47,6 +47,7 @@ _(Optional)_ A function that returns a \_key\_ used for uniqueness checks. If no
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PolySyncIterable](./polyethylene.polysynciterable.md)<!-- -->&lt;T&gt;
